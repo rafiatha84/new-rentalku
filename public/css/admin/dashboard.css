@@ -1,0 +1,139 @@
+.button{
+    background-color: #007a66;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.button:hover{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.button-trans{
+    background-color: transparent !important;
+    color: #007a66 !important;
+    border: 0px !important;
+}
+.button-trans:active{
+    background-color: transparent !important;
+    color: #007a66 !important;
+    border: 0px !important;
+}
+.button-trans:visited{
+    background-color: transparent !important;
+    color: #007a66 !important;
+    border: 0px !important;
+}
+.button-trans:focus,
+.button-trans.focus {
+    box-shadow: 0 0 0 0 rgba(91, 194, 194, 0.5) !important;
+}
+.dropdown-item{
+    color: #007a66;
+}
+th{
+color: #007a66 !important;
+    border-top: 0px !important;
+}
+td{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.delete-button{
+    border: 0px !important;
+    background-color: #FB0505;
+    color: white;
+    border-radius: 5px;
+}
+.edit-button{
+    border: 0px !important;
+    background-color: #FFC700;
+    color: white;
+    border-radius: 5px;
+}
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+.btn-cancel{
+    color: #007a66 !important;
+    background-color: white !important;
+    border-radius: 20px !important;
+    border: 1px solid #007a66;
+}
+.btn-oke{
+    color: white !important;
+    background-color: #007a66 !important;
+    border-radius: 20px !important;
+    border: 1px solid white;
+}
+#footer{
+    border-top: 1px solid #007a66 !important;
+}
+div#footer\ mt-2{
+    border-top: 1px solid #007a66 !important;
+}
+.sub-menu, .sub-menu:hover, .sub-menu:link, .sub-menu:active {
+    color: #000000;
+    opacity: 0.4;
+    text-decoration: none;  
+}
+.sub-active{
+    opacity: 1 !important;
+}
+.sub-menu:hover{
+    opacity: 1 !important;
+}
+.btn-cancel-crud , .btn-cancel-crud:hover{
+    color: #007a66;
+    border: 1px solid #007a66;
+    border-radius: 20px;
+    min-width: 150px;
+}
+.btn-oke-crud, .btn-oke-crud:hover{
+    background-color: #007a66;
+    color: white;
+    border: 1px solid #007a66;
+    border-radius: 20px;
+    min-width: 150px;
+}
+.btn-oke-crud:hover, .btn-cancel-crud:hover{
+    font-weight: bold;
+}
+.input-form{
+    border: 2px solid #007a66;
+    border-radius: 10px;
+}
+.color-yellow{
+    color: #FFC700;
+}
+.href-base,.href-base:active,.href-base:hover,.href-base:link{
+    color: #007a66;
+    text-decoration: none;
+}
+.href-base:hover{
+    font-weight: bold;
+    color: #007a66;
+}
+.element {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #007a66;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .camera-icon {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .camera-icon {
+    opacity: 0.6;
+  }
+  .input-foto {
+    display: none;
+  }

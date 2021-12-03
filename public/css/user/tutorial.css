@@ -1,0 +1,9 @@
+.number-box{
+    background-color: #007a66;
+    color: white;
+    border-radius: 50%;
+}
+.badge-light{
+    background-color: #007a66 !important;
+    color: white !important;
+}

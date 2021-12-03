@@ -1,0 +1,58 @@
+.detail-box{
+    background-color: white;
+    min-height: 500px;
+    border-radius: 20px;
+}
+
+.head-produk{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #007a66;
+    color: white;
+}
+.image-produk{
+    width: 100%;
+}
+.ulasan-link:hover{
+    color: #007a66;
+    font-weight: bold;
+}
+.hr-detail{
+    border-top: 1px solid #000000;
+}
+.vertikal-line{
+    border-left: 1px solid #000000;
+}
+.sidebar-left{
+    background-color: #007a66;
+    border-bottom-left-radius: 20px;
+}
+.sidebar-right{
+    border-bottom-right-radius: 20px;
+}
+.yellow-bg{
+    background-color: yellow;
+}
+.black-bg{
+    background-color: black;
+}
+.sidebar-navlink{
+    color: white !important;
+}
+.sidebar-navlink:hover{
+    color: #007a66 !important;
+    background-color: white;
+}
+.sidebar-navlink.active{
+    color: #007a66 !important;
+    background-color: white;
+}
+.img-ulasan{
+    width: 100%;
+}
+.unitku-row{
+    cursor: pointer;
+}
+.unitku-row:hover{
+    background: rgba(0, 122, 102, 0.25);
+}

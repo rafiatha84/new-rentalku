@@ -1,0 +1,27 @@
+.bg-white{
+    background-color: white;
+}
+.base-color{
+    color: #007a66 !important;
+}
+.black-color{
+    color: black;
+}
+.pagination > a{
+    color: black !important;
+}
+.page-item.active .page-link{
+    background-color: #007a66 !important;
+    border-radius: 50% !important;
+    color: white !important;
+}
+.page-item .page-link{
+    background-color: transparent !important;
+    border-radius: 50% !important;
+    color: #007a66 !important;
+    border: 0 !important;
+}
+.tag-label{
+    background-color: #E0E0E0;
+    color: #007a66;
+}

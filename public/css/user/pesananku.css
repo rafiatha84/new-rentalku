@@ -1,0 +1,111 @@
+.detail-box{
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #007a66;
+}
+
+.head-produk{
+    border-radius: 20px;
+    background-color: #007a66;
+    color: white;
+}
+.image-produk{
+    width: 100%;
+}
+.ulasan-link:hover{
+    color: #007a66;
+    font-weight: bold;
+}
+.hr-detail{
+    border-top: 1px solid #000000;
+}
+.vertikal-line{
+    border-left: 1px solid #000000;
+}
+.sub-menu-btn{
+    border-bottom: 4px solid#C4C4C4;
+    color: #C4C4C4;
+}
+
+.sub-menu-btn.active{
+    border-bottom: 4px solid #007a66;
+    color: #007a66;
+}
+.sub-menu-btn:hover{
+    border-bottom: 4px solid #007a66;
+    color: #007a66;
+}
+.table-box{
+    background: white;
+    min-height: 400px;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+.table-pesanan{
+    border-collapse: separate !important;
+  border-spacing: 0 !important;
+    background: white;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+thead{
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+table, th, td {
+    border: 1px solid #007a66 !important;
+}
+thead{
+    background-color: #007a66;
+}
+thead tr:first-child > th{
+    color: white;
+}
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 20px !important;
+  }
+  
+  
+  /* bottom-left border-radius */
+  table tr:first-child th:last-child {
+    border-top-right-radius: 20px !important;
+  }
+.image-mobil-tabel{
+    width: 150px;
+}
+.kosong-box{
+    min-height: 400px;
+}
+.image-order-kosong{
+    height: 200px;
+}
+.hidden{
+    display: none;
+}
+.img-ulasan{
+    width: 100%;
+}
+.fa-star{
+    font-size: 30px;
+}
+.review-input{
+    border-radius: 20px;
+    border: 1px solid #007A66;
+}
+.star-box{
+    display: inline-block;
+    list-style: none;
+}
+.star-box li {
+    float: right;
+    color: #ddd;
+}
+
+.star-box li:hover,
+.star-box li:hover ~ li {
+  color: #ffd700 !important;
+}
+.sukses-icon{
+    font-size: 70px;
+}

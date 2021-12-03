@@ -1,0 +1,133 @@
+.cari-rental{
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    border: 0 !important;
+}
+.cari-rental:focus{
+    border:0 !important;
+}
+input[type="text"], input[type="password"], textarea, select { 
+    outline: none;
+}
+.button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border: 0;
+    background-color: transparent;
+}
+.search-box{
+    position: relative;
+    width: 450px;
+    height: 30px;
+    border-radius: 20px;
+    z-index: 9999;
+}
+.search-box-outer{
+    position: relative;
+    width: 450px;
+}
+.text-px{
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+#footer{
+    border-top: 1px solid #007a66 !important;
+}
+.search-toggle-box{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top: 0;
+    height: 150px;
+    background-color: #E0E0E0;
+    color: black;
+    width: 100%;
+    z-index: 9998;
+    border: 0 !important;
+}
+.kategori-box{
+    border: 1px solid #A0A0A0;
+    color:#A0A0A0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.filter-checkbox{
+    display: none;
+}
+.filter-checkbox:checked + .kategori-outer>.kategori-box{
+    border: 1px solid black !important;
+    color: black;
+}
+.submit-search{
+    background-color: #007a66;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    display: block;
+    width: 50%;
+}
+.href-base,.href-base:active,.href-base:hover,.href-base:link{
+    color: #007a66;
+    text-decoration: none;
+}
+.href-base:hover{
+    font-weight: bold;
+    color: #007a66;
+}
+.button-yellow-primary{
+    background-color: #FFC700;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.button-yellow-primary:hover{
+    background-color: #FFC700;
+    color: white;
+    border-radius: 20px;
+    opacity: 0.7;
+    text-decoration: none;
+}
+.button-yellow-secondary{
+    background-color: white;
+    color: #FFC700;
+    border-radius: 20px;
+    border: 1px solid #FFC700;
+    text-decoration: none;
+}
+.button-yellow-secondary:hover{
+    background-color: white;
+    color: #FFC700;
+    border-radius: 20px;
+    border: 1px solid #FFC700;
+    opacity: 0.7;
+    text-decoration: none;
+}
+.yellow-color{
+    color: #FFC700;
+}
+.button-gray{
+    background-color: #C4C4C4;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+.button-gray:hover{
+    background-color: #C4C4C4;
+    color: black;
+    opacity: 0.5;
+    border: 0;
+    border-radius: 5px;
+}
+
+.base-background{
+    background-color: #007a66;
+}
+.radius-5{
+    border-radius: 5px;
+}
+.radius-5:hover{
+    border-radius: 5px;
+}
