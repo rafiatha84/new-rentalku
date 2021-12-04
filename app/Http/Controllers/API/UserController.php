@@ -49,13 +49,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('kendaraan', 'pengemudi', 'owner', 'transaksi', 
-        'room', 'message', 'dompet', 'transaksiDompet', 'ratingKendaraan', 'ratingUser', 'user_role', 'artikel')->findOrFail($id);
+        $user = User::findOrFail($id);
         if (is_null($user)) {
             return response()->json('Data not found', 404); 
         }
+        $response = [
+            "status" => "success",
+            "message" => 'Tampilkan data user',
+            "errors" => null,
+            "content" => $user,
+        ];
 
-        return response()->json($user, 200);
+        return response()->json($response, 200);
     }
 
     /**

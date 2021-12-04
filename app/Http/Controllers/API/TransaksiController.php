@@ -26,7 +26,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::with('user', 'kendaraan', 'pengemudiTransaksi')->get();
+        $transaksi = Transaksi::with('user', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
 
         if (count([$transaksi]) > 0) {
             $response = [
@@ -37,7 +37,6 @@ class TransaksiController extends Controller
             ];
             return response($response, 200);
         }
-
         else {
             $response = [
                 "status" => "gagal",
@@ -279,7 +278,7 @@ class TransaksiController extends Controller
 
     public function showId($transaksi_id)
     {
-        $transaksi = Transaksi::where('id', $transaksi_id)->with('user','kendaraan','pengemudiTransaksi')->get();
+        $transaksi = Transaksi::where('id', $transaksi_id)->with('user', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
 
         if(count($transaksi) > 0){
             $response = [
@@ -375,7 +374,7 @@ class TransaksiController extends Controller
                 "content" => $transaksi,
             ];
     
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
         
     }
@@ -411,6 +410,36 @@ class TransaksiController extends Controller
             return response()->json($response, 404);
         }
         
+    }
+
+    public function update_selesai($transaksi_id)
+    {
+        $transaksi = Transaksi::where('id', $transaksi_id)->update([
+            'status' => 'Selesai'
+        ]);
+        if ($transaksi) {
+            $transaksiData = Transaksi::where('id', $transaksi_id)->get();
+
+            $response = [
+                "status" => "success",
+                "message" => 'Berhasil update kendaraan',
+                "errors" => null,
+                "content" => $transaksiData,
+            ];
+
+            return response()->json($response,201);
+
+        } else {
+            $response = [
+                "status" => "gagal",
+                "message" => 'gagal update kendaraan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+    
+            return response()->json($response, 404);
+        }
+
     }
 
     

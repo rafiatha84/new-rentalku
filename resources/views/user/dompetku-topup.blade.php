@@ -92,7 +92,14 @@
                                 @endforeach
                                 <hr>
                                 <div class="col-12 text-center">
-                                    <input type="submit" class="button-yellow-primary px-3 py-2" value="Bayar Sekarang">
+                                    <button typr="submit" value="Submit" class="button-yellow-primary px-3 py-2">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="spinner-border" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                        Bayar Sekarang
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -123,13 +130,19 @@
                     cache       : false,
                     contentType : false,
                     processData : false,
+                    beforeSend: function() {
+                        showLoader();
+                        $(':input[type="submit"]').prop('disabled', true);
+                    },
                     success: function(response) {
                         console.log(response);
                         var transaksi_dompet_id = response['content']['id'];
                         var url = "{{ route('user.dompetku.topup.detail','') }}"+"/"+transaksi_dompet_id;
                         window.location=url;
-                        // $('#pemesanan-create')[0].reset();
+                        $('#pemesanan-create')[0].reset();
                         // $('#suksesModal').modal("show"); 
+                        removeLoader();
+                        $(':input[type="submit"]').prop('disabled', false);
                     },
                     error: function(xhr) {
                         alert('error');

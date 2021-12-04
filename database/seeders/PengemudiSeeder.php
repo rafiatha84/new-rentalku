@@ -30,5 +30,9 @@ class PengemudiSeeder extends Seeder
             "role" => "pengemudi",
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+        DB::table("users")->where('id',5)->update([
+            "email" => "penyewa@gmail.com",
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
     }
 }

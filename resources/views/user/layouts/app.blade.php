@@ -20,6 +20,7 @@
 </head>
 
 <body style="background-image:url({{url('image/v996-009.png')}})">
+<!-- <div style="" id="loadingDiv"><div class="loader">Loading...</div></div> -->
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" style="width:150px;" href="{{ url('/dashboard') }}">
@@ -275,8 +276,19 @@
                 var element = ".user-"+user_id;
                 $(element).click();
             });
-            
             // alert(element);
+        }
+        // $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+        
+
+        $(window).on('load', function(){
+            setTimeout(removeLoader,0); //wait for page load PLUS two seconds.
+        });
+        function removeLoader(){
+            $('.spinner-border').hide();
+        }
+        function showLoader(){
+            $('.spinner-border').show();
         }
         $(document).ready(
             function(){

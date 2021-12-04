@@ -123,13 +123,20 @@ Route::get('transaksi/{transaksi_id}', [TransaksiController::class, 'showId'])->
 Route::post('/transaksi/update/{transaksi_id}', [TransaksiController::class, 'update'])->name('api.transaksi.update');
 Route::delete('/transaksi/delete/{transaksi_id}', [TransaksiController::class, 'destroy'])->name('api.transaksi.destroy');
 Route::get('transaksi/show/{user_id}', [TransaksiController::class, 'show'])->name('api.transaksi.show');
-
+Route::post('transaksi/selesai/{transaksi_id}',[TransaksiController::class, 'update_selesai'])->name('api.transaksi.update.selesai');
 //Rating Kendaraan
-Route::get('rating/{rating_id}', [RatingKendaraanController::class, 'showId'])->name('rating.showId');
-Route::get('rating/all/{kendaraan_id}', [RatingKendaraanController::class, 'show'])->name('rating.show');
-Route::post('/rating/create', [RatingKendaraanController::class, 'store'])->name('rating.create');
-Route::post('/rating/update/{id}', [RatingKendaraanController::class, 'update'])->name('rating.update');
-Route::delete('rating/delete/{rating_id}', [RatingKendaraanController::class, 'destroy'])->name('rating.destroy');
+Route::get('rating/kendaraan/{rating_id}', [RatingKendaraanController::class, 'showId'])->name('api.ratingKendaraan.showId');
+Route::get('rating/kendaraan/all/{kendaraan_id}', [RatingKendaraanController::class, 'show'])->name('api.ratingKendaraan.show');
+Route::post('/rating/kendaraan/create', [RatingKendaraanController::class, 'store'])->name('api.ratingKendaraan.create');
+Route::post('/rating/kendaraan/update/{id}', [RatingKendaraanController::class, 'update'])->name('api.ratingKendaraam.update');
+Route::delete('rating/kendaraan/delete/{rating_id}', [RatingKendaraanController::class, 'destroy'])->name('api.ratingKendaraan.destroy');
+
+//Rating User
+Route::get('rating/user/{rating_id}', [RatingUserController::class, 'showId'])->name('api.ratingUser.showId');
+Route::get('rating/user/all/{kendaraan_id}', [RatingUserController::class, 'show'])->name('api.ratingUser.show');
+Route::post('/rating/user/create', [RatingUserController::class, 'store'])->name('api.ratingUser.create');
+Route::post('/rating/user/update/{id}', [RatingUserController::class, 'update'])->name('api.ratingUser.update');
+Route::delete('rating/user/delete/{rating_id}', [RatingUserController::class, 'destroy'])->name('api.ratingUser.destroy');
 
 
 //Profile

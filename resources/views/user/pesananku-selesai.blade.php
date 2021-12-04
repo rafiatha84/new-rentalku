@@ -56,7 +56,12 @@
                                 </div>
                                 <div class="col-6 text-center">
                                     @if($transaksi->belum_rating())
-                                    <span href="" class="href-base button-yellow-secondary p-2 d-block h-100" onclick="show_review(1)">Beri Nilai</span>
+                                    <a href="" class="href-base button-yellow-secondary p-2 d-block h-100 nilai-button" onclick="show_review(1)">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="spinner-border" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>Beri Nilai</a>
                                     @else
                                     <a href="{{ route('user.pemesanan.create',$transaksi->kendaraan->id) }}" class="href-base button-yellow-secondary p-2 d-block h-100">Pesan Lagi</a>
                                     @endif
@@ -95,25 +100,7 @@
                         <h4>Nilai Produk</h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="image-box col-3">
-                        <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                    </div>
-                    <div class="col-9 align-self-center">
-                        <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                        <h5 class="jenis-mobil">Compact MPV</h5>
-                    </div>
-                </div>
-                <div class="row col-12">
-                    <ul class="m-0 mb-2 star-box mx-auto">
-                        <li><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                    </ul>
-                </div>
-                <textarea name="review" id="" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai produk ini... " class="review-input w-100 px-5 py-2"></textarea>
+                
                 <!-- review pemilik -->
                 <div class="row">
                     <div class="image-box col-3">
@@ -160,8 +147,6 @@
                         <input type="submit" value="Kirim" class="btn button-yellow-primary radius-5 btn-kirim">
                     </div>
                 </div>
-                <form action='' id="formdelete" method="get">
-                </form>
             </div>
         </div>
         </div>
@@ -188,14 +173,58 @@
 @section('js')
     <script>
         function show_review(id){
-            $('#reviewModal').modal("show");
+            let url= "{{route('api.transaksi.showId','')}}"+"/"+id;
+            $.ajax({
+                url: url,
+                type: "get", //send it through get method
+                beforeSend: function() {
+                    showLoader();
+                    $(':input[type="submit"]').prop('disabled', true);
+                },
+                success: function(response) {
+                    console.log(response);
+                    if(response['content']['pengemudi_transaksi'] === null){
+                        console.log("betul");
+                    }
+                 var a=`<div class="row">
+                    <div class="image-box col-3">
+                        <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
+                    </div>
+                    <div class="col-9 align-self-center">
+                        <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
+                        <h5 class="jenis-mobil">Compact MPV</h5>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <ul class="m-0 mb-2 star-box mx-auto">
+                        <li><i class="fa-solid fa-star mx-2"></i></li>
+                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
+                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
+                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
+                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
+                    </ul>
+                </div>
+                <textarea name="review" id="" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai produk ini... " class="review-input w-100 px-5 py-2"></textarea>`;    
+                    $('#reviewModal').modal("show");
+                    removeLoader();
+                    $(':input[type="submit"]').prop('disabled', false);
+                },
+                error: function(xhr) {
+                    console.log(xhr);
+                    //Do Something to handle error
+                }
+            });
+            
         }
         $(document).ready(function(){
             $('.btn-kirim').click(function(e){
-                e.preventDefault;
+                e.preventDefault();
                 $('#reviewModal').modal("toggle");
                 $('#suksesModal').modal("show");
 
+            });
+            $('.nilai-button').click(function(e){
+                e.preventDefault();
             });
         });
     </script>

@@ -4,11 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Validator;
 use Illuminate\Http\Request;
-use App\Models\RatingKendaraan;
 use App\Http\Controllers\Controller;
 use App\Models\RatingUser;
 
-class RatingKendaraanController extends Controller
+class RatingUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -58,7 +57,7 @@ class RatingKendaraanController extends Controller
         }
 
 
-        $rating = RatingKendaraan::create([
+        $rating = RatingUser::create([
             'user_id' => $request->user_id,
             'kendaraan_id' => $request->kendaraan_id,
             'jumlah_bintang' => $request->jumlah_bintang,
@@ -98,7 +97,7 @@ class RatingKendaraanController extends Controller
      */
     public function show($kendaraan_id)
     {
-        $rating = RatingKendaraan::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
+        $rating = RatingUser::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
         
         if (count([$rating]) > 0) {
             $response = [
@@ -124,7 +123,7 @@ class RatingKendaraanController extends Controller
 
     public function showId($rating_id)
     {
-        $rating = RatingKendaraan::with('user','kendaraan')->get();
+        $rating = RatingUser::with('user','kendaraan')->get();
 
         if(count([$rating]) > 0){
             $response = [
@@ -185,7 +184,7 @@ class RatingKendaraanController extends Controller
         }
 
 
-        $rating = RatingKendaraan::where('id',$id)->update([
+        $rating = RatingUser::where('id',$id)->update([
             'user_id' => $request->user_id,
             'kendaraan_id' => $request->kendaraan_id,
             'jumlah_bintang' => $request->jumlah_bintang,
@@ -193,7 +192,7 @@ class RatingKendaraanController extends Controller
             
          ]);
          if ($rating) {
-             $rating_data = RatingKendaraan::where('id', $id)->get();
+             $rating_data = RatingUser::where('id', $id)->get();
              $response = [
                 "status" => "success",
                 "message" => 'Berhasil update dompet',
@@ -226,7 +225,7 @@ class RatingKendaraanController extends Controller
      */
     public function destroy($id)
     {
-        $rating = RatingKendaraan::first($id);
+        $rating = RatingUser::first($id);
         
         $response = [
             "status" => "deleted",

@@ -19,6 +19,6 @@ class Dompet extends Model
     }
 
     public function transaksiDompet(){
-        return $this->hasMany('App\Models\TransaksiDompet')->where('status','Dikonfirmasi');
+        return $this->hasMany('App\Models\TransaksiDompet')->where('status','Dikonfirmasi')->orderBy('id','DESC');
     }
 }

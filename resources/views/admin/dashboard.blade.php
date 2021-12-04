@@ -38,51 +38,17 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($users as $user)
                 <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>Penyewa</td>
+                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->role }}</td>
                   <td>
-                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete(2)"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user(2)"><i class="fa-solid fa-edit"></i></button>
+                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete({{ $user->id }})"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user({{ $user->id }})"><i class="fa-solid fa-edit"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>Penyewa</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete(2)"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user(2)"><i class="fa-solid fa-edit"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>Penyewa</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete(2)"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user(2)"><i class="fa-solid fa-edit"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>Penyewa</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete(2)"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user(2)"><i class="fa-solid fa-edit"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>Penyewa</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"  onclick="modal_delete(2)"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_user(2)"><i class="fa-solid fa-edit"></i></button>
-                  </td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -100,7 +66,8 @@
                   <h2>Perhatian</h2>
                   <p>Apakah Anda yakin akan menghapus pengguna tersebut dari basis data aplikasi RentalKu?</p>
                   </div>
-                  <form action='{{ route("admin.user.delete", "0" ) }}' id="formdelete" method="get">
+                  <form action='/' id="formdelete" method="POST">
+                  @csrf
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -127,13 +94,13 @@
                   </div>
                   <div class="col-12">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" value="Admin" class="input-form w-100 p-2">
+                  <input type="text" name=""  value="Admin" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" id="" value="Admin@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name=""  value="Admin@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  <form action='' id="formprofil" method="get">
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -159,13 +126,13 @@
                   </div>
                   <div class="col-12">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" id="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name="" value="******" class="input-form w-100 mb-2 p-2">
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  <form action='' id="formcreate-penyewa" method="get">
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -191,20 +158,20 @@
                   </div>
                   <div class="col-12">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name=""  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" id="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name=""  placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
-                  <input type="text" name="" id="" placeholder="NIK" class="input-form w-100 p-2">
+                  <input type="text" name=""  placeholder="NIK" class="input-form w-100 p-2">
                   <p class="m-0">Foto KTP</p>
                   <div class="element w-100">
                     <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
-                    <input type="file" name="" id="" placeholder="" class="input-form input-foto">
+                    <input type="file" name=""  placeholder="" class="input-form input-foto">
                   </div>
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  <form action='' id="formcreate-pemilik" method="get">
                   <div class="row px-5 mt-2">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -225,24 +192,35 @@
               <div class="modal-body">
                   <div class="row">
                   <div class="col-12">
+                  <form action="{{ route('admin.user.create') }}" id="form-create-supir" method="POST" enctype="multipart/form-data">
                   <h3 class="text-center">Tambah Sopir</h3>
                   </div>
                   </div>
                   <div class="col-12">
+                  @csrf
+                  <input type="hidden" name="role" value="pengemudi">
+                  <p class="m-0">Owner</p>
+                  <select name="owner_id" id="owner" class="input-form w-100 p-2">
+                    @foreach($pemiliks as $pemilik)
+                    <option value="{{$pemilik->id}}">{{$pemilik->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Harga sopir / Hari</p>
+                  <input type="number" name="harga" placeholder="Harga sopir" class="input-form w-100 p-2">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" id="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name="email" placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="password" name="password" value="******" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
-                  <input type="text" name="" id="" placeholder="NIK" class="input-form w-100 p-2">
+                  <input type="text" name="nik" placeholder="NIK" class="input-form w-100 p-2">
                   <p class="m-0">Foto KTP</p>
-                  <input type="file" name="" id="" placeholder="" class="input-form w-100 p-2">
+                  <input type="file" name="foto_ktp" placeholder="" class="input-form w-100 p-2">
                   <p class="m-0">Foto SIM A</p>
-                  <input type="file" name="" id="" placeholder="" class="input-form w-100 p-2">
+                  <input type="file" name="foto_sim" placeholder="" class="input-form w-100 p-2">
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -266,13 +244,13 @@
                   </div>
                   <div class="col-12">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" id="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name=""  placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  <form action='' id="formcreate-admin" method="get">
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -291,20 +269,33 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
+                <form action='' id="form-update-user" method="POST" enctype="multipart/form-data">
+                  @csrf
                   <div class="row ">
                     <h3 class="text-center">Detail/Edit User</h3>
                   </div>
                   <div class="col-12">
-                  <p class="m-0">Nama</p>
-                  <input type="text" name="" id="" placeholder="nama" class="input-form w-100 p-2" value="Aris">
-                  <p class="m-0">Email</p>
-                  <input type="text" name="" id="" placeholder="testn@gmail.com" class="input-form w-100 p-2" value="aris@gmail.com">
-                  <p class="m-0">Password</p>
-                  <input type="text" name="" id="" value="******" class="input-form w-100 mb-2 p-2"  value="******">
                   <p class="m-0">Role</p>
-                  <input type="text" name="" id="" value="penyewa" class="input-form w-100 mb-2 p-2"  value="penyewa">
+                  <input type="text" name="role"  placeholder="role" class="input-form w-100 mb-2 p-2"  value="">
+                  <p class="m-0">Nama</p>
+                  <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2" value="">
+                  <p class="m-0">Email</p>
+                  <input type="text" name="email" placeholder="testn@gmail.com" class="input-form w-100 p-2" value="aris@gmail.com">
+                  <p class="m-0">No telepon</p>
+                  <input type="text" name="telp"  placeholder="telp" class="input-form w-100 p-2" value="">
+                  <p class="m-0">Alamat</p>
+                  <input type="text" name="alamat" placeholder="alamat" class="input-form w-100 p-2" value="">
+                  <p class="m-0">Foto KTP</p>
+                  <input type="file" name="foto_ktp" placeholder="" class="input-form w-100 p-2">
+                  <img src="" alt="" srcset="" class="img-responsive w-100 my-1 foto_ktp-image">
+                  <p class="m-0">Foto SIM A</p>
+                  <input type="file" name="foto_sim" placeholder="" class="input-form w-100 p-2">
+                  <img src="" alt="" srcset="" class="img-responsive w-100 my-1 foto_sim-image">
+                  <p class="m-0">New Password</p>
+                  <input type="text" name="password" class="input-form w-100 mb-2 p-2"  placeholder="******">
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  
+                  
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -327,14 +318,44 @@
   <script src="{{ asset('js/dataTables.min.js') }}"></script>
   <script>
     function modal_delete(id){
-      $('#deleteModal').modal("show"); 
+      
       user_id = id;
       var url = '{{ route("admin.user.delete", ":id") }}';
       url = url.replace(':id', user_id);
       $("#formdelete").attr('action',url);
+      $('#deleteModal').modal("show"); 
     }
     function modal_user(id){
-      $('#edituserModal').modal("show");
+      let url= "{{route('api.user.show','')}}"+"/"+id;
+      $.ajax({
+          url: url,
+          type: "get", //send it through get method
+          success: function(response) {
+              console.log(response);
+              let url_form= "{{route('admin.user.update',':id')}}";
+              $('#form-update-user').attr('action',url_form.replace(':id',id));
+              $('#form-update-user input[name="role"]').val(response['content']['role']);
+              $('#form-update-user input[name="name"]').val(response['content']['name']);
+              $('#form-update-user input[name="email"]').val(response['content']['email']);
+              $('#form-update-user input[name="telp"]').val(response['content']['telp']);
+              $('#form-update-user input[name="alamat"]').val(response['content']['alamat']);
+              if(response['content']['foto_ktp'] !== null){
+                url_image = "{{ asset('/') }}"+response['content']['foto_ktp'];
+                $('.foto_ktp-image').attr('src',url_image);
+              }
+              if(response['content']['foto_sim'] !== null){
+                url_image = "{{ asset('/') }}"+response['content']['foto_sim'];
+                $('.foto_sim-image').attr('src',url_image);
+              }
+
+              $('#edituserModal').modal("show");
+          },
+          error: function(xhr) {
+              console.log(xhr);
+              //Do Something to handle error
+          }
+      });
+      
     }
     $(document).ready(function() {
       $(".camera-icon").click(function () {

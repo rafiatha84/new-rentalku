@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminDashboardController extends Controller
 {
@@ -18,6 +19,12 @@ class AdminDashboardController extends Controller
     }
 
     public function index(){
-        return view('admin.dashboard');
+        $users = User::orderBy('id','DESC')->get();
+        // dd($users);
+        $pemiliks = User::where('role','pemilik')->orderBy('id','DESC')->get();
+        return view('admin.dashboard',[
+            'users' => $users,
+            'pemiliks' => $pemiliks
+        ]);
     }
 }

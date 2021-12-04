@@ -100,7 +100,13 @@
                                 <p class="saldo-tidak-cukup text-center text-danger" style="display:none;color:#dc3545!important;">Saldo anda tidak cukup!!!</p>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <input type="submit" class="btn button-base button-yellow-primary px-5 pesan-button" value="Pesan Sekarang">
+                                        <button type="submit" class="btn button-base button-yellow-primary px-5 pesan-button" value="Submit">
+                                        <div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div> Pesan Sekarang
+                                    </button>
                                     </div>
                                 </div>
                                 </form>
@@ -155,6 +161,10 @@
                 if(harga_total > {{ $dompet->saldo }}){
                     $(':input[type="submit"]').prop('disabled', true);
                     $('.saldo-tidak-cukup').show();
+                }else{
+                    $(':input[type="submit"]').prop('disabled', false);
+                    $('.saldo-tidak-cukup').hide();
+
                 }
                 // alert(days);
             }
@@ -175,10 +185,16 @@
                     cache       : false,
                     contentType : false,
                     processData : false,
+                    beforeSend: function() {
+                        showLoader();
+                        $(':input[type="submit"]').prop('disabled', true);
+                    },
                     success: function(response) {
                         var transaksi_id = response['content']['id'];
                         $('#pemesanan-create')[0].reset();
                         $('#suksesModal').modal("show"); 
+                        $(':input[type="submit"]').prop('disabled', false);
+                        removeLoader();
                     },
                     error: function(xhr) {
                         alert('error');
@@ -237,14 +253,14 @@
                     }
                 });
             });
-            $('.start-date').change(function() {
+            $('.start-date').on('input',function() {
                 
                 var date = $(this).val();
                 $('.end-date').attr('min',date);
                 sum_hari();
                 // console.log(date, 'change')
             });
-            $('.end-date').change(function() {
+            $('.end-date').on('input',function() {
                 var date = $(this).val();
                 $('.start-date').attr('max',date);
                 sum_hari();

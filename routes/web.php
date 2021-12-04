@@ -100,6 +100,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('kategori',[App\Http\Controllers\Admin\AdminKategoriController::class,'index'])->name('admin.kategori');
     Route::get('kategori/kota',[App\Http\Controllers\Admin\AdminKategoriController::class,'kota'])->name('admin.kategori.kota');
-    Route::get('user/delete/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'delete'])->name('admin.user.delete');
+    
+
+    Route::post('/user/create',[App\Http\Controllers\Admin\AdminUserController::class, 'create'])->name('admin.user.create');
+    Route::post('/user/{id}/update',[App\Http\Controllers\Admin\AdminUserController::class, 'update'])->name('admin.user.update');
+    Route::post('user/{id}/delete', [App\Http\Controllers\Admin\AdminUserController::class, 'delete'])->name('admin.user.delete');
 });
 
