@@ -41,50 +41,20 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($posts as $post)
                 <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
+                  <td>{{ $post->name }}</td>
+                  <td>{{ $post->user->name }}</td>
+                  <td>{{ $post->kota }}</td>
+                  <td>{{ $post->harga }}</td>
                   <td>
                     <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
                     <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
                     <i class="fa-solid fa-info-circle"></i>
                   </td>
                 </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
+                @endforeach
+                
               </tbody>
             </table>
           </div>

@@ -15,7 +15,7 @@ class AdminKategoriController extends Controller
      */
     public function index()
     {
-        $posts = Kategori::all();
+        $posts = Kategori::paginate(10)->all();
 
         return view('admin.kategori', ['posts' => $posts]);
     

@@ -34,13 +34,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Enam Teknik Mencuci Mobil yang Benar, Jangan Asal!</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <a type="button" class="edit-button px-3 py-1" href="{{ route('admin.artikel.edit') }}"><i class="fa-solid fa-edit"></i></a>
-                  </td>
-                </tr>
+               @foreach ($posts as $post)
+               <tr>
+                <td>{{ $post->judul }}</td>
+                <td>
+                  <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
+                  <a type="button" class="edit-button px-3 py-1" href="{{ route('admin.artikel.edit') }}"><i class="fa-solid fa-edit"></i></a>
+                </td>
+              </tr>
+               @endforeach
               </tbody>
             </table>
           </div>

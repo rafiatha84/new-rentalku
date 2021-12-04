@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Artikel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminArtikelController extends Controller
 {
@@ -14,7 +15,8 @@ class AdminArtikelController extends Controller
      */
     public function index()
     {
-        return view('admin.artikel');
+        $posts = Artikel::paginate(10)->all();
+        return view('admin.artikel', ['posts' => $posts]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 
 class AdminKendaraanController extends Controller
@@ -14,7 +15,9 @@ class AdminKendaraanController extends Controller
      */
     public function index()
     {
-        return view('admin.kendaraan');
+        $posts = Kendaraan::with('user','transaksi')->get();
+        // dd($posts);
+        return view('admin.kendaraan', ['posts' => $posts]);
     }
 
     public function dipesan()
