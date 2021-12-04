@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\API\KategoriController;
 
 /*
 |--------------------------------------------------------------------------

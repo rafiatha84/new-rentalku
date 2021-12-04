@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminKategoriController extends Controller
 {
@@ -14,7 +15,10 @@ class AdminKategoriController extends Controller
      */
     public function index()
     {
-        return view("admin.kategori");
+        $posts = Kategori::all();
+
+        return view('admin.kategori', ['posts' => $posts]);
+    
     }
 
     public function kota()
