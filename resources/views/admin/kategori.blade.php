@@ -32,58 +32,26 @@
             <table class="table table-sm" id="table-pengguna">
               <thead>
                 <tr>
-                  <th>Nama unit</th>
-                  <th>Nama pengguna</th>
-                  <th>Pilihan kota</th>
-                  <th>Biaya sewa / hari</th>
-                  <th>Keterangan</th>
+                  <th>Nama Kategori</th>
+                  <th>Action</th>
+                  
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
+                
+                  @foreach ($posts as $post)
+                  <tr>
+                  <td>{{ $post->name }}</td>
+                 
                   <td>
                     <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
                     <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
                     <i class="fa-solid fa-info-circle"></i>
                   </td>
                 </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>250.000</td>
-                  <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
+                  @endforeach
+                
+                
               </tbody>
             </table>
           </div>
