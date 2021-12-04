@@ -240,15 +240,17 @@
             <div class="modal-content">
               <div class="modal-body">
                   <div class="row ">
+                    <form action="{{ route('admin.user.create') }}" id="form-create-admin" method="POST"></form>
                     <h3 class="text-center">Tambah Admin</h3>
                   </div>
                   <div class="col-12">
+                    @csrf
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name=""  placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name="email"  placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name="password"  value="******" class="input-form w-100 mb-2 p-2">
                   </div>
                   <form action='' id="formcreate-admin" method="get">
                   <div class="row px-5">
