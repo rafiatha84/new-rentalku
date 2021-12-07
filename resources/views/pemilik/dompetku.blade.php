@@ -24,108 +24,23 @@
                         </div>
                         <div class="col-8 py-2 sidebar-right">
                             <h4><b>Jumlah Saldo</b></h4>
-                            <p class="saldo">Rp. 500.000</p>
+                            <p class="saldo">Rp.{{ number_format($dompet->saldo,0,',','.') }}</p>
                             <hr>
                             <h5><b>Transaksi Terakhir</b></h5>
+                            @foreach($dompet->transaksiDompet as $transaksiDompet)
                             <!-- transaksi -->
                             <hr>
                                 <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
+                                    <h6 class="d-inline-block"><b>{{$transaksiDompet->name}}</b></h6>
+                                    <span class="float-right">Rp.{{number_format($transaksiDompet->jumlah,0,',','.')}}</span>
                                 </p>
-                                <p class="keterangan">Toyota Avanza</p>
+                                @if(!is_null($transaksiDompet->transaksi))
+                                    <p class="keterangan">{{$transaksiDompet->transaksi->kendaraan->name}}</p>
+                                @endif
                                 <p class="tanggal">07-10-2021</p>
                             <hr>
                             <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
-                            <!-- transaksi -->
-                            <hr>
-                                <p>
-                                    <h6 class="d-inline-block"><b>Pembayaran</b></h6>
-                                    <span class="float-right">fhkfbg</span>
-                                </p>
-                                <p class="keterangan">Toyota Avanza</p>
-                                <p class="tanggal">07-10-2021</p>
-                            <hr>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    @if(1==2)
+    @if($transaksis->count() > 0)
     <div id="table-pesananku ">
         <div class="container">
             <div class="row col-12 table-box my-4 p-0">
@@ -39,106 +39,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($transaksis as $transaksi)
                     <tr>
                         <td class="text-center">
-                            <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="image-mobil-tabel">
+                            <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="image-mobil-tabel">
                         </td>
-                        <td class="text-center">Toyota Avanza</td>
-                        <td class="text-center">Mini MPV</td>
-                        <td class="text-center">13 Oktober 2021 - 14 Oktober 2021</td>
-                        <td class="text-center">Tanpa Sopir</td>
-                        <td class="text-center">Rp 250.000/Hari</td>
+                        <td class="text-center">{{ $transaksi->kendaraan->name }}</td>
+                        <td class="text-center">{{ $transaksi->kendaraan->kategori->name }}</td>
+                        <td class="text-center">{{$transaksi->tanggal_transaksi()}} -{{$transaksi->tanggal_berakhir()}} </td>
+                        <td class="text-center">{{$transaksi->sopir()}}</td>
+                        <td class="text-center">Rp.{{number_format($transaksi->kendaraan->harga,0,',','.')}}/Hari</td>
                         <td>
                             <div class="row col-12">
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-primary p-2 ">lihat data pemesanan</a>
+                                <div class="col-4 text-center px-1">
+                                    <button href="{{ route('user.pemesanan.detail',$transaksi->id) }}" class="href-white button-yellow p-2 d-block w-100" >Lihat Data Pemesanan</button>
                                 </div>
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-secondary p-2">hubungi pemilik mobil</a>
+                                <div class="col-4 text-center px-1">
+                                    <button class="href-base button-yellow-secondary p-2 d-block w-100" onclick="show_room()">Hubungi penyewa</button>
+                                </div>
+                                <div class="col-4 text-center px-1">
+                                    <button class="href-base button-yellow-primary p-2 d-block w-100" onclick="modal_selesai({{ $transaksi->id }})">Konfirmasi Selesai</button>
                                 </div>
                             </div> 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="image-mobil-tabel">
-                        </td>
-                        <td class="text-center">Toyota Avanza</td>
-                        <td class="text-center">Mini MPV</td>
-                        <td class="text-center">13 Oktober 2021 - 14 Oktober 2021</td>
-                        <td class="text-center">Tanpa Sopir</td>
-                        <td class="text-center">Rp 250.000/Hari</td>
-                        <td>
-                            <div class="row col-12">
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-primary p-2 d-block">lihat data pemesanan</a>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-secondary p-2 d-block">hubungi pemilik mobil</a>
-                                </div>
-                            </div> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="image-mobil-tabel">
-                        </td>
-                        <td class="text-center">Toyota Avanza</td>
-                        <td class="text-center">Mini MPV</td>
-                        <td class="text-center">13 Oktober 2021 - 14 Oktober 2021</td>
-                        <td class="text-center">Tanpa Sopir</td>
-                        <td class="text-center">Rp 250.000/Hari</td>
-                        <td>
-                            <div class="row col-12">
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-primary p-2 d-block">lihat data pemesanan</a>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-secondary p-2 d-block">hubungi pemilik mobil</a>
-                                </div>
-                            </div> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="image-mobil-tabel">
-                        </td>
-                        <td class="text-center">Toyota Avanza</td>
-                        <td class="text-center">Mini MPV</td>
-                        <td class="text-center">13 Oktober 2021 - 14 Oktober 2021</td>
-                        <td class="text-center">Tanpa Sopir</td>
-                        <td class="text-center">Rp 250.000/Hari</td>
-                        <td>
-                            <div class="row col-12">
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-primary p-2 d-block">lihat data pemesanan</a>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-secondary p-2 d-block">hubungi pemilik mobil</a>
-                                </div>
-                            </div> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="image-mobil-tabel">
-                        </td>
-                        <td class="text-center">Toyota Avanza</td>
-                        <td class="text-center">Mini MPV</td>
-                        <td class="text-center">13 Oktober 2021 - 14 Oktober 2021</td>
-                        <td class="text-center">Tanpa Sopir</td>
-                        <td class="text-center">Rp 250.000/Hari</td>
-                        <td>
-                            <div class="row col-12">
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-primary p-2 d-block">lihat data pemesanan</a>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <a href="" class="href-base button-yellow-secondary p-2 d-block">hubungi pemilik mobil</a>
-                                </div>
-                            </div> 
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 </table>
             </div>
@@ -159,8 +84,45 @@
     </div>
 
     @endif
+
+    <!-- Modal -->
+    <div class="modal fade" id="selesaiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-12">
+                <img src="{{ asset('image/delete-alert.png') }}" class="mx-auto d-block" alt="">
+                </div>
+                </div>
+                <div class="col-12 text-center">
+                <h2>Perhatian</h2>
+                <p>Apakah Anda yakin akan mengubah status pemesanan jadi selesai?</p>
+                </div>
+                <form action='/' id="formselesai" method="POST">
+                @csrf
+                <div class="row px-5">
+                <div class="col-6">
+                <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
+                </div>
+                <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block btn-oke">Iya</button>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
-
+<script>
+    function modal_selesai(id){
+      var url = '{{ route("pemilik.pesanan.selesai.action", ":id") }}';
+      url = url.replace(':id', id);
+      $("#formselesai").attr('action',url);
+      $('#selesaiModal').modal("show"); 
+    }
+</script>
 @endsection

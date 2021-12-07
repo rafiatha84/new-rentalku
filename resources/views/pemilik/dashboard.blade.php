@@ -37,80 +37,21 @@
             <div class="search-box-outer mx-auto d-block">
                 <div class="search-box">
                 <form action="{{ route('user.search') }}" method="GET">
-                    <input class="py-2 px-4 cari-rental d-block" type="text" name="" id="" placeholder="Cari di rentalku">
+                    <input class="py-2 px-4 cari-rental d-block" type="text" name="q" id="" placeholder="Cari di rentalku">
                     <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button>
                 
                 </div>
                 
                 <div class="search-toggle-box pt-5 hidden">
-                    <p class="text-center mb-0">Pilihan Kota</p>
+                    <p class="text-center mb-0">Kategori</p>
                     <div class="kategori row px-4">
-                        <input class="filter-checkbox pilihanKota-Surabaya" type="checkbox" name="pilihanKota[]" value="Surabaya" checked="checked" />
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small pilihankota-check" for="pilihanKota-Surabaya" >Surabaya</div>
-                        </div>
-                        <input class="filter-checkbox pilihanKota-Jogjakarta" type="checkbox" name="pilihanKota[]" value="Jogjakarta" checked="checked" />
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small pilihankota-check" for="pilihanKota-Jogjakarta">Jogjakarta</div>
-                        </div>
-                        <input class="filter-checkbox" type="checkbox" name="pilihanKota[]" value="Bandung" />
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small pilihankota-check">Bandung</div>
-                        </div>
-                        <input class="filter-checkbox" type="checkbox" name="pilihanKota[]" value="Jakarta" />
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small pilihankota-check">Jakarta</div>
-                        </div>
+                        @foreach($kategoris as $kategori)
+                            <input class="filter-checkbox pilihanKategori-{{ $kategori->name }}" type="checkbox" name="kategori[]" value="{{ $kategori->name }}"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kategori-check" for="pilihanKategori-{{ $kategori->name }}">{{ $kategori->name }}</div>
+                            </div>
+                        @endforeach
                     </div>
-
-                    <p class="text-center mb-0">Urutkan menurut</p>
-                    <div class="kategori row px-4">
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                    </div>
-
-                    <p class="text-center mb-0">Kapasitas penumpang</p>
-                    <div class="kategori row px-4">
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                    </div>
-
-                    <p class="text-center mb-0">Jenis Mobil</p>
-                    <div class="kategori row px-4">
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small">Surabaya</div>
-                        </div>
-                    </div>
-
                     <div class="row col-12">
                         <input type="submit" class="submit-search mx-auto" value="Cari">
                     </div>
@@ -174,15 +115,15 @@
     @endif
 
             <div class="row col-12 mt-4 mb-2 your-class">
-                @for($o=1;$o<=5;$o++)
-                <div class="col-4 mb-3">
+                @foreach($sliders as $slider)
+                <div class="col-12 mb-3">
                     <div class="box-border">
                         <div class="img-box-new">
-                            <img src="{{ asset('image/slider-3.png') }}" alt="" class="h-100 w-100">
+                            <img src="{{ asset($slider->image) }}" alt="" class="h-100 w-100 img-slider">
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
 
 @endsection

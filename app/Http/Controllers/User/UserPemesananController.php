@@ -49,8 +49,8 @@ class UserPemesananController extends Controller
 
     public function detail($pemesanan_id)
     {
-        $transaksi = Transaksi::with('kendaraan.kategori','pengemudiTransaksi.pengemudi.user')->findOrFail($pemesanan_id);
-        // dd($transaksi);
+        $transaksi = Transaksi::with('kendaraan','pengemudiTransaksi.pengemudi.user')->findOrFail($pemesanan_id);
+        // dd($transaksi->kategori);
         return view('user.pemesanan-detail',[
             'transaksi' => $transaksi
         ]);

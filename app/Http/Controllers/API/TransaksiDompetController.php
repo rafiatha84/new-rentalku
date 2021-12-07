@@ -207,6 +207,7 @@ class TransaksiDompetController extends Controller
             'jumlah' => 'required',
             'bank' => 'required',
             'no_rek' => 'required',
+            'atas_nama' => 'required'
         ]);
 
         if($validator->fails())
@@ -233,7 +234,13 @@ class TransaksiDompetController extends Controller
                     'kode_unik' => 0,
                     'bank' => $request->bank,
                     'no_rek' => $request->no_rek,
-                    'status' => 'Pending'
+                    'status' => 'Dikonfirmasi',
+                    'atas_nama' => $request->atas_nama,
+                    'keterangan' => "Sedang di proses"
+                ]);
+                $saldo = TransaksiDompet::where('dompet_id', $dompet->id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
+                $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
+                    'saldo' => $saldo
                 ]);
                 DB::commit();
                 $response = [

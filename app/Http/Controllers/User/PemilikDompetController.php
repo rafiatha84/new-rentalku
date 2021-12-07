@@ -4,15 +4,24 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Dompet;
+use App\Models\TransaksiDompet;
+use Auth;
 
 class PemilikDompetController extends Controller
 {
     public function riwayat(){
-        return view('pemilik.dompetku');
+        $dompet = Dompet::with('transaksiDompet.transaksi.kendaraan')->where('user_id',Auth::user()->id)->first();
+        return view('pemilik.dompetku',[
+            'dompet' => $dompet
+        ]);
     }
 
     public function penarikan_create(){
-        return view('pemilik.dompetku-penarikan');
+        $dompet = Dompet::with('transaksiDompet.transaksi.kendaraan')->where('user_id',Auth::user()->id)->first();
+        return view('pemilik.dompetku-penarikan',[
+            'dompet' => $dompet
+        ]);
     }
 
     public function topup_detail($id)

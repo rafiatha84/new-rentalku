@@ -82,6 +82,7 @@ input[type="text"], input[type="password"], textarea, select {
     color: white;
     border-radius: 20px;
     text-decoration: none;
+    border: 0;
 }
 .button-yellow-primary:hover{
     background-color: #FFC700;
@@ -89,6 +90,7 @@ input[type="text"], input[type="password"], textarea, select {
     border-radius: 20px;
     opacity: 0.7;
     text-decoration: none;
+    border: 0;
 }
 .button-yellow-secondary{
     background-color: white;

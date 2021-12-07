@@ -23,138 +23,20 @@
                             </ul>
                         </div>
                         <div class="col-8 py-2 sidebar-right">
+                            @foreach($kendaraans as $kendaraan)
                             <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
+                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',$kendaraan->id) }}"'>
                                 <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
+                                    <img src="{{ asset($kendaraan->image_link) }}" alt="" srcset="" class="img-ulasan">
                                 </div>
                                 <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
+                                    <h5 class="mb-0"><b>{{$kendaraan->name}}</b></h5>
+                                    <h5 class="jenis-mobil">{{$kendaraan->kategori->name}}</h5>
                                 </div>
                             </div>
                             <hr class="m-0">
                             <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
-                            <!-- unitku -->
-                            <div class="row  unitku-row py-2" onclick='location.href="{{ route('pemilik.unitku.detail',2) }}"'>
-                                <div class="image-box col-3">
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
-                                </div>
-                                <div class="col-9 align-self-center">
-                                    <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                                    <h5 class="jenis-mobil">Compact MPV</h5>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End unitku -->
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -37,11 +37,7 @@
                                     <h6 class="d-inline-block"><b>{{$transaksiDompet->name}}</b></h6>
                                     <span class="float-right">Rp.{{number_format($transaksiDompet->jumlah,0,',','.')}}</span>
                                 </p>
-                                @if(!is_null($transaksiDompet->transaksi))
-                                    <p class="keterangan">{{$transaksiDompet->transaksi->kendaraan->name}}</p>
-                                @else
-                                    <p class="keterangan">Topup</p>
-                                @endif
+                                <p class="keterangan">{{ $transaksiDompet->keterangan }}</p>
                                 <p class="tanggal">07-10-2021</p>
                             <hr>
                             <!-- transaksi -->

@@ -11,6 +11,8 @@ use App\Models\PengemudiTransaksi;
 use App\Models\Pengemudi;
 use App\Models\Message;
 use App\Models\ChatRoom;
+use App\Models\RatingKendaraan;
+use App\Models\RatingUser;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +28,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::with('user', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
+        $transaksi = Transaksi::with('user', 'kendaraan.kategori', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
 
         if (count([$transaksi]) > 0) {
             $response = [
@@ -109,7 +111,19 @@ class TransaksiController extends Controller
                     "kode_unik" => 0,
                     "bank" => null,
                     "no_rek" => null,
-                    "status" => 'Dikonfirmasi'
+                    "status" => 'Dikonfirmasi',
+                    "keterangan" => $kendaraan->name
+                ]);
+                $transaksi_dompet_pemasukan = TransaksiDompet::create([
+                    "user_id" => $kendaraan->user_id,
+                    "dompet_id" => $kendaraan->user_id,
+                    "name" => 'Pemasukan',
+                    "jumlah" => (1 * $jumlah),
+                    "kode_unik" => 0,
+                    "bank" => null,
+                    "no_rek" => null,
+                    "status" => 'Pending',
+                    "keterangan" => $kendaraan->name
                 ]);
                 $lat = 0;
                 $long = 0;
@@ -130,7 +144,7 @@ class TransaksiController extends Controller
                 
                 $transaksi = Transaksi::create([
                     'user_id' => $request->user_id,
-                    'transaksi_dompet_id' => $transaksi_dompet->id,
+                    'transaksi_dompet_id' => $transaksi_dompet_pemasukan->id,
                     'kendaraan_id' => $request->kendaraan_id,
                     'waktu_ambil' => $request->waktu_ambil,
                     'waktu_kembali' => $request->waktu_kembali,
@@ -233,9 +247,7 @@ class TransaksiController extends Controller
                 "errors" => $e->getMessage(),
                 "content" => null,
             ];
-            return response()->json($response,404); 
-
-            
+            return response()->json($response,404);  
         }
 
         
@@ -278,9 +290,9 @@ class TransaksiController extends Controller
 
     public function showId($transaksi_id)
     {
-        $transaksi = Transaksi::where('id', $transaksi_id)->with('user', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
+        $transaksi = Transaksi::where('id', $transaksi_id)->with('user','kendaraan.kategori', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->first();
 
-        if(count($transaksi) > 0){
+        if($transaksi){
             $response = [
                 "status" => "success",
                 "message" => 'Data Transaksi Ditemukan',
@@ -438,6 +450,83 @@ class TransaksiController extends Controller
             ];
     
             return response()->json($response, 404);
+        }
+
+    }
+
+    public function create_rating(Request $request)
+    {
+        $validator = Validator::make($request->all(), 
+        [
+            'user_id' => 'required',
+            'transaksi_id' => 'required',
+        ]);
+
+        if($validator->fails())
+        {
+            $response = [
+                "status" => "error",
+                "message" => 'Kolom belum diisi',
+                "errors" => $validator->errors(),
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+        $transaksi = Transaksi::with('kendaraan.user','pengemudiTransaksi.pengemudi.user')->findOrFail($request->transaksi_id);
+        DB::beginTransaction();
+        try{
+            $content = Array();
+            if($request->has('kendaraan_star'))
+            {
+                $ratingKendaraan = RatingKendaraan::create([
+                    'user_id' => $request->user_id,
+                    'transaksi_id' => $request->transaksi_id,
+                    'kendaraan_id' => $transaksi->kendaraan->id,
+                    'jumlah_bintang' => $request->kendaraan_star,
+                    'review' => $request->kendaraan_review
+                ]);
+                $content['ratingKendaraan'] = $ratingKendaraan;
+            }
+            if($request->has('pemilik_star'))
+            {
+                $ratingPemilik= RatingUser::create([
+                    'user_id' => $request->user_id,
+                    'transaksi_id' => $request->transaksi_id,
+                    'user_to_id' => $transaksi->kendaraan->user->id,
+                    'jumlah_bintang' => $request->pemilik_star,
+                    'review' => $request->pemilik_review
+                ]);
+                $content['ratingPemilik'] = $ratingPemilik;
+            }
+            if($request->has('pengemudi_star'))
+            {
+                $ratingPengemudi= RatingUser::create([
+                    'user_id' => $request->user_id,
+                    'transaksi_id' => $request->transaksi_id,
+                    'user_to_id' => $transaksi->pengemudiTransaksi->pengemudi->user->id,
+                    'jumlah_bintang' => $request->pengemudi_star,
+                    'review' => $request->pengemudi_review
+                ]);
+                $content['ratingPengemudi'] = $ratingPengemudi;
+            }
+            
+            $response = [
+                "status" => "success",
+                "message" => 'Berhasil dibuat',
+                "errors" => null,
+                "content" => $content,
+            ];
+            DB::commit();
+            return response()->json($response,201);
+        }catch(\Exception $e){
+            DB::rollback();
+            $response = [
+                "status" => "error",
+                "message" => 'Error',
+                "errors" => $e->getMessage(),
+                "content" => null,
+            ];
+            return response()->json($response,404);  
         }
 
     }

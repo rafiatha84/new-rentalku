@@ -73,7 +73,6 @@ class KendaraanController extends Controller
             'transmisi' => 'required',
             'mesin' => 'required',
             'warna' => 'required',
-            'supir' => 'required',
             'image_link' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
@@ -85,7 +84,7 @@ class KendaraanController extends Controller
                 "errors" => $validator->errors(),
                 "content" => null,
             ];
-            return response()->json($response,200);
+            return response()->json($response,404);
         }
 
         $uploadFolder = "image/car/";
@@ -107,7 +106,7 @@ class KendaraanController extends Controller
             'transmisi' =>  $request->transmisi,
             'mesin' =>  $request->mesin,
             'warna' =>  $request->warna,
-            'supir' =>  $request->supir,
+            'supir' =>  1,
             'image_link' => $image_link,
          ]);
          if($kendaraan){ //cek apakah sukses create 
@@ -155,13 +154,11 @@ class KendaraanController extends Controller
         $validator = Validator::make($request->all(), 
         [
             'name' => 'required',
-            'user_id' => 'required|integer',
             'kategori_id' => 'required|integer',
             'nopol' => 'required',
             'seat' => 'required',
             'harga' => 'required|integer',
-            'tahun' => 'required|integer',
-            'image_link' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+            'tahun' => 'required|integer'
         ]);
 
         if($validator->fails())
@@ -175,24 +172,19 @@ class KendaraanController extends Controller
             return response()->json($response,200);
         }
 
-        $uploadFolder = "image/car/";
-        $image = $request->file('image_link');
-        $imageName = time().'-'.$image->getClientOriginalName();
-        $image->move(public_path($uploadFolder), $imageName);
-        $image_link = $uploadFolder.$imageName;
-        
+        $data_upload = $request->all();
+        // dd($request->has('image_link'));
+        if($request->has('image_link'))
+        {
+            $uploadFolder = "image/car/";
+            $image = $request->file('image_link');
+            $imageName = time().'-'.$image->getClientOriginalName();
+            $image->move(public_path($uploadFolder), $imageName);
+            $image_link = $uploadFolder.$imageName;
+            $data_upload['image_link'] = $image_link;
+        }
 
-        $kendaraan = Kendaraan::where('id',$id)->update([
-            'user_id' => $request->user_id,
-            'kategori_id' => $request->kategori_id,
-            'name' => $request->name,
-            'nopol' => $request->nopol,
-            'seat' => $request->seat,
-            'harga' => $request->harga,
-            'tahun' => $request->tahun,
-            'image_link' => $image_link
-         ]);
-
+        $kendaraan = Kendaraan::where('id',$id)->update($data_upload);
         if ($kendaraan) {
             $kendaraan_data = Kendaraan::where('id',$id)->get();
             $response = [
@@ -202,9 +194,7 @@ class KendaraanController extends Controller
                 "content" => $kendaraan_data,
             ];
 
-            return response()->json([
-                "response" => $response,
-               "image" => URL::to($image_link)],201);
+            return response()->json($response,201);
         } else {
             $response = [
                 "status" => "gagal",

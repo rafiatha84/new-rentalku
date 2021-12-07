@@ -21,43 +21,41 @@
                     
                     <div class="image-outer">
                         <div class="image-box d-inline-block">
-                            <img src="{{ asset('image/profil.png') }}" class="rounded-circle foto-profile">
-                            <form action="" class="">
-                                <input type="file" name="" id="" class="d-none">
-                                <button class="button btn-camera"><i class="fa-solid fa-camera color-base"></i></button>
-                            </form>
+                            <img src="{{ asset(Auth::user()->image_link) }}" class="rounded-circle foto-profile" id="foto-profile-image">
+                            <input type="file" name="" id="profile-input" class="d-none" onchange="previewFile(this,'#foto-profile-image');">
+                            <!-- <button class="btn btn-camera" onclick="click_input('#profile-input')"><i class="fa-solid fa-camera color-base"></i></button> -->
                         </div>
                     </div>
-                    
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <p class="text-center mt-5 mb-0"><b>Muhammad</b></p>
                 <p class="text-center">12 September 2000</p>
                 <div class="row col-12">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
+                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}" disabled>
                     </div>
-                    <div class="col-6 offset-3">
+                    <!-- <div class="col-6 offset-3">
                         <label for="" class="mb-0">Tanggal Lahir</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
-                    </div>
+                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}">
+                    </div> -->
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">No Telepon</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
+                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->telp }}">
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Alamat</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
+                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->alamat }}">
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Email</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
-                    </div>
-                    <div class="col-6 offset-3">
-                        <label for="" class="mb-0">Password</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3">
+                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->email }}">
                     </div>
                     <div class="col-6 offset-3 mt-4">
-                        <input type="submit" name="" id="" class="d-block w-100 button-style px-2 py-2" value="Simpan" class="button-style">
+                        <a href="{{ route('pemilik.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Edit</a>
                     </div>
                 </div>
             </div>

@@ -28,6 +28,7 @@ Route::get('logout', [UserAuthController::class, 'logOut'])->name('user.logout')
 Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::get('profile',[App\Http\Controllers\User\UserProfileController::class,'index'])->name('user.profile');
 Route::get('profile/edit',[App\Http\Controllers\User\UserProfileController::class,'edit'])->name('user.profile.edit');
+Route::post('profile/edit/action',[App\Http\Controllers\User\UserProfileController::class,'edit_action'])->name('user.profile.edit.action');
 Route::get('search',[App\Http\Controllers\User\UserKendaraanController::class,'search'])->name('user.search');
 
 Route::get('detail-produk/{kendaraan_id}',[App\Http\Controllers\User\UserKendaraanController::class, 'detail'])->name('user.detail-produk');
@@ -52,11 +53,14 @@ Route::group(['prefix' => 'pemilik'],function(){
         //dashboard
     Route::get('dashboard', [App\Http\Controllers\User\PemilikDashboardController::class, 'index'])->name('pemilik.dashboard');
     Route::get('profile',[App\Http\Controllers\User\PemilikProfileController::class,'index'])->name('pemilik.profile');
-
+    Route::get('profile/edit',[App\Http\Controllers\User\PemilikProfileController::class,'edit'])->name('pemilik.profile.edit');
+    Route::post('profile/edit/action',[App\Http\Controllers\User\PemilikProfileController::class,'edit_action'])->name('pemilik.profile.edit.action');
+    Route::get('penilaian-ulasan',[App\Http\Controllers\User\PemilikUlasanController::class, 'ulasan_pemilik'])->name('pemilik.ulasan');
     // pesananku
     Route::get('pesananku',[App\Http\Controllers\User\PemilikPemesananController::class, 'pesananku'])->name('pemilik.pesananku');
     Route::get('pesananku/selesai',[App\Http\Controllers\User\PemilikPemesananController::class, 'pesananku_selesai'])->name('pemilik.pesananku.selesai');
     Route::get('pemesanan/{pemesanan_id}',[App\Http\Controllers\User\PemilikPemesananController::class, 'detail'])->name('pemilik.pemesanan.detail');
+    Route::post('kendaraan/selesai/action/{pemesanan_id}',[App\Http\Controllers\User\PemilikPemesananController::class, 'selesai_action'])->name('pemilik.pesanan.selesai.action');
 
     // lacak mobil
     Route::get('lacak/{kendaraan_id}',[App\Http\Controllers\User\PemilikKendaraanController::class, 'lacak'])->name('pemilik.lacak');

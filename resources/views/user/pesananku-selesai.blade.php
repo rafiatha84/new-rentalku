@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="col-6 text-center">
                                     @if($transaksi->belum_rating())
-                                    <a href="" class="href-base button-yellow-secondary p-2 d-block h-100 nilai-button" onclick="show_review(1)">
+                                    <button class="href-base button-yellow-secondary p-2 d-block h-100 nilai-button" onclick="show_review({{$transaksi->id}})">
                                         <div class="d-flex justify-content-center">
                                             <div class="spinner-border" role="status">
                                                 <span class="sr-only">Loading...</span>
                                             </div>
-                                        </div>Beri Nilai</a>
+                                        </div>Beri Nilai</button>
                                     @else
                                     <a href="{{ route('user.pemesanan.create',$transaksi->kendaraan->id) }}" class="href-base button-yellow-secondary p-2 d-block h-100">Pesan Lagi</a>
                                     @endif
@@ -100,53 +100,9 @@
                         <h4>Nilai Produk</h4>
                     </div>
                 </div>
+                <form action="" id="form-send-rating" method="POST">
                 
-                <!-- review pemilik -->
-                <div class="row">
-                    <div class="image-box col-3">
-                        <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan">
-                    </div>
-                    <div class="col-9 align-self-center">
-                        <h5 class="mb-0">Pemilik <b>Toyota Innova Reborn</b></h5>
-                        <h5 class="jenis-mobil">Compact MPV</h5>
-                    </div>
-                </div>
-                <div class="row col-12">
-                    <ul class="m-0 mb-2 star-box mx-auto">
-                        <li><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                    </ul>
-                </div>
-                <textarea name="review" id="" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai pemilik ini... " class="review-input w-100 px-5 py-2"></textarea>
-                <!-- review supir -->
-                <div class="row">
-                    <div class="image-box col-3">
-                        <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan">
-                    </div>
-                    <div class="col-9 align-self-center">
-                        <h5 class="mb-0">Supir <b>Toyota Innova Reborn</b></h5>
-                        <h5 class="jenis-mobil">Compact MPV</h5>
-                    </div>
-                </div>
-                <div class="row col-12">
-                    <ul class="m-0 mb-2 star-box mx-auto">
-                        <li><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                    </ul>
-                </div>
-                
-                <textarea name="review" id="" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai pemilik ini... " class="review-input w-100 px-5 py-2"></textarea>
-                <div class="row">
-                    <div class="col-12 py-2 text-right">
-                        <input type="submit" value="Kirim" class="btn button-yellow-primary radius-5 btn-kirim">
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         </div>
@@ -182,32 +138,115 @@
                     $(':input[type="submit"]').prop('disabled', true);
                 },
                 success: function(response) {
+                    let new_form= `
+                    <input type="hidden" name="user_id" value="${response['content']['user']['id']}">
+                    <input type="hidden" name="transaksi_id" value="${id}">
+                    `;
                     console.log(response);
                     if(response['content']['pengemudi_transaksi'] === null){
                         console.log("betul");
                     }
-                 var a=`<div class="row">
-                    <div class="image-box col-3">
-                        <img src="{{ asset('image/avanza.jpeg') }}" alt="" srcset="" class="img-ulasan">
+                    // kendaraan
+                    kendaraan_image = "{{ asset('/') }}"+response['content']['kendaraan']['image_link'];
+                    let kendaraan_form = `
+                    <!-- review kendaraan -->
+                    <div class="row">
+                        <div class="image-box col-3">
+                            <img src="${kendaraan_image}" alt="" srcset="" class="img-ulasan">
+                        </div>
+                        <div class="col-9 align-self-center">
+                            <h5 class="mb-0">kendaraan <b>${response['content']['kendaraan']['name']}</b></h5>
+                            <h5 class="jenis-mobil">${response['content']['kendaraan']['kategori']['name']}</h5>
+                        </div>
                     </div>
-                    <div class="col-9 align-self-center">
-                        <h5 class="mb-0"><b>Toyota Innova Reborn</b></h5>
-                        <h5 class="jenis-mobil">Compact MPV</h5>
+                    <div class="row col-12">
+                        <input type="hidden" name="kendaraan_star" value="0" required>
+                        <ul class="m-0 mb-2 star-box mx-auto">
+                            <li class="kendaraan star-button 5"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="kendaraan star-button 4"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="kendaraan star-button 3"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="kendaraan star-button 2"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="kendaraan star-button 1"><i class="fa-solid fa-star mx-2"></i></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="row col-12">
-                    <ul class="m-0 mb-2 star-box mx-auto">
-                        <li><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                        <li class="active"><i class="fa-solid fa-star mx-2"></i></li>
-                    </ul>
-                </div>
-                <textarea name="review" id="" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai produk ini... " class="review-input w-100 px-5 py-2"></textarea>`;    
+                    <textarea name="kendaraan_review" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai pemilik ini... " class="review-input w-100 px-5 py-2"></textarea>
+                    `;
+                    new_form += kendaraan_form;
+                    //pemilik
+                    pemilik_image = "{{ asset('/') }}"+response['content']['user']['image_link'];
+                    let pemilik_form = `
+                    <!-- review pemilik -->
+                    <div class="row">
+                        <div class="image-box col-3">
+                            <img src="${pemilik_image}" alt="" srcset="" class="img-ulasan">
+                        </div>
+                        <div class="col-9 align-self-center">
+                            <h5 class="mb-0">Pemilik <b>${response['content']['kendaraan']['name']}</b></h5>
+                            <h5 class="jenis-mobil">${response['content']['kendaraan']['kategori']['name']}</h5>
+                        </div>
+                    </div>
+                    <div class="row col-12">
+                        <input type="hidden" name="pemilik_star" value="0" required>
+                        <ul class="m-0 mb-2 star-box mx-auto">
+                            <li class="pemilik star-button 5"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="pemilik star-button 4"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="pemilik star-button 3"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="pemilik star-button 2"><i class="fa-solid fa-star mx-2"></i></li>
+                            <li class="pemilik star-button 1"><i class="fa-solid fa-star mx-2"></i></li>
+                        </ul>
+                    </div>
+                    <textarea name="pemilik_review" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai pemilik ini... " class="review-input w-100 px-5 py-2"></textarea>
+                    `;
+                    new_form += pemilik_form;
+                    if(response['content']['pengemudi_transaksi'] !== null){
+                        //pengemudi
+                        pengemudi_image = "{{ asset('/') }}"+response['content']['pengemudi_transaksi']['pengemudi']['user']['image_link'];
+                        let pengemudi_form = `
+                        <!-- review pemilik -->
+                        <div class="row">
+                            <div class="image-box col-3">
+                                <img src="${pengemudi_image}" alt="" srcset="" class="img-ulasan">
+                            </div>
+                            <div class="col-9 align-self-center">
+                                <h5 class="mb-0">Pengemudi <b>${response['content']['kendaraan']['name']}</b></h5>
+                                <h5 class="jenis-mobil">${response['content']['kendaraan']['kategori']['name']}</h5>
+                            </div>
+                        </div>
+                        <div class="row col-12">
+                            <input type="hidden" name="pengemudi_star" value="0" required>
+                            <ul class="m-0 mb-2 star-box mx-auto">
+                                <li class="pengemudi star-button 5"><i class="fa-solid fa-star mx-2"></i></li>
+                                <li class="pengemudi star-button 4"><i class="fa-solid fa-star mx-2"></i></li>
+                                <li class="pengemudi star-button 3"><i class="fa-solid fa-star mx-2"></i></li>
+                                <li class="pengemudi star-button 2"><i class="fa-solid fa-star mx-2"></i></li>
+                                <li class="pengemudi star-button 1"><i class="fa-solid fa-star mx-2"></i></li>
+                            </ul>
+                        </div>
+                        <textarea name="pengemudi_review" cols="30" rows="5" placeholder="Beritahu pengguna lain mengapa Anda sangat menyukai pemilik ini... " class="review-input w-100 px-5 py-2"></textarea>
+                        `;
+                        new_form += pengemudi_form;
+                    }
+                    let button_form = `
+                    <div class="row">
+                        <div class="col-12 py-2 text-right">
+                            <button type="submit" class="btn button-yellow-primary radius-5 btn-kirim">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>Kirim
+                            </button>
+                        </div>
+                    </div>
+                    `;
+                    new_form+=button_form;
                     $('#reviewModal').modal("show");
+                    $('#form-send-rating').html(new_form);
+                    
+                    $('#form-send-rating').attr('action',"{{ route('api.transaksi.rating') }}");
                     removeLoader();
                     $(':input[type="submit"]').prop('disabled', false);
+                    return false;
                 },
                 error: function(xhr) {
                     console.log(xhr);
@@ -216,16 +255,59 @@
             });
             
         }
-        $(document).ready(function(){
-            $('.btn-kirim').click(function(e){
-                e.preventDefault();
-                $('#reviewModal').modal("toggle");
-                $('#suksesModal').modal("show");
+        $('body').on('click','.star-button',function(e){
+            var getClass = this.classList;
+            let star = "."+getClass[0]+"."+getClass[1];
+            $(star).removeClass('active');
+            // var number = getClass.match(/\d/g);
+            // number = parseInt(number);
+            var role = getClass[0];
+            var number = getClass[2];
+            // console.log(number);
+            for(let i=1;i<=parseInt(number);i++){
+                let element = "."+getClass[0]+"."+getClass[1]+"."+i;
+                // console.log(element);
+                $(element).addClass('active');
+            }
+            let input_star = "input[name='"+getClass[0]+"_star"+"']";
+            $(input_star).val(number);
+        });
+        $(document).on('submit','#form-send-rating',function(e){
+            e.preventDefault();
+            let url = "{{ route('api.transaksi.rating') }}";
+            let formData = new FormData($('#form-send-rating')[0]);
+            $.ajax({
+                url: url,
+                type: "POST", //send it through get method
+                data: formData,
+                cache       : false,
+                contentType : false,
+                processData : false,
+                beforeSend: function() {
+                    showLoader();
+                    $(':input[type="submit"]').prop('disabled', true);
+                },
+                success: function(response) {
+                    $('#form-send-rating')[0].reset();
+                    $('#reviewModal').modal("toggle");
+                    $('#suksesModal').modal("show"); 
+                    $(':input[type="submit"]').prop('disabled', false);
+                    removeLoader();
+                },
+                error: function(xhr) {
+                    alert('error');
+                    console.log(xhr);
+                    //Do Something to handle error
+                }
+            });
 
-            });
-            $('.nilai-button').click(function(e){
-                e.preventDefault();
-            });
+        });
+        $('#suksesModal').on('hidden.bs.modal', function () {
+            location.reload();
+        });
+        $(document).ready(function(){
+            
+            
         });
     </script>
 

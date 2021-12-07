@@ -68,9 +68,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profil</a>
+                                <a class="dropdown-item" href="{{ route('pemilik.profile') }}">Profil</a>
                                     <a class="dropdown-item" href="{{ route('pemilik.supirku') }}">SopirKu</a>
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Penilaian dan Ulasan</a>
+                                    <a class="dropdown-item" href="{{ route('pemilik.ulasan') }}">Penilaian dan Ulasan</a>
                                     <a class="dropdown-item" href="{{ route('user.dashboard') }}">Kembali ke Penyewa</a>
                                     <a class="dropdown-item" href="{{ route('user.logout') }}"
                                         onclick="event.preventDefault();
@@ -270,6 +270,15 @@
             );
             $('.single-chat').removeClass('hidden');
 
+        }
+        $(window).on('load', function(){
+            setTimeout(removeLoader,0); //wait for page load PLUS two seconds.
+        });
+        function removeLoader(){
+            $('.spinner-border').hide();
+        }
+        function showLoader(){
+            $('.spinner-border').show();
         }
         $(document).ready(
             function(){

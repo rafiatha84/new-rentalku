@@ -18,6 +18,7 @@ class PemilikKendaraanController extends Controller
     }
 
     public function detail($kendaraan_id){
+        
         return view('user.detail-produk');
     }
 

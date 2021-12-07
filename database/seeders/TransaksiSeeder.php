@@ -17,15 +17,15 @@ class TransaksiSeeder extends Seeder
     {
         // proses bayar
         $transaksidompet = [
-            ['user_id' => 5,'dompet_id' => 5 , 'name' => "pembayaran" , "jumlah" => -350000 , "status" => "selesai" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
-            ['user_id' => 5,'dompet_id' => 5 , 'name' => "pembayaran" , "jumlah" => -200000 , "status" => "selesai" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['user_id' => 5,'dompet_id' => 5 , 'name' => "pembayaran" , "jumlah" => -350000 , "status" => "Dikonfirmasi" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['user_id' => 5,'dompet_id' => 5 , 'name' => "pembayaran" , "jumlah" => -200000 , "status" => "Dikonfirmasi" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
         ];
         DB::table("transaksi_dompets")->insert($transaksidompet);
 
         //tambah pemasukan
         $transaksidompet = [
-            ['user_id' => 2,'dompet_id' => 2 , 'name' => "pemasukan" , "jumlah" => +350000 , "status" => "selesai" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
-            ['user_id' => 2,'dompet_id' => 2 , 'name' => "pemasukann" , "jumlah" => +200000 , "status" => "selesai" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['user_id' => 2,'dompet_id' => 2 , 'name' => "pemasukan" , "jumlah" => +350000 , "status" => "Dikonfirmasi" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['user_id' => 2,'dompet_id' => 2 , 'name' => "pemasukann" , "jumlah" => +200000 , "status" => "Dikonfirmasi" , 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
         ];
         DB::table("transaksi_dompets")->insert($transaksidompet);
 

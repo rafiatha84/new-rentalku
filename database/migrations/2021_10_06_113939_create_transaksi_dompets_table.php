@@ -25,6 +25,8 @@ class CreateTransaksiDompetsTable extends Migration
             $table->string("bank")->nullable();
             $table->string("no_rek")->nullable();
             $table->string('status')->default("Proses");
+            $table->string("atas_nama")->nullable();
+            $table->string("keterangan")->nullable();
             $table->timestamps();
         });
     }

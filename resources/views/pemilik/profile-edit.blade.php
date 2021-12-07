@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.pemilik')
 
 @section('css')
     <link href="{{ asset('css/user/profile.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form action="{{ route('user.profile.edit.action') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pemilik.profile.edit.action') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     @csrf
                     <div class="image-outer">

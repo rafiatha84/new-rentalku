@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row col-12">
                 <div class="detail-box col-12 mt-5 p-0 pb-4">
-                    <h4 class="text-center head-produk py-2 mb-0">Supirku</h4>
+                    <h4 class="text-center head-produk py-2 mb-0">Sopirku</h4>
                     <div class="row mx-auto mt-0 h-100 pb-4">
                         <div class="col-4 sidebar-left px-0">
                             <ul class="nav flex-column px-0">
@@ -23,186 +23,32 @@
                             </ul>
                         </div>
                         <div class="col-8 py-2 sidebar-right">
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
+                            @if($pengemudis->count() > 0)
+                                @foreach($pengemudis as $pengemudi)
+                                <!-- supirku -->
+                                <div class="row py-2">
+                                    <div class="image-box col-2">
+                                        <img src="{{ asset($pengemudi->user->image_link) }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
+                                    </div>
+                                    <div class="col-8 align-self-center">
+                                        <h5 class="jenis-mobil">{{ $pengemudi->user->name }}</h5>
+                                    </div>
+                                    <div class="col-2 align-self-center">
+                                        <a href="{{ route('pemilik.supirku.detail',$pengemudi->id) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
+                                        <span class="mx-1 button-icon" onclick="modal_delete({{ $pengemudi->id }})"><i class="fa-solid fa-trash base-color"></i></span>
+                                    </div>
                                 </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
+                                <hr class="m-0">
+                                <!-- End supirku -->
+                                @endforeach
+                            @else
+                            <div class="row py-5">
+                                <div class="col-12">
+                                    <h4 class="text-center">Belum ada sopir</h4>
                                 </div>
                             </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
-                            <!-- supirku -->
-                            <div class="row py-2">
-                                <div class="image-box col-2">
-                                    <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="img-ulasan img-profil rounded-circle">
-                                </div>
-                                <div class="col-8 align-self-center">
-                                    <h5 class="jenis-mobil">Asep</h5>
-                                </div>
-                                <div class="col-2 align-self-center">
-                                    <a href="{{ route('pemilik.supirku.detail',2) }}" class="mx-1"><i class="fa-solid fa-info text-gray"></i></a>
-                                    <a href="" class="mx-1"><i class="fa-solid fa-trash base-color "></i></a>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-                            <!-- End supirku -->
+                            @endif
+                            
                             
                         </div>
                     </div>
@@ -224,13 +70,13 @@
                   <h2>Perhatian</h2>
                   <p>Apakah Anda yakin akan menghapus pengguna tersebut dari basis data aplikasi RentalKu?</p>
                   </div>
-                  <form action='' id="formdelete" method="get">
+                  <form action='' id="formdelete" method="POST">
                   <div class="row px-5">
                     <div class="col-6">
                         <button type="button" class="btn btn-block button-base-secondary" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="btn btn-block button-base" data-dismiss="modal">Iya</button>
+                        <button type="submit" class="btn btn-block button-base">Iya</button>
                     </div>
                   </div>
                   </form>
@@ -242,11 +88,43 @@
 
 @section('js')
 <script>
+    function modal_delete(id){
+        pengemudi_id = id;
+        var url = '{{ route("api.pengemudi.destroy", ":id") }}';
+        url = url.replace(':id', pengemudi_id);
+        $("#formdelete").attr('action',url);
+        $('#deleteModal').modal("show"); 
+    }
     $(document).ready(function(){
-        $('.fa-trash').click(function(e){
+        $('#formdelete').submit(function(e){
             e.preventDefault();
-            $('#deleteModal').modal('show');
+            // console.log($('#pemesanan-create').serialize());
+            /* get the action attribute from the <form action=""> element */
+            var $form = $(this), url = $form.attr('action');
+            $.ajax({
+                url: url,
+                type: "POST", //send it through get method
+                beforeSend: function() {
+                    showLoader();
+                    $(':input[type="submit"]').prop('disabled', true);
+                },
+                success: function(response) {
+                    // var transaksi_id = response['content']['id'];
+                    // $('#pemesanan-create')[0].reset();
+                    // $('#suksesModal').modal("show"); 
+                    window.location.reload();
+                    $(':input[type="submit"]').prop('disabled', false);
+                    removeLoader();
+                },
+                error: function(xhr) {
+                    alert('error');
+                    console.log(xhr);
+                    //Do Something to handle error
+                }
+            });
+                
         });
+        
     });
 </script>
 @endsection

@@ -49,6 +49,14 @@
     background-color:#007a66;
     opacity: 0.5;
 }
+.href-white{
+    color: white !important;
+    text-decoration: none;
+}
+.href-white:hover{
+    text-decoration: none;
+    opacity: 0.9;
+}
 .color-base, .base-color{
     color: #007a66;
 }
@@ -79,6 +87,8 @@
     color: white;
     border-radius: 20px;
     text-decoration: none !important;
+    outline: none !important;
+    border: 0;
 }
 .star-active{
     color: #FFC700;
@@ -461,6 +471,9 @@ div#footer\ mt-2{
   .tooltip:hover .tooltiptext {
     visibility: visible !important;
     opacity: 1 !important;
+  }
+  span.name{
+      word-break: break-word;
   }
 .slick-initialized { overflow: hidden; }
 @media only screen and (max-width: 768px) {

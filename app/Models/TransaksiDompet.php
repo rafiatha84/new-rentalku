@@ -18,6 +18,8 @@ class TransaksiDompet extends Model
         "bank",
         "no_rek",
         "status",
+        "atas_nama",
+        "keterangan"
     ];
 
     public function user(){

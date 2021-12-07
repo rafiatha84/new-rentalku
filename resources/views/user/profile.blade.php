@@ -21,12 +21,16 @@
                     
                     <div class="image-outer">
                         <div class="image-box d-inline-block">
-                            <img src="{{ asset('image/profil.png') }}" class="rounded-circle foto-profile" id="foto-profile-image">
+                            <img src="{{ asset(Auth::user()->image_link) }}" class="rounded-circle foto-profile" id="foto-profile-image">
                             <input type="file" name="" id="profile-input" class="d-none" onchange="previewFile(this,'#foto-profile-image');">
-                            <button class="btn btn-camera" onclick="click_input('#profile-input')"><i class="fa-solid fa-camera color-base"></i></button>
+                            <!-- <button class="btn btn-camera" onclick="click_input('#profile-input')"><i class="fa-solid fa-camera color-base"></i></button> -->
                         </div>
                     </div>
-                    
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <p class="text-center mt-5 mb-0"><b>Muhammad</b></p>
                 <p class="text-center">12 September 2000</p>
                 <div class="row col-12">

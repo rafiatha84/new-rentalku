@@ -17,7 +17,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8'
+            'password' => 'required|string|min:6'
         ]);
 
         if($validator->fails()){
@@ -27,7 +27,7 @@ class AuthController extends Controller
                 "errors" => $validator->errors(),
                 "content" => null,
             ];
-            return response()->json($response,200);       
+            return response()->json($response,404);       
         }
 
         DB::beginTransaction();

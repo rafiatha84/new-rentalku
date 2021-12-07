@@ -28,27 +28,24 @@
                             <div class="row col-12 mb-2">
                                 <div class="col-6 py-2">
                                     <p class="m-0">Nama Lengkap</p>
-                                    <input type="text" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Nama" value="Aris">
-
+                                    <input type="text" name="name" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Nama" value="{{ $pengemudi->user->name }}" disabled>
                                     <p class="m-0">Email</p>
-                                    <input type="text" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="Aris@gmail.com">
+                                    <input type="text" name="email" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="{{ $pengemudi->user->email }}" disabled>
                                     <p class="m-0">Password</p>
-                                    <input type="password" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="Aris@gmail.com">
+                                    <input type="password" name="password" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="******" disabled>
                                     
                                 </div>
                                 <div class="col-6 py-2 vertikal-line-base">
-                                    <p class="m-0">Upload Foto KTP</p>
-                                    
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" class="image-produk w-100 mt-2">
-                                    <p class="m-0">Upload Foto SIM A</p>
-                                    
-                                    <img src="{{ asset('image/avanza.jpeg') }}" alt="" class="image-produk w-100 mt-2">
+                                    <p class="m-0">Foto KTP</p>                    
+                                    <img src="{{ asset($pengemudi->user->foto_ktp) }}" alt="" class="image-produk w-100 mt-2">
+                                    <p class="m-0">Foto SIM A</p>
+                                    <img src="{{ asset($pengemudi->user->foto_sim) }}" alt="" class="image-produk w-100 mt-2">
                                 </div>
                             </div>
                             
                             <div class="row col-12">
                                 <div class="col-4 offset-4">
-                                    <a href="{{ route('pemilik.supirku.edit',2) }}" class="button-base-secondary py-2 w-100 d-block text-center">Edit</a>
+                                    <a href="{{ route('pemilik.supirku.edit',$pengemudi->id) }}" class="button-base-secondary py-2 w-100 d-block text-center">Edit</a>
                                 </div>
                             </div>
                         </div>

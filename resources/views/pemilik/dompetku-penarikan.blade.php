@@ -24,47 +24,56 @@
                         </div>
                         <div class="col-8 py-2 sidebar-right">
                             <h5><b>MTarik Dana</b></h5>
-                            <hr>
-                            <h6>Tarik dana dari DompetKu ke :</h6>
-                            <h6><b>Bank</b></h6>
-                            <input type="radio" name="bank" id="bank-radio-1" value="bca" class="select-bank">
-                            <label class="d-block bank-box p-2" for="bank-radio-1">
-                                    Bank Negara Indonesia
-                                    <img src="{{ asset('image/bank-bni.png') }}" alt="" class="float-right">
-                            </label>
-                            <input type="radio" name="bank" id="bank-radio-2" value="bca" class="select-bank">
-                            <label class="d-block bank-box p-2" for="bank-radio-2">
-                                    Bank Central Asia
-                                    <img src="{{ asset('image/bank-bca.png') }}" alt="" class="float-right">
-                            </label>
-                            <input type="radio" name="bank" id="bank-radio-3" value="bca" class="select-bank">
-                            <label class="d-block bank-box p-2" for="bank-radio-3">
-                                    Bank Rakyat Indonesia
-                                    <img src="{{ asset('image/bank-bri.png') }}" alt="" class="float-right">
-                            </label>
-                            <div class="row">
-                                <div class="col-6">
-                                <p class="m-0">Masukkan No Rekening</p>
-                                <input type="text" class="base-input px-2 py-1 w-100">
-                                <p class="m-0">Atas Nama Rekening Bang</p>
-                                <input type="text" class="base-input px-2 py-1 w-100">
-                                <p class="m-0">Jumlah Penarikan Dana</p>
-                                <h4 class="yellow-text">Rp. <input type="number" value="0" class="saldo-input"></h4>
-                                <div class="row saldo-box">
-                                    <div class="col-2 text-center my-2">
-                                        <i class="fa-solid fa-wallet base-color" style="font-size:30px;"></i>
+                            <form action="{{ route('api.dompetku.penarikan') }}" id="penarikan-create" method="POST" enctype="multipart/form-data">
+                                <hr>
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <h6>Tarik dana dari DompetKu ke :</h6>
+                                <h6><b>Bank</b></h6>
+                                <input type="radio" name="bank" id="bank-radio-1" value="BNI" class="select-bank" required>
+                                <label class="d-block bank-box p-2" for="bank-radio-1">
+                                        Bank Negara Indonesia
+                                        <img src="{{ asset('image/bank-bni.png') }}" alt="" class="float-right">
+                                </label>
+                                <input type="radio" name="bank" id="bank-radio-2" value="BCA" class="select-bank">
+                                <label class="d-block bank-box p-2" for="bank-radio-2">
+                                        Bank Central Asia
+                                        <img src="{{ asset('image/bank-bca.png') }}" alt="" class="float-right">
+                                </label>
+                                <input type="radio" name="bank" id="bank-radio-3" value="BRI" class="select-bank">
+                                <label class="d-block bank-box p-2" for="bank-radio-3">
+                                        Bank Rakyat Indonesia
+                                        <img src="{{ asset('image/bank-bri.png') }}" alt="" class="float-right">
+                                </label>
+                                <div class="row">
+                                    <div class="col-6">
+                                    <p class="m-0">Masukkan No Rekening</p>
+                                    <input type="text" name="no_rek" class="base-input px-2 py-1 w-100" placeholder="Masukkan No Rekening" required>
+                                    <p class="m-0">Atas Nama Rekening Bang</p>
+                                    <input type="text" name="atas_nama" class="base-input px-2 py-1 w-100" placeholder="Masukkan Nama Rekening">
+                                    <p class="m-0">Jumlah Penarikan Dana</p>
+                                    <h4 class="yellow-text">Rp. <input type="number" name="jumlah" class="saldo-input yellow-text" placeholder="0"></h4>
+                                    <div class="row saldo-box">
+                                        <div class="col-2 text-center my-2">
+                                            <i class="fa-solid fa-wallet base-color" style="font-size:30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p><b>Saldo Anda</b></p>
+                                            <p>Rp.{{ number_format($dompet->saldo,0,',','.') }}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-10">
-                                        <p><b>Saldo Anda</b></p>
-                                        <p>Rp. 500.000</p>
                                     </div>
                                 </div>
+                                
+                                <div class="col-12 text-center">
+                                    <button class="button-yellow-primary px-5 py-2 tarik-dana">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="spinner-border" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>Tarik Dana
+                                    </button>
                                 </div>
-                            </div>
-                            
-                            <div class="col-12 text-center">
-                                <a href="" class="button-yellow-primary px-5 py-2 tarik-dana">Tarik Dana</a>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -93,18 +102,82 @@
         </div>
         </div>
     </div>
+    <div class="modal fade bd-example-modal-lg" id="gagalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h4 class="color-base text-center">Maaf saldo anda tidak mencukupi</h4>
+                        <!-- <p class="text-center">Lakukan konfirmasi transfer hanya jika Anda telah selesai melakukan transfer sesuai intruksi sebelumnya</p> -->
+                    </div>
+                </div>
+                <div class="row px-5">
+                    <div class="col-6 offset-3">
+                    <button type="button" class="btn button-gray btn-block btn-cancel" data-dismiss="modal">Kembali</button>
+                    </div>
+                    <!-- <div class="col-6">
+                    <button type="button" class="btn btn-block btn-oke button-base radius-5">Sudah</button>
+                    </div> -->
+                  </div>
+                <form action='' id="formdelete" method="get">
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
     <script>
         $(document).ready(function(){
+            $('#penarikan-create').submit(function(e){
+                e.preventDefault();
+                // console.log($('#pemesanan-create').serialize());
+                /* get the action attribute from the <form action=""> element */
+                if(parseInt($('.saldo-input').val()) <= parseInt("{{ $dompet->saldo }}") ){
+                    console.log("bisa");
+                    var $form = $(this), url = $form.attr('action');
+                    let formData = new FormData($('#penarikan-create')[0]);
+                    $.ajax({
+                        url: url,
+                        type: "POST", //send it through get method
+                        data: formData,
+                        cache       : false,
+                        contentType : false,
+                        processData : false,
+                        beforeSend: function() {
+                            showLoader();
+                            $(':input[type="submit"]').prop('disabled', true);
+                        },
+                        success: function(response, textStatus, xhr) {
+                            console.log(xhr.status);
+                            console.log(response);
+                            // var transaksi_id = response['content']['id'];
+                            $('#penarikan-create')[0].reset();
+                            $('#suksesModal').modal("show"); 
+                            $(':input[type="submit"]').prop('disabled', false);
+                            removeLoader();
+                        },
+                        error: function(xhr) {
+                            alert('error');
+                            console.log(xhr);
+                            //Do Something to handle error
+                        }
+                    });
+                }else{
+                    $('#gagalModal').modal("show"); 
+                }
+                    
+                
+            });
             $('.select-jumlah').change(function(){
                 $('.jumlah-value').html($('.select-jumlah:checked').val());
             });
-            $('.tarik-dana').click(function(e){
-                e.preventDefault();
-                $('#suksesModal').modal("show");
-            });
+            // $('.tarik-dana').click(function(e){
+            //     e.preventDefault();
+            //     $('#suksesModal').modal("show");
+            // });
         });
     </script>
 @endsection

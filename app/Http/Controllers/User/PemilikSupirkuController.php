@@ -4,21 +4,32 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pengemudi;
+use Auth;
 
 class PemilikSupirkuController extends Controller
 {
     public function index(){
-        return view('pemilik.supirku');
+        $pengemudis = Pengemudi::where('owner_id',Auth::user()->id)->get();
+        return view('pemilik.supirku',[
+            'pengemudis' => $pengemudis
+        ]);
     }
 
-    public function detail($kedaraan_id)
+    public function detail($pengemudi_id)
     {
-        return view('pemilik.supirku-detail');
+        $pengemudi = Pengemudi::findOrFail($pengemudi_id);
+        return view('pemilik.supirku-detail',[
+            'pengemudi' => $pengemudi
+        ]);
     }
 
-    public function edit($kedaraan_id)
+    public function edit($pengemudi_id)
     {
-        return view('pemilik.supirku-edit');
+        $pengemudi = Pengemudi::findOrFail($pengemudi_id);
+        return view('pemilik.supirku-edit',[
+            'pengemudi' => $pengemudi
+        ]);
     }
 
     public function create()

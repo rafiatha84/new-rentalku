@@ -106,6 +106,9 @@ table tr:first-child th:first-child {
 .star-box li:hover ~ li {
   color: #ffd700 !important;
 }
+.star-box li.active{
+    color: #ffd700;
+}
 .sukses-icon{
     font-size: 70px;
 }
