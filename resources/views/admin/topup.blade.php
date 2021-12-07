@@ -10,6 +10,7 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
             <h1 class="h4">Top Up</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
+              <a class="button mx-2 px-4 py-2 tambahtopup"><i class="fa-solid fa-plus"></i> Topup</a>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin Rentalku
@@ -37,90 +38,26 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($topups as $topup)
                 <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
+                  <td>{{ $topup->user->email }}</td>
+                  <td>{{ $topup->user->name }}</td>
+                  <td>{{ $topup->bank }}</td>
+                  <td>Rp.{{ number_format($topup->jumlah,0,',','.') }}</td>
                   <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
+                    @if($topup->status != "Dikonfirmasi")
+                      <button type="button" class="edit-button px-3 py-1" onclick="modal_konfirmasi({{$topup->id}})">Konfirmasi</button>
+                    @endif
                   </td>
                   <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
+                    @if($topup->status == "Dikonfirmasi")
+                      <i class="color-base">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
+                    @else
+                      <i class="color-base-second">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
+                    @endif
                   </td>
                 </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle " onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>aris@gmail.com</td>
-                  <td>Aris</td>
-                  <td>BCA</td>
-                  <td>500.231</td>
-                  <td>
-                    <button type="button" class="edit-button px-3 py-1">Konfirmasi</button>
-                  </td>
-                  <td>
-                      <i class="color-base-second">Sudah Bayar</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
-                  </td>
-                </tr>
+                @endforeach
             </tbody>
             </table>
           </div>
@@ -139,6 +76,35 @@
                   <p>Apakah Anda yakin akan menghapus pengguna tersebut dari basis data aplikasi RentalKu?</p>
                   </div>
                   <form action='{{ route("admin.user.delete", "0" ) }}' id="formdelete" method="get">
+                  <div class="row px-5">
+                    <div class="col-6">
+                    <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
+                    </div>
+                    <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Iya</button>
+                    </div>
+                  </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="konfirmasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                    <img src="{{ asset('image/delete-alert.png') }}" class="mx-auto d-block" alt="">
+                  </div>
+                  </div>
+                  <div class="col-12 text-center">
+                  <h2>Perhatian</h2>
+                  <p>Apakah Anda yakin akan mengkonfirmasi topup ini?</p>
+                  </div>
+                  <form action='{{ route("admin.topup.konfirmasi", ":id" ) }}' id="formkonfirmasi" method="POST">
+                    @csrf
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -194,12 +160,12 @@
                     <h3 class="text-center">Status Top Up</h3>
                   </div>
                   </div>
-                  <div class="col-12">
-                  <p class="">Email: aris@gmail.com</p>
-                  <p class="">Nama Pengguna: aris</p>
-                  <p class="">Pilihan Pembayaran: Bank BCA</p>
-                  <p class="">Total Pembayaran: Rp. 500.232</p>
-                  <p class="">Status: <i class="color-yellow">Sudah Bayar</i></p>
+                  <div class="col-12 detail-show">
+                  <p class="email">Email: spanaris@gmail.com</p>
+                  <p class="name">Nama Pengguna: aris</p>
+                  <p class="bank">Pilihan Pembayaran: Bank BCA</p>
+                  <p class="jumlah">Total Pembayaran: Rp. 500.232</p>
+                  <p class="status">Status: <i class="color-yellow">Sudah Bayar</i></p>
                   
                   </div>
                   <form action='' id="formdelete" method="get">
@@ -223,8 +189,43 @@
       url = url.replace(':id', user_id);
       $("#formdelete").attr('action',url);
     }
+    function modal_konfirmasi(id){
+      $('#konfirmasiModal').modal("show"); 
+      user_id = id;
+      var url = '{{ route("admin.topup.konfirmasi", ":id") }}';
+      url = url.replace(':id', user_id);
+      $("#formkonfirmasi").attr('action',url);
+    }
     function show_detail(id){
-      $('#detailModal').modal("show"); 
+      let url= "{{route('api.transaksiDompet.show','')}}"+"/"+id;
+      $.ajax({
+          url: url,
+          type: "get", //send it through get method
+          success: function(response) {
+              console.log(response);
+              var jumlah_display = new Intl.NumberFormat(['ban', 'id']).format(response['content']['jumlah']);
+              let css_status = "color-yellow";
+              if(response['content']['status'] === "Dikonfirmasi"){
+                css_status= "color-base";
+              }
+              let html_detail = `
+                  <p class="email">Email: ${response['content']['user']['email']}</p>
+                  <p class="name">Nama Pengguna: ${response['content']['user']['name']}</p>
+                  <p class="bank">Pilihan Pembayaran: Bank ${response['content']['bank']}</p>
+                  <p class="jumlah">Total Pembayaran: Rp.${jumlah_display}2</p>
+                  <p class="status">Status: <i class="${css_status}">${response['content']['status']}</i></p>
+              `;
+              $('.detail-show').html(html_detail);
+
+              $('#detailModal').modal("show"); 
+          },
+          error: function(xhr) {
+              console.log(xhr);
+              //Do Something to handle error
+          }
+      });
+
+      
     }
     $(document).ready(function() {
       $('.profil-link').click(function(e){

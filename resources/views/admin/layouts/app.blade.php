@@ -131,7 +131,27 @@
     </script> -->
         
     </div>
+    <script>
+      function previewFile(input,element){
+            var val = $(input).val();
+            $(input).siblings('span').text(val);
+            var file = $(input).get(0).files[0];
     
+            if(file){
+                var reader = new FileReader();
+    
+                reader.onload = function(){
+                    $(element).attr("src", reader.result);
+                }
+    
+                reader.readAsDataURL(file);
+                $(element).removeClass("hidden");
+            }
+        }
+        function click_input(element){
+            $(element).trigger('click');
+        }
+    </script>
     @yield('js')  
 </body>
 </html>

@@ -94,6 +94,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/',[App\Http\Controllers\Admin\AdminDashboardController::class,'index'])->name('admin.dashboard');
     Route::get('topup',[App\Http\Controllers\Admin\AdminDompetTransaksiController::class,'topup'])->name('admin.topup');
+    Route::post('topup/konfirmasi/{transaksi_dompet_id}',[App\Http\Controllers\Admin\AdminDompetTransaksiController::class,'konfirmasi_topup'])->name('admin.topup.konfirmasi');
     Route::get('penarikan',[App\Http\Controllers\Admin\AdminDompetTransaksiController::class,'penarikan'])->name('admin.penarikan');
     Route::get('kendaraan',[App\Http\Controllers\Admin\AdminKendaraanController::class,'index'])->name('admin.kendaraan');
     Route::get('kendaraan/dipesan',[App\Http\Controllers\Admin\AdminKendaraanController::class,'dipesan'])->name('admin.kendaraan.dipesan');

@@ -124,15 +124,17 @@
                   <h3 class="text-center">Tambah Penyewa</h3>
                   </div>
                   </div>
+                  <form action="{{ route('admin.user.create') }}" id="form-create-penyewa" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="role" value="user">
                   <div class="col-12">
                   <p class="m-0">Nama</p>
-                  <input type="text" name="" placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name="" placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name="email" placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name="" value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name="password" value="******" class="input-form w-100 mb-2 p-2">
                   </div>
-                  <form action='' id="formcreate-penyewa" method="get">
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -157,21 +159,24 @@
                   </div>
                   </div>
                   <div class="col-12">
+                  <form action="{{ route('admin.user.create') }}" id="form-create-pemilik" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="role" value="pemilik">
                   <p class="m-0">Nama</p>
-                  <input type="text" name=""  placeholder="nama" class="input-form w-100 p-2">
+                  <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
-                  <input type="text" name=""  placeholder="testn@gmail.com" class="input-form w-100 p-2">
+                  <input type="text" name="email"  placeholder="testn@gmail.com" class="input-form w-100 p-2">
                   <p class="m-0">Password</p>
-                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
+                  <input type="text" name="password"  value="******" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
-                  <input type="text" name=""  placeholder="NIK" class="input-form w-100 p-2">
+                  <input type="text" name="nik"  placeholder="NIK" class="input-form w-100 p-2">
                   <p class="m-0">Foto KTP</p>
-                  <div class="element w-100">
-                    <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
-                    <input type="file" name=""  placeholder="" class="input-form input-foto">
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-pemilik');"></i><span class="name" id="foto-ktp-name">No file selected</span>
+                      <input type="file" name="foto_ktp" id="foto-ktp-pemilik" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-pemilik');">
                   </div>
+                  <img src="/" alt="" id="foto-ktp-image-pemilik" class="image-produk img-upload w-100 mt-2 hidden">
                   </div>
-                  <form action='' id="formcreate-pemilik" method="get">
                   <div class="row px-5 mt-2">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -192,11 +197,11 @@
               <div class="modal-body">
                   <div class="row">
                   <div class="col-12">
+                    <h3 class="text-center">Tambah Sopir</h3>
+                  </div>
+                </div>
+                <div class="col-12">
                   <form action="{{ route('admin.user.create') }}" id="form-create-supir" method="POST" enctype="multipart/form-data">
-                  <h3 class="text-center">Tambah Sopir</h3>
-                  </div>
-                  </div>
-                  <div class="col-12">
                   @csrf
                   <input type="hidden" name="role" value="pengemudi">
                   <p class="m-0">Owner</p>
@@ -215,10 +220,18 @@
                   <input type="password" name="password" value="******" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
                   <input type="text" name="nik" placeholder="NIK" class="input-form w-100 p-2">
-                  <p class="m-0">Foto KTP</p>
-                  <input type="file" name="foto_ktp" placeholder="" class="input-form w-100 p-2">
+                  <p class="m-0">Foto Ktp</p>
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">No file selected</span>
+                      <input type="file" name="foto_ktp" id="foto-ktp-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-penyewa');">
+                  </div>
+                  <img src="/" alt="" id="foto-ktp-image-penyewa" class="image-produk img-upload w-100 mt-1 hidden">
                   <p class="m-0">Foto SIM A</p>
-                  <input type="file" name="foto_sim" placeholder="" class="input-form w-100 p-2">
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-penyewa');"></i><span class="name" id="foto-sim-name-penyewa">No file selected</span>
+                      <input type="file" name="foto_sim" id="foto-sim-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-sim-image-penyewa');">
+                  </div>
+                  <img src="/" alt="" id="foto-sim-image-penyewa" class="image-produk img-upload w-100 mt-1 hidden">
                   </div>
                   
                   <div class="row px-5">
@@ -240,11 +253,12 @@
             <div class="modal-content">
               <div class="modal-body">
                   <div class="row ">
-                    <form action="{{ route('admin.user.create') }}" id="form-create-admin" method="POST"></form>
+                  <form action="{{ route('admin.user.create') }}" id="form-create-pemilik" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="role" value="admin">
                     <h3 class="text-center">Tambah Admin</h3>
                   </div>
                   <div class="col-12">
-                    @csrf
                   <p class="m-0">Nama</p>
                   <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
@@ -288,11 +302,17 @@
                   <p class="m-0">Alamat</p>
                   <input type="text" name="alamat" placeholder="alamat" class="input-form w-100 p-2" value="">
                   <p class="m-0">Foto KTP</p>
-                  <input type="file" name="foto_ktp" placeholder="" class="input-form w-100 p-2">
-                  <img src="" alt="" srcset="" class="img-responsive w-100 my-1 foto_ktp-image">
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-edit');"></i><span class="name" id="foto-ktp-name-edit">No file selected</span>
+                      <input type="file" name="foto_ktp" id="foto-ktp-edit" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-edit');">
+                  </div>
+                  <img src="/" alt="" id="foto-ktp-image-edit" class="image-produk img-upload w-100 mt-1 hidden">
                   <p class="m-0">Foto SIM A</p>
-                  <input type="file" name="foto_sim" placeholder="" class="input-form w-100 p-2">
-                  <img src="" alt="" srcset="" class="img-responsive w-100 my-1 foto_sim-image">
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-edit');"></i><span class="name" id="foto-sim-name-edit">No file selected</span>
+                      <input type="file" name="foto_sim" id="foto-sim-edit" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-sim-image-edit');">
+                  </div>
+                  <img src="/" alt="" id="foto-sim-image-edit" class="image-produk img-upload w-100 mt-1 hidden">
                   <p class="m-0">New Password</p>
                   <input type="text" name="password" class="input-form w-100 mb-2 p-2"  placeholder="******">
                   </div>
@@ -343,11 +363,11 @@
               $('#form-update-user input[name="alamat"]').val(response['content']['alamat']);
               if(response['content']['foto_ktp'] !== null){
                 url_image = "{{ asset('/') }}"+response['content']['foto_ktp'];
-                $('.foto_ktp-image').attr('src',url_image);
+                $('#foto-ktp-image-edit').attr('src',url_image);
               }
               if(response['content']['foto_sim'] !== null){
                 url_image = "{{ asset('/') }}"+response['content']['foto_sim'];
-                $('.foto_sim-image').attr('src',url_image);
+                $('#foto-sim-image-edit').attr('src',url_image);
               }
 
               $('#edituserModal').modal("show");
@@ -360,14 +380,14 @@
       
     }
     $(document).ready(function() {
-      $(".camera-icon").click(function () {
-        $("input[type='file']").trigger('click');
-      });
+      // $(".camera-icon").click(function () {
+      //   $("input[type='file']").trigger('click');
+      // });
 
-      $('input[type="file"]').on('change', function() {
-        var val = $(this).val();
-        $(this).siblings('span').text(val);
-      });
+      // $('input[type="file"]').on('input', function() {
+      //   var val = $(this).val();
+      //   $(this).siblings('span').text(val);
+      // });
         $('.profil-link').click(function(e){
           e.preventDefault();
           $('#profilModal').modal("show"); 

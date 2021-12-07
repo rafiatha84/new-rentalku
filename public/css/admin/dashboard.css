@@ -137,3 +137,6 @@ div#footer\ mt-2{
   .input-foto {
     display: none;
   }
+  span.name{
+    word-break: break-word;
+}

@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\TransaksiDompet;
+use App\Models\Dompet;
+use Validator;
+use Illuminate\Support\Facades\DB;
+use App\Models\Rekening;
 
 class AdminDompetTransaksiController extends Controller
 {
@@ -29,7 +35,43 @@ class AdminDompetTransaksiController extends Controller
 
     public function topup()
     {
-        return view('admin.topup');
+        $topups = TransaksiDompet::where('name','Top Up')->get();
+        return view('admin.topup',[
+            'topups' => $topups
+        ]);
+    }
+
+    /**
+    * Merubah status topup
+    * @param int $transaksi_dompet_id
+    * @return \Illuminate\Http\Response
+    */
+    public function konfirmasi_topup($transaksi_dompet_id){
+        // dd('a');
+        DB::beginTransaction();
+        try{
+            //get transaksidompet
+            $transaksiDompet = TransaksiDompet::where('id',$transaksi_dompet_id)->firstOrFail();
+            //update status menjadi Dikonfirmasi
+            $updatetransaksi= TransaksiDompet::where('id',$transaksi_dompet_id)->update([
+                'status' => 'Dikonfirmasi'
+            ]);
+            $transaksiDompet = TransaksiDompet::where('id',$transaksi_dompet_id)->firstOrFail();
+            //get saldo saat ini
+            $saldo = TransaksiDompet::where('dompet_id', $transaksiDompet->dompet_id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
+            $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
+                'saldo' => $saldo
+            ]);
+            $content = Array(
+                "jumlah" => $transaksiDompet->jumlah,
+                "status" => $transaksiDompet->status,
+                "saldo saat ini" => $saldo
+            );
+            DB::commit();
+            return redirect()->route('admin.topup');
+        }catch(\Exception $e){
+            return redirect()->route('admin.topup');
+        }
     }
 
     public function penarikan()

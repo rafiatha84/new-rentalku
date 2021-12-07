@@ -7,20 +7,16 @@
 
 @section('content')
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-            <div class="box">
-                <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kategori') ? 'sub-active' : '' }}" href="{{ route('admin.kategori') }}">Short & Filter</a>
-                <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kategori.kota') ? 'sub-active' : '' }}" href="{{ route('admin.kategori.kota') }}">Pilihan Kota</a>
-            </div>  
-          
+            <h1 class="h4">Kelola Jenis Mobil</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              
+              <a class="button mx-2 px-4 py-2 tambahkategori"><i class="fa-solid fa-plus"></i> Jenis</a>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin Rentalku
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a href="" class="dropdown-item profil-link">Profil Admin</a>
+                  <a href="" class="dropdown-item profil-link">Profil Admin</a>
                     <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </div>
                 </div>

@@ -71,6 +71,7 @@ class TransaksiDompetController extends Controller
          $dompet = TransaksiDompet::where('user_id', $user_id)
             ->selectRaw("SUM(jumlah) as jumlah")->groupBy('user_id')->with('user','dompet')
             ->get();
+         
 
          return response()->json([
              "transaksi_dompet" => $transaksiDompet
@@ -106,7 +107,7 @@ class TransaksiDompetController extends Controller
             $transaksiDompet = TransaksiDompet::create([
                 'user_id' => $request->user_id,
                 'dompet_id' => $dompet->id,
-                'name' => "Topup Dompetku",
+                'name' => "Top Up",
                 'jumlah' => $request->jumlah+$kode_unik,
                 'kode_unik' => $kode_unik,
                 'bank' => $rekening->singkatan,
@@ -336,8 +337,13 @@ class TransaksiDompetController extends Controller
         if (is_null($transaksiDompet)) {
             return response()->json('Data not found', 404); 
         }
-
-        return response()->json($transaksiDompet, 200);
+        $response = [
+            "status" => "success",
+            "message" => 'Sukses show data',
+            "errors" => null,
+            "content" => $transaksiDompet,
+        ];
+        return response()->json($response,200);
     }
 
     public function saldoDompet($user_id)
