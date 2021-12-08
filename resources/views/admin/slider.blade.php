@@ -7,16 +7,19 @@
 
 @section('content')
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-            <h1 class="h4">Kelola Jenis Mobil</h1>
+            <div class="box">
+                <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.slider') ? 'sub-active' : '' }}" href="{{ route('admin.slider') }}">Slider</a>
+            </div>  
+          
             <div class="btn-toolbar mb-2 mb-md-0">
-              <a class="button mx-2 px-4 py-2 tambahkategori"><i class="fa-solid fa-plus"></i> Jenis</a>
+            <a class="button mx-2 px-4 py-2 tambahslider"><i class="fa-solid fa-plus"></i> Slider</a>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin Rentalku
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a href="" class="dropdown-item profil-link">Profil Admin</a>
+                    <a href="" class="dropdown-item profil-link">Profil Admin</a>
                     <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </div>
                 </div>
@@ -28,25 +31,19 @@
             <table class="table table-sm" id="table-pengguna">
               <thead>
                 <tr>
-                  <th>Nama Kategori</th>
-                  <th>Action</th>
-                  
+                  <th>Nama unit</th>
+                  <th>Keterangan</th>
                 </tr>
               </thead>
               <tbody>
-                
-                  @foreach ($posts as $post)
-                  <tr>
-                  <td>{{ $post->name }}</td>
-                 
+                @foreach ($sliders as $slider)
+                <tr>
+                  <td>{{ $slider->image }} <a href="{{ asset($slider->image) }}" target="_blank">Lihat Foto</a></td>
                   <td>
-                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete({{$post->id}})"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1" onclick="modal_edit({{$post->id}})"><i class="fa-solid fa-edit"></i></button>
-                    <!-- <i class="fa-solid fa-info-circle"></i> -->
+                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete({{ $slider->id }})"><i class="fa-solid fa-trash"></i></button>
                   </td>
                 </tr>
-                  @endforeach
-                
+                @endforeach
                 
               </tbody>
             </table>
@@ -63,9 +60,9 @@
                   </div>
                   <div class="col-12 text-center">
                   <h2>Perhatian</h2>
-                  <p>Apakah Anda yakin akan menghapus Kategori tersebut dari basis data aplikasi RentalKu?</p>
+                  <p>Apakah Anda yakin akan menghapus slider tersebut dari basis data aplikasi RentalKu?</p>
                   </div>
-                  <form action='{{ route("admin.user.delete", "0" ) }}' id="formdelete" method="POST">
+                  <form action='{{ route("admin.slider.delete", ":id" ) }}' id="formdelete" method="POST">
                     @csrf
                   <div class="row px-5">
                     <div class="col-6">
@@ -81,20 +78,25 @@
           </div>
         </div>
 
-        <div class="modal fade" id="tambahkategoriModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal fade" id="tambahsliderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
                   <div class="row">
-                    <div class="col-12">
-                      <h3 class="text-center">Tambah Kategori</h3>
-                    </div>
+                  <div class="col-12">
+                  <h3 class="text-center">Tambah Slider</h3>
                   </div>
-                  <form action="{{ route('admin.kategori.create') }}" id="form-create-slider" method="POST" enctype="multipart/form-data">
+                  </div>
+                  <form action="{{ route('admin.slider.create') }}" id="form-create-slider" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="col-12">
-                    <p class="m-0">Kategori</p>
-                    <input type="text" name="name" placeholder="Masukkan Kategori" class="input-form w-100 p-2">
+                  <p class="m-0">Slider</p>
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-slider');"></i><span class="name" id="foto-slider-name">No file selected</span>
+                      <input type="file" name="image" id="foto-slider" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-slider-image');">
+                  </div>
+                  <img src="/" alt="" id="foto-slider-image" class="image-produk img-upload w-100 mt-1 hidden">
                   </div>
                   <div class="row px-5 my-1">
                     <div class="col-6">
@@ -109,39 +111,6 @@
             </div>
           </div>
         </div>
-
-        <div class="modal fade" id="editkategoriModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                  <div class="row">
-                  <div class="col-12">
-                  <h3 class="text-center">Edit Kendaraan</h3>
-                  </div>
-                  </div>
-                  <form action="{{ route('admin.kendaraan.update',':id') }}" id="form-edit-kategori" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <div class="col-12">
-                  
-                  <p class="m-0">Kategori</p>
-                  <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
-                  
-                  </div>
-                  <div class="row px-5 py-2">
-                    <div class="col-6">
-                    <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
-                    </div>
-                    <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">Edit</button>
-                    </div>
-                  </div>
-                  </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        
         
 
 @endsection
@@ -153,34 +122,14 @@
     function modal_delete(id){
       $('#deleteModal').modal("show"); 
       user_id = id;
-      var url = '{{ route("admin.kategori.delete", ":id") }}';
+      var url = '{{ route("admin.slider.delete", ":id") }}';
       url = url.replace(':id', user_id);
       $("#formdelete").attr('action',url);
     }
-    function modal_edit(id){
-      // e.preventDefault();
-      let url= "{{route('api.kategori.showId','')}}"+"/"+id;
-      // alert(url);
-      $.ajax({
-          url: url,
-          type: "get", //send it through get method
-          success: function(response) {
-              console.log(response);
-              let url_form= "{{route('admin.kategori.update',':id')}}";
-              $('#form-edit-kategori').attr('action',url_form.replace(':id',id));
-              $("#form-edit-kategori input[name=name]").val(response['content']['name']);
-              $('#editkategoriModal').modal("show");
-          },
-          error: function(xhr) {
-              console.log(xhr);
-              //Do Something to handle error
-          }
-      });
-    }
     $(document).ready(function() {
-        $('.tambahkategori').click(function(e){
+        $('.tambahslider').click(function(e){
           e.preventDefault();
-          $('#tambahkategoriModal').modal("show"); 
+          $('#tambahsliderModal').modal("show"); 
         });
         $('.profil-link').click(function(e){
           e.preventDefault();

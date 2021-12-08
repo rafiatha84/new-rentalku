@@ -60,6 +60,7 @@ Route::group(['prefix' => 'message'], function () {
 
 //Kendaraan
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('api.kendaraan');
+Route::get('/kendaraan/{id}', [KendaraanController::class, 'showId'])->name('api.kendaraan.showId');
 Route::post('/kendaraan/store', [KendaraanController::class, 'store'])->name('api.kendaraan.store');
 Route::post('/kendaraan/update/{id}', [KendaraanController::class, 'update'])->name('api.kendaraan.update');
 Route::delete('/kendaraan/destroy/{id}', [KendaraanController::class, 'destroy'])->name('api.kendaraan.destroy');
@@ -99,6 +100,7 @@ Route::get('/maps/search', [MapsController::class, 'search_address'])->name('api
 
 //kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->name('api.kategori.show');
+Route::get('/kategori/{id}', [KategoriController::class, 'showId'])->name('api.kategori.showId');
 Route::post('/kategori/create', [KategoriController::class, 'store'])->name('api.kategori.create');
 Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('api.kategori.update');
 Route::delete('/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy'])->name('api.kategori.destroy');
@@ -113,7 +115,8 @@ Route::post('/dompetku/konfirmasi/topup/{transaksi_dompet_id}',[TransaksiDompetC
 Route::post('/dompetku/konfirmasi/penarikan/{transaksi_dompet_id}',[TransaksiDompetController::class,'konfirmasi_penarikan'])->name('api.dompetku.penarikan.konfirmasi');
 
 //Transaksi Dompet
-Route::get('/transaksi_dompet/{id}', [TransaksiDompetController::class, 'show'])->name('api.transaksiDompet.show');
+Route::get('/transaksi_dompet/show/{id}', [TransaksiDompetController::class, 'show'])->name('api.transaksiDompet.show');
+Route::get('/transaksi_dompet/{id}', [TransaksiDompetController::class, 'showId'])->name('api.transaksiDompet.showId');
 Route::post('/transaksi_dompet/create', [TransaksiDompetController::class, 'store'])->name('api.transaksiDompet.create');
 Route::post('/transaksi_dompet/update/{id}', [TransaksiDompetController::class, 'update'])->name('api.transaksiDompet.update');
 Route::delete('/transaksi_dompet/delete/{dompet_id}', [TransaksiDompetController::class, 'destroy'])->name('api.transaksiDompet.destroy');

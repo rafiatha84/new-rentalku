@@ -14,7 +14,7 @@
             </div>  
           
             <div class="btn-toolbar mb-2 mb-md-0">
-              
+            <a class="button mx-2 px-4 py-2 tambahkendaraan"><i class="fa-solid fa-plus"></i> Kendaraan</a>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin Rentalku
@@ -46,11 +46,11 @@
                   <td>{{ $post->name }}</td>
                   <td>{{ $post->user->name }}</td>
                   <td>{{ $post->kota }}</td>
-                  <td>{{ $post->harga }}</td>
+                  <td>{{ number_format($post->harga,0,',','.') }}</td>
                   <td>
-                    <button type="button" class="delete-button px-3 py-1"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="edit-button px-3 py-1"><i class="fa-solid fa-edit"></i></button>
-                    <i class="fa-solid fa-info-circle"></i>
+                    <button type="button" class="delete-button px-3 py-1" onclick="modal_delete({{ $post->id }})"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" class="edit-button px-3 py-1" onclick="show_edit({{ $post->id }})"><i class="fa-solid fa-edit"></i></button>
+                    <i class="fa-solid fa-info-circle" onclick="show_detail({{ $post->id }})"></i>
                   </td>
                 </tr>
                 @endforeach
@@ -70,9 +70,10 @@
                   </div>
                   <div class="col-12 text-center">
                   <h2>Perhatian</h2>
-                  <p>Apakah Anda yakin akan menghapus pengguna tersebut dari basis data aplikasi RentalKu?</p>
+                  <p>Apakah Anda yakin akan menghapus kendaraan tersebut dari basis data aplikasi RentalKu?</p>
                   </div>
-                  <form action='{{ route("admin.user.delete", "0" ) }}' id="formdelete" method="get">
+                  <form action='{{ route("admin.kendaraan.delete", ":id" ) }}' id="formdelete" method="POST">
+                    @csrf
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
@@ -119,6 +120,166 @@
             </div>
           </div>
         </div>
+
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                    <h3 class="text-center">Detail Kendaraan</h3>
+                  </div>
+                  </div>
+                  <div class="col-12 detail-show">
+                  <p class="">Email: aris@gmail.com</p>
+                  <p class="">Nama Pengguna: aris</p>
+                  <p class="">Total Pembayaran: Rp. 500.232</p>
+                  <p class="">Status: <i class="color-yellow">Pengajuan</i></p>
+                  <p class="m-0">Nama Bank</p>
+                  <input type="text" name="" id="" value="BCA" class="input-form w-100 p-2" disabled>
+                  <p class="m-0">Atas Nama Rekening Bank</p>
+                  <input type="text" name="" id="" value="Erik" class="input-form w-100 p-2" disabled>
+                  <p class="m-0">No. Rekening</p>
+                  <input type="text" name="" id="" value="32768279" class="input-form w-100 p-2" disabled>
+                  </div>
+                  <form action='' id="formdelete" method="get">
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="tambahkendaraanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                  <h3 class="text-center">Tambah Kendaraan</h3>
+                  </div>
+                  </div>
+                  <form action="{{ route('admin.kendaraan.create') }}" id="form-create-penyewa" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="col-12">
+                  <p class="m-0">Pemilik</p>
+                  <select name="user_id" id="owner" class="input-form w-100 p-2">
+                    @foreach($pemiliks as $pemilik)
+                    <option value="{{$pemilik->id}}">{{$pemilik->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Nama Kendaraan</p>
+                  <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
+                  <p class="m-0">Kategori Mobil</p>
+                  <select name="kategori_id" id="kategori" class="input-form w-100 p-2">
+                    @foreach($kategoris as $kategori)
+                    <option value="{{$kategori->id}}">{{$kategori->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Kota</p>
+                  <input type="text" name="kota" placeholder="Masukkan Kota" class="input-form w-100 p-2">
+                  <p class="m-0">Seat</p>
+                  <input type="number" name="seat" placeholder="Masukkan Seat" class="input-form w-100 p-2">
+                  <p class="m-0">Nopol</p>
+                  <input type="text" name="nopol" placeholder="Masukkan Nopol" class="input-form w-100 p-2">
+                  <p class="m-0">Harga</p>
+                  <input type="number" name="harga" placeholder="Masukkan Harga" class="input-form w-100 p-2">
+                  <p class="m-0">Tahun</p>
+                  <input type="number" name="tahun" placeholder="Masukkan Tahun" class="input-form w-100 p-2">
+                  <p class="m-0">Transmisi</p>
+                  <select name="transmisi" class="d-block w-100 input-form p-2" required>
+                      <option value="Manual" selected>Manual</option>
+                      <option value="Matic">Matic</option>
+                  </select>
+                  <p class="m-0">Mesin</p>
+                  <input type="text" name="mesin" placeholder="Masukkan mesin (2000cc)" class="input-form w-100 p-2">
+                  <p class="m-0">Warna</p>
+                  <input type="text" name="warna" placeholder="Masukkan Warna" class="input-form w-100 p-2">
+                  <p class="m-0">Foto Kendaraan</p>
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan');"></i><span class="name" id="foto-kendaraan-name">No file selected</span>
+                      <input type="file" name="image_link" id="foto-kendaraan" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-kendaraan-image');">
+                  </div>
+                  <img src="/" alt="" id="foto-kendaraan-image" class="image-produk img-upload w-100 mt-1 hidden">
+                  </div>
+                  <div class="row px-5">
+                    <div class="col-6">
+                    <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
+                    </div>
+                    <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">tambah</button>
+                    </div>
+                  </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="editkendaraanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                  <h3 class="text-center">Edit Kendaraan</h3>
+                  </div>
+                  </div>
+                  <form action="{{ route('admin.kendaraan.update',':id') }}" id="form-update-kendaraan" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="col-12">
+                  <p class="m-0">Pemilik</p>
+                  <select name="user_id" id="owner" class="input-form w-100 p-2" disabled>
+                    @foreach($pemiliks as $pemilik)
+                    <option value="{{$pemilik->id}}">{{$pemilik->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Nama Kendaraan</p>
+                  <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
+                  <p class="m-0">Kategori Mobil</p>
+                  <select name="kategori_id" id="kategori" class="input-form w-100 p-2">
+                    @foreach($kategoris as $kategori)
+                    <option value="{{$kategori->id}}">{{$kategori->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Kota</p>
+                  <input type="text" name="kota" placeholder="Masukkan Kota" class="input-form w-100 p-2">
+                  <p class="m-0">Seat</p>
+                  <input type="number" name="seat" placeholder="Masukkan Seat" class="input-form w-100 p-2">
+                  <p class="m-0">Nopol</p>
+                  <input type="text" name="nopol" placeholder="Masukkan Nopol" class="input-form w-100 p-2">
+                  <p class="m-0">Harga</p>
+                  <input type="number" name="harga" placeholder="Masukkan Harga" class="input-form w-100 p-2">
+                  <p class="m-0">Tahun</p>
+                  <input type="number" name="tahun" placeholder="Masukkan Tahun" class="input-form w-100 p-2">
+                  <p class="m-0">Transmisi</p>
+                  <select name="transmisi" class="d-block w-100 input-form p-2" required>
+                      <option value="Manual" selected>Manual</option>
+                      <option value="Matic">Matic</option>
+                  </select>
+                  <p class="m-0">Mesin</p>
+                  <input type="text" name="mesin" placeholder="Masukkan mesin (2000cc)" class="input-form w-100 p-2">
+                  <p class="m-0">Warna</p>
+                  <input type="text" name="warna" placeholder="Masukkan Warna" class="input-form w-100 p-2">
+                  <p class="m-0">Foto Kendaraan</p>
+                  <div class="element w-100 radius-20 ">
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan-update');"></i><span class="name" id="foto-kendaraan-name-update">No file selected</span>
+                      <input type="file" name="image_link" id="foto-kendaraan-update" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-kendaraan-image-update');">
+                  </div>
+                  <img src="/" alt="" id="foto-kendaraan-image-update" class="image-produk img-upload w-100 mt-1 hidden">
+                  </div>
+                  <div class="row px-5">
+                    <div class="col-6">
+                    <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
+                    </div>
+                    <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Edit</button>
+                    </div>
+                  </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
         
 
 @endsection
@@ -130,12 +291,89 @@
     function modal_delete(id){
       $('#deleteModal').modal("show"); 
       user_id = id;
-      var url = '{{ route("admin.user.delete", ":id") }}';
+      var url = '{{ route("admin.kendaraan.delete", ":id") }}';
       url = url.replace(':id', user_id);
       $("#formdelete").attr('action',url);
     }
+    function show_detail(id)
+    {
+      let url= "{{route('api.kendaraan.showId','')}}"+"/"+id;
+      $.ajax({
+          url: url,
+          type: "get", //send it through get method
+          success: function(response) {
+              console.log(response);
+              var jumlah_display = new Intl.NumberFormat(['ban', 'id']).format(response['content']['harga']);
+              // console.log(response);
+              let image_car = "{{ asset('') }}"+response['content']['image_link'];
+              let html_detail = `
+                  <p class="email">Nama Unit: ${response['content']['name']}</p>
+                  <p class="name">Nama Pemilik: ${response['content']['user']['name']}</p>
+                  <p class="bank">Pilihan Kota: ${response['content']['kota']}</p>
+                  <p class="bank">Kategori : ${response['content']['kategori']['name']}</p>
+                  <p class="bank">Jumlah Seat: ${response['content']['seat']}</p>
+                  <p class="bank">Tahun: ${response['content']['tahun']}</p>
+                  <p class="bank">Nopol: ${response['content']['nopol']}</p>
+                  <p class="bank">transmisi: ${response['content']['transmisi']}</p>
+                  <p class="bank">mesin: ${response['content']['mesin']}</p>
+                  <p class="bank">warna: ${response['content']['warna']}</p>
+                  <p class="status">Biaya Sewa/Hari: Rp.${jumlah_display}</p>
+                  <img class="img-responsive w-100" src="${image_car}" />
+              `;
+              $('.detail-show').html(html_detail);
+
+              $('#detailModal').modal("show"); 
+          },
+          error: function(xhr) {
+              console.log(xhr);
+              //Do Something to handle error
+          }
+      });
+      
+    }
+    function show_edit(id){
+      let url= "{{route('api.kendaraan.showId','')}}"+"/"+id;
+      $.ajax({
+          url: url,
+          type: "get", //send it through get method
+          success: function(response) {
+              console.log(response);
+              let url_form= "{{route('admin.kendaraan.update',':id')}}";
+              $('#form-update-kendaraan').attr('action',url_form.replace(':id',id));
+              $(`#form-update-kendaraan select[name=user_id] option[value=${response['content']['id']}]`).attr('selected','selected');
+              $("#form-update-kendaraan input[name=name]").val(response['content']['name']);
+              $(`#form-update-kendaraan select[name=kategori_id] option[value=${response['content']['kategori_id']}]`).attr('selected','selected');
+              $(`#form-update-kendaraan select[name=transmisi] option[value=${response['content']['transmisi']}]`).attr('selected','selected');
+              $("#form-update-kendaraan input[name=kota]").val(response['content']['kota']);
+              $("#form-update-kendaraan input[name=seat]").val(response['content']['seat']);
+              $("#form-update-kendaraan input[name=nopol]").val(response['content']['nopol']);
+              $("#form-update-kendaraan input[name=harga]").val(response['content']['harga']);
+              $("#form-update-kendaraan input[name=tahun]").val(response['content']['tahun']);
+              $("#form-update-kendaraan input[name=mesin]").val(response['content']['mesin']);
+              $("#form-update-kendaraan input[name=warna]").val(response['content']['warna']);
+              if(response['content']['iamge_link'] !== null){
+                url_image = "{{ asset('/') }}"+response['content']['image_link'];
+                $('#foto-kendaraan-image-update').attr('src',url_image);
+              }
+              // if(response['content']['foto_sim'] !== null){
+              //   url_image = "{{ asset('/') }}"+response['content']['foto_sim'];
+              //   $('#foto-sim-image-edit').attr('src',url_image);
+              // }
+
+              $('#editkendaraanModal').modal("show");
+          },
+          error: function(xhr) {
+              console.log(xhr);
+              //Do Something to handle error
+          }
+      });
+    }
     $(document).ready(function() {
-      $('.profil-link').click(function(e){
+        $('.tambahkendaraan').click(function(e){
+          e.preventDefault();
+          $('#tambahkendaraanModal').modal("show"); 
+        });
+        $('.profil-link').click(function(e){
           e.preventDefault();
           $('#profilModal').modal("show"); 
         });

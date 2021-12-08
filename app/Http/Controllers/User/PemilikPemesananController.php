@@ -65,9 +65,14 @@ class PemilikPemesananController extends Controller
             ]);
             if($update){
                 $update_pemasukan = TransaksiDompet::where('id',$transaksi->transaksi_dompet_id)
-                                    ->update([
-                                        'status' => 'Dikonfirmasi'
-                                    ]);
+                ->update([
+                    'status' => 'Dikonfirmasi'
+                ]);
+                //get saldo saat ini
+                $saldo = TransaksiDompet::where('dompet_id', $transaksiDompet->dompet_id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
+                $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
+                    'saldo' => $saldo
+                ]);
                 if($update_pemasukan){
                     DB::commit();
                     return redirect()->route('pemilik.pesananku.selesai')->with([

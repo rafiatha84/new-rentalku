@@ -293,11 +293,14 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::where('id', $transaksi_id)->with('user','kendaraan.kategori', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->first();
 
         if($transaksi){
+            $data = $transaksi;
+            $data['tanggal_transaksi'] = $transaksi->tanggal_transaksi();
+            $data['tanggal_berakhir'] = $transaksi->tanggal_berakhir();
             $response = [
                 "status" => "success",
                 "message" => 'Data Transaksi Ditemukan',
                 "errors" => null,
-                "content" => $transaksi,
+                "content" => $data,
             ];
             return response($response, 200);
         }else{

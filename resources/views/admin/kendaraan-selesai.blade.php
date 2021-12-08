@@ -42,47 +42,18 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($transaksis as $transaksi)
                 <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>13 Oktober - 14 Oktober 2021</td>
-                  <td>250.000</td>
+                  <td>{{ $transaksi->kendaraan->name }}</td>
+                  <td>{{ $transaksi->user->name }}</td>
+                  <td>{{ $transaksi->kendaraan->kota }}</td>
+                  <td>{{$transaksi->tanggal_transaksi()}} -{{$transaksi->tanggal_berakhir()}}</td>
+                  <td>{{number_format($transaksi->kendaraan->harga,0,',','.')}}</td>
                   <td>
-                      <i class="fa-solid fa-info-circle"></i>
+                      <i class="fa-solid fa-info-circle" onclick="show_detail({{ $transaksi->id }})"></i>
                   </td>
                 </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>13 Oktober - 14 Oktober 2021</td>
-                  <td>250.000</td>
-                  <td>
-                      <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>13 Oktober - 14 Oktober 2021</td>
-                  <td>250.000</td>
-                  <td>
-                      <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avanza</td>
-                  <td>Aris</td>
-                  <td>Surabaya</td>
-                  <td>13 Oktober - 14 Oktober 2021</td>
-                  <td>250.000</td>
-                  <td>
-                      <i class="fa-solid fa-info-circle"></i>
-                  </td>
-                </tr>
-                
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -148,6 +119,33 @@
           </div>
         </div>
         
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                    <h3 class="text-center">Detail Pesanan</h3>
+                  </div>
+                  </div>
+                  <div class="col-12 detail-show">
+                  <p class="">Email: aris@gmail.com</p>
+                  <p class="">Nama Pengguna: aris</p>
+                  <p class="">Total Pembayaran: Rp. 500.232</p>
+                  <p class="">Status: <i class="color-yellow">Pengajuan</i></p>
+                  <p class="m-0">Nama Bank</p>
+                  <input type="text" name="" id="" value="BCA" class="input-form w-100 p-2" disabled>
+                  <p class="m-0">Atas Nama Rekening Bank</p>
+                  <input type="text" name="" id="" value="Erik" class="input-form w-100 p-2" disabled>
+                  <p class="m-0">No. Rekening</p>
+                  <input type="text" name="" id="" value="32768279" class="input-form w-100 p-2" disabled>
+                  </div>
+                  <form action='' id="formdelete" method="get">
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
 @endsection
 
@@ -161,6 +159,37 @@
       var url = '{{ route("admin.user.delete", ":id") }}';
       url = url.replace(':id', user_id);
       $("#formdelete").attr('action',url);
+    }
+    function show_detail(id){
+      let url= "{{route('api.transaksi.showId','')}}"+"/"+id;
+      $.ajax({
+          url: url,
+          type: "get", //send it through get method
+          success: function(response) {
+              // console.log(response['content']['kendaraan']['harga']);
+              var jumlah_display = new Intl.NumberFormat(['ban', 'id']).format(response['content']['kendaraan']['harga']);
+              var jumlah_display_total = new Intl.NumberFormat(['ban', 'id']).format(response['content']['total_harga']);
+              // console.log(response);
+              let html_detail = `
+                  <p class="email">Nama Unit: ${response['content']['kendaraan']['name']}</p>
+                  <p class="name">Nama Pengguna: ${response['content']['user']['name']}</p>
+                  <p class="bank">Pilihan Kota: ${response['content']['kendaraan']['kota']}</p>
+                  <p class="jumlah">Tanggal Sewa: ${response['content']['tanggal_transaksi']}-${response['content']['tanggal_berakhir']}</p>
+                  <p class="status">Status: <i class="color-yellow">${response['content']['status']}</i></p>
+                  <p class="status">Biaya Sewa/Hari: Rp.${jumlah_display}</p>
+                  <p class="status">Total Biaya: Rp.${jumlah_display_total}</p>
+              `;
+              $('.detail-show').html(html_detail);
+
+              $('#detailModal').modal("show"); 
+          },
+          error: function(xhr) {
+              console.log(xhr);
+              //Do Something to handle error
+          }
+      });
+
+      
     }
     $(document).ready(function() {
       $('.profil-link').click(function(e){

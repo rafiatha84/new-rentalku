@@ -46,7 +46,7 @@ class Transaksi extends Model
         return Carbon::createFromTimestamp(strtotime($this->waktu_ambil))->isoFormat('D MMM YYYY');
     }
     public function tanggal_berakhir(){
-        return Carbon::createFromTimestamp(strtotime("$this->waktu_ambil + $this->durasi day"))->isoFormat('D MMM YYYY');
+        return Carbon::createFromTimestamp(strtotime($this->waktu_kembali))->isoFormat('D MMM YYYY');
     }
     public function ratingKendaraan(){
         return $this->hasOne('App\Models\RatingKendaraan','transaksi_id','id');

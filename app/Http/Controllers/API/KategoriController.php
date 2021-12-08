@@ -18,27 +18,14 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
+        $response = [
+            "status" => "success",
+            "message" => 'Data Kategori Ditemukan',
+            "errors" => null,
+            "content" => $kategori,
+        ];
 
-        if (count($kategori) > 0) {
-            $response = [
-                "status" => "success",
-                "message" => 'Data Kategori Ditemukan',
-                "errors" => null,
-                "content" => $kategori,
-            ];
-            return response($response, 200);
-        } else {
-            $response = [
-                "status" => "gagal",
-                "message" => 'Data kategori tidak ada',
-                "errors" => null,
-                "content" => $kategori,
-            ];
-            return response($response, 200);
-        }
-        
-
-        return response()->json($kategori, 200);
+        return response()->json($response, 200);
     }
 
     /**
@@ -107,9 +94,18 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showId($id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        $response = [
+            "status" => "success",
+            "message" => 'Data Kategori Ditemukan',
+            "errors" => null,
+            "content" => $kategori,
+        ];
+
+        return response()->json($response, 200);
+
     }
 
     /**

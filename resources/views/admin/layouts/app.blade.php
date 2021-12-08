@@ -63,9 +63,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteNamed('admin.artikel') ? 'active' : '' }}" href="{{ route('admin.artikel') }}">
+                <a class="nav-link {{ Route::currentRouteNamed('admin.slider') ? 'active' : '' }}" href="{{ route('admin.slider') }}">
                 <i class="fa-solid fa-book"></i>
-                Kelola Artikel
+                Kelola Slider
                 </a>
               </li>
               <li class="nav-item">

@@ -51,9 +51,9 @@
                   </td>
                   <td>
                     @if($topup->status == "Dikonfirmasi")
-                      <i class="color-base">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
+                      <i class="color-base">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail({{$topup->id}})"></i>
                     @else
-                      <i class="color-base-second">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail(1)"></i>
+                      <i class="color-base-second">{{ $topup->status }}</i> <i class="fa-solid fa-info-circle" onclick="show_detail({{$topup->id}})"></i>
                     @endif
                   </td>
                 </tr>
@@ -175,6 +175,46 @@
           </div>
         </div>
 
+        <div class="modal fade" id="tambahtopupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="row">
+                  <div class="col-12">
+                  <h3 class="text-center">Tambah Topup</h3>
+                  </div>
+                  </div>
+                  <form action="{{ route('admin.topup.create') }}" id="form-create-penyewa" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="col-12">
+                  <p class="m-0">User</p>
+                  <select name="user_id" id="owner" class="input-form w-100 p-2">
+                    @foreach($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Bank</p>
+                  <select name="rekening_id" id="kategori" class="input-form w-100 p-2">
+                    @foreach($rekenings as $rekening)
+                    <option value="{{$rekening->id}}">{{$rekening->name}}</option>
+                    @endforeach
+                  </select>
+                  <p class="m-0">Jumlah Topup</p>
+                  <input type="number" name="jumlah" placeholder="Masukkan jumlah" class="input-form w-100 p-2 mb-1">
+                  <div class="row px-5">
+                    <div class="col-6">
+                    <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
+                    </div>
+                    <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">tambah</button>
+                    </div>
+                  </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
         
 @endsection
 
@@ -202,7 +242,7 @@
           url: url,
           type: "get", //send it through get method
           success: function(response) {
-              console.log(response);
+              console.log(response['content']['jumlah']);
               var jumlah_display = new Intl.NumberFormat(['ban', 'id']).format(response['content']['jumlah']);
               let css_status = "color-yellow";
               if(response['content']['status'] === "Dikonfirmasi"){
@@ -228,7 +268,11 @@
       
     }
     $(document).ready(function() {
-      $('.profil-link').click(function(e){
+        $('.tambahtopup').click(function(e){
+          e.preventDefault();
+          $('#tambahtopupModal').modal("show"); 
+        });
+        $('.profil-link').click(function(e){
           e.preventDefault();
           $('#profilModal').modal("show"); 
         });

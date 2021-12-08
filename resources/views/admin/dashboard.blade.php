@@ -377,7 +377,6 @@
               //Do Something to handle error
           }
       });
-      
     }
     $(document).ready(function() {
       // $(".camera-icon").click(function () {

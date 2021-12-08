@@ -230,14 +230,14 @@ class TransaksiDompetController extends Controller
                 $transaksiDompet = TransaksiDompet::create([
                     'user_id' => $request->user_id,
                     'dompet_id' => $dompet->id,
-                    'name' => "Penarikan Dompetku",
+                    'name' => "Penarikan",
                     'jumlah' => (-1)*$request->jumlah,
                     'kode_unik' => 0,
                     'bank' => $request->bank,
                     'no_rek' => $request->no_rek,
                     'status' => 'Dikonfirmasi',
                     'atas_nama' => $request->atas_nama,
-                    'keterangan' => "Sedang di proses"
+                    'keterangan' => "Pengajuan"
                 ]);
                 $saldo = TransaksiDompet::where('dompet_id', $dompet->id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
                 $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
@@ -289,7 +289,8 @@ class TransaksiDompetController extends Controller
             $transaksiDompet = TransaksiDompet::where('id',$transaksi_dompet_id)->firstOrFail();
             //update status menjadi Dikonfirmasi
             $updatetransaksi= TransaksiDompet::where('id',$transaksi_dompet_id)->update([
-                'status' => 'Dikonfirmasi'
+                'status' => 'Dikonfirmasi',
+                'keterangan' => 'Dikonfirmasi'
             ]);
             $transaksiDompet = TransaksiDompet::where('id',$transaksi_dompet_id)->firstOrFail();
             //get saldo saat ini
@@ -346,6 +347,29 @@ class TransaksiDompetController extends Controller
         return response()->json($response,200);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showId($id)
+    {
+        $transaksiDompet = TransaksiDompet::with('user', 'dompet')->findOrFail($id);
+        
+        if (is_null($transaksiDompet)) {
+            return response()->json('Data not found', 404); 
+        }
+        $response = [
+            "status" => "success",
+            "message" => 'Sukses show data',
+            "errors" => null,
+            "content" => $transaksiDompet,
+        ];
+        return response()->json($response,200);
+    }
+    
+
     public function saldoDompet($user_id)
     {
         
@@ -358,13 +382,14 @@ class TransaksiDompetController extends Controller
             $updatesaldo = Dompet::where('user_id',$user_id)->update([
                 'saldo' => $dompet->jumlah
             ]);
-            return response()->json($dompet, 200);
+            $response =Array(
+                    "jumlah" => $dompet->jumlah
+            );
+            return response()->json($response, 200);
         }
         $response =Array(
-            Array(
                 "jumlah" => 0
-            )
-        );
+            );
         return response()->json($response, 200);
     }
 

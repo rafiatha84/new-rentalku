@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class AdminKategoriController extends Controller
 {
@@ -31,9 +32,27 @@ class AdminKategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), 
+        [
+            'name' => 'required'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('admin.kategori');
+        }
+
+        $kategori = Kategori::create([
+            'name' => $request->name
+        ]);
+
+        if($kategori){
+            return redirect()->route('admin.kategori');
+        }else{
+            return redirect()->route('admin.kategori');
+        }
     }
 
     /**
@@ -78,7 +97,24 @@ class AdminKategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), 
+        [
+            'name' => 'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('admin.kategori');
+        }
+
+        $data_upload = $request->all();
+        unset($data_upload['_token']);
+        $kategori = Kategori::where('id',$id)->update($data_upload);
+        if ($kategori) {
+            return redirect()->route('admin.kategori');
+        } else {
+            return redirect()->route('admin.kategori');
+        }
     }
 
     /**
@@ -89,6 +125,8 @@ class AdminKategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect()->route('admin.kategori');
     }
 }
