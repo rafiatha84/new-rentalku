@@ -108,51 +108,6 @@
         </div>
     </div>
 
-    <!-- <div id="artikel mb-2">
-        <div class="container">
-            <div class="row col-lg-12 mb-2">
-                <h1 class="mx-auto">Artikel</h1>
-            </div>
-            <div class="row col-lg-12 mb-2">
-                <div class="col-lg-4">
-                    <div class="box-border">
-                        <div class="img-box">
-                            <img src="{{ asset('image/landscape1.png') }}" alt="" class="h-100 w-100">
-                        </div>
-                        <div class="textbox p-2">
-                        <label for="">otomotif</label>
-                        <p><b>Enam Teknik Mencuci Mobil yang Benar, Jangan Asal!</b></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="box-border">
-                    <div class="img-box">
-                        <img src="{{ asset('image/landscape2.png') }}" alt="" class="h-100 w-100">
-                    </div>
-                    <div class="textbox p-2">
-                    <label for="">Travel</label>
-                    <p><b>Enam Teknik Mencuci Mobil yang Benar, Jangan Asal!</b></p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="box-border">
-                        <div class="img-box">
-                            <img src="{{ asset('image/landscape1.png') }}" alt="" class="h-100 w-100">
-                        </div>
-                        <div class="textbox p-2">
-                        <label for="">otomotif</label>
-                        <p><b>Enam Teknik Mencuci Mobil yang Benar, Jangan Asal!</b></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row col-lg-12">
-                <p class="mx-auto"><i><a href="" class="selengkapnya">Lihat selengkapnya</a></i></p>
-            </div>
-        </div>
-    </div> -->
     <div class="row col-lg-12 mt-4 mb-2 your-class">
         @foreach($sliders as $slider)
         <div class="col-12 mb-3">

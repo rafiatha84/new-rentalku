@@ -46,6 +46,28 @@
 .checkbox-supir:checked + label {
     background-color: rgba(0, 122, 102, 0.5);
 }
+.label-button{
+    background-color: white;
+    color: #007a66;
+    border: 1px solid #007a66;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.label-button:hover{
+    background-color: white;
+    color: #007a66;
+    border: 1px solid #007a66;
+    text-decoration: none;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+.checkbox-pilih-supir{
+    display: none;
+}
+.checkbox-pilih-supir:checked + label {
+    background-color: #007a66;
+    color: white;
+}
 .box-img-supir{
     width: 70px;
     height: 70px;

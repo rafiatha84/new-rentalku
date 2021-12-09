@@ -25,6 +25,17 @@
                                     <p class="m-0"><b>CAR RENT- {{$kendaraan->user->name}}</b></p>
                                     <p class="mb-0"><?php echo ($kendaraan->supir == 1) ? 'Dengan Sopir' : 'Tanpa Sopir'; ?></p>
                                 </div>
+                                <p class="m-0">Sopir</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="radio" id="tanpa-sopir" name="sopir" class="checkbox-pilih-supir" value="0" checked/>
+                                        <label class="label-button py-2 d-block text-center" for="tanpa-sopir">Tanpa Sopir</label>
+                                    </div>
+                                    <div class="col-6">
+                                    <input type="radio" id="dengan-sopir" name="sopir" class="checkbox-pilih-supir" value="1"/>
+                                        <label class="label-button py-2 d-block text-center" for="dengan-sopir">Dengan Sopir</label>
+                                    </div>
+                                </div>
                                 <p class="m-0">Alamat</p>
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}" required>
                                 <input type="hidden" name="kendaraan_id" value="{{$kendaraan->id}}" required>
@@ -46,67 +57,76 @@
                                     <p class="mb-0">total- Rp.<span class="harga_total">0</span></p>
                                 </div>
                                 <hr class="hr-detail">
-                                <h5 class="text-center"><b>Konfirmasi Data diri pemesan</b></h5>
-                                <p class="mb-0 mt-1">Nama Lengkap</p>
-                                <input type="text" name="name" id="" placeholder="Masukkan nama" class="radius-20 p-2 w-100">
-                                <p class="mb-0 mt-1">No Telepon</p>
-                                <input type="text" name="telp" id="" placeholder="Masukkan telp" class="radius-20 p-2 w-100">
-                                <p class="mb-0 mt-1">Nomor Induk Kependudukan</p>
-                                <input type="text" name="nik" id="" placeholder="Masukkan NIK" class="radius-20 p-2 w-100">
-                                <p class="mb-0 mt-1">Upload Foto KTP</p>
-                                <div class="element w-100 radius-20">
-                                    <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
-                                    <input type="file" name="foto_ktp" id="" placeholder="" class="input-form input-foto">
-                                </div>
-                                <hr>
-                                @if($kendaraan->supir == 1)
-                                <h5 class="text-center">Pilih Sopir</h5>
-                                <div class="row">
-                                    @foreach($kendaraan->user->pengemudi as $pengemudi)
-                                    <div class="col-6">
-                                       <input type="radio" id="{{$pengemudi->id}}" name="pengemudi_id" class="checkbox-supir" value="{{$pengemudi->id}}"/>
-                                       <label class="supir-box py-2 d-block" for="{{$pengemudi->id}}">
-                                       <div class="box-img-supir mx-auto">
-                                            <img src="{{ asset($pengemudi->user->image_link) }}" class="img-responsive w-100" alt="">
-                                        </div>
-                                        <p class="m-0 text-center">{{ $pengemudi->user->name }}</p>
-                                        <?php 
-                                        $ratingAvg = 0;
-                                        $ratingSum=0;
-                                        if($pengemudi->user->ratingUser->count()>0){
-                                            foreach($pengemudi->user->ratingUser as $rating){
-                                                $ratingSum += $rating->jumlah_bintang;
-                                            }
-                                            $ratingAvg=$ratingSum/$pengemudi->user->ratingUser->count();
-                                        }
-                                        ?>
-                                        <p class="m-0 text-center"><i class="fa-solid fa-star star-active"></i>{{number_format($ratingAvg,1)}}</p>
-                                       </label>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                <hr>
-                                @endif
-                                <div class="row">
-                                    <div class="col-2 text-center my-2">
-                                        <i class="fa-solid fa-wallet base-color" style="font-size:30px;"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p><b>Saldo Anda</b></p>
-                                        <p>Rp.{{number_format($dompet->saldo,0,',','.')}}</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">Pembayaran dengan dompetksu</p>
-                                <p class="saldo-tidak-cukup text-center text-danger" style="display:none;color:#dc3545!important;">Saldo anda tidak cukup!!!</p>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn button-base button-yellow-primary px-5 pesan-button" value="Submit">
-                                        <div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div> Pesan Sekarang
-                                    </button>
+                                        <button class="btn button-secondary px-5 btn-selanjutnya" onclick="form_selanjutnya()">Selanjutnya</button>
+                                    </div>
+                                </div>
+                                <div class="form-kedua hidden">
+                                <h5 class="text-center"><b>Konfirmasi Data diri pemesan</b></h5>
+                                    <p class="mb-0 mt-1">Nama Lengkap</p>
+                                    <input type="text" name="name" id="" placeholder="Masukkan nama" class="radius-20 p-2 w-100">
+                                    <p class="mb-0 mt-1">No Telepon</p>
+                                    <input type="text" name="telp" id="" placeholder="Masukkan telp" class="radius-20 p-2 w-100">
+                                    <p class="mb-0 mt-1">Nomor Induk Kependudukan</p>
+                                    <input type="text" name="nik" id="" placeholder="Masukkan NIK" class="radius-20 p-2 w-100">
+                                    <p class="mb-0 mt-1">Upload Foto KTP</p>
+                                    <div class="element w-100 radius-20">
+                                        <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
+                                        <input type="file" name="foto_ktp" id="" placeholder="" class="input-form input-foto">
+                                    </div>
+                                    <hr>
+                                    @if($kendaraan->user->pengemudi->count() > 0)
+                                    <div class="sopir-div">
+                                    <h5   h5 class="text-center">Pilih Sopir</h5>
+                                    <div class="row">
+                                        @foreach($kendaraan->user->pengemudi as $pengemudi)
+                                        <div class="col-6">
+                                        <input type="radio" id="{{$pengemudi->id}}" name="pengemudi_id" class="checkbox-supir" value="{{$pengemudi->id}}"/>
+                                        <label class="supir-box py-2 d-block" for="{{$pengemudi->id}}">
+                                        <div class="box-img-supir mx-auto">
+                                                <img src="{{ asset($pengemudi->user->image_link) }}" class="img-responsive w-100" alt="">
+                                            </div>
+                                            <p class="m-0 text-center">{{ $pengemudi->user->name }}</p>
+                                            <?php 
+                                            $ratingAvg = 0;
+                                            $ratingSum=0;
+                                            if($pengemudi->user->ratingUser->count()>0){
+                                                foreach($pengemudi->user->ratingUser as $rating){
+                                                    $ratingSum += $rating->jumlah_bintang;
+                                                }
+                                                $ratingAvg=$ratingSum/$pengemudi->user->ratingUser->count();
+                                            }
+                                            ?>
+                                            <p class="m-0 text-center"><i class="fa-solid fa-star star-active"></i>{{number_format($ratingAvg,1)}}</p>
+                                        </label>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    </div>
+                                    @endif
+                                    <div class="row">
+                                        <div class="col-2 text-center my-2">
+                                            <i class="fa-solid fa-wallet base-color" style="font-size:30px;"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p><b>Saldo Anda</b></p>
+                                            <p>Rp.{{number_format($dompet->saldo,0,',','.')}}</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">Pembayaran dengan dompetksu</p>
+                                    <p class="saldo-tidak-cukup text-center text-danger" style="display:none;color:#dc3545!important;">Saldo anda tidak cukup!!!</p>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn button-base button-yellow-primary px-5 pesan-button" value="Submit">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="spinner-border" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </div> Pesan Sekarang
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 </form>
@@ -141,6 +161,10 @@
 
 @section('js') 
     <script>
+        function form_selanjutnya(){
+            $('.btn-selanjutnya').addClass("hidden");
+            $('.form-kedua').removeClass("hidden");
+        }
         function setvalue(value,lat,long){
             $('.alamat-input').val(value);
             $('input[name="lat"]').val(lat);
@@ -169,6 +193,18 @@
                 // alert(days);
             }
         }
+        function cek_sopir(){
+            let sopir = 0;
+            sopir=$('input[name=sopir]:checked').val();
+            if(sopir === "0"){
+                $('.sopir-div').addClass('hidden');
+            }else{
+                $('.sopir-div').removeClass('hidden');
+            }
+        }
+        $('input[name=sopir]').on('change',function(){
+            cek_sopir();
+        });
         $(document).ready(function() {
             $('#pemesanan-create').submit(function(e){
                 e.preventDefault();
@@ -204,6 +240,7 @@
                 });
                 
             });
+            cek_sopir();
             $(".camera-icon").click(function () {
                 $("input[type='file']").trigger('click');
             });

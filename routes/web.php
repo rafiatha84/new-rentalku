@@ -50,7 +50,9 @@ Route::get('dompetku/topup/tutorial',[App\Http\Controllers\User\UserDompetContro
 Route::get('dompetku/topup/{id}',[App\Http\Controllers\User\UserDompetController::class, 'topup_detail'])->name('user.dompetku.topup.detail');
 
 Route::group(['prefix' => 'pemilik'],function(){
-        //dashboard
+    Route::get('register',[App\Http\Controllers\User\PemilikProfileController::class,'register'])->name('pemilik.register');
+    Route::post('register/action',[App\Http\Controllers\User\PemilikProfileController::class,'register_action'])->name('pemilik.register.action');
+    //dashboard
     Route::get('dashboard', [App\Http\Controllers\User\PemilikDashboardController::class, 'index'])->name('pemilik.dashboard');
     Route::get('profile',[App\Http\Controllers\User\PemilikProfileController::class,'index'])->name('pemilik.profile');
     Route::get('profile/edit',[App\Http\Controllers\User\PemilikProfileController::class,'edit'])->name('pemilik.profile.edit');

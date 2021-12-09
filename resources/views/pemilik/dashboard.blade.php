@@ -66,16 +66,17 @@
             <img src="{{ asset('image/mobil-round.png') }}" alt="" class="mobil img-fluid mx-auto d-block">
         </div>
     </div>
-    <div id="section-2 ">
+    <div id="section-2" >
         <div class="container">
-            <div class="row col-12 mb-5">
-                @if(Auth::user()->role == "user" || Auth::user()->role == "admin")
+            <div class="row col-12 mb-5" style="opacity:0;">
                 <div class="col-4">
                     <h4><b>Anda punya mobil nganggur?</b></h4>
                     <h4 class="">Segera daftarin aja di RentalKu!</h4>
                     <a href="" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
                 </div>
-                @endif
+            </div>
+            <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">
+                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
             </div>
         </div>
     </div>
@@ -149,7 +150,7 @@
                 $('.cari-rental').focus(function(){
                     $('.search-toggle-box').removeClass('hidden');
                 });
-                $('.pilihankota-check').click(function(e){
+                $('.kategori-check').click(function(e){
                     nama = $(e.currentTarget).text();
                     var classList = $(e.currentTarget).attr("for");
                     element = '.'+classList;

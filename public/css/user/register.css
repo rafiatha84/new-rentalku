@@ -45,3 +45,22 @@ a:link{
 a:hover{
     color: #007a66;
 }
+.element {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #007a66;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .camera-icon {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .camera-icon {
+    opacity: 0.6;
+  }
+  .input-foto {
+    cursor: pointer;
+    display: none;
+  }

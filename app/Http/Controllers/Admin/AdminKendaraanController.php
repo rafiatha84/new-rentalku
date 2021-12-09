@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class AdminKendaraanController extends Controller

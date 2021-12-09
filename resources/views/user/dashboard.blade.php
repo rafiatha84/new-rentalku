@@ -58,14 +58,17 @@
             <img src="{{ asset('image/mobil-round.png') }}" alt="" class="mobil img-fluid mx-auto d-block">
         </div>
     </div>
-    <div id="section-2 ">
+    <div id="section-2" >
         <div class="container">
-            <div class="row col-12 mb-5">
+            <div class="row col-12 mb-5" style="opacity:0;">
                 <div class="col-4">
                     <h4><b>Anda punya mobil nganggur?</b></h4>
                     <h4 class="">Segera daftarin aja di RentalKu!</h4>
                     <a href="" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
                 </div>
+            </div>
+            <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">
+                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
             </div>
         </div>
     </div>

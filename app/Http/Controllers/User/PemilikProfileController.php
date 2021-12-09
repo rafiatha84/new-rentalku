@@ -6,10 +6,77 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Hash;
+use Validator;
 
 class PemilikProfileController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('user');
+    }
+
+    public function register(){
+        $user = User::findOrFail(Auth::user()->id);
+        return view('user.auth.register-pemilik',[
+        'user' => $user
+        ]);
+    }
+    public function register_action(Request $request)
+    {
+        $validator = Validator::make($request->all(), 
+        [
+            'id' => 'required|integer',
+            'name' => 'required',
+            'nik' => 'required',
+            'foto_ktp' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        if($validator->fails())
+        {
+            dd($validator->errors());
+            return redirect()->route('pemilik.register');
+        }
+        DB::beginTransaction();
+        try{
+            $cek = User::findOrFail($request->id);
+            $data_update = $request->only(['name','nik']);
+            if($request->has('foto_ktp'))
+            {
+                $uploadFolder = "image/foto_ktp/";
+                $image = $request->file('foto_ktp');
+                $imageName = time().'-'.$image->getClientOriginalName();
+                $image->move(public_path($uploadFolder), $imageName);
+                $data_update['foto_ktp'] = $uploadFolder.$imageName;
+            }
+            $data_update['role'] = "pemilik";
+            $user = User::where('id',$request->id)->update(
+                $data_update
+            );
+            if($user){
+                DB::commit();
+                return redirect()->route('pemilik.dashboard')->with([
+                    'status' => 'Sukses ganti profil dan password'
+                ]);
+            }else{
+                DB::rollback();
+                dd('gatau');
+                return redirect()->route('pemilik.register')->with([
+                    'status' => 'Gagal update profil'
+                ]);
+            }
+        }catch(\Exception $e){
+            dd($e);
+            DB::rollback();
+            return redirect()->route('pemilik.register'); 
+        }
+    }
     public function index(){
         return view('pemilik.profile');
     }
