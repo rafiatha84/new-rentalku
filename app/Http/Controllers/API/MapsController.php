@@ -85,7 +85,9 @@ class MapsController extends Controller
     {
         $id = $request->id;
         $lat = $request->lat;
+        $lat = str_replace('°', '', $lat);
         $lng = $request->lng;
+        $lng = str_replace('°', '', $lng);
         $kendaraan = Kendaraan::where('id',$id)->update([
             'lat' => $lat,
             'long' => $lng,
