@@ -31,6 +31,12 @@
                                     <a href="{{ route('pemilik.lacak',$transaksi->kendaraan->id) }}" class="base-href button-yellow-primary d-block px-2 py-1 href-base">Lacak Mobil</a>
                                     </div>
                                 </div>
+                                <p class="m-0">Sopir</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="label-button py-2 d-block text-center" for="tanpa-sopir">{{$transaksi->sopir()}}</label>
+                                    </div>
+                                </div>
                                 <p class="m-0">Alamat</p>
                                 <div class="auto-complete">
                                     <input type="text" name="" value="{{ $transaksi->alamat }}" placeholder="Masukkan Alamat" id="" class="px-2 py-1 alamat-input w-100">

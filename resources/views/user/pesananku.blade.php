@@ -52,7 +52,7 @@
                         <td>
                             <div class="row col-12">
                                 <div class="col-6 text-center">
-                                    <a href="{{ route('user.pemesanan.detail',$transaksi->id) }}" class="href-base button-yellow-primary p-2 d-block">lihat data pemesanan</a>
+                                    <a href="{{ route('user.pemesanan.detail',$transaksi->id) }}" class="href-white button-yellow-primary p-2 d-block">lihat data pemesanan</a>
                                 </div>
                                 <div class="col-6 text-center">
                                     <button class="href-base button-yellow-secondary p-2 d-block" onclick="show_room()">hubungi pemilik mobil</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
+use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Http;
 
 class MapsController extends Controller
@@ -79,5 +80,21 @@ class MapsController extends Controller
         $response = Http::get($link);
         return response()->json(['result'=> $response->json()]);
         
+    }
+    public function update_maps(Request $request)
+    {
+        $id = $request->id;
+        $lat = $request->lat;
+        $lng = $request->lng;
+        $kendaraan = Kendaraan::where('id',$id)->update([
+            'lat' => $lat,
+            'long' => $lng,
+        ]);
+        if($kendaraan){
+            return 'success';
+        }else{
+            return 'gagal';
+        }
+
     }
 }

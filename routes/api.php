@@ -97,6 +97,7 @@ Route::get('/maps/lat_to_address', [MapsController::class, 'latToAddress'])->nam
 Route::get('/maps/address_to_lat', [MapsController::class, 'addressToLat'])->name('api.maps.long');
 Route::get('/maps/track/{kendaraan_id}', [MapsController::class, 'kendaraanTrack'])->name('api.maps.track');
 Route::get('/maps/search', [MapsController::class, 'search_address'])->name('api.maps.search');
+Route::get('/maps/update',[MapsController::class, 'update_maps'])->name('api.maps.update');
 
 //kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->name('api.kategori.show');

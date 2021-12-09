@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\ChatRoom;
 use App\Models\Message;
 Use App\Events\FormSubmitted;
+
 class UserMessageController extends Controller
 {
     public function get_chat_room(){

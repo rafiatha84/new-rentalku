@@ -18,7 +18,6 @@ class PemilikKendaraanController extends Controller
     }
 
     public function detail($kendaraan_id){
-        
         return view('user.detail-produk');
     }
 
@@ -31,6 +30,10 @@ class PemilikKendaraanController extends Controller
     }
     
     public function lacak($kendaraan_id){
-        return view('pemilik.lacak');
+        $kendaraan = Kendaraan::findOrFail($kendaraan_id);
+        // dd($kendaraan);
+        return view('pemilik.lacak',[
+            'kendaraan' => $kendaraan
+        ]);
     }
 }
