@@ -91,9 +91,9 @@ class MapsController extends Controller
             'long' => $lng,
         ]);
         if($kendaraan){
-            return 'success';
+            return response()->json('success',200);
         }else{
-            return 'gagal';
+            return response()->json('gagal',200);
         }
 
     }
