@@ -40,7 +40,7 @@
                             <a class="nav-link nav-left {{ Route::currentRouteNamed('user.pesananku') || Route::currentRouteNamed('user.pesananku.selesai') || Route::currentRouteNamed('user.pemesanan.detail') ? 'active' : '' }}" href="{{ route('user.pesananku') }}">PesananKu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-left {{ Route::currentRouteNamed('user.dompetkuku') ? 'active' : '' }}" href="{{ route('user.dompetku') }}">DompetKu</a>
+                            <a class="nav-link nav-left {{ Route::currentRouteNamed('user.dompetku') || Route::currentRouteNamed('user.dompetku.topup') || Route::currentRouteNamed('user.dompetku.tutroial') || Route::currentRouteNamed('user.dompetku.detail') ? 'active' : '' }}" href="{{ route('user.dompetku') }}">DompetKu</a>
                         </li>
                     </ul>
 
