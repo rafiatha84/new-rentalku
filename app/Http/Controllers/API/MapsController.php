@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Http;
+Use App\Events\LocationChange;
 
 class MapsController extends Controller
 {
@@ -59,10 +60,11 @@ class MapsController extends Controller
 
     public function kendaraanTrack($id)
     {
-    
+        $kendaraan = Kendaraan::findOrFail($id);
+
         return response()->json([
-            "lat" => "300000",
-            "long" => "500000"
+            "lat" => $kendaraan->lat,
+            "long" => $kendaraan->long
        ],200);
     }
     public function search_address(Request $request){
@@ -92,7 +94,12 @@ class MapsController extends Controller
             'lat' => $lat,
             'long' => $lng,
         ]);
+        $arrayLocation = Array();
         if($kendaraan){
+            $arrayLocation['kendaraan_id']=$request->id;
+            $arrayLocation['lat']=$lat;
+            $arrayLocation['lng']=$lng;
+            event(new LocationChange($arrayLocation));
             return response()->json('success',200);
         }else{
             return response()->json('gagal',200);

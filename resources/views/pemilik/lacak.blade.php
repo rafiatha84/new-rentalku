@@ -35,19 +35,21 @@
     myVar = setInterval(change, 10000);
   }
   function change(){
+    let url = "{{ route('api.maps.track',':id') }}";
+    url = url.replace(":id","{{$kendaraan->id}}");
     $.ajax({
-        url: "https://api.orin.id/api/orin/device/355087090163914",
+        url: url,
         type: "GET", //send it through get method
         headers:{
           "Authorization": "orin e8J8yKH1TgaJdmqIWOHG9NHf2itMLIFaLyLncn2WSdDU1nYw"
         },
         success: function(response, textStatus, xhr) {
             // console.log(xhr.status);
-            // console.log(response);
+            console.log(response);
             // console.log(response['data']['last_data']['lat']);
             // console.log(response['data']['last_data']['lng']);
-            surabaya['lat'] = parseFloat(response['data']['last_data']['lat']);
-            surabaya['lng'] = parseFloat(response['data']['last_data']['lng']);
+            surabaya['lat'] = parseFloat(response['lat']);
+            surabaya['lng'] = parseFloat(response['long']);
             map.setCenter(surabaya);
             marker.setPosition(surabaya);
             change_address(surabaya['lat'],surabaya['lng']);
@@ -82,7 +84,7 @@
     });
   }
   $(document).ready(function(){
-    marker_change();
+    // marker_change();
     change();
   });
   function initMap() {
@@ -118,5 +120,16 @@
     );
     infoWindow.open(map);
   }
+  var new_pusher = new Pusher('d442ceb3f03945cb3bea', {
+        cluster: 'eu'
+        });
+  var new_channel = new_pusher.subscribe('my-channel');
+  new_channel.bind('location-change', function(data) {
+    if(data['kendaraan_id'] === "{{ $kendaraan->id }}" ){
+      // console.log("true");
+      change();
+
+    }
+  });
 </script>
 @endsection

@@ -338,7 +338,7 @@
     <script>
 
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = false;
+        Pusher.logToConsole = true;
 
         var pusher = new Pusher('d442ceb3f03945cb3bea', {
         cluster: 'eu'
@@ -346,6 +346,7 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('form-submitted', function(data) {
+            alert('a');
             val = parseInt($('.notification').text());
             val++;
             $('.notification').text(val);
