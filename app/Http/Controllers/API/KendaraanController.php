@@ -27,7 +27,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
             
         }
         else{
@@ -37,7 +37,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
     }
     
@@ -153,7 +153,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -161,7 +161,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => null,
             ];
-            return response($response, 404);
+            return response()->json($response, 404);
 
         }
     }
@@ -176,7 +176,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
 
     }
 

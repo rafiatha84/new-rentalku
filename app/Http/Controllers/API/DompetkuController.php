@@ -20,7 +20,7 @@ class DompetkuController extends Controller
                 "errors" => null,
                 "content" => $dompet,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -28,7 +28,7 @@ class DompetkuController extends Controller
                 "errors" => null,
                 "content" => $dompet,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
     }
     }
     

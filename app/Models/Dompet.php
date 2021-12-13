@@ -11,7 +11,7 @@ class Dompet extends Model
 
     protected $fillable = [
         'user_id',
-        "saldo"
+        'saldo'
     ];
 
     public function user(){

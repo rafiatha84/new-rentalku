@@ -26,7 +26,7 @@ class SliderController extends Controller
                 "errors" => null,
                 "content" => $slider,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
 
         else {
@@ -36,7 +36,7 @@ class SliderController extends Controller
                 "errors" => null,
                 "content" => $slider,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
     }
 

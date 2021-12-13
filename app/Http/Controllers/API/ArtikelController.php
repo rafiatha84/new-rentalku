@@ -27,7 +27,7 @@ class ArtikelController extends Controller
                 "errors" => null,
                 "content" => $artikel,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -35,7 +35,7 @@ class ArtikelController extends Controller
                 "errors" => null,
                 "content" => $artikel,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
 
     }
 }

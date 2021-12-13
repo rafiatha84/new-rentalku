@@ -29,7 +29,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
 
         else {
@@ -39,7 +39,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
         
     }
@@ -175,7 +175,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
 
         else {
@@ -185,7 +185,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
     }
     
@@ -206,7 +206,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
 
         else {
@@ -216,7 +216,7 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
     }
 

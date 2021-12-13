@@ -106,7 +106,7 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -114,7 +114,7 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
             
             
         }
@@ -132,7 +132,7 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -140,7 +140,7 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
     }
 

@@ -37,7 +37,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }
         else {
             $response = [
@@ -46,7 +46,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response($response, 404);
+            return response()->json($response, 404);
         }
 ;
     }
@@ -274,7 +274,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
             
         }
         else{
@@ -284,7 +284,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response($response, 404);
+            return response()->json($response, 404);
         }
     }
 
@@ -303,7 +303,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $data,
             ];
-            return response($response, 200);
+            return response()->json($response, 200);
         }else{
             $response = [
                 "status" => "error",
@@ -311,7 +311,7 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response($response, 404);
+            return response()->json($response, 404);
 
         }
     }
