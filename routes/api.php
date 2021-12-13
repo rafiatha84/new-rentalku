@@ -61,6 +61,7 @@ Route::group(['prefix' => 'message'], function () {
 //Kendaraan
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('api.kendaraan');
 Route::get('/kendaraan/{id}', [KendaraanController::class, 'showId'])->name('api.kendaraan.showId');
+Route::get('/kendaraan/owner/{user_id}',[KendaraaanController::class, 'showByOwner'])->name('api.kendaraan.showByOwner');
 Route::post('/kendaraan/store', [KendaraanController::class, 'store'])->name('api.kendaraan.store');
 Route::post('/kendaraan/update/{id}', [KendaraanController::class, 'update'])->name('api.kendaraan.update');
 Route::delete('/kendaraan/destroy/{id}', [KendaraanController::class, 'destroy'])->name('api.kendaraan.destroy');

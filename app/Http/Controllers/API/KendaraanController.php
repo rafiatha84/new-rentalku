@@ -166,6 +166,28 @@ class KendaraanController extends Controller
         }
     }
 
+    public function showByOwner($user_id)
+    {
+        $kendaraan = Kendaraan::where('user_id', $user_id)->with('kategori')->get();
+        if($kendaraan){
+            $response = [
+                "status" => "success",
+                "message" => 'Data Transaksi Ditemukan',
+                "errors" => null,
+                "content" => $kendaraan,
+            ];
+            return response($response, 200);
+        }
+
+        $response = [
+            "status" => "error",
+            "message" => 'Data Transaksi Tidak Ditemukan',
+            "errors" => null,
+            "content" => null,
+        ];
+        return response($response, 404);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
