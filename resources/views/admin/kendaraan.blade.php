@@ -14,17 +14,8 @@
             </div>  
           
             <div class="btn-toolbar mb-2 mb-md-0">
-            <a class="button mx-2 px-4 py-2 tambahkendaraan"><i class="fa-solid fa-plus"></i> Kendaraan</a>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin Rentalku
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="" class="dropdown-item profil-link">Profil Admin</a>
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
-                </div>
-                </div>
+              <a class="button mx-2 px-4 py-2 tambahkendaraan"><i class="fa-solid fa-plus"></i> Kendaraan</a>
+              <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>
 
@@ -307,18 +298,41 @@
               // console.log(response);
               let image_car = "{{ asset('') }}"+response['content']['image_link'];
               let html_detail = `
-                  <p class="email">Nama Unit: ${response['content']['name']}</p>
-                  <p class="name">Nama Pemilik: ${response['content']['user']['name']}</p>
-                  <p class="bank">Pilihan Kota: ${response['content']['kota']}</p>
-                  <p class="bank">Kategori : ${response['content']['kategori']['name']}</p>
-                  <p class="bank">Jumlah Seat: ${response['content']['seat']}</p>
-                  <p class="bank">Tahun: ${response['content']['tahun']}</p>
-                  <p class="bank">Nopol: ${response['content']['nopol']}</p>
-                  <p class="bank">transmisi: ${response['content']['transmisi']}</p>
-                  <p class="bank">mesin: ${response['content']['mesin']}</p>
-                  <p class="bank">warna: ${response['content']['warna']}</p>
-                  <p class="status">Biaya Sewa/Hari: Rp.${jumlah_display}</p>
-                  <img class="img-responsive w-100" src="${image_car}" />
+              <p class="name mb-0">Nama Pengguna: ${response['content']['user']['name']}</p>
+              <p class="email mb-0">Nama Unit: ${response['content']['name']}</p>
+              <p class="bank mb-0">Jenis Mobil : ${response['content']['kategori']['name']}</p>
+              <p class="status mb-0">Biaya Sewa/Hari: Rp${jumlah_display}</p>
+              <img class="img-responsive w-100 my-1" src="${image_car}" />
+              <div class="row">
+                <div class="col-8 offset-4">
+                  <p class="bank mb-0 h5"><i class="fa-solid fa-user base-color"></i> ${response['content']['seat']} Penumpang</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 offset-4">
+                  <p class="bank mb-0 h5"><i class="fa-solid fa-user base-color"></i> ${response['content']['kota']}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 offset-4">
+                <p class="bank mb-0 h5"><i class="fa-solid fa-car base-color"></i> Transmisi ${response['content']['transmisi']}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 offset-4">
+                <p class="bank mb-0 h5"><i class="fa-solid fa-car base-color"></i> Mesin ${response['content']['mesin']}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 offset-4">
+                <p class="bank mb-0 h5"><i class="fa-solid fa-car base-color"></i> Warna ${response['content']['warna']}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 offset-4">
+                <p class="bank mb-0 h5"><i class="fa-solid fa-car base-color"></i> Tahun ${response['content']['tahun']}</p>
+                </div>
+              </div>
               `;
               $('.detail-show').html(html_detail);
 

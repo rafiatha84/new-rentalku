@@ -296,6 +296,7 @@ class TransaksiController extends Controller
             $data = $transaksi;
             $data['tanggal_transaksi'] = $transaksi->tanggal_transaksi();
             $data['tanggal_berakhir'] = $transaksi->tanggal_berakhir();
+            $data['sopir'] = $transaksi->sopir();
             $response = [
                 "status" => "success",
                 "message" => 'Data Transaksi Ditemukan',

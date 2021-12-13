@@ -22,6 +22,7 @@
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet">
 
     @yield('css')
 </head>

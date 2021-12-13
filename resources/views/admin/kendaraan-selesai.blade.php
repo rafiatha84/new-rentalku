@@ -14,17 +14,7 @@
             </div>  
           
             <div class="btn-toolbar mb-2 mb-md-0">
-              
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin Rentalku
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="" class="dropdown-item profil-link">Profil Admin</a>
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
-                </div>
-                </div>
+            <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>
 
@@ -166,19 +156,39 @@
           url: url,
           type: "get", //send it through get method
           success: function(response) {
-              // console.log(response['content']['kendaraan']['harga']);
+              // console.log(response['content']);
               var jumlah_display = new Intl.NumberFormat(['ban', 'id']).format(response['content']['kendaraan']['harga']);
               var jumlah_display_total = new Intl.NumberFormat(['ban', 'id']).format(response['content']['total_harga']);
               // console.log(response);
+              let image_car = "{{ asset('') }}"+response['content']['kendaraan']['image_link'];
               let html_detail = `
-                  <p class="email">Nama Unit: ${response['content']['kendaraan']['name']}</p>
-                  <p class="name">Nama Pengguna: ${response['content']['user']['name']}</p>
-                  <p class="bank">Pilihan Kota: ${response['content']['kendaraan']['kota']}</p>
-                  <p class="jumlah">Tanggal Sewa: ${response['content']['tanggal_transaksi']}-${response['content']['tanggal_berakhir']}</p>
-                  <p class="status">Status: <i class="color-yellow">${response['content']['status']}</i></p>
-                  <p class="status">Biaya Sewa/Hari: Rp.${jumlah_display}</p>
-                  <p class="status">Total Biaya: Rp.${jumlah_display_total}</p>
+              <p class="name mb-0">Nama Pengguna: ${response['content']['user']['name']}</p>
+              <p class="email mb-0">Nama Unit: ${response['content']['kendaraan']['name']}</p>
+              <p class="email mb-0">Janis Mobil: ${response['content']['kendaraan']['kategori']['name']}</p>
+              <p class="email mb-0">Waktu Sewa: ${response['content']['durasi']} Hari</p>
+              <br>
+              <p class="name mb-0">Nama Pemesan: ${response['content']['name']}</p>
+              <p class="name mb-0">Nama Pemesan: ${response['content']['telp']}</p>
+              <p class="bank mb-0">Pilihan Kota: ${response['content']['kendaraan']['kota']}</p>
+              <img class="img-responsive w-100 my-1" src="${image_car}" />
+              <p class="m-0">alamat</p>
+              <input type="text" name="alamat" value="${response['content']['alamat']}" placeholder="Masukkan Seat" class="input-form input-info w-100 p-2" disabled>
+              <p class="m-0">Tanggal</p>
+              <input type="text" name="tanggal" value="${response['content']['tanggal_transaksi']}-${response['content']['tanggal_berakhir']}" placeholder="Masukkan Seat" class="input-form input-info w-100 p-2" disabled>
               `;
+              if(response['content']['sopir'] === "Dengan Sopir"){
+                html_detail +=`
+                <p class="m-0">Sopir</p>
+                <input type="text" name="sopir" value="${response['content']['pengemudi_transaksi']['pengemudi']['user']['name']}" placeholder="Masukkan Seat" class="input-form input-info w-100 p-2" disabled>
+                <p class="m-0">Total</p>
+                <input type="number" name="total" value="${response['content']['total_harga']}" placeholder="Masukkan Seat" class="input-form input-info w-100 p-2" disabled>
+                `;
+              }else{
+                html_detail +=`
+                <p class="m-0">Total</p>
+                <input type="number" name="total" value="${response['content']['total_harga']}" placeholder="Masukkan Seat" class="input-form input-info w-100 p-2" disabled>
+                `;
+              }
               $('.detail-show').html(html_detail);
 
               $('#detailModal').modal("show"); 
@@ -188,8 +198,6 @@
               //Do Something to handle error
           }
       });
-
-      
     }
     $(document).ready(function() {
       $('.profil-link').click(function(e){

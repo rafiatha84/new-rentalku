@@ -13,16 +13,7 @@
               <a class="button mx-2 px-4 py-2 tambahpemilik"><i class="fa-solid fa-plus"></i> Pemilik mobil</a>
               <a class="button mx-2 px-4 py-2 tambahsopir"><i class="fa-solid fa-plus"></i> Sopir</a>
               <a class="button mx-2 px-4 py-2 tambahadmin"><i class="fa-solid fa-plus"></i> Admin</a>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle button-trans" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin Rentalku
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a href="" class="dropdown-item profil-link">Profil Admin</a>
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
-                </div>
-                </div>
+              <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>
 
