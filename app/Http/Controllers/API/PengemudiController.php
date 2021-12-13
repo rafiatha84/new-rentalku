@@ -29,7 +29,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
 
         else {
@@ -39,7 +42,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         
     }
@@ -175,7 +181,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
 
         else {
@@ -185,7 +194,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
     }
     
@@ -206,7 +218,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
 
         else {
@@ -216,7 +231,10 @@ class PengemudiController extends Controller
                 "error" => null,
                 "content" => $pengemudi
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
     }
 
@@ -329,7 +347,10 @@ class PengemudiController extends Controller
                 "content" => $pengemudi_data
             ];
 
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
          } else {
             $response = [
                 "status" => "gagal",

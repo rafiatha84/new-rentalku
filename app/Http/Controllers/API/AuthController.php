@@ -56,7 +56,10 @@ class AuthController extends Controller
                     "token_type" => "Bearer"
                 ],
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }catch(\Exception $e){
             DB::rollback();
             $response = [
@@ -137,7 +140,10 @@ class AuthController extends Controller
             'errors' => null,
             'content' => null,
         ];
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
     }
     public function me(Request $request)
     {

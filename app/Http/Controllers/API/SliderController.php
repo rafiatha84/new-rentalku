@@ -26,7 +26,10 @@ class SliderController extends Controller
                 "errors" => null,
                 "content" => $slider,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
 
         else {
@@ -36,7 +39,10 @@ class SliderController extends Controller
                 "errors" => null,
                 "content" => $slider,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
     }
 
@@ -207,7 +213,10 @@ class SliderController extends Controller
             
             if ($response) {
                 $slider->delete();
-                return response()->json($response, 200);
+                return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             } else {
                 $response = [
                     "status" => "failed",
@@ -215,7 +224,10 @@ class SliderController extends Controller
                     "errors" => null,
                     "content" => $slider,
                 ];
-                return response()->json($response, 200);
+                return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             }
             
     }

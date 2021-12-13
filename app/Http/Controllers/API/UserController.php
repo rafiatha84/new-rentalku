@@ -60,7 +60,10 @@ class UserController extends Controller
             "content" => $user,
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
     }
 
     /**

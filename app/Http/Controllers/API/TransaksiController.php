@@ -37,7 +37,10 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         else {
             $response = [
@@ -274,7 +277,10 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $transaksi,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             
         }
         else{
@@ -303,7 +309,10 @@ class TransaksiController extends Controller
                 "errors" => null,
                 "content" => $data,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "error",
@@ -414,7 +423,10 @@ class TransaksiController extends Controller
 
         if($transaksi){
             $transaksi->delete();
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "deleted",

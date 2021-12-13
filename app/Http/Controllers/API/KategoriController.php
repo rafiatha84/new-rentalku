@@ -25,7 +25,10 @@ class KategoriController extends Controller
             "content" => $kategori,
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
     }
 
     /**
@@ -104,7 +107,10 @@ class KategoriController extends Controller
             "content" => $kategori,
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
 
     }
 
@@ -188,7 +194,10 @@ class KategoriController extends Controller
                 "content" => $kategori
             ];  
     
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             $kategori->delete();
         } else {
             $response = [
@@ -198,7 +207,10 @@ class KategoriController extends Controller
                 "content" => $kategori
             ];  
     
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         
     }

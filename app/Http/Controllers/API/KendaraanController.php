@@ -27,7 +27,10 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             
         }
         else{
@@ -37,7 +40,10 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
     }
     
@@ -153,7 +159,10 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "error",
@@ -176,7 +185,10 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
 
     }
 
@@ -275,7 +287,10 @@ class KendaraanController extends Controller
 
         if($kendaraan){
             $kendaraan->delete();
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "deleted",
@@ -284,7 +299,10 @@ class KendaraanController extends Controller
                 "content" => $kendaraan
             ];  
     
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         
 

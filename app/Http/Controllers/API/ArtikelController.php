@@ -27,7 +27,10 @@ class ArtikelController extends Controller
                 "errors" => null,
                 "content" => $artikel,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "error",
@@ -35,7 +38,10 @@ class ArtikelController extends Controller
                 "errors" => null,
                 "content" => $artikel,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
 
     }
 }
@@ -224,7 +230,10 @@ class ArtikelController extends Controller
             "errors" => null,
             "content" => $artikel,
         ];
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         
         if($response){
             $transaksi->delete();
@@ -235,7 +244,10 @@ class ArtikelController extends Controller
                 "errors" => null,
                 "content" => $artikel,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
       
     }

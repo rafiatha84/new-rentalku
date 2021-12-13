@@ -385,12 +385,18 @@ class TransaksiDompetController extends Controller
             $response =Array(
                     "jumlah" => $dompet->jumlah
             );
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         $response =Array(
                 "jumlah" => 0
             );
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
     }
 
     /**

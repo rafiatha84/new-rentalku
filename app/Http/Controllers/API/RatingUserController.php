@@ -106,7 +106,10 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "error",
@@ -114,7 +117,10 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
             
             
         }
@@ -132,7 +138,10 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }else{
             $response = [
                 "status" => "error",
@@ -140,7 +149,10 @@ class RatingUserController extends Controller
                 "errors" => null,
                 "content" => $rating,
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
     }
 
@@ -234,7 +246,10 @@ class RatingUserController extends Controller
             "content" => $rating
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
 
         if ($response) {
             $rating->delete();
@@ -246,7 +261,10 @@ class RatingUserController extends Controller
                 "content" => $rating
             ];
     
-            return response()->json($response, 200);
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
         }
         
     }
