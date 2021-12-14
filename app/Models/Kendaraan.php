@@ -27,6 +27,7 @@ class Kendaraan extends Model
         'lat',
         'long',
     ];
+    protected $user_id = 'int';
 
     public function user(){
         return $this->hasOne('App\Models\User','id','user_id');
