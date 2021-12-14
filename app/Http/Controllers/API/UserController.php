@@ -77,6 +77,89 @@ class UserController extends Controller
         //
     }
 
+    public function edit_action(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required'
+        ]);
+        // dd($request->has('image'));
+        $cek = User::findOrFail($request->user_id);
+        $data_update = $request->only(['name','telp','alamat','email']);
+        if($request->has('image'))
+        {
+            $uploadFolder = "image/profil/";
+            $image = $request->file('image');
+            $imageName = time().'-'.$image->getClientOriginalName();
+            $image->move(public_path($uploadFolder), $imageName);
+            $data_update['image_link'] = $uploadFolder.$imageName;
+        }
+
+        if($request->new_password != null)
+        {
+            $password_cek = Hash::check($request->password,$cek->password);
+            // dd($password_cek);
+            if($password_cek)
+            {
+                $data_update['password'] = Hash::make($request->new_password);
+                // dd($data_update);
+                $user = User::where('id',$request->user_id)->update(
+                    $data_update
+                );
+                if($user){
+                    $usernew = User::findOrFail($request->user_id);
+                    $response = [
+                        "status" => "success",
+                        "message" => 'Berhasil Edit User',
+                        "errors" => null,
+                        "content" => $usernew,
+                    ];
+                    return response()->json($response,201);
+                }else{
+                    $response = [
+                        "status" => "error",
+                        "message" => 'Gagal Edit User',
+                        "errors" => null,
+                        "content" => null,
+                    ];
+                    return response()->json($response,404);
+                }
+            }else{
+                $response = [
+                    "status" => "error",
+                    "message" => 'Password tidak sesuai',
+                    "errors" => null,
+                    "content" => null,
+                ];
+                return response()->json($response,404);
+            }
+        }else{
+            
+            // dd($data_update);
+            $user = User::where('id',$request->user_id)->update(
+                $data_update
+            );
+            if($user){
+                $usernew = User::findOrFail($request->user_id);
+                    $response = [
+                        "status" => "success",
+                        "message" => 'Berhasil Edit User',
+                        "errors" => null,
+                        "content" => $usernew,
+                    ];
+                    return response()->json($response,201);
+            }else{
+                $response = [
+                    "status" => "error",
+                    "message" => 'Gagal Edit User',
+                    "errors" => null,
+                    "content" => null,
+                ];
+                return response()->json($response,404);
+            }
+        }
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
