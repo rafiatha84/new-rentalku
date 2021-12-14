@@ -27,10 +27,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraan,
             ];
-            return response()->json($response, 200,[
-                'Content-Type' => 'application/json',
-                'Charset' => 'utf-8'
-            ]);
+            return response()->json($response, 200);
             
         }
         else{
