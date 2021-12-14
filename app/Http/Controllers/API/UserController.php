@@ -84,7 +84,7 @@ class UserController extends Controller
         ]);
         // dd($request->has('image'));
         $cek = User::findOrFail($request->user_id);
-        $data_update = $request->only(['name','telp','alamat','email']);
+        $data_update = $request->only(['name','telp','alamat','email','tanggal_lahir']);
         if($request->has('image'))
         {
             $uploadFolder = "image/profil/";
