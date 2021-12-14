@@ -47,7 +47,7 @@ class KendaraanController extends Controller
     public function most()
     {
         $kendaraan = Kendaraan::with('user','kategori',
-        'transaksi','ratingKendaraan')->groupBy('kategori_id')->skip(0)->take(2)->get();
+        'transaksi','ratingKendaraan')->skip(0)->take(2)->get()->unique('kategori_id');
 
         if(count([$kendaraan]) > 0){
             $response = [
