@@ -46,17 +46,20 @@ class KendaraanController extends Controller
 
     public function most()
     {
-        $kendaraan = Kendaraan::with('user','kategori',
-        'transaksi','ratingKendaraan')->skip(0)->take(2)->get()->unique('kategori_id');
-        $kendaraanArray = $kendaraan->toArray();
-        $kendaraanArray['kategori'] = $kendaraan->kategori->name;
+        $kendaraans = Kendaraan::with('kategori')->skip(0)->take(2)->get()->unique('kategori_id');
+        // $kendaraanArray = $kendaraans->toArray();
+        // dd($kendaraanArray);
+        // $kendaraans = $kendaraans->map(function($kendaraan) {
+        //     $kendaraan->kategori_name = $kendaraan->kategori->name;
+        //     return $kendaraan;
+        // });
 
-        if(count([$kendaraan]) > 0){
+        if(count([$kendaraans]) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data kendaraan Ditemukan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => $kendaraans,
             ];
             return response()->json($response, 200);
             
@@ -66,7 +69,7 @@ class KendaraanController extends Controller
                 "status" => "gagal",
                 "message" => 'Data kendaraan tidak Ditemukan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => $kendaraans,
             ];
             return response()->json($response, 200,[
                 'Content-Type' => 'application/json',
