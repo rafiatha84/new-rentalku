@@ -158,6 +158,15 @@ class UserController extends Controller
             }
         }
 
+        $usernew = User::findOrFail($request->user_id);
+                    $response = [
+                        "status" => "success",
+                        "message" => 'Berhasil Edit User',
+                        "errors" => null,
+                        "content" => $usernew,
+                    ];
+                    return response()->json($response,201);
+
     }
 
     /**
