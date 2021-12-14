@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'image_link',
+        'tanggal_lahir',
         'nik',
         'foto_ktp',
         'foto_sim',
