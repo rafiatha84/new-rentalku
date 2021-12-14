@@ -86,7 +86,7 @@ Route::delete('/artikel/destroy/{id}', [ArtikelController::class, 'destroy'])->n
 //User
 Route::get('/user', [UserController::class, 'index'])->name('api.user');
 Route::get('/user/profil/{id}', [UserController::class, 'show'])->name('api.user.show');
-Route::post('/user/edit/{user_id}',[UserController::class, 'edit_action'])->name('api.user.edit.action');
+Route::post('/user/edit',[UserController::class, 'edit_action'])->name('api.user.edit.action');
 
 //pengemudi
 Route::post('/pengemudi/store', [PengemudiController::class, 'store'])->name('api.pengemudi.store');
