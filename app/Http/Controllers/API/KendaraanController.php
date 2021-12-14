@@ -46,7 +46,7 @@ class KendaraanController extends Controller
 
     public function most()
     {
-        $kendaraans = Kendaraan::with('kategori')->skip(0)->take(2)->get()->unique('kategori_id');
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get()->unique('kategori_id');
         // $kendaraanArray = $kendaraans->toArray();
         // dd($kendaraanArray);
         // $kendaraans = $kendaraans->map(function($kendaraan) {
