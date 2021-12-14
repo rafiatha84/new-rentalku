@@ -49,6 +49,8 @@ class KendaraanController extends Controller
         $kendaraan = Kendaraan::with('user','kategori',
         'transaksi','ratingKendaraan')->skip(0)->take(2)->get()->unique('kategori_id');
 
+        $kendaraan->kategori = $kendaraan->kategori->name;
+
         if(count([$kendaraan]) > 0){
             $response = [
                 "status" => "success",
