@@ -60,6 +60,7 @@ Route::group(['prefix' => 'message'], function () {
 
 //Kendaraan
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('api.kendaraan');
+Route::get('/kendaraan/most', [KendaraanController::class, 'most'])->name('api.kendaraan.most');
 Route::get('/kendaraan/{id}', [KendaraanController::class, 'showId'])->name('api.kendaraan.showId');
 Route::get('/kendaraan/owner/{user_id}',[KendaraanController::class, 'showByOwner'])->name('api.kendaraan.showByOwner');
 Route::post('/kendaraan/store', [KendaraanController::class, 'store'])->name('api.kendaraan.store');

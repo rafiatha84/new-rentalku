@@ -43,6 +43,35 @@ class KendaraanController extends Controller
             ]);
         }
     }
+
+    public function most()
+    {
+        $kendaraan = Kendaraan::with('user','kategori',
+        'transaksi','ratingKendaraan')->get(2);
+
+        if(count([$kendaraan]) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data kendaraan Ditemukan',
+                "errors" => null,
+                "content" => $kendaraan,
+            ];
+            return response()->json($response, 200);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data kendaraan tidak Ditemukan',
+                "errors" => null,
+                "content" => $kendaraan,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+    }
     
 
     /**
