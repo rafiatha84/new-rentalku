@@ -48,15 +48,13 @@ class KendaraanController extends Controller
     {
         $kendaraan = Kendaraan::with('user','kategori',
         'transaksi','ratingKendaraan')->skip(0)->take(2)->get()->unique('kategori_id');
-        $kendaraanArray = $kendaraan;
-        $kendaraanArray->kategori = $kendaraan->kategori->name;
 
         if(count([$kendaraan]) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data kendaraan Ditemukan',
                 "errors" => null,
-                "content" => $kendaraanArray,
+                "content" => $kendaraan,
             ];
             return response()->json($response, 200);
             
