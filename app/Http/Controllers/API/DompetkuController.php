@@ -12,7 +12,7 @@ class DompetkuController extends Controller
     public function show($id)
     {
 
-        $dompet = Dompet::findOrFail($id);
+        $dompet = Dompet::with('transaksi_dompet')->findOrFail($id);
         if(count([$dompet]) > 0){
             $response = [
                 "status" => "success",
