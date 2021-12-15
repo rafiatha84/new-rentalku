@@ -17,15 +17,20 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        $kendaraan = Kendaraan::with('user','kategori',
-        'transaksi','ratingKendaraan')->get();
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get()->unique('kategori_id');
+        // $kendaraanArray = $kendaraans->toArray();
+        // dd($kendaraanArray);
+        // $kendaraans = $kendaraans->map(function($kendaraan) {
+        //     $kendaraan->kategori_name = $kendaraan->kategori->name;
+        //     return $kendaraan;
+        // });
 
-        if(count([$kendaraan]) > 0){
+        if(count([$kendaraans]) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data kendaraan Ditemukan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => $kendaraans,
             ];
             return response()->json($response, 200);
             
@@ -35,7 +40,7 @@ class KendaraanController extends Controller
                 "status" => "gagal",
                 "message" => 'Data kendaraan tidak Ditemukan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => $kendaraans,
             ];
             return response()->json($response, 200,[
                 'Content-Type' => 'application/json',
