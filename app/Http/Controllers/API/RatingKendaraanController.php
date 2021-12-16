@@ -100,7 +100,7 @@ class RatingKendaraanController extends Controller
     public function show($kendaraan_id)
     {
         $rating = Kendaraan::with('avgRating','ratingKendaraan.user')->where('id',$kendaraan_id)->first();
-        if (count($rating) > 0) {
+        if ($rating) {
             $response = [
                 "status" => "success",
                 "message" => 'Data Rating Kendaraan Ditemukan',
