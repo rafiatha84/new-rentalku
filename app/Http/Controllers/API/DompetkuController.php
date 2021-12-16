@@ -90,12 +90,12 @@ class DompetkuController extends Controller
 
     public function rekening(){
         $rekening = Rekening::get();
-        if(count([$rekeking]) > 0){
+        if(count([$rekening]) > 0){
             $response = [
                 "status" => "success",
-                "message" => 'Data Dompet Ditemukan',
+                "message" => 'Data rekening Ditemukan',
                 "errors" => null,
-                "content" => $rekeking,
+                "content" => $rekening,
             ];
             return response()->json($response, 200,[
                 'Content-Type' => 'application/json',
@@ -104,9 +104,9 @@ class DompetkuController extends Controller
         }else{
             $response = [
                 "status" => "error",
-                "message" => 'Data dompet Tidak Ditemukan',
+                "message" => 'Data rekening Tidak Ditemukan',
                 "errors" => null,
-                "content" => $rekeking,
+                "content" => $rekening,
             ];
             return response()->json($response, 200,[
                 'Content-Type' => 'application/json',
