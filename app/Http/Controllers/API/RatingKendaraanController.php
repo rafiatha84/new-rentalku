@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\RatingKendaraan;
+use App\Models\Kendaraan;
 use App\Http\Controllers\Controller;
 use App\Models\RatingUser;
 
