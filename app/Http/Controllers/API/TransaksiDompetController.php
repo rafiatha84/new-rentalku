@@ -115,13 +115,13 @@ class TransaksiDompetController extends Controller
                 'status' => 'Pending'
              ]);
              $rekening = Rekening::where('singkatan',$transaksi_dompet->bank)->where('no_rek',$transaksi_dompet->no_rek)->firstOrFail();
-             $transaksiDompet->rekening = $rekening;
+             $response1 = $transaksi_dompet->toArray();
              DB::commit();
              $response = [
                 "status" => "success",
                 "message" => 'Silahkan transfer sesuai 3 digit terakhir',
                 "errors" => null,
-                "content" => $transaksiDompet,
+                "content" => $response1,
             ];
             return response()->json($response,201); 
         }catch(\Exception $e){
