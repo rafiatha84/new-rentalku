@@ -23,7 +23,7 @@ class UserKendaraanController extends Controller
         $kendaraans = Kendaraan::with('kategori')->orWhere('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
-            $kategori = Kategori::select('id')->whereIn($kategorisQuery)->get();
+            $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
             dd($kategori);
             // dd($kategorisQuery);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
