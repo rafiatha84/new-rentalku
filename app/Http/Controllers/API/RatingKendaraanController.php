@@ -98,8 +98,7 @@ class RatingKendaraanController extends Controller
      */
     public function show($kendaraan_id)
     {
-        $rating = RatingKendaraan::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
-        
+        $rating = Kendaraan::with('avgRating','ratingKendaraan.user')->where('id',$kendaraan_id)->get();
         if (count($rating) > 0) {
             $response = [
                 "status" => "success",
