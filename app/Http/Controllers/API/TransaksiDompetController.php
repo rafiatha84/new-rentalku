@@ -114,6 +114,8 @@ class TransaksiDompetController extends Controller
                 'no_rek' => $rekening->no_rek,
                 'status' => 'Pending'
              ]);
+             $rekening = Rekening::where('singkatan',$transaksi_dompet->bank)->where('no_rek',$transaksi_dompet->no_rek)->firstOrFail();
+             $transaksiDompet->rekening = $rekening;
              DB::commit();
              $response = [
                 "status" => "success",
