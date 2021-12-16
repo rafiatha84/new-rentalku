@@ -6,6 +6,8 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\RatingUser;
+use App\Models\User;
+use App\Models\Kendaraan;
 
 class RatingUserController extends Controller
 {
