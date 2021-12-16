@@ -32,7 +32,7 @@ class UserKendaraanController extends Controller
         }
 
         $kendaraans->setPath($currentURL);
-        dd($kendaraans);
+        // dd($kendaraans);
         return view('user.search',[
             "kendaraans" => $kendaraans,
             "kategorisQuery" => $kategorisQuery,
