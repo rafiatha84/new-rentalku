@@ -24,7 +24,6 @@ class UserKendaraanController extends Controller
         $kategorisQuery = Array();
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
-            dd($kategorisQuery);
             // dd($kategorisQuery);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
                 // Query the name field in status table
@@ -33,7 +32,7 @@ class UserKendaraanController extends Controller
         }
 
         $kendaraans->setPath($currentURL);
-        // dd($kendaraans);
+        dd($kendaraans);
         return view('user.search',[
             "kendaraans" => $kendaraans,
             "kategorisQuery" => $kategorisQuery,
