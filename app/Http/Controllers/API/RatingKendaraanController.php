@@ -100,7 +100,7 @@ class RatingKendaraanController extends Controller
     {
         $rating = RatingKendaraan::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
         
-        if (count([$rating]) > 0) {
+        if (count($rating) > 0) {
             $response = [
                 "status" => "success",
                 "message" => 'Data Rating Kendaraan Ditemukan',
