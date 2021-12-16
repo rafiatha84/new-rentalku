@@ -268,7 +268,7 @@ class TransaksiController extends Controller
      */
     public function show($user_id)
     {
-        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi')->with('kendaraan.ratingKendaraan')->get();
+        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi')->with('kendaraan.avgRating')->get();
         
         if(count([$transaksi]) > 0){
             $response = [
