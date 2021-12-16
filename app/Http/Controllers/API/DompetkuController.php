@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dompet;
+use App\Models\Rekening;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -35,7 +36,7 @@ class DompetkuController extends Controller
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8'
             ]);
-    }
+        }
     }
     
     
@@ -85,8 +86,33 @@ class DompetkuController extends Controller
 
         return response()->json($response, 201);    
         }
+    }
 
+    public function rekening(){
+        $rekening = Rekening::get();
+        if(count([$rekeking]) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data Dompet Ditemukan',
+                "errors" => null,
+                "content" => $rekeking,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }else{
+            $response = [
+                "status" => "error",
+                "message" => 'Data dompet Tidak Ditemukan',
+                "errors" => null,
+                "content" => $rekeking,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
         
-         
     }
 }

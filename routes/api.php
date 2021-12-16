@@ -110,6 +110,9 @@ Route::post('/kategori/create', [KategoriController::class, 'store'])->name('api
 Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('api.kategori.update');
 Route::delete('/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy'])->name('api.kategori.destroy');
 
+//Rekeming
+Route::get('/rekening',[DompetkuCOntroller::class, 'rekening'])->name('api.rekening');
+
 //Dompetku
 Route::get('/dompetku/{user_id}', [DompetkuController::class, 'show'])->name('api.dompetku.show');
 Route::get('/dompetku/saldo/{user_id}', [TransaksiDompetController::class, 'saldoDompet'])->name('transaksi.dompet');
