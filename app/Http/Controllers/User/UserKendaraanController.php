@@ -24,17 +24,7 @@ class UserKendaraanController extends Controller
         $kategorisQuery = Array();
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
-            $row= array();
-            foreach($kategorisQuery as $kategori){
-                array_push($row,$kategori);
-            }
-            dd($row);
-            
-            $users = DB::table('kategoris')
-                 ->select(DB::raw('count(*) as user_count, status'))
-                 ->where('status', '<>', 1)
-                 ->groupBy('status')
-                 ->get();
+            dd($kategorisQuery);
             // dd($kategorisQuery);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
                 // Query the name field in status table
