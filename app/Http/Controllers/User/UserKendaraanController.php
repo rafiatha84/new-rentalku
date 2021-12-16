@@ -28,15 +28,12 @@ class UserKendaraanController extends Controller
             foreach($kategori as $k){
                 array_push($kategoriArray,$k->id);
             }
-            dd($kategoriArray);
-            $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
-                // Query the name field in status table
-                $q->whereIn('name',$kategorisQuery); // '=' is optional
-         })->withAvg('ratingKendaraan', 'jumlah_bintang')->orWhere('name', 'like', '%'.$q.'%')->paginate(6);
+            // dd($kategoriArray);
+            $kendaraans = Kendaraan::with('kategori')->whereIN('kategori_id',$kategoriArray)->withAvg('ratingKendaraan', 'jumlah_bintang')->orWhere('name', 'like', '%'.$q.'%')->paginate(6);
         }
 
         $kendaraans->setPath($currentURL);
-        // dd($kendaraans);
+        dd($kendaraans);
         return view('user.search',[
             "kendaraans" => $kendaraans,
             "kategorisQuery" => $kategorisQuery,
