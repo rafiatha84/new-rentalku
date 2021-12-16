@@ -53,6 +53,7 @@ class KendaraanController extends Controller
         $kategoris = Kategori::get();
         $currentURL = $request->fullUrl();
         $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->get();
+        dd($kendaraans);
         $q = $request->q;
         if($q != null && $q != ""){
             $kendaraans = Kendaraan::with('kategori','avgRating')->where('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->get();
@@ -78,8 +79,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraans,
             ];
-            return response()->json($response, 200);
-            
+            return response()->json($response, 200); 
         }
         else{
             $response = [
