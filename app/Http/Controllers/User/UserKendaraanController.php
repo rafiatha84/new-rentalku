@@ -24,8 +24,8 @@ class UserKendaraanController extends Controller
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
             $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
-            dd($kategori);
-            // dd($kategorisQuery);
+            $kategoriArray = $kategori->toArray();
+            dd($kategoriArray);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
                 // Query the name field in status table
                 $q->whereIn('name',$kategorisQuery); // '=' is optional
