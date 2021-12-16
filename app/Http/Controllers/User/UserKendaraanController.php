@@ -24,12 +24,16 @@ class UserKendaraanController extends Controller
         $kategorisQuery = Array();
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
+            $row= 0;
+            foreach($kategorisQuery as $kategori){
+                $row += 1;
+            }
+            dd($row);
             // dd($kategorisQuery);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
                 // Query the name field in status table
                 $q->whereIn('name',$kategorisQuery); // '=' is optional
          })->withAvg('ratingKendaraan', 'jumlah_bintang')->orWhere('name', 'like', '%'.$q.'%')->paginate(6);
-            dd($kendaraans);
         }
 
         $kendaraans->setPath($currentURL);
