@@ -103,6 +103,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\RatingUser','user_id');
     }
 
+    public function avgRating()
+    {
+        return $this->ratingUser()
+        ->selectRaw('avg(jumlah_bintang) as aggregate, user_to_id')
+        ->groupBy('user_to_id');
+    }
+
     public function user_role(){
         return $this->hasMany('App\Models\UserRole');
     }

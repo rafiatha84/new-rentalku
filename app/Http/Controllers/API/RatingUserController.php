@@ -97,9 +97,12 @@ class RatingUserController extends Controller
      */
     public function show($kendaraan_id)
     {
-        $rating = RatingUser::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
+        $kendaraan = $kendaraan::findOrFail($kendaraan_id);
+        $user_id = $kendaraan->user_id;
+        $rating = User::with('ratingUser.user','avgRating')->where('id',$user_id)->first();
+        // $rating = RatingUser::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
         
-        if (count([$rating]) > 0) {
+        if ([$rating] > 0) {
             $response = [
                 "status" => "success",
                 "message" => 'Data Rating Kendaraan Ditemukan',
