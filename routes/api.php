@@ -136,6 +136,7 @@ Route::get('transaksi/{transaksi_id}', [TransaksiController::class, 'showId'])->
 Route::post('/transaksi/update/{transaksi_id}', [TransaksiController::class, 'update'])->name('api.transaksi.update');
 Route::delete('/transaksi/delete/{transaksi_id}', [TransaksiController::class, 'destroy'])->name('api.transaksi.destroy');
 Route::get('transaksi/show/{user_id}', [TransaksiController::class, 'show'])->name('api.transaksi.show');
+Route::get('transaksi/show/selesai/{user_id}', [TransaksiController::class, 'show_selesai'])->name('api.transaksi.show.selesai');
 Route::post('transaksi/selesai/{transaksi_id}',[TransaksiController::class, 'update_selesai'])->name('api.transaksi.update.selesai');
 Route::post('transaksi/create/rating',[TransaksiController::class,'create_rating'])->name("api.transaksi.rating");
 //Rating Kendaraan

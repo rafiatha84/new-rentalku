@@ -268,7 +268,35 @@ class TransaksiController extends Controller
      */
     public function show($user_id)
     {
-        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi')->with('kendaraan.avgRating')->get();
+        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi')->with('kendaraan.avgRating')->where('status','Proses')->get();
+        
+        if(count([$transaksi]) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data transaksi Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data transaksi tidak Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 404);
+        }
+    }
+
+    public function show_selesai($user_id)
+    {
+        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi')->with('kendaraan.avgRating')->where('status','Selesai')->get();
         
         if(count([$transaksi]) > 0){
             $response = [
