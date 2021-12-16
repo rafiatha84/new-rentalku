@@ -49,7 +49,7 @@ class Kendaraan extends Model
     public function avgRating()
     {
         return $this->ratingKendaraan()
-        ->selectRaw('avg(rating) as aggregate, kendaraan_id')
+        ->selectRaw('avg(jumlah_bintang) as aggregate, kendaraan_id')
         ->groupBy('kendaraan_id');
     }
 
