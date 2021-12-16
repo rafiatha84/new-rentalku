@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Models\Kendaraan;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 
