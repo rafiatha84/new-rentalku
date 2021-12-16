@@ -21,9 +21,10 @@ class UserKendaraanController extends Controller
         $currentURL = $request->fullUrl();
         $q = $request->q;
         $kendaraans = Kendaraan::with('kategori')->orWhere('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
-        $kategorisQuery = Array();
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
+            $kategori = Kategori::select('id')->whereIn($kategorisQuery)->get();
+            dd($kategori);
             // dd($kategorisQuery);
             $kendaraans = Kendaraan::with('kategori')->whereHas('kategori', function($q) use($kategorisQuery) {
                 // Query the name field in status table
