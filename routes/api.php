@@ -66,6 +66,7 @@ Route::get('/kendaraan/owner/{user_id}',[KendaraanController::class, 'showByOwne
 Route::post('/kendaraan/store', [KendaraanController::class, 'store'])->name('api.kendaraan.store');
 Route::post('/kendaraan/update/{id}', [KendaraanController::class, 'update'])->name('api.kendaraan.update');
 Route::delete('/kendaraan/destroy/{id}', [KendaraanController::class, 'destroy'])->name('api.kendaraan.destroy');
+Route::get('kendaraan/search',[KendaraanController::class,'search'])->name('api.kendaraan.search');
 
 //Pengemudi
 

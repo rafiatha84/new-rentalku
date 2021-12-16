@@ -49,6 +49,52 @@ class KendaraanController extends Controller
         }
     }
 
+    public function search(Request $request){
+        $kategoris = Kategori::get();
+        $currentURL = $request->fullUrl();
+        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->get();
+        $q = $request->q;
+        if($q != null && $q != ""){
+            $kendaraans = Kendaraan::with('kategori','avgRating')->where('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->get();
+        }
+        if(isset($request->kategori)){
+            $kategorisQuery = $request->kategori;
+            $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
+            $kategoriArray = Array();
+            foreach($kategori as $k){
+                array_push($kategoriArray,$k->id);
+            }
+            // dd($kategoriArray);
+            $kendaraans = Kendaraan::with('kategori','avgRating')->whereIN('kategori_id',$kategoriArray)->withAvg('ratingKendaraan', 'jumlah_bintang')->get();
+            if($q != null && $q != ""){
+                $kendaraans = Kendaraan::with('kategori','avgRating')->whereIN('kategori_id',$kategoriArray)->withAvg('ratingKendaraan', 'jumlah_bintang')->orWhere('name', 'like', '%'.$q.'%')->get();
+            }
+        }
+
+        if(count([$kendaraans]) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data kendaraan Ditemukan',
+                "errors" => null,
+                "content" => $kendaraans,
+            ];
+            return response()->json($response, 200);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data kendaraan tidak Ditemukan',
+                "errors" => null,
+                "content" => $kendaraans,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+    }
+
     public function most()
     {
         $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get()->unique('kategori_id');
