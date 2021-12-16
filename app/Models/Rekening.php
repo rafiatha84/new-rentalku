@@ -14,6 +14,7 @@ class Rekening extends Model
         "name",
         "singkatan",
         "no_rek",
+        "atas_nama",
         "image_link"
     ];
 }

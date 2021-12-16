@@ -19,6 +19,7 @@ class CreateRekeningsTable extends Migration
             $table->string('name');
             $table->string('singkatan');
             $table->string('no_rek');
+            $table->string('atas_nama');
             $table->string('image_link');
             $table->timestamps();
         });
