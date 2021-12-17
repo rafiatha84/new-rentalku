@@ -204,7 +204,7 @@ class PengemudiController extends Controller
     public function showByTransaksi($transaksi_id)
     {
         $pengemudi = PengemudiTransaksi::with('pengemudi.user')->where('transaksi_id',$transaksi_id)->firstOrFail();
-        if($pengemudi > 0) {
+        if($pengemudi) {
             $response = [
                 "status" => "success",
                 "message" => "Data pengemudi ditemukan",
