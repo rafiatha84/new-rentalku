@@ -62,9 +62,17 @@ class Transaksi extends Model
     }
     public function belum_rating(){
         if($this->hasOne('App\Models\RatingKendaraan','transaksi_id','id')->count() > 0){
-            return 0;
+            return false;
         }else{
-            return 1;
+            return true;
         }
+    }
+    public function sudah_rating(){
+        if($this->hasOne('App\Models\RatingKendaraan','transaksi_id','id')->count() > 0){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }
