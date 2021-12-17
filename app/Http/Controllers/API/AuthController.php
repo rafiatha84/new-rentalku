@@ -152,6 +152,7 @@ class AuthController extends Controller
 
     public function user()
     {
-        return Auth::user()->id;
+        $user = User::with('avgRating')->where('id',Auth::user()->id)->firstOrFail();
+        return $user;
     }
 }
