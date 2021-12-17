@@ -40,7 +40,7 @@ class PemilikProfileController extends Controller
 
         if($validator->fails())
         {
-            dd($validator->errors());
+            // dd($validator->errors());
             return redirect()->route('pemilik.register');
         }
         DB::beginTransaction();
@@ -66,13 +66,13 @@ class PemilikProfileController extends Controller
                 ]);
             }else{
                 DB::rollback();
-                dd('gatau');
+                // dd('gatau');
                 return redirect()->route('pemilik.register')->with([
                     'status' => 'Gagal update profil'
                 ]);
             }
         }catch(\Exception $e){
-            dd($e);
+            // dd($e);
             DB::rollback();
             return redirect()->route('pemilik.register'); 
         }

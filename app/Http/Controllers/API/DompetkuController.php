@@ -56,7 +56,7 @@ class DompetkuController extends Controller
                 "errors" => $validator->errors(),
                 "content" => null,
             ];
-            return response()->json($response,200);
+            return response()->json($response,404);
         }
 
      

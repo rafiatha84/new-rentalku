@@ -34,6 +34,7 @@ use App\Http\Controllers\API\TransaksiDompetController;
 
 //API route for register new user
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+Route::post('/register/pemilik', [AuthController::class, 'register'])->name('api.register.pemilik');
 //API route for login user
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');

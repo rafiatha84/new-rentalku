@@ -155,4 +155,72 @@ class AuthController extends Controller
         $user = User::with('avgRating')->where('id',Auth::user()->id)->firstOrFail();
         return $user;
     }
+
+    public function register_pemilik(Request $request)
+    {
+        $validator = Validator::make($request->all(), 
+        [
+            'id' => 'required|integer',
+            'name' => 'required',
+            'nik' => 'required',
+            'foto_ktp' => 'required|image:jpeg,png,jpg,gif,svg'
+        ]);
+
+        if($validator->fails())
+        {
+            $response = [
+                "status" => "error",
+                "message" => 'Kolom belum diisi',
+                "errors" => $validator->errors(),
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+        DB::beginTransaction();
+        try{
+            $cek = User::findOrFail($request->id);
+            $data_update = $request->only(['name','nik']);
+            if($request->has('foto_ktp'))
+            {
+                $uploadFolder = "image/foto_ktp/";
+                $image = $request->file('foto_ktp');
+                $imageName = time().'-'.$image->getClientOriginalName();
+                $image->move(public_path($uploadFolder), $imageName);
+                $data_update['foto_ktp'] = $uploadFolder.$imageName;
+            }
+            $data_update['role'] = "pemilik";
+            $user = User::where('id',$request->id)->update(
+                $data_update
+            );
+            if($user){
+                DB::commit();
+                $user = User::where('id',$request->id)->first();
+                $response = [
+                    "status" => "success",
+                    "message" => 'Berhasil Daftar sebagai pemilik',
+                    "errors" => null,
+                    "content" => $user,
+                ]; 
+                return response()->json($response,200);
+            }else{
+                DB::rollback();
+                $response = [
+                    "status" => "error",
+                    "message" => 'Gagal Daftar sebagai pemilik',
+                    "errors" => null,
+                    "content" => null,
+                ]; 
+                return response()->json($response,404);
+            }
+        }catch(\Exception $e){
+            DB::rollback();
+            $response = [
+                "status" => "error",
+                "message" => 'Gagal Daftar sebagai pemilik',
+                "errors" => $e,
+                "content" => null,
+            ]; 
+            return response()->json($response,404);
+        }
+    }
 }
