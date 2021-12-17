@@ -40,9 +40,7 @@ Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth:sanctum']], function() {
 
-    Route::get('/user', function(Request $request) {
-        return auth()->user();
-    })->name('api.user');
+    Route::get('/user',[AuthController::class,'user'])->name('api.user');
     
     // manggil controller sesuai bawaan laravel 8
     Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');

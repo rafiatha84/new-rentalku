@@ -149,4 +149,9 @@ class AuthController extends Controller
     {
         return $request->user();
     }
+
+    public function user()
+    {
+        return Auth::user()->id;
+    }
 }
