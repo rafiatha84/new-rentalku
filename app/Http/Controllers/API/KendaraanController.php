@@ -99,14 +99,8 @@ class KendaraanController extends Controller
     public function most()
     {
         $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get()->unique('kategori_id');
-        // $kendaraanArray = $kendaraans->toArray();
-        // dd($kendaraanArray);
-        // $kendaraans = $kendaraans->map(function($kendaraan) {
-        //     $kendaraan->kategori_name = $kendaraan->kategori->name;
-        //     return $kendaraan;
-        // });
 
-        if(count([$kendaraans]) > 0){
+        if(count($kendaraans) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data kendaraan Ditemukan',
@@ -260,19 +254,30 @@ class KendaraanController extends Controller
 
     public function showByOwner($user_id)
     {
-        $kendaraan = Kendaraan::where('user_id', $user_id)->with('kategori')->get();
+        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->where('user_id',$user_id)->get();
 
+        if(count($kendaraans) > 0){
             $response = [
                 "status" => "success",
-                "message" => 'Data Transaksi Ditemukan',
+                "message" => 'Data kendaraan Ditemukan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => $kendaraans,
+            ];
+            return response()->json($response, 200);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data kendaraan tidak Ditemukan',
+                "errors" => null,
+                "content" => $kendaraans,
             ];
             return response()->json($response, 200,[
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8'
             ]);
-
+        }
     }
 
     /**
