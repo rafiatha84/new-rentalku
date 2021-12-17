@@ -61,11 +61,11 @@ class TransaksiController extends Controller
      */
     public function create($kendaraan_id)
     {
-        $kendaraan = Kendaraan::with('user.pengemudi.user.ratingUser','kategori')->findOrFail($kendaraan_id);
+        $kendaraan = Kendaraan::with('user.pengemudi.user.avgRating','kategori')->findOrFail($kendaraan_id);
         if($kendaraan){
             $response = [
                 "status" => "success",
-                "message" => 'Data Transaksi Ditemukan',
+                "message" => 'Data Kendaraan Ditemukan',
                 "errors" => null,
                 "content" => $kendaraan,
             ];
