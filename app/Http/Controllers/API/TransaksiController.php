@@ -292,7 +292,7 @@ class TransaksiController extends Controller
      */
     public function show($user_id)
     {
-        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Proses')->get();
+        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi.pegemudi.user','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Proses')->get();
         
         if(count([$transaksi]) > 0){
             $response = [
@@ -320,7 +320,7 @@ class TransaksiController extends Controller
 
     public function show_selesai($user_id)
     {
-        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Selesai')->get();
+        $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi.pegemudi.user','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Selesai')->get();
         
         if(count([$transaksi]) > 0){
             $response = [
