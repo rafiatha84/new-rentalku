@@ -68,6 +68,7 @@ class PemilikPemesananController extends Controller
                 ->update([
                     'status' => 'Dikonfirmasi'
                 ]);
+                $transaksiDompet = TransaksiDompet::findOrFail($transaksi->transaksi_dompet_id);
                 //get saldo saat ini
                 $saldo = TransaksiDompet::where('dompet_id', $transaksiDompet->dompet_id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
                 $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
