@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::with('avgRating')->get();
         return response()->json($user, 200);
     }
 
