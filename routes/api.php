@@ -131,6 +131,7 @@ Route::post('/transaksi_dompet/update/{id}', [TransaksiDompetController::class, 
 Route::delete('/transaksi_dompet/delete/{dompet_id}', [TransaksiDompetController::class, 'destroy'])->name('api.transaksiDompet.destroy');
 
 //Transaksi
+Route::get('/form/transaksi/{kendaraan_id}',[TransaksiController::class, 'create'])->name('api.transaksi.form');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('api.transaksi.index');
 Route::post('/transaksi/create', [TransaksiController::class, 'store'])->name('api.transaksi.create');
 Route::get('transaksi/{transaksi_id}', [TransaksiController::class, 'showId'])->name('api.transaksi.showId');

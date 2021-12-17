@@ -30,7 +30,7 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::with('user', 'kendaraan.kategori', 'kendaraan.user', 'pengemudiTransaksi.pengemudi.user')->get();
 
-        if (count([$transaksi]) > 0) {
+        if (count($transaksi) > 0) {
             $response = [
                 "status" => "success",
                 "message" => 'Data Transaksi Ditemukan',
@@ -59,8 +59,32 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($kendaraan_id)
     {
+        $kendaraan = Kendaraan::with('user.pengemudi.user.ratingUser','kategori')->findOrFail($kendaraan_id);
+        if($kendaraan){
+            $response = [
+                "status" => "success",
+                "message" => 'Data Transaksi Ditemukan',
+                "errors" => null,
+                "content" => $kendaraan,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }else{
+            $response = [
+                "status" => "success",
+                "message" => 'Data kendaraan tidak ditemukan',
+                "errors" => null,
+                "content" => null,
+            ];
+            return response()->json($response, 404,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
         
     }
 
