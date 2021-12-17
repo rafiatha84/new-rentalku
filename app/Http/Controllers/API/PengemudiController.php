@@ -173,7 +173,7 @@ class PengemudiController extends Controller
      */
     public function show($id)
     {
-        $pengemudi = Pengemudi::with('user', 'owner', 'pengemudiTransaksi')->findOrFail($id);
+        $pengemudi = Pengemudi::with('user')->findOrFail($id);
         if(count([$pengemudi]) > 0) {
             $response = [
                 "status" => "success",
