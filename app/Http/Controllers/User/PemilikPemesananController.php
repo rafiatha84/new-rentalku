@@ -80,20 +80,20 @@ class PemilikPemesananController extends Controller
                         'status' => 'sukses update selesai'
                     ]);
                 }else{
-                    dd("a");
+                    // dd("a");
                     return redirect()->route('pemilik.pesananku')->with([
                         'status' => 'gagal update selesai'
                     ]);
                 }
             }else{
-                dd("b");
+                // dd("b");
                 return redirect()->route('pemilik.pesananku')->with([
                     'status' => 'gagal update selesai'
                 ]);
             }
         }catch(\Exception $e){
             DB::rollback();
-            dd($e);
+            // dd($e);
             return redirect()->route('pemilik.pesananku')->with([
                 'status' => 'gagal update selesai'
             ]);
