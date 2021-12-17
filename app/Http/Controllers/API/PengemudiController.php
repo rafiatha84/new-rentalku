@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Pengemudi;
+use App\Models\PengemudiTransaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -46,8 +47,7 @@ class PengemudiController extends Controller
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8'
             ]);
-        }
-        
+        }  
     }
 
     /**
@@ -175,6 +175,36 @@ class PengemudiController extends Controller
     {
         $pengemudi = Pengemudi::with('user')->findOrFail($id);
         if(count([$pengemudi]) > 0) {
+            $response = [
+                "status" => "success",
+                "message" => "Data pengemudi ditemukan",
+                "error" => null,
+                "content" => $pengemudi
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+
+        else {
+            $response = [
+                "status" => "gagal",
+                "message" => "Pengemudi hilang",
+                "error" => null,
+                "content" => $pengemudi
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+    }
+
+    public function showByTransaksi($transaksi_id)
+    {
+        $pengemudi = PengemudiTransaksi::with('pengemudi.user')->where('transaksi_id',$transaksi_id)->firstOrFail();
+        if($pengemudi > 0) {
             $response = [
                 "status" => "success",
                 "message" => "Data pengemudi ditemukan",
