@@ -201,7 +201,7 @@ class AuthController extends Controller
                     "errors" => null,
                     "content" => $user,
                 ]; 
-                return response()->json($response,200);
+                return response()->json($response,201);
             }else{
                 DB::rollback();
                 $response = [
