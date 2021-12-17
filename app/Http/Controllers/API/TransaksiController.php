@@ -105,7 +105,7 @@ class TransaksiController extends Controller
             'name' => 'required',
             'telp' => 'required',
             'nik' => 'required',
-            'foto_ktp' =>  'required|image:jpeg,png,jpg,gif,svg|max:2048'
+            'foto_ktp' =>  'required'
         ]);
 
         if($validator->fails())
