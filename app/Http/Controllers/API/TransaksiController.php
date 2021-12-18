@@ -294,7 +294,7 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Proses')->get();
         
-        if(count([$transaksi]) > 0){
+        if(count($transaksi) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data transaksi Ditemukan',
@@ -322,7 +322,138 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::where('user_id', $user_id)->with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->where('status','Selesai')->get();
         
-        if(count([$transaksi]) > 0){
+        if(count($transaksi) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data transaksi Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data transaksi tidak Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 404);
+        }
+    }
+
+    public function show_byowner($user_id)
+    {
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query){
+            return $query->where('user_id','=',$user_id);
+        })->where('status','Selesai')->get();
+        if(count($transaksi) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data transaksi Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data transaksi tidak Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 404);
+        }
+    }
+
+    public function show_selesai_byowner($user_id)
+    {
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query){
+            return $query->where('user_id','=',$user_id);
+        })->where('status','Selesai')->get();
+        if(count($transaksi) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data transaksi Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data transaksi tidak Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 404);
+        }
+    }
+
+    public function show_bypengemudi($user_id)
+    {
+        $pengemudi = Pengemudi::with('pengemudiTransaksi')->where('user_id',$user_id)->firstOrFail();
+        $pengemudiTransaksi = $pengemudi->pengemudiTransaksi;
+        $transaksi_id_array= Array();
+        foreach($pengemudiTransaksi as $transaksi){
+            array_push($transaksi_id_array,$transaksi->transaksi_id);
+        }
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')
+        ->with('kendaraan.avgRating')->
+        whereIN('id',$transaksi_id_array)
+        ->where('status','Proses')->get();
+
+        if(count($transaksi) > 0){
+            $response = [
+                "status" => "success",
+                "message" => 'Data transaksi Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+        }
+        else{
+            $response = [
+                "status" => "gagal",
+                "message" => 'Data transaksi tidak Ditemukan',
+                "errors" => null,
+                "content" => $transaksi,
+            ];
+            return response()->json($response, 404);
+        }
+    }
+
+    public function show_selesai_bypengemudi($user_id)
+    {
+        $pengemudi = Pengemudi::with('pengemudiTransaksi')->where('user_id',$user_id)->firstOrFail();
+        $pengemudiTransaksi = $pengemudi->pengemudiTransaksi;
+        $transaksi_id_array= Array();
+        foreach($pengemudiTransaksi as $transaksi){
+            array_push($transaksi_id_array,$transaksi->transaksi_id);
+        }
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')
+        ->with('kendaraan.avgRating')->
+        whereIN('id',$transaksi_id_array)
+        ->where('status','Proses')->get();
+        if(count($transaksi) > 0){
             $response = [
                 "status" => "success",
                 "message" => 'Data transaksi Ditemukan',
