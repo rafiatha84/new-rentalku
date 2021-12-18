@@ -33,7 +33,7 @@
                 <tr>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->name }}</td>
-                  <td>{{ $user->role }}</td>
+                  <td>{{ ($user->role == "user")?'Penyewa':$user->role }}</td>
                   <td>
                     <button type="button" class="delete-button px-3 py-1" onclick="modal_delete({{ $user->id }})"><i class="fa-solid fa-trash"></i></button>
                     <button type="button" class="edit-button px-3 py-1" onclick="modal_user({{ $user->id }})"><i class="fa-solid fa-edit"></i></button>
