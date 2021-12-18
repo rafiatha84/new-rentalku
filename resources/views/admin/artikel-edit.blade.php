@@ -139,10 +139,10 @@
             "search":         "Cari:",
             "zeroRecords":    "No matching records found",
             "paginate": {
-                "first":      "First",
-                "last":       "Last",
-                "next":       "Next",
-                "previous":   "Previous"
+                "first":      "Pertama",
+                "last":       "Terakhir",
+                "next":       "Selanjutnya",
+                "previous":   "Sebelumnya"
             },
             "aria": {
                 "sortAscending":  ": activate to sort column ascending",
