@@ -91,7 +91,7 @@ Route::post('/user/edit',[UserController::class, 'edit_action'])->name('api.user
 
 //pengemudi
 Route::get('/pengemudi/show/{transaksi_id}',[PengemudiController::class,'showByTransaksi'])->name('api.pengemudi.showTransaksiId');
-Route::get('/pengemudi/all/showbypemilik/{owner_id}',[PengemudiControlller::class,'showByOwner'])->name('api.pengemudi.showByOwner');
+Route::get('/pengemudi/all/showbypemilik/{owner_id}',[PengemudiController::class,'showByOwner'])->name('api.pengemudi.showByOwner');
 Route::post('/pengemudi/store', [PengemudiController::class, 'store'])->name('api.pengemudi.store');
 Route::post('/pengemudi/create', [PengemudiController::class, 'create'])->name('api.pengemudi.create');
 Route::post('/pengemudi/update/{id}', [PengemudiController::class, 'update'])->name('api.pengemudi.update');
