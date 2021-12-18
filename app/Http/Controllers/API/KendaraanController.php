@@ -324,7 +324,7 @@ class KendaraanController extends Controller
 
         $kendaraan = Kendaraan::where('id',$id)->update($data_upload);
         if ($kendaraan) {
-            $kendaraan_data = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->where('id',$kendaraan->id)->firstOrFail();
+            $kendaraan_data = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->where('id',$id)->firstOrFail();
             $response = [
                 "status" => "success",
                 "message" => 'Berhasil update kendaraan',
