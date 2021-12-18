@@ -194,7 +194,7 @@ class KendaraanController extends Controller
          ]);
          if($kendaraan){ //cek apakah sukses create 
             //jika sukses
-            $kendaraan->image_link = URL::to($kendaraan->image_link);
+            $kendaraan = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->where('id',$kendaraan->id)->firstOrFail();
             $response = [
                 "status" => "success",
                 "message" => 'Berhasil Menambah kendaraan',
@@ -209,9 +209,9 @@ class KendaraanController extends Controller
                 "status" => "error",
                 "message" => 'Gagal Menambah kendaraan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => null,
             ];
-            return response()->json($response,200);
+            return response()->json($response,404);
          }
     }
 
@@ -269,7 +269,8 @@ class KendaraanController extends Controller
         else{
             $response = [
                 "status" => "gagal",
-                "message" => 'Data kendaraan tidak Ditemukan',
+                "message" => 'Data kendaraan 
+                tidak Ditemukan',
                 "errors" => null,
                 "content" => $kendaraans,
             ];
