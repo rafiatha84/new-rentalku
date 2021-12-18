@@ -52,7 +52,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth:sanctum']], function() 
 
 Route::group(['prefix' => 'message'], function () {
     Route::get('/all',[UserMessageController::class, 'get_chat_room'])->name('api.message.getall');
-    Route::get('/room/{id}',[UserMessageController::class, 'get_room_by_id'])->name('api.message.byid');
+    Route::get('/room/{user_id}',[UserMessageController::class, 'get_room_by_id'])->name('api.message.byid');
     Route::get('/room/message/{chat_room_id}',[UserMessageController::class, 'get_message_by_room'])->name('api.message.byroom');
     Route::post('/send',[UserMessageController::class, 'send_message'])->name('api.message.send');
 });

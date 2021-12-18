@@ -98,8 +98,7 @@ class KendaraanController extends Controller
 
     public function most()
     {
-        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get()->unique('kategori_id');
-
+        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get();
         if(count($kendaraans) > 0){
             $response = [
                 "status" => "success",
