@@ -158,6 +158,7 @@ Route::delete('rating/kendaraan/delete/{rating_id}', [RatingKendaraanController:
 //Rating User
 Route::get('rating/user/{rating_id}', [RatingUserController::class, 'showId'])->name('api.ratingUser.showId');
 Route::get('rating/user/all/{kendaraan_id}', [RatingUserController::class, 'show'])->name('api.ratingUser.show');
+Route::get('rating/user/all/byuser/{user_id}', [RatingUserController::class, 'show_byuser'])->name('api.ratingUser.show.byuserid');
 Route::post('/rating/user/create', [RatingUserController::class, 'store'])->name('api.ratingUser.create');
 Route::post('/rating/user/update/{id}', [RatingUserController::class, 'update'])->name('api.ratingUser.update');
 Route::delete('rating/user/delete/{rating_id}', [RatingUserController::class, 'destroy'])->name('api.ratingUser.destroy');

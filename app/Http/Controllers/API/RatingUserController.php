@@ -104,7 +104,40 @@ class RatingUserController extends Controller
         $rating = User::with('ratingUser.user','avgRating')->where('id',$user_id)->first();
         // $rating = RatingUser::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
         
-        if ([$rating] > 0) {
+        if ($rating) {
+            $response = [
+                "status" => "success",
+                "message" => 'Data Rating Kendaraan Ditemukan',
+                "errors" => null,
+                "content" => $rating,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }else{
+            $response = [
+                "status" => "error",
+                "message" => 'Data Rating Kendaraan Tidak Ditemukan',
+                "errors" => null,
+                "content" => $rating,
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+            
+            
+        }
+        return response($rating, 200);
+    }
+
+    public function show_byuser($user_id)
+    {
+        $rating = User::with('ratingUser.user','avgRating')->where('id',$user_id)->first();
+        // $rating = RatingUser::where('kendaraan_id', $kendaraan_id)->with('user','kendaraan')->get();
+        
+        if ($rating) {
             $response = [
                 "status" => "success",
                 "message" => 'Data Rating Kendaraan Ditemukan',
