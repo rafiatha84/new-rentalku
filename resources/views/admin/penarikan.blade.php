@@ -10,7 +10,7 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
             <h1 class="h4">Penarikan</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <a class="button mx-2 px-4 py-2 tambahpenarikan"><i class="fa-solid fa-plus"></i> Penarikan</a>
+              <!-- <a class="button mx-2 px-4 py-2 tambahpenarikan"><i class="fa-solid fa-plus"></i> Penarikan</a> -->
               <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>

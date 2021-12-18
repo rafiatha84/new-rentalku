@@ -48,7 +48,7 @@
               <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('admin.topup') ? 'active' : '' }}" href="{{ route('admin.topup') }}">
                 <i class="fa-solid fa-wallet"></i>
-                Top Up
+                Isi Saldo
                 </a>
               </li>
               <li class="nav-item">
@@ -66,7 +66,7 @@
               <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('admin.slider') ? 'active' : '' }}" href="{{ route('admin.slider') }}">
                 <i class="fa-solid fa-book"></i>
-                Kelola Slider
+                Kelola Promosi
                 </a>
               </li>
               <li class="nav-item">

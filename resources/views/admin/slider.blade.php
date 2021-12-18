@@ -12,7 +12,7 @@
             </div>  
           
             <div class="btn-toolbar mb-2 mb-md-0">
-            <a class="button mx-2 px-4 py-2 tambahslider"><i class="fa-solid fa-plus"></i> Slider</a>
+            <a class="button mx-2 px-4 py-2 tambahslider"><i class="fa-solid fa-plus"></i> Promosi</a>
             <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>
@@ -22,7 +22,7 @@
             <table class="table table-sm" id="table-pengguna">
               <thead>
                 <tr>
-                  <th>Nama unit</th>
+                  <th>Nama Promosi</th>
                   <th>Keterangan</th>
                 </tr>
               </thead>

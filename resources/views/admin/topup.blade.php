@@ -8,9 +8,9 @@
 
 @section('content')
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-            <h1 class="h4">Top Up</h1>
+            <h1 class="h4">Isi Saldo</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <a class="button mx-2 px-4 py-2 tambahtopup"><i class="fa-solid fa-plus"></i> Topup</a>
+              <!-- <a class="button mx-2 px-4 py-2 tambahtopup"><i class="fa-solid fa-plus"></i> Topup</a> -->
               <a class="py-2 base-color mx-2"  href="{{ route('admin.logout') }}">Keluar <i class="fa-solid fa-sign-out-alt base-color"></i></a>
             </div>
           </div>
