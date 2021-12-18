@@ -233,7 +233,7 @@ class PengemudiController extends Controller
 
     public function showByOwner($user_id)
     {
-        $user = User::with('pengemudi.user')->where('id',$user_id)->firstOfFail();
+        $user = User::with('pengemudi.user')->where('id',$user_id)->firstOrFail();
         if(count($user->pengemudi) > 0) {
             $response = [
                 "status" => "success",
