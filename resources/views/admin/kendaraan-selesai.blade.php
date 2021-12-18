@@ -8,7 +8,7 @@
 @section('content')
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
             <div class="box">
-                <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kendaraan') ? 'sub-active' : '' }}" href="{{ route('admin.kendaraan') }}">Gallery Unitku</a>
+                <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kendaraan') ? 'sub-active' : '' }}" href="{{ route('admin.kendaraan') }}">Galeri Unitku</a>
                 <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kendaraan.dipesan') ? 'sub-active' : '' }}" href="{{ route('admin.kendaraan.dipesan') }}">Sedang Dipesan</a>
                 <a class="sub-menu mx-2 h5 {{ Route::currentRouteNamed('admin.kendaraan.selesai') ? 'sub-active' : '' }}" href="{{ route('admin.kendaraan.selesai') }}">Selesai</a>
             </div>  
