@@ -31,19 +31,19 @@
                 <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
             @endif
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
             <form method="POST" action="{{ route('user.login.action') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda</label>
                 <input class="col-12" type="email" name="email" placeholder="example@gmail.com" value="{{ old('email') }}" required>
-                <label class="small">Masukkan password anda</label>
+                <label class="small">Masukkan Katasandi anda</label>
                 <input class="col-12" type="password" name="password" placeholder="*******">
 
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
-            <p class="text-center small"><b><i>Lupa password? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
+            <p class="text-center small"><b><i>Lupa katasandi? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
         </div>
         <div class="footer">
             <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
