@@ -346,7 +346,7 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('form-submitted', function(data) {
-            alert('a');
+            // alert('a');
             val = parseInt($('.notification').text());
             val++;
             $('.notification').text(val);
