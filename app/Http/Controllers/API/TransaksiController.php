@@ -348,8 +348,7 @@ class TransaksiController extends Controller
 
     public function show_byowner($user_id)
     {
-        $user_id = 2;
-        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query){
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query) use ($user_id){
             return $query->where('user_id','=',$user_id);
         })->where('status','Proses')->get();
         if(count($transaksi) > 0){
@@ -379,7 +378,7 @@ class TransaksiController extends Controller
     public function show_selesai_byowner($user_id)
     {
         $user_id = $user_id;
-        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query){
+        $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query) use ($user_id){
             return $query->where('user_id','=',$user_id);
         })->where('status','Selesai')->get();
         if(count($transaksi) > 0){
