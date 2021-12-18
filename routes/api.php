@@ -144,7 +144,7 @@ Route::get('transaksi/show/byowner/{owner_id}', [TransaksiController::class, 'sh
 Route::get('transaksi/show/byowner/selesai/{owner_id}', [TransaksiController::class, 'show_selesai_byowner'])->name('api.transaksi.show.selesai.byowner');
 
 Route::get('transaksi/show/bypengemudi/{pengemudi_id}', [TransaksiController::class, 'show_bypengemudi'])->name('api.transaksi.show.bypengemudi');
-Route::get('transaksi/show/byowner/selesai/{pengemudi_id}', [TransaksiController::class, 'show_selesai_bypengemudi'])->name('api.transaksi.show.selesai.bypengemudi');
+Route::get('transaksi/show/bypengemudi/selesai/{pengemudi_id}', [TransaksiController::class, 'show_selesai_bypengemudi'])->name('api.transaksi.show.selesai.bypengemudi');
 
 Route::post('transaksi/selesai/{transaksi_id}',[TransaksiController::class, 'update_selesai'])->name('api.transaksi.update.selesai');
 Route::post('transaksi/create/rating',[TransaksiController::class,'create_rating'])->name("api.transaksi.rating");
