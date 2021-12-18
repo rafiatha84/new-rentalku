@@ -338,7 +338,7 @@
     <script>
 
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
 
         var pusher = new Pusher('d442ceb3f03945cb3bea', {
         cluster: 'eu'
