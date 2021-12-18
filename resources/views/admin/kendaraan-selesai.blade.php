@@ -207,17 +207,17 @@
         $('#table-pengguna').DataTable({
           "language" : {
             "decimal":        "",
-            "emptyTable":     "No data available in table",
+            "emptyTable":     "Tak ada data yang tersedia pada tabel ini",
             "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ baris",
             "infoEmpty":      "Menampilkan 0 to 0 of 0 entries",
             "infoFiltered":   "(filtered from _MAX_ total entries)",
             "infoPostFix":    "",
             "thousands":      ",",
             "lengthMenu":     "Tampilkan _MENU_ baris",
-            "loadingRecords": "Loading...",
-            "processing":     "Processing...",
+            "loadingRecords": "Memuat...",
+            "processing":     "Proses...",
             "search":         "Cari:",
-            "zeroRecords":    "No matching records found",
+            "zeroRecords":    "Tidak ada pencarian yang cocok ditemukan",
             "paginate": {
                 "first":      "Pertama",
                 "last":       "Terakhir",
@@ -225,8 +225,8 @@
                 "previous":   "Sebelumnya"
             },
             "aria": {
-                "sortAscending":  ": activate to sort column ascending",
-                "sortDescending": ": activate to sort column descending"
+                "sortAscending":  ": aktifkan untuk mengurutkan kolom menaik",
+                "sortDescending": ": aktifkan untuk mengurutkan kolom ke bawah"
             }
         }
         });
