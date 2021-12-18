@@ -55,7 +55,7 @@
                         <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan email" value="{{ Auth::user()->email }}" disabled>
                     </div>
                     <div class="col-6 offset-3 mt-4">
-                        <a href="{{ route('user.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Edit</a>
+                        <a href="{{ route('user.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Ubah</a>
                     </div>
                 </div>
             </div>

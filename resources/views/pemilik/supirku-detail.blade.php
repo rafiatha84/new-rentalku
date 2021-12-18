@@ -45,7 +45,7 @@
                             
                             <div class="row col-12">
                                 <div class="col-4 offset-4">
-                                    <a href="{{ route('pemilik.supirku.edit',$pengemudi->id) }}" class="button-base-secondary py-2 w-100 d-block text-center">Edit</a>
+                                    <a href="{{ route('pemilik.supirku.edit',$pengemudi->id) }}" class="button-base-secondary py-2 w-100 d-block text-center">Ubah</a>
                                 </div>
                             </div>
                         </div>

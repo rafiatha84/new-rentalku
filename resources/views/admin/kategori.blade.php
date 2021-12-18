@@ -123,7 +123,7 @@
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">Edit</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Ubah</button>
                     </div>
                   </div>
                   </form>

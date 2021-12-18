@@ -55,7 +55,7 @@
                         <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->email }}">
                     </div>
                     <div class="col-6 offset-3 mt-4">
-                        <a href="{{ route('pemilik.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Edit</a>
+                        <a href="{{ route('pemilik.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Ubah</a>
                     </div>
                 </div>
             </div>

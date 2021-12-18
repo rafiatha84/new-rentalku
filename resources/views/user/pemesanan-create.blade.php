@@ -23,7 +23,6 @@
                                 <p class="jenis text-center">{{$kendaraan->kategori->name}}</p>
                                 <div class="rent-car-box mb-2 px-2">
                                     <p class="m-0"><b>CAR RENT- {{$kendaraan->user->name}}</b></p>
-                                    <p class="mb-0"><?php echo ($kendaraan->supir == 1) ? 'Dengan Sopir' : 'Tanpa Sopir'; ?></p>
                                 </div>
                                 <p class="m-0">Sopir</p>
                                 <div class="row">

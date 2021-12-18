@@ -24,7 +24,6 @@
                                     <div class="col-6">
                                         <div class="rent-car-box mb-2 px-2">
                                             <p class="m-0"><b>CAR RENT- {{ $transaksi->kendaraan->user->name }}</b></p>
-                                            <p class="mb-0">{{ $transaksi->sopir() }}</p>
                                         </div>
                                     </div>
                                     <div class="col-6">

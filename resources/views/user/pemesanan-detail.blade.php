@@ -22,7 +22,6 @@
                                 <p class="jenis text-center">{{$transaksi->kendaraan->kategori->name}}</p>
                                 <div class="rent-car-box mb-2 px-2">
                                     <p class="m-0"><b>CAR RENT- {{$transaksi->kendaraan->user->name}}</b></p>
-                                    <p class="mb-0">{{$transaksi->sopir()}}</p>
                                 </div>
                                 <p class="m-0">Sopir</p>
                                 <div class="row">
