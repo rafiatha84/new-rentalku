@@ -39,7 +39,7 @@
                     <label class="small">Nama lengkap anda</label>
                     <input class="col-12" type="text" name="name" id="" placeholder="muhammad">
                     <label class="small">Email anda</label>
-                    <input class="col-12" type="email" name="email" id="" placeholder="example@gmail.com">
+                    <input class="col-12" type="email" name="email" id="" placeholder="contoh@gmail.com">
                     <label class="small">Katasandi anda</label>
                     <input class="col-12" type="password" name="password" id="" placeholder="******">
                     <label class="small">Ketik ulang katasandi anda</label>
@@ -53,7 +53,7 @@
                 
             </div>
         <div class="footer">
-            <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
     </body>
 </html>

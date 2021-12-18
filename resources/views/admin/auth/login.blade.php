@@ -33,7 +33,7 @@
             <form method="POST" action="{{ route('admin.login.action') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda</label>
-                <input class="col-12" type="email" name="email" placeholder="example@gmail.com" value="{{ old('email') }}" required>
+                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Masukkan katasandi anda</label>
                 <input class="col-12" type="password" name="password" placeholder="*******">
 
@@ -41,7 +41,7 @@
             </form>
         </div>
         <div class="footer">
-            <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
     </body>
 </html>

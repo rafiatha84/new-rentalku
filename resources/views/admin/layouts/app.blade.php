@@ -82,7 +82,7 @@
         @yield('content')
         <div id="footer" class="mt-2">
             <div class="row col-12 pt-4">
-                <p class="mx-auto">All Right Reserved &copy; 2021. RentalKu Team.</p>
+                <p class="mx-auto">Hak Cipta &copy; 2021. Tim Rentalku.</p>
             </div>
         </div>
         </main>

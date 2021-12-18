@@ -122,7 +122,7 @@
     
     <div id="footer">
         <div class="row col-lg-12 pt-4">
-            <p class="mx-auto">All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p class="mx-auto">Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
     </div>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

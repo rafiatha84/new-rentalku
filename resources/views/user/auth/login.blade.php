@@ -36,7 +36,7 @@
             <form method="POST" action="{{ route('user.login.action') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda</label>
-                <input class="col-12" type="email" name="email" placeholder="example@gmail.com" value="{{ old('email') }}" required>
+                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Masukkan Katasandi anda</label>
                 <input class="col-12" type="password" name="password" placeholder="*******">
 
@@ -46,7 +46,7 @@
             <p class="text-center small"><b><i>Lupa katasandi? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
         </div>
         <div class="footer">
-            <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
     </body>
 </html>

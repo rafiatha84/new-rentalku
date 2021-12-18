@@ -41,7 +41,7 @@
             <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>
         </div>
         <div class="footer">
-            <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
     </body>
 </html>

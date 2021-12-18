@@ -53,7 +53,7 @@
                 
             </div>
         <div class="footer">
-            <p>All Right Reserved &copy; 2021. RentalKu Team.</p>
+            <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
