@@ -37,13 +37,13 @@
                 @csrf
                 <label class="small">Masukkan email anda</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
-                <label class="small">Masukkan Katasandi anda</label>
+                <label class="small">Masukkan Kata sandi anda</label>
                 <input class="col-12" type="password" name="password" placeholder="*******">
 
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
-            <p class="text-center small"><b><i>Lupa katasandi? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
+            <p class="text-center small"><b><i>Lupa kata sandi? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
         </div>
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>

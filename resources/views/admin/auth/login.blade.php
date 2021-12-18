@@ -34,7 +34,7 @@
                 @csrf
                 <label class="small">Masukkan email anda</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
-                <label class="small">Masukkan katasandi anda</label>
+                <label class="small">Masukkan kata sandi anda</label>
                 <input class="col-12" type="password" name="password" placeholder="*******">
 
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
