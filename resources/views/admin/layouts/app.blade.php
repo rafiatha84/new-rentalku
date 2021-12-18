@@ -35,7 +35,7 @@
           <div class="sidebar-sticky">
             <div class="dashabord-box text-center mb-2">
             <img src="{{ asset('image/logo_kunci.png') }}" alt="">
-            <p class="d-inline text-white">Dashboard</p>
+            <p class="d-inline text-white">Menu Dasbor</p>
             </div>
             
             <ul class="nav flex-column">
