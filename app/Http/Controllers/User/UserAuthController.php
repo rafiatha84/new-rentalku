@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Validator;
+use Illuminate\Support\Facades\DB;
+use App\Models\Dompet;
 
 class UserAuthController extends Controller
 {
@@ -30,12 +33,11 @@ class UserAuthController extends Controller
             if(Auth::user()->role == "pemilik"){
                 return redirect()->route('pemilik.dashboard');
             }else{
-                return redirect()->intended('dashboard')->withSuccess('Signed in');
+                return redirect()->intended('dashboard')->withSuccess('masuk');
             }
-            
         }
   
-        return redirect("login")->with('status','Login details are not valid');
+        return redirect("login")->with('status','Detail login tidak valid');
     }
 
 
@@ -47,30 +49,44 @@ class UserAuthController extends Controller
       
 
     public function customRegistration(Request $request)
-    {  
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
+    {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6'
         ]);
-           
-        $data = $request->all();
-        $check = $this->create($data);
-        if($check){
-            //membuat user role sebagi penyewa
-            UserRole::create([
-                'user_id' => $check->id,
-                'role_tipe_id' => '1'
-            ]);
-        }
-        
-        $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)){
-           
-            return redirect("dashboard")->withSuccess('You have signed-in');
-        }
 
-        return redirect("login")->with('status','Gagal Mendaftar');
+        if($validator->fails()){
+            return redirect("registration")->with('status',$validator->errors()->first());    
+        }
+        DB::beginTransaction();
+        try{
+            //create user
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            // create dompet
+            $dompet = new Dompet();
+            $dompet->user_id = $user->id;
+            $dompet->saldo = 0;
+            $dompet->save();
+            //commit
+            DB::commit();
+            $token = $user->createToken('auth_token')->plainTextToken;
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) {
+                if(Auth::user()->role == "pemilik"){
+                    return redirect()->route('pemilik.dashboard');
+                }else{
+                    return redirect()->intended('dashboard')->withSuccess('masuk');
+                }
+            }
+            return redirect("registration")->with('status','Gagal Mendaftar');
+        }catch(\Exception $e){
+            return redirect("login")->with('status','Gagal Mendaftar');
+        }
         
     }
 
@@ -91,7 +107,7 @@ class UserAuthController extends Controller
             return view('user.dashboard');
         }
   
-        return redirect("login")->with('status','You are not allowed to access');
+        return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
     }
     public function dashboard_pemilik()
     {
@@ -99,7 +115,7 @@ class UserAuthController extends Controller
             return view('user.dashboard-pemilik');
         }
   
-        return redirect("login")->with('status','You are not allowed to access');
+        return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
     }
     
 

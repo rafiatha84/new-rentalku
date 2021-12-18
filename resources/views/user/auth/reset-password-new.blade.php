@@ -25,25 +25,23 @@
         <img src="{{ asset('image/rectangle205.png') }}" alt="" class="img-fluid img-background">
         <div class="login-form col-10 col-lg-4">
             <img src="{{ asset('image/logo_gabung.png') }}" alt="" class="mt-2 mx-auto d-block">
-            <p class="mt-5 mb-2 text-center"><b>Silahkan Masuk</b></p>
+            <p class="mt-5 mb-2 text-center"><b>Atur ulang Kata sandi</b></p>
 
             @if (session('status'))
                 <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
             @endif
-            @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <form method="POST" action="{{ route('user.login.action') }}" class=" mx-3">
+            <form method="POST" action="{{ route('password.update') }}" class=" mx-3">
                 @csrf
-                <label class="small">Masukkan email anda</label>
-                <input class="col-12" type="email" name="email" placeholder="example@gmail.com" value="{{ old('email') }}" required>
-                <label class="small">Masukkan password anda</label>
-                <input class="col-12" type="password" name="password" placeholder="*******">
-
-                <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
+                <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
+                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
+                <label class="small">Password anda</label>
+                    <input class="col-12" type="password" name="password" id="" placeholder="******">
+                    <label class="small">Ketik ulang password anda</label>
+                    <input class="col-12" type="password" name="password_confirmation" id="" placeholder="******">
+                <input class="my-4 col-12 login-btn" type="submit" value="Atur ulang">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
-            <p class="text-center small"><b><i>Lupa password? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
+            <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>
         </div>
         <div class="footer">
             <p>All Right Reserved &copy; 2021. RentalKu Team.</p>

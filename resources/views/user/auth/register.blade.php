@@ -31,6 +31,9 @@
                     <p class="small text-center">Silakan isi form disamping ini untuk pendaftaran akun RentalKu Anda!</p>
                 </div>
                 <div class="col-12 col-lg-6 pt-4">
+                @if (session('status'))
+                <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
+            @endif
                 <form action="{{ route('user.register.action') }}" method="POST" class="mx-3">
                     @csrf
                     <label class="small">Nama lengkap anda</label>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\API\KategoriController;
+use App\Http\Controllers\Auth\NewForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,17 @@ use App\Http\Controllers\API\KategoriController;
 Route::get('/', [App\Http\Controllers\User\UserWelcomeController::class, 'welcome'])->name('user.welcome');
 // Auth::routes();
 // Auth user
+Auth::routes();
 Route::get('login', [UserAuthController::class, 'index'])->name('user.login');
 Route::post('login', [UserAuthController::class, 'customLogin'])->name('user.login.action'); 
 Route::get('registration', [UserAuthController::class, 'registration'])->name('user.register');
 Route::post('registration', [UserAuthController::class, 'customRegistration'])->name('user.register.action'); 
 Route::get('logout', [UserAuthController::class, 'logOut'])->name('user.logout');
+
+Route::get('forget-password', [NewForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [NewForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('password/reset/{token}', [NewForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [NewForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 //dashboard
 Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::get('profile',[App\Http\Controllers\User\UserProfileController::class,'index'])->name('user.profile');

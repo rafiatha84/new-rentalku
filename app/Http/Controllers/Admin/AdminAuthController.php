@@ -28,13 +28,13 @@ class AdminAuthController extends Controller
         if (Auth::attempt($credentials)) {
             
             if(Auth::user()->role != "admin"){
-                return redirect("admin/login")->with('status','You are not allowed to access');
+                return redirect("admin/login")->with('status','Anda tidak diizinkan untuk mengakses');
             }
             return redirect()->intended('admin/')
                         ->withSuccess('Signed in');
         }
   
-        return redirect("admin/login")->with('status','Login details are not valid');
+        return redirect("admin/login")->with('status','Detail login tidak valid');
     }
 
 
@@ -59,7 +59,7 @@ class AdminAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)){
             
-            return redirect("admin/dashboard")->withSuccess('You have signed-in');
+            return redirect("admin/dashboard")->withSuccess('Anda telah masuk');
         }
 
         return redirect("admin/login")->with('status','Gagal Mendaftar');
