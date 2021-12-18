@@ -307,7 +307,7 @@ class KendaraanController extends Controller
                 "errors" => $validator->errors(),
                 "content" => null,
             ];
-            return response()->json($response,200);
+            return response()->json($response,404);
         }
 
         $data_upload = $request->all();
@@ -324,7 +324,7 @@ class KendaraanController extends Controller
 
         $kendaraan = Kendaraan::where('id',$id)->update($data_upload);
         if ($kendaraan) {
-            $kendaraan_data = Kendaraan::where('id',$id)->get();
+            $kendaraan_data = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->where('id',$kendaraan->id)->firstOrFail();
             $response = [
                 "status" => "success",
                 "message" => 'Berhasil update kendaraan',
@@ -338,10 +338,10 @@ class KendaraanController extends Controller
                 "status" => "gagal",
                 "message" => 'gagal update kendaraan',
                 "errors" => null,
-                "content" => $kendaraan,
+                "content" => null,
             ];
     
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
     }
 
