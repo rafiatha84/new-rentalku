@@ -230,6 +230,35 @@ class PengemudiController extends Controller
             ]);
         }
     }
+
+    public function showByOwner($user_id)
+    {
+        $user = User::with('pengemudi.user')->where('id',$user_id)->firstOfFail();
+        if(count($user->pengemudi) > 0) {
+            $response = [
+                "status" => "success",
+                "message" => "Data pengemudi ditemukan",
+                "error" => null,
+                "content" => $user
+            ];
+            return response()->json($response, 200,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+        else {
+            $response = [
+                "status" => "gagal",
+                "message" => "Pengemudi hilang",
+                "error" => null,
+                "content" => $user
+            ];
+            return response()->json($response, 404,[
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8'
+            ]);
+        }
+    }
     
 
     /**
