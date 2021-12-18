@@ -348,7 +348,7 @@ class TransaksiController extends Controller
 
     public function show_byowner($user_id)
     {
-        $user_id = $user_id;
+        $user_id = 2;
         $transaksi = Transaksi::with('user','kendaraan.kategori','kendaraan.user','pengemudiTransaksi','ratingKendaraan')->with('kendaraan.avgRating')->whereHas('kendaraan',function($query){
             return $query->where('user_id','=',$user_id);
         })->where('status','Proses')->get();
