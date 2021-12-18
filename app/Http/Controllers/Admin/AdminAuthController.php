@@ -83,7 +83,7 @@ class AdminAuthController extends Controller
             return view('admin/dashboard');
         }
   
-        return redirect("admin/login")->with('status','You are not allowed to access');
+        return redirect("admin/login")->with('status','Anda tidak diizinkan untuk mengakses');
     }
     
 
