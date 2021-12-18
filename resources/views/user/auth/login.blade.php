@@ -43,7 +43,7 @@
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
-            <p class="text-center small"><b><i>Lupa kata sandi? <a href="{{ route('forget.password.get') }}">Atur password</a></i></b></p>
+            <p class="text-center small"><b><i>Lupa kata sandi? <a href="{{ route('forget.password.get') }}">Atur Kata sandi</a></i></b></p>
         </div>
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
