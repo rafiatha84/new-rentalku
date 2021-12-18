@@ -33,7 +33,6 @@
                             <div class="info-box p-2 m-0">
                                 <div class="m-0">
                                     <p class="d-inline-block m-0"><b>ATM BCA</b></p>
-                                    <span class="float-right"><i class="fa-solid fa-chevron-up base-color"></i></span>
                                 </div>
                             </div>
                             <div class="tutorial-box">
@@ -42,24 +41,6 @@
                                 <p><span class="badge badge-light mx-1">3</span>Masukkan nomor rekening BCA milik RentalKu</p>
                                 <p><span class="badge badge-light mx-1">4</span>Pastikan nama Anda dan jumlah bembayaran sudah benar</p>
                                 <p><span class="badge badge-light mx-1">5</span>Pembayaran selesai. Simpan struk sebagai bukti pembayaran</p>
-                            </div>
-                            <div class="info-box p-2 m-0">
-                                <div class="m-0">
-                                    <p class="d-inline-block m-0"><b>ATM BCA</b></p>
-                                    <span class="float-right"><i class="fa-solid fa-chevron-down base-color"></i></span>
-                                </div>
-                            </div>
-                            <div class="info-box p-2 m-0">
-                                <div class="m-0">
-                                    <p class="d-inline-block m-0"><b>ATM BCA</b></p>
-                                    <span class="float-right"><i class="fa-solid fa-chevron-down base-color"></i></span>
-                                </div>
-                            </div>
-                            <div class="info-box p-2 m-0">
-                                <div class="m-0">
-                                    <p class="d-inline-block m-0"><b>ATM BCA</b></p>
-                                    <span class="float-right"><i class="fa-solid fa-chevron-down base-color"></i></span>
-                                </div>
                             </div>
                             
                             <form action='' id="formdelete" method="get">
