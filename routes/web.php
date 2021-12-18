@@ -29,7 +29,7 @@ Route::get('logout', [UserAuthController::class, 'logOut'])->name('user.logout')
 
 Route::get('forget-password', [NewForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [NewForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
-Route::get('password/reset/{token}', [NewForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::get('reset-password/{token}', [NewForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [NewForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 //dashboard
 Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');

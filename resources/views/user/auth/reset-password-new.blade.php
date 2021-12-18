@@ -30,15 +30,16 @@
             @if (session('status'))
                 <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
             @endif
-            <form method="POST" action="{{ route('password.update') }}" class=" mx-3">
+            <form method="POST" action="{{ route('reset.password.post') }}" class=" mx-3">
                 @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Password anda</label>
                     <input class="col-12" type="password" name="password" id="" placeholder="******">
                     <label class="small">Ketik ulang password anda</label>
                     <input class="col-12" type="password" name="password_confirmation" id="" placeholder="******">
-                <input class="my-4 col-12 login-btn" type="submit" value="Atur ulang">
+                <input class="my-4 col-12 login-btn" type="submit" value="Atur Password">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
             <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>

@@ -30,7 +30,7 @@
             @if (session('status'))
                 <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
             @endif
-            <form method="POST" action="{{ route('password.email') }}" class=" mx-3">
+            <form method="POST" action="{{ route('forget.password.post') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
