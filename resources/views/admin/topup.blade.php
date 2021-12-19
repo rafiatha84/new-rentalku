@@ -243,7 +243,7 @@
                   <p class="email">Email: ${response['content']['user']['email']}</p>
                   <p class="name">Nama Pengguna: ${response['content']['user']['name']}</p>
                   <p class="bank">Pilihan Pembayaran: Bank ${response['content']['bank']}</p>
-                  <p class="jumlah">Total Pembayaran: Rp.${jumlah_display}2</p>
+                  <p class="jumlah">Total Pembayaran: Rp.${jumlah_display}</p>
                   <p class="status">Status: <i class="${css_status}">${response['content']['status']}</i></p>
               `;
               $('.detail-show').html(html_detail);
