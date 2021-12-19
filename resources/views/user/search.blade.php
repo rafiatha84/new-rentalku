@@ -55,12 +55,16 @@
         <div class="container">
         <div class="row bg-white py-2">
             <div class="col-6">
-                @foreach($kategorisQuery as $kategori)
-                    <span class="tag-label p-1">{{$kategori}}</span>
-                @endforeach
+                @if($query != "")
+                    <span class="tag-label p-1">{{$query}}</span>
+                @endif
+                
                 @if($kota != "")
                     <span class="tag-label p-1">{{$kota}}</span>
                 @endif
+                @foreach($kategorisQuery as $kategori)
+                    <span class="tag-label p-1">{{$kategori}}</span>
+                @endforeach
             </div>
             <div class="col-6 d-flex justify-content-end pagination">
                 {{ $kendaraans->links('pagination::bootstrap-4') }}

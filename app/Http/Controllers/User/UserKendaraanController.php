@@ -22,6 +22,7 @@ class UserKendaraanController extends Controller
         $queryArray = Array();
         $kategorisQuery = Array();
         $kota = "";
+        $q = "";
         if(isset($request->kategori)){
             $kategorisQuery = $request->kategori;
             $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
@@ -57,6 +58,7 @@ class UserKendaraanController extends Controller
             }
         }
         if(isset($request->q) && $request->q != ""){
+            $q = $request->q;
             $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->paginate(6);
         }else{
             $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
@@ -68,6 +70,7 @@ class UserKendaraanController extends Controller
             "kendaraans" => $kendaraans,
             "kategorisQuery" => $kategorisQuery,
             "kota" => $kota,
+            "query" => $q,
             "kategoris" => $kategoris
         ]);
     }
