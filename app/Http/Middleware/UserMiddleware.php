@@ -18,7 +18,7 @@ class UserMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(!Auth::check()){
-            return redirect("login")->with('status','You are not allowed to access');
+            return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
         }
         return $next($request);
     }

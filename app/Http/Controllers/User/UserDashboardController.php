@@ -54,6 +54,6 @@ class UserDashboardController extends Controller
             return view('user.pemilik.dashboard');
         //}
   
-        //return redirect("login")->with('status','You are not allowed to access');
+        //return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
     }
 }

@@ -18,10 +18,10 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user() == null){
-            return redirect("admin/login")->with('status','You are not allowed to access');
+            return redirect("admin/login")->with('status','Anda tidak diizinkan untuk mengakses');
         }else{
             if(Auth::user()->role != "admin"){  
-                return redirect("admin/login")->with('status','You are not allowed to access');
+                return redirect("admin/login")->with('status','Anda tidak diizinkan untuk mengakses');
             }
         }
         return $next($request);
