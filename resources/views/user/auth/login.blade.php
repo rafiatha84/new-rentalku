@@ -37,11 +37,11 @@
             <form method="POST" action="{{ route('user.login.action') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda</label>
-                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
+                <input class="col-12 input-form" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Masukkan Kata sandi anda</label>
                 <div class="password-box">
-                    <input class="col-12" type="password" name="password" placeholder="*******">
-                    <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button>
+                    <input class="col-12 input-form" type="password" name="password" placeholder="*******">
+                    <!-- <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button> -->
                 </div>
 
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
