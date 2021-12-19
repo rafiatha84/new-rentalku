@@ -114,7 +114,7 @@ class KendaraanController extends Controller
                 "errors" => null,
                 "content" => $kendaraans,
             ];
-            return response()->json($response, 200,[
+            return response()->json($response, 404,[
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8'
             ]);
