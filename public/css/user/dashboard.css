@@ -52,6 +52,9 @@ input[type="text"], input[type="password"], textarea, select {
 .search-hidden{
     display: none !important;
 }
+.pemilik-lokasi{
+    background-color: white;
+}
 .kategori-box{
     border: 1px solid #A0A0A0;
     color:#A0A0A0;
