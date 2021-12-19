@@ -58,6 +58,9 @@
                 @foreach($kategorisQuery as $kategori)
                     <span class="tag-label p-1">{{$kategori}}</span>
                 @endforeach
+                @if($kota != "")
+                    <span class="tag-label p-1">{{$kota}}</span>
+                @endif
             </div>
             <div class="col-6 d-flex justify-content-end pagination">
                 {{ $kendaraans->links('pagination::bootstrap-4') }}
