@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
+use App\Models\Kendaraan;
+use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Validator;
@@ -213,6 +215,63 @@ class KategoriController extends Controller
             ]);
         }
         
+    }
+
+    public function updateKota(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+        [
+            'user_id' => 'required',
+            'kota' => 'required'
+        ]);
+
+        if($validator->fails())
+        {
+            $response = [
+                "status" => "error",
+                "message" => 'Kolom belum diisi',
+                "errors" => $validator->errors(),
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+        try {
+            //code...
+            $update = User::where('id',$request->user_id)->update(['kota' => $request->kota]);
+            if($update){
+                $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
+                $response = [
+                    "status" => "deleted",
+                    "message" => 'Kota berhasil di update.',
+                    "errors" => null,
+                    "content" => $user
+                ];  
+        
+                return response()->json($response, 200,[
+                    'Content-Type' => 'application/json',
+                    'Charset' => 'utf-8'
+                ]);
+            }else{
+                $response = [
+                    "status" => "error",
+                    "message" => 'Gagal update kota.',
+                    "errors" => null,
+                    "content" => null,
+                ];
+                return response()->json($response,404);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            $response = [
+                "status" => "error",
+                "message" => 'Gagal update kota.',
+                "errors" => null,
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+        
+
     }
 
 }

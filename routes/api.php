@@ -40,9 +40,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth:sanctum']], function() {
-
     Route::get('/user',[AuthController::class,'user'])->name('api.user');
-    
     // manggil controller sesuai bawaan laravel 8
     Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
     // manggil controller dengan mengubah namespace di RouteServiceProvider.php biar bisa kayak versi2 sebelumnya
@@ -111,7 +109,7 @@ Route::get('/kategori/{id}', [KategoriController::class, 'showId'])->name('api.k
 Route::post('/kategori/create', [KategoriController::class, 'store'])->name('api.kategori.create');
 Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('api.kategori.update');
 Route::delete('/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy'])->name('api.kategori.destroy');
-
+Route::post('/update/kota',[KategoriController::class,'updateKota'])->name('api.update.kota');
 //Rekeming
 Route::get('/rekening',[DompetkuCOntroller::class, 'rekening'])->name('api.rekening');
 
