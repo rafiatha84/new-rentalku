@@ -19,7 +19,7 @@ class UserKendaraanController extends Controller
     public function search(Request $request){
         $kategoris = Kategori::get();
         $currentURL = $request->fullUrl();
-        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw('user_id IN (2,3)')->paginate(6);
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw('user_id IN (1,5)')->paginate(6);
         dd($kendaraans);
         $q = $request->q;
         $kategorisQuery = Array();
