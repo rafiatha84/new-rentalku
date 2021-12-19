@@ -37,19 +37,19 @@
                 <div class="search-toggle-box pt-5 search-hidden">
                     <p class="text-center mb-0">Pilihan Kota</p>
                     <div class="kategori row px-4">
-                        <input class="filter-checkbox pilihanKota-Surabaya" type="checkbox" name="kota[]" value="Surabaya"/>
+                        <input class="filter-checkbox pilihanKota-Surabaya" type="radio" name="kota" value="Surabaya"/>
                         <div class="kategori-outer col-3 p-1">
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
                         </div>
-                        <input class="filter-checkbox pilihanKota-Jakarta" type="checkbox" name="kota[]" value="Jakarta"/>
+                        <input class="filter-checkbox pilihanKota-Jakarta" type="radio" name="kota" value="Jakarta"/>
                         <div class="kategori-outer col-3 p-1">
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
                         </div>
-                        <input class="filter-checkbox pilihanKota-Bandung" type="checkbox" name="kota[]" value="Bandung"/>
+                        <input class="filter-checkbox pilihanKota-Bandung" type="radio" name="kota" value="Bandung"/>
                         <div class="kategori-outer col-3 p-1">
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
                         </div>
-                        <input class="filter-checkbox pilihanKota-Semarang" type="checkbox" name="kota[]" value="Semarang"/>
+                        <input class="filter-checkbox pilihanKota-Semarang" type="radio" name="kota" value="Semarang"/>
                         <div class="kategori-outer col-3 p-1">
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
                         </div>

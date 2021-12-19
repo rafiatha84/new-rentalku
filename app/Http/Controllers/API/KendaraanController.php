@@ -70,7 +70,7 @@ class KendaraanController extends Controller
                 array_push($queryArray,$query);
             }
         }
-        if(isset($request->kota)){
+        if(isset($request->kota) && $request->kota != ""){
             $kota = $request->kota;
             $user = User::where('kota',$request->kota)->get();
             $userIdArray = Array();
