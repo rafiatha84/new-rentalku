@@ -22,7 +22,7 @@
                 <tr>
                   <th>Email</th>
                   <th>Nama pengguna</th>
-                  <th>Bank</th>
+                  <th>Pilihan Pembayaran</th>
                   <th>Nominal</th>
                   <th>Aksi</th>
                   <th>Status</th>
