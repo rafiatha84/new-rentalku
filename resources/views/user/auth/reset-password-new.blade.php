@@ -35,9 +35,9 @@
                 <input type="hidden" name="token" value="{{ $token }}">
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
-                <label class="small">Password anda</label>
+                <label class="small">Kata sandi anda</label>
                     <input class="col-12" type="password" name="password" id="" placeholder="******">
-                    <label class="small">Ketik ulang password anda</label>
+                    <label class="small">Ketik ulang kata sandi anda</label>
                     <input class="col-12" type="password" name="password_confirmation" id="" placeholder="******">
                 <input class="my-4 col-12 login-btn" type="submit" value="Atur Password">
             </form>

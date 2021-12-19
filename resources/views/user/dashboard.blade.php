@@ -35,6 +35,13 @@
                 </div>
                 
                 <div class="search-toggle-box pt-5 hidden">
+                    <p class="text-center mb-0">Pilihan Kota</p>
+                    <div class="kategori row px-4">
+                        <input class="filter-checkbox pilihanKota-Surabaya" type="checkbox" name="kota[]" value="Surabaya"/>
+                        <div class="kategori-outer col-3 p-1">
+                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
+                        </div>
+                    </div>
                     <p class="text-center mb-0">Kategori</p>
                     <div class="kategori row px-4">
                         @foreach($kategoris as $kategori)
