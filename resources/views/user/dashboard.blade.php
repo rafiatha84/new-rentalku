@@ -145,15 +145,15 @@
                     centerMode: true
                 });
                 $('.button').click(function(e){
-                    if($('.search-toggle-box').hasClass("hidden")){
-                        $('.search-toggle-box').removeClass('hidden');
+                    if($('.search-toggle-box').hasClass("search-hidden")){
+                        $('.search-toggle-box').removeClass('search-hidden');
                     }else{
-                        $('.search-toggle-box').addClass('hidden');
+                        $('.search-toggle-box').addClass('search-hidden');
                     }
                     e.preventDefault();
                 });
                 $('.cari-rental').focus(function(){
-                    $('.search-toggle-box').removeClass('hidden');
+                    $('.search-toggle-box').removeClass('search-hidden');
                 });
                 $('.kategori-check').click(function(e){
                     nama = $(e.currentTarget).text();
