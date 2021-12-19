@@ -44,7 +44,7 @@ class UserKendaraanController extends Controller
             }
         }
 
-        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("")->paginate(6);
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("1 = 1")->paginate(6);
         dd($kendaraans);
         if(isset($request->q) && $request->q != ""){
         }else{
