@@ -9,104 +9,56 @@
     <div id="ulasan-produk">
         <div class="container">
             <div class="row col-12">
-                <div class="detail-box col-10 offset-1 mt-5 p-0 pb-4">
+                <div class="detail-box col-8 offset-2 mt-5 p-0 pb-4">
                     <h4 class="text-center head-produk py-2">Penilaian dan ulasan mobil</h4>
                     <div class="content-wrapper px-2">
-                        <h5 class="d-inline">4.2</h5> <p class="d-inline">dari 5</p>
+                        <h5 class="d-inline">{{ number_format($kendaraan->rating_kendaraan_avg_jumlah_bintang,1) }}</h5> <p class="d-inline">dari {{$kendaraan->ratingKendaraan->count() }} Ulasan</p>
                         <p>
-                            <i class="fa-solid fa-star star-active star-big"></i>
-                            <i class="fa-solid fa-star star-active star-big"></i>
-                            <i class="fa-solid fa-star star-active star-big"></i>
-                            <i class="fa-solid fa-star star-active star-big"></i>
-                            <i class="fa-solid fa-star star-big"></i>
+                            <?php 
+                                $bintangactive = (int)$kendaraan->rating_kendaraan_avg_jumlah_bintang;
+                                $bintangoff=5-$bintangactive; 
+                            ?>
+                            @for ($i = 0; $i < $bintangactive; $i++)
+                                <i class="fa-solid fa-star star-active star-big"></i>
+                            @endfor
+                            @for ($i = 0; $i < $bintangoff; $i++)
+                                <i class="fa-solid fa-star star-big"></i>
+                            @endfor
                         </p>
                         <hr class="hr-detail">
                         <h5 class="mb-4">Ulasan Pelanggan</h5>
-                        <div class="row">
-                            <div class="image-box col-2">
-                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                        @if($kendaraan->ratingKendaraan->count() > 0)
+                            @foreach($kendaraan->ratingKendaraan as $rating)
+                            <div class="row">
+                                <div class="image-box col-2">
+                                    <img src="{{ asset($rating->user->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                </div>
+                                <div class="col-10">
+                                    <?php 
+                                        $date = strtotime($rating->created_at);
+                                    ?>
+                                    <p class="mb-0">{{$rating->user->name}} <span class="waktu small">{{$rating->created_at->diffForHumans();}}</span></p>
+                                    <p class="m-0">
+                                        <?php 
+                                            $bintangactive = (int)$rating->jumlah_bintang;
+                                            $bintangoff=5-$bintangactive; 
+                                        ?>
+                                        @for ($i = 0; $i < $bintangactive; $i++)
+                                            <i class="fa-solid fa-star star-active star-big"></i>
+                                        @endfor
+                                        @for ($i = 0; $i < $bintangoff; $i++)
+                                            <i class="fa-solid fa-star star-big"></i>
+                                        @endfor
+                                    </p>
+                                    <p>{{$rating->review}}</p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p class="mb-0">dewi <span class="waktu small">1d</span></p>
-                                <p class="m-0">
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                                <p>ulasann Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sint consectetur. Odio, architecto laudantium. Quaerat necessitatibus quisquam sint, saepe aspernatur nihil dicta? Blanditiis, sapiente quia? Enim neque sit voluptas modi.</p>
-                            </div>
-                        </div>
-                        <hr class="hr-detail mt-0">
-                        <div class="row">
-                            <div class="image-box col-2">
-                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
-                            </div>
-                            <div class="col-10">
-                                <p class="mb-0">dewi <span class="waktu small">1d</span></p>
-                                <p class="m-0">
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                                <p>ulasann Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sint consectetur. Odio, architecto laudantium. Quaerat necessitatibus quisquam sint, saepe aspernatur nihil dicta? Blanditiis, sapiente quia? Enim neque sit voluptas modi.</p>
-                            </div>
-                        </div>
-                        <hr class="hr-detail mt-0">
-                        <div class="row">
-                            <div class="image-box col-2">
-                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
-                            </div>
-                            <div class="col-10">
-                                <p class="mb-0">dewi <span class="waktu small">1d</span></p>
-                                <p class="m-0">
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                                <p>ulasann Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sint consectetur. Odio, architecto laudantium. Quaerat necessitatibus quisquam sint, saepe aspernatur nihil dicta? Blanditiis, sapiente quia? Enim neque sit voluptas modi.</p>
-                            </div>
-                        </div>
-                        <hr class="hr-detail mt-0">
-                        <div class="row">
-                            <div class="image-box col-2">
-                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
-                            </div>
-                            <div class="col-10">
-                                <p class="mb-0">dewi <span class="waktu small">1d</span></p>
-                                <p class="m-0">
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                                <p>ulasann Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sint consectetur. Odio, architecto laudantium. Quaerat necessitatibus quisquam sint, saepe aspernatur nihil dicta? Blanditiis, sapiente quia? Enim neque sit voluptas modi.</p>
-                            </div>
-                        </div>
-                        <hr class="hr-detail mt-0">
-                        <div class="row">
-                            <div class="image-box col-2">
-                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
-                            </div>
-                            <div class="col-10">
-                                <p class="mb-0">dewi <span class="waktu small">1d</span></p>
-                                <p class="m-0">
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star star-active"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                                <p>ulasann Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sint consectetur. Odio, architecto laudantium. Quaerat necessitatibus quisquam sint, saepe aspernatur nihil dicta? Blanditiis, sapiente quia? Enim neque sit voluptas modi.</p>
-                            </div>
-                        </div>
-                        <hr class="hr-detail mt-0">
+                            <br>
+                            @endforeach
+                            <hr class="hr-detail mt-0">
+                        @else
+                            <p class="text-center">Masih belum ada Ulasan</p>
+                        @endif
                     </div>
                 </div>
             </div>
