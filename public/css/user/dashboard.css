@@ -41,7 +41,7 @@ input[type="text"], input[type="password"], textarea, select {
     border-top-right-radius: 20px;
     position: absolute;
     top: 0;
-    display: inline-block;
+    display: inline-table;
     height: auto;
     background-color: #E0E0E0;
     color: black;
