@@ -48,7 +48,12 @@ class PemilikUnitkuController extends Controller
 
     public function ulasan($kendaraan_id)
     {
-        return view('pemilik.unitku-ulasan');
+        $kendaraan = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->findOrfail($kendaraan_id);
+        // dd($kendaraan);
+        return view('pemilik.unitku-ulasan',[
+            'kendaraan' => $kendaraan
+        ]);
+        // return view('pemilik.unitku-ulasan');
     }
 }
 
