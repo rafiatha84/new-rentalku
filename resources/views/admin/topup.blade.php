@@ -22,7 +22,7 @@
                 <tr>
                   <th>Email</th>
                   <th>Nama pengguna</th>
-                  <th>Bank</th>
+                  <th>Pilihan Pembayaran</th>
                   <th>Nominal</th>
                   <th>Aksi</th>
                   <th>Status</th>
@@ -92,7 +92,7 @@
                   </div>
                   <div class="col-12 text-center">
                   <h2>Perhatian</h2>
-                  <p>Apakah Anda yakin akan mengkonfirmasi topup ini?</p>
+                  <p>Apakah Anda yakin akan mengkonfirmasi isi saldo ini?</p>
                   </div>
                   <form action='{{ route("admin.topup.konfirmasi", ":id" ) }}' id="formkonfirmasi" method="POST">
                     @csrf
