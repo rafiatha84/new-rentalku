@@ -38,10 +38,17 @@ class UserKendaraanController extends Controller
         $queryAkhir = "";
         if(count($queryArray) > 0){
             if(count($queryArray) > 1){
-                $queryAkhir = $queryArray[0]." AND ".$queryArray[0];
+                $queryAkhir = $queryArray[0]." AND ".$queryArray[1];
             }else{
                 $queryAkhir = $queryArray[0];
             }
+        }
+
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("")->paginate(6);
+        dd($kendaraans);
+        if(isset($request->q) && $request->q != ""){
+        }else{
+
         }
         dd($queryAkhir);
         $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
