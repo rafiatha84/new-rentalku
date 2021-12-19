@@ -41,13 +41,16 @@ input[type="text"], input[type="password"], textarea, select {
     border-top-right-radius: 20px;
     position: absolute;
     top: 0;
-    display: none;
+    display: inline-table;
     height: auto;
     background-color: #E0E0E0;
     color: black;
     width: 100%;
     z-index: 9998;
     border: 0 !important;
+}
+.search-hidden{
+    display: none !important;
 }
 .kategori-box{
     border: 1px solid #A0A0A0;

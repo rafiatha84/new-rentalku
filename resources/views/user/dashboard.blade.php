@@ -34,7 +34,7 @@
                 
                 </div>
                 
-                <div class="search-toggle-box pt-5 hidden">
+                <div class="search-toggle-box pt-5 search-hidden">
                     <p class="text-center mb-0">Pilihan Kota</p>
                     <div class="kategori row px-4">
                         <input class="filter-checkbox pilihanKota-Surabaya" type="checkbox" name="kota[]" value="Surabaya"/>
