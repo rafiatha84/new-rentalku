@@ -241,7 +241,7 @@ class KategoriController extends Controller
             if($update){
                 $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
                 $response = [
-                    "status" => "deleted",
+                    "status" => "Success",
                     "message" => 'Kota berhasil di update.',
                     "errors" => null,
                     "content" => $user
