@@ -88,8 +88,8 @@
                   <input type="text" name=""  value="Admin" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
                   <input type="text" name=""  value="Admin@gmail.com" class="input-form w-100 p-2">
-                  <p class="m-0">Password</p>
-                  <input type="text" name=""  value="******" class="input-form w-100 mb-2 p-2">
+                  <p class="m-0">Kata sandi</p>
+                  <input type="text" name=""  value="" placeholder="Kata sandi" class="input-form w-100 mb-2 p-2">
                   </div>
                   <form action='' id="formprofil" method="get">
                   <div class="row px-5">
@@ -97,7 +97,7 @@
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">update</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Simpan</button>
                     </div>
                   </div>
                   </form>
@@ -123,15 +123,15 @@
                   <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
                   <input type="text" name="email" placeholder="testn@gmail.com" class="input-form w-100 p-2">
-                  <p class="m-0">Password</p>
-                  <input type="text" name="password" value="******" class="input-form w-100 mb-2 p-2">
+                  <p class="m-0">Kata sandi</p>
+                  <input type="text" name="password" value="" placeholder="Kata sandi"  class="input-form w-100 mb-2 p-2">
                   </div>
                   <div class="row px-5">
                     <div class="col-6">
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">tambah</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Tambah</button>
                     </div>
                   </div>
                   </form>
@@ -157,13 +157,13 @@
                   <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
                   <input type="text" name="email"  placeholder="testn@gmail.com" class="input-form w-100 p-2">
-                  <p class="m-0">Password</p>
-                  <input type="text" name="password"  value="******" class="input-form w-100 mb-2 p-2">
+                  <p class="m-0">Kata sandi</p>
+                  <input type="text" name="password"  value="" placeholder="Kata sandi" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
                   <input type="text" name="nik"  placeholder="NIK" class="input-form w-100 p-2">
                   <p class="m-0">Foto KTP</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-pemilik');"></i><span class="name" id="foto-ktp-name">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-pemilik');"></i><span class="name" id="foto-ktp-name">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_ktp" id="foto-ktp-pemilik" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-pemilik');">
                   </div>
                   <img src="/" alt="" id="foto-ktp-image-pemilik" class="image-produk img-upload w-100 mt-2 hidden">
@@ -173,7 +173,7 @@
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">tambah</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Tambah</button>
                     </div>
                   </div>
                   </form>
@@ -195,31 +195,31 @@
                   <form action="{{ route('admin.user.create') }}" id="form-create-supir" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="role" value="pengemudi">
-                  <p class="m-0">Owner</p>
+                  <p class="m-0">Pemilik</p>
                   <select name="owner_id" id="owner" class="input-form w-100 p-2">
                     @foreach($pemiliks as $pemilik)
                     <option value="{{$pemilik->id}}">{{$pemilik->name}}</option>
                     @endforeach
                   </select>
-                  <p class="m-0">Harga sopir / Hari</p>
+                  <!-- <p class="m-0">Harga sopir / Hari</p> -->
                   <input type="number" name="harga" placeholder="Harga sopir" class="input-form w-100 p-2">
                   <p class="m-0">Nama</p>
                   <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
                   <input type="text" name="email" placeholder="testn@gmail.com" class="input-form w-100 p-2">
-                  <p class="m-0">Password</p>
-                  <input type="password" name="password" value="******" class="input-form w-100 mb-2 p-2">
+                  <p class="m-0">Kata sandi</p>
+                  <input type="password" name="password" value="" placeholder="Kata sandi" class="input-form w-100 mb-2 p-2">
                   <p class="m-0">Nomor Induk Kependudukan</p>
                   <input type="text" name="nik" placeholder="NIK" class="input-form w-100 p-2">
                   <p class="m-0">Foto Ktp</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_ktp" id="foto-ktp-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-penyewa');">
                   </div>
                   <img src="/" alt="" id="foto-ktp-image-penyewa" class="image-produk img-upload w-100 mt-1 hidden">
                   <p class="m-0">Foto SIM A</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-penyewa');"></i><span class="name" id="foto-sim-name-penyewa">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-penyewa');"></i><span class="name" id="foto-sim-name-penyewa">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_sim" id="foto-sim-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-sim-image-penyewa');">
                   </div>
                   <img src="/" alt="" id="foto-sim-image-penyewa" class="image-produk img-upload w-100 mt-1 hidden">
@@ -254,8 +254,8 @@
                   <input type="text" name="name" placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>
                   <input type="text" name="email"  placeholder="testn@gmail.com" class="input-form w-100 p-2">
-                  <p class="m-0">Password</p>
-                  <input type="text" name="password"  value="******" class="input-form w-100 mb-2 p-2">
+                  <p class="m-0">Kata sandi</p>
+                  <input type="text" name="password"  value="" placeholder="Kata sandi" class="input-form w-100 mb-2 p-2">
                   </div>
                   <form action='' id="formcreate-admin" method="get">
                   <div class="row px-5">
@@ -263,7 +263,7 @@
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">tambah</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Tambah</button>
                     </div>
                   </div>
                   </form>
@@ -282,7 +282,7 @@
                     <h3 class="text-center">Detail/Edit User</h3>
                   </div>
                   <div class="col-12">
-                  <p class="m-0">Role</p>
+                  <p class="m-0">Jenis Pengguna</p>
                   <input type="text" name="role"  placeholder="role" class="input-form w-100 mb-2 p-2"  value="">
                   <p class="m-0">Nama</p>
                   <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2" value="">
@@ -294,18 +294,18 @@
                   <input type="text" name="alamat" placeholder="alamat" class="input-form w-100 p-2" value="">
                   <p class="m-0">Foto KTP</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-edit');"></i><span class="name" id="foto-ktp-name-edit">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-edit');"></i><span class="name" id="foto-ktp-name-edit">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_ktp" id="foto-ktp-edit" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-edit');">
                   </div>
                   <img src="/" alt="" id="foto-ktp-image-edit" class="image-produk img-upload w-100 mt-1 hidden">
                   <p class="m-0">Foto SIM A</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-edit');"></i><span class="name" id="foto-sim-name-edit">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim-edit');"></i><span class="name" id="foto-sim-name-edit">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_sim" id="foto-sim-edit" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-sim-image-edit');">
                   </div>
                   <img src="/" alt="" id="foto-sim-image-edit" class="image-produk img-upload w-100 mt-1 hidden">
-                  <p class="m-0">New Password</p>
-                  <input type="text" name="password" class="input-form w-100 mb-2 p-2"  placeholder="******">
+                  <p class="m-0">Kata sandi Baru</p>
+                  <input type="text" name="password" class="input-form w-100 mb-2 p-2"  placeholder="Kata sandi">
                   </div>
                   
                   
@@ -314,7 +314,7 @@
                     <button type="button" class="btn btn-secondary btn-block btn-cancel" data-dismiss="modal">Tidak</button>
                     </div>
                     <div class="col-6">
-                    <button type="submit" class="btn btn-primary btn-block btn-oke">update</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-oke">Simpan</button>
                     </div>
                   </div>
                   </form>

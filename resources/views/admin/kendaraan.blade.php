@@ -187,7 +187,7 @@
                   <input type="text" name="warna" placeholder="Masukkan Warna" class="input-form w-100 p-2">
                   <p class="m-0">Foto Kendaraan</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan');"></i><span class="name" id="foto-kendaraan-name">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan');"></i><span class="name" id="foto-kendaraan-name">Tidak ada file yang dipilih</span>
                       <input type="file" name="image_link" id="foto-kendaraan" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-kendaraan-image');">
                   </div>
                   <img src="/" alt="" id="foto-kendaraan-image" class="image-produk img-upload w-100 mt-1 hidden">
@@ -253,7 +253,7 @@
                   <input type="text" name="warna" placeholder="Masukkan Warna" class="input-form w-100 p-2">
                   <p class="m-0">Foto Kendaraan</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan-update');"></i><span class="name" id="foto-kendaraan-name-update">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-kendaraan-update');"></i><span class="name" id="foto-kendaraan-name-update">Tidak ada file yang dipilih</span>
                       <input type="file" name="image_link" id="foto-kendaraan-update" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-kendaraan-image-update');">
                   </div>
                   <img src="/" alt="" id="foto-kendaraan-image-update" class="image-produk img-upload w-100 mt-1 hidden">

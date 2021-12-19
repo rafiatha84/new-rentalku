@@ -92,11 +92,14 @@ class KendaraanController extends Controller
                 $queryAkhir = $queryArray[0];
             }
         }
+        $transaksi = Transaksi::where('status','Proses')->get();
+        $unitIdArray = Array(0);
+        foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
         if(isset($request->q) && $request->q != ""){
             $q = $request->q;
-            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->get();
+            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereNotIn('id',$unitIdArray)->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->get();
         }else{
-            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->get();
+            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereNotIn('id',$unitIdArray)->whereRaw($queryAkhir)->get();
         }
         if(count($kendaraans) > 0){
             $response = [

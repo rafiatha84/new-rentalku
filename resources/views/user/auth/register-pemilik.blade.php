@@ -42,7 +42,7 @@
                     <input class="col-12" type="text" name="nik" placeholder="NIK" required>
                     <label class="small">Upload Foto KTP</label>
                     <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">Tidak ada file yang dipilih</span>
                       <input type="file" name="foto_ktp" id="foto-ktp-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-penyewa');" required>
                     </div>
 

@@ -41,8 +41,6 @@ class Kendaraan extends Model
         return $this->hasMany('App\Models\Transaksi');
     }
 
-    
-
     public function ratingKendaraan(){
         return $this->hasMany('App\Models\RatingKendaraan');
     }

@@ -71,7 +71,7 @@
                                     <input type="text" name="nik" id="" placeholder="Masukkan NIK" class="radius-20 p-2 w-100">
                                     <p class="mb-0 mt-1">Upload Foto KTP</p>
                                     <div class="element w-100 radius-20">
-                                        <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
+                                        <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">Tidak ada file yang dipilih</span>
                                         <input type="file" name="foto_ktp" id="" placeholder="" class="input-form input-foto">
                                     </div>
                                     <hr>

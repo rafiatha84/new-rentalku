@@ -31,7 +31,7 @@
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <p class="m-0">Upload Foto Mobil</p>
                                     <div class="element w-100 radius-20">
-                                        <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">No file selected</span>
+                                        <i class="fa-solid fa-camera base-color camera-icon"></i><span class="name">Tidak ada file yang dipilih</span>
                                         <input type="file" name="image_link" placeholder="" class="input-form input-foto" required>
                                     </div>
                                     <p class="m-0">Nama Unit</p>

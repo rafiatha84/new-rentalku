@@ -41,13 +41,13 @@
                                 <div class="col-6 py-2 vertikal-line-base">
                                     <p class="m-0">Upload Foto KTP</p>
                                     <div class="element w-100 radius-20">
-                                        <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp');"></i><span class="name">No file selected</span>
+                                        <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp');"></i><span class="name">Tidak ada file yang dipilih</span>
                                         <input type="file" name="foto_ktp" id="foto-ktp" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image');">
                                     </div>
                                     <img src="{{ asset('image/avanza.jpeg') }}" alt="" id="foto-ktp-image" class="image-produk img-upload w-100 mt-2 hidden">
                                     <p class="m-0">Upload Foto SIM A</p>
                                     <div class="element w-100 radius-20 ">
-                                        <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim');"></i><span class="name" id="foto-sim-name">No file selected</span>
+                                        <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-sim');"></i><span class="name" id="foto-sim-name">Tidak ada file yang dipilih</span>
                                         <input type="file" name="foto_sim" id="foto-sim" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-sim-image');">
                                     </div>
                                     <img src="{{ asset('image/avanza.jpeg') }}" alt="" id="foto-sim-image" class="image-produk img-upload w-100 mt-2 hidden">

@@ -8,6 +8,7 @@ use App\Models\Kendaraan;
 use App\Models\RatingKendaraan;
 use App\Models\RatingUser;
 use App\Models\Kategori;
+use App\Models\Transaksi;
 use App\Models\User;
 
 class UserKendaraanController extends Controller
@@ -57,11 +58,14 @@ class UserKendaraanController extends Controller
                 $queryAkhir = $queryArray[0];
             }
         }
+        $transaksi = Transaksi::where('status','Proses')->get();
+        $unitIdArray = Array(0);
+        foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
         if(isset($request->q) && $request->q != ""){
             $q = $request->q;
-            $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->paginate(6);
+            $kendaraans = Kendaraan::with('kategori','transaksi')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereNotIn('id',$unitIdArray)->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->paginate(6);
         }else{
-            $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
+            $kendaraans = Kendaraan::with('kategori','transaksi')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereNotIn('id',$unitIdArray)->whereRaw($queryAkhir)->paginate(6);
         }
 
         $kendaraans->setPath($currentURL);

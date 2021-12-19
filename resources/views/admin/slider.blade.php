@@ -84,7 +84,7 @@
                   <div class="col-12">
                   <p class="m-0">Slider</p>
                   <div class="element w-100 radius-20 ">
-                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-slider');"></i><span class="name" id="foto-slider-name">No file selected</span>
+                      <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-slider');"></i><span class="name" id="foto-slider-name">Tidak ada file yang dipilih</span>
                       <input type="file" name="image" id="foto-slider" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-slider-image');">
                   </div>
                   <img src="/" alt="" id="foto-slider-image" class="image-produk img-upload w-100 mt-1 hidden">
