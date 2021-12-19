@@ -33,7 +33,7 @@ class UserDashboardController extends Controller
         $transaksi = Transaksi::where('status','Proses')->get();
         $unitIdArray = Array(0);
         foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
-        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->whereNotInt('id',$unitIdArray)->skip(0)->take(3)->get();
+        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->whereNotIn('id',$unitIdArray)->skip(0)->take(3)->get();
         $sliders = Slider::orderBy('created_at','DESC')->get();
         return view('user.dashboard',[
             'kendaraans' => $kendaraan_populer,
