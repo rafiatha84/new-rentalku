@@ -148,7 +148,7 @@
               <div class="modal-body">
                   <div class="row">
                   <div class="col-12">
-                    <h3 class="text-center">Status Top Up</h3>
+                    <h3 class="text-center">Status Isi saldo</h3>
                   </div>
                   </div>
                   <div class="col-12 detail-show">
