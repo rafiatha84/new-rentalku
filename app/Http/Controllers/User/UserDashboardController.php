@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kendaraan;
 use App\Models\Slider;
 use App\Models\Kategori;
+use App\Models\Transaksi;
 
 class UserDashboardController extends Controller
 {
@@ -29,7 +30,10 @@ class UserDashboardController extends Controller
     public function index()
     {
         $kategoris = Kategori::get();
-        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->skip(0)->take(3)->get();
+        $transaksi = Transaksi::where('status','Proses')->get();
+        $unitIdArray = Array(0);
+        foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
+        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->whereNotInt('id',$unitIdArray)->skip(0)->take(3)->get();
         $sliders = Slider::orderBy('created_at','DESC')->get();
         return view('user.dashboard',[
             'kendaraans' => $kendaraan_populer,
@@ -40,7 +44,10 @@ class UserDashboardController extends Controller
     public function welcome()
     {
         $kategoris = Kategori::get();
-        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->skip(0)->take(3)->get();
+        $transaksi = Transaksi::where('status','Proses')->get();
+        $unitIdArray = Array(0);
+        foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
+        $kendaraan_populer = Kendaraan::withAvg('ratingKendaraan', 'jumlah_bintang')->orderBy('rating_kendaraan_avg_jumlah_bintang', 'desc')->with('kategori','ratingKendaraan')->whereNotIn('id',$unitIdArray)->skip(0)->take(3)->get();
         $sliders = Slider::orderBy('created_at','DESC')->get();
         return view('welcome',[
             'kendaraans' => $kendaraan_populer,
