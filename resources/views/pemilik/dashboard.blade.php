@@ -37,7 +37,7 @@
             <div class="search-box-outer mx-auto d-block">
                 <div class="search-box">
                 <form action="{{ route('user.search') }}" method="GET">
-                    <input class="py-2 px-4 cari-rental d-block" type="text" name="q" id="" placeholder="Cari di rentalku" disabled>
+                    <div class="py-2 px-4 cari-rental d-block" type="text" name="q" id="" placeholder="Cari di rentalku"><i class="fa-solid fa-map-marker-alt"></i> {{Auth::user()->kota}}</div>
                     <button class="py-2 px-4 button"><i class="fa-solid fa-location-arrow"></i></button>
                 
                 </div>
