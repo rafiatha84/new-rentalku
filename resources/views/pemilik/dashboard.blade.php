@@ -36,7 +36,6 @@
             <img src="{{ asset('image/rectangle205-new.png') }}" class="img-fluid img-rectangle" alt="">
             <div class="search-box-outer mx-auto d-block">
                 <div class="search-box">
-                <form action="{{ route('user.search') }}" method="GET">
                     <div class="py-2 px-4 cari-rental pemilik-lokasi d-block" type="text" name="q" id="" placeholder="Cari di rentalku"><i class="fa-solid fa-map-marker-alt"></i> Pilih lokasi garasi anda</div>
                     <button class="py-2 px-4 button"><i class="fa-solid fa-location-arrow"></i></button>
                 </div>
@@ -69,8 +68,6 @@
                         </div>
                     </form>
                 </div>
-                
-                </form>
             </div>
             <div class="text-px">
             
