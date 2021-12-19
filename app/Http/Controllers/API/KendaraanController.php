@@ -94,9 +94,9 @@ class KendaraanController extends Controller
         }
         if(isset($request->q) && $request->q != ""){
             $q = $request->q;
-            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->paginate(6);
+            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->get();
         }else{
-            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
+            $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->get();
         }
         if(count($kendaraans) > 0){
             $response = [
