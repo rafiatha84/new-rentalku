@@ -21,10 +21,10 @@ class UserKendaraanController extends Controller
         $currentURL = $request->fullUrl();
         $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
         $q = $request->q;
+        $kategorisQuery = Array();
         if($q != null && $q != ""){
             $kendaraans = Kendaraan::with('kategori')->where('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
         }
-        $kategorisQuery = Array();
         if(isset($request->kategori)){
             // dd($request->kategori);
             $kategorisQuery = $request->kategori;

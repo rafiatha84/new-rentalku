@@ -41,6 +41,18 @@
                         <div class="kategori-outer col-3 p-1">
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
                         </div>
+                        <input class="filter-checkbox pilihanKota-Jakarta" type="checkbox" name="kota[]" value="Jakarta"/>
+                        <div class="kategori-outer col-3 p-1">
+                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
+                        </div>
+                        <input class="filter-checkbox pilihanKota-Bandung" type="checkbox" name="kota[]" value="Bandung"/>
+                        <div class="kategori-outer col-3 p-1">
+                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
+                        </div>
+                        <input class="filter-checkbox pilihanKota-Semarang" type="checkbox" name="kota[]" value="Semarang"/>
+                        <div class="kategori-outer col-3 p-1">
+                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
+                        </div>
                     </div>
                     <p class="text-center mb-0">Kategori</p>
                     <div class="kategori row px-4">
@@ -144,6 +156,16 @@
                     $('.search-toggle-box').removeClass('hidden');
                 });
                 $('.kategori-check').click(function(e){
+                    nama = $(e.currentTarget).text();
+                    var classList = $(e.currentTarget).attr("for");
+                    element = '.'+classList;
+                    if($(element).is(":checked")){
+                        $(element).prop('checked', false);
+                    }else{
+                        $(element).prop('checked', true);
+                    }                 
+                });
+                $('.kota-check').click(function(e){
                     nama = $(e.currentTarget).text();
                     var classList = $(e.currentTarget).attr("for");
                     element = '.'+classList;
