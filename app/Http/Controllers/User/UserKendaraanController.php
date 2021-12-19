@@ -24,8 +24,9 @@ class UserKendaraanController extends Controller
         if($q != null && $q != ""){
             $kendaraans = Kendaraan::with('kategori')->where('name', 'like', '%'.$q.'%')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
         }
+        $kategorisQuery = Array();
         if(isset($request->kategori)){
-            dd($request->kategori);
+            // dd($request->kategori);
             $kategorisQuery = $request->kategori;
             $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
             $kategoriArray = Array();
