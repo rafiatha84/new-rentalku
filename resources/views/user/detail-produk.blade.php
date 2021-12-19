@@ -43,7 +43,7 @@
                     <div class="row col-12 mb-2">
                         <div class="col-6 ">
                             <p class="seat text-right base-color">{{ $kendaraan->seat }} Penumpang <i class="fa-solid fa-user"></i></p>
-                            <p class="sopir text-right base-color"><?php echo ($kendaraan->supir == 1) ? 'Dengan Sopir' : 'Tanpa Sopir'; ?> <i class="fa-solid fa-car"></i></p>
+                            <p class="sopir text-right base-color">{{ $kendaraan->user->kota }} <i class="fa-solid fa-map-marker-alt"></i></p>
                         </div>
                     <div class="col-6 vertikal-line">
                             <p class="transmisi base-color"><i class="fa-solid fa-car base-color"></i> Transmisi {{$kendaraan->transmisi}} </p>
