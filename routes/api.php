@@ -66,7 +66,6 @@ Route::delete('/kendaraan/destroy/{id}', [KendaraanController::class, 'destroy']
 Route::get('/search',[KendaraanController::class,'search'])->name('api.kendaraan.search');
 
 //Pengemudi
-
 Route::get('/pengemudi', [PengemudiController::class, 'index'])->name('api.pengemudi.index');
 Route::get('/pengemudi/{id}', [PengemudiController::class, 'show'])->name('api.pengemudi.show');
 Route::get('/pengemudi/owner/{owner_id}',[PengemudiController::class, 'show_by_owner'])->name('api.pengemudi.show_by_owner');
