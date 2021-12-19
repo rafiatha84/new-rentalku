@@ -57,7 +57,7 @@ class UserKendaraanController extends Controller
             }
         }
         if(isset($request->q) && $request->q != ""){
-            $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$q.'%')->paginate(6);
+            $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->where('name', 'like', '%'.$request->q.'%')->paginate(6);
         }else{
             $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
         }
