@@ -42,28 +42,32 @@
                 </div>
                 
                 <div class="search-toggle-box pt-5 search-hidden">
-                    <p class="text-center mb-0">Pilihan Kota</p>
-                    <div class="kategori row px-4">
-                        <input class="filter-checkbox pilihanKota-Surabaya" type="checkbox" name="kota[]" value="Surabaya"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
+                    <form action="{{ route('pemilik.update.kota') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <p class="text-center mb-0">Pilihan Kota</p>
+                        <div class="kategori row px-4">
+                            <input class="filter-checkbox pilihanKota-Surabaya" type="radio" name="kota" value="Surabaya"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
+                            </div>
+                            <input class="filter-checkbox pilihanKota-Jakarta" type="radio" name="kota" value="Jakarta"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
+                            </div>
+                            <input class="filter-checkbox pilihanKota-Bandung" type="radio" name="kota" value="Bandung"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
+                            </div>
+                            <input class="filter-checkbox pilihanKota-Semarang" type="radio" name="kota" value="Semarang"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
+                            </div>
                         </div>
-                        <input class="filter-checkbox pilihanKota-Jakarta" type="checkbox" name="kota[]" value="Jakarta"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
+                        <div class="row col-12 mb-2">
+                            <input type="submit" class="submit-search mx-auto" value="Pilih lokasi">
                         </div>
-                        <input class="filter-checkbox pilihanKota-Bandung" type="checkbox" name="kota[]" value="Bandung"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
-                        </div>
-                        <input class="filter-checkbox pilihanKota-Semarang" type="checkbox" name="kota[]" value="Semarang"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
-                        </div>
-                    </div>
-                    <div class="row col-12 mb-2">
-                        <input type="submit" class="submit-search mx-auto" value="Pilih lokasi">
-                    </div>
+                    </form>
                 </div>
                 
                 </form>
@@ -180,5 +184,8 @@
                     }                 
                 });
         });
+        @if (session('status'))
+            alert("a");
+        @endif
     </script>
 @endsection

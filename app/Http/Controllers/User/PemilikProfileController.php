@@ -142,4 +142,39 @@ class PemilikProfileController extends Controller
             }
         }
     }
+
+    public function updateKota(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+        [
+            'user_id' => 'required',
+            'kota' => 'required'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('pemilik.dashboard')->with([
+                'status' => 'Gagal ganti lokasi garasi'
+            ]);
+        }
+        try {
+            //code...
+            $update = User::where('id',$request->user_id)->update(['kota' => $request->kota]);
+            if($update){
+                $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
+                return redirect()->route('pemilik.dashboard')->with([
+                    'status' => 'Sukses ganti lokasi garasi'
+                ]);
+            }else{
+                return redirect()->route('pemilik.dashboard')->with([
+                    'status' => 'Gagal ganti lokasi garasi'
+                ]);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route('pemilik.dashboard')->with([
+                'status' => 'Gagal ganti lokasi garasi'
+            ]);
+        }
+    }
 }
