@@ -31,8 +31,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <p class="text-center mt-5 mb-0"><b>Muhammad</b></p>
-                <p class="text-center">12 September 2000</p>
                 <div class="row col-12">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
