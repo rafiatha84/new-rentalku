@@ -92,13 +92,13 @@
             <div class="row col-lg-12 mb-5">
                 <div class="col-lg-4 col-4">
                     <h4><b>Anda punya mobil nganggur?</b></h4>
-                    <h4 class="">Segera daftarin aja di RentalKu!</h4>
+                    <h4 class="">Segera buat akun di RentalKu!</h4>
                     <a href="{{ route('user.register') }}" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
                 </div>
                 <div class="col-lg-4 offset-lg-4 col-4 offset-4 text-center">
                     <h4 class="text-right"><b>Mau liburan keluarga
                     tapi nggak ada mobil?</b></h4>
-                    <h4 class="text-right">Buruan rental sekarang juga!</h4>
+                    <h4 class="text-right">Buruan masuk sekarang juga!</h4>
                     <a href="{{ route('user.dashboard') }}" class="btn-rental float-right d-inline-block px-5 py-2">Masuk Sekarang</a>
                 </div>
             </div>
