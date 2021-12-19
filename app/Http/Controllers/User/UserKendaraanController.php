@@ -35,7 +35,7 @@ class UserKendaraanController extends Controller
             $query = "user_id IN"."(".implode(",",$userIdArray).")";
             array_push($queryArray,$query);
         }
-        $queryAkhir = "";
+        $queryAkhir = "1 = 1";
         if(count($queryArray) > 0){
             if(count($queryArray) > 1){
                 $queryAkhir = $queryArray[0]." AND ".$queryArray[1];
@@ -44,7 +44,7 @@ class UserKendaraanController extends Controller
             }
         }
 
-        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("1 = 1")->paginate(6);
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("user_id IN(1,2,3,4,5,6,7) AND kategori_id IN(1,2,3,4,5,6,7)")->paginate(6);
         dd($kendaraans);
         if(isset($request->q) && $request->q != ""){
         }else{
