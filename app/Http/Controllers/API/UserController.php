@@ -182,7 +182,7 @@ class UserController extends Controller
         {
             $response = [
                 "status" => "error",
-                "message" => 'Gagal Edit User',
+                "message" => 'Gagal Edit User 22',
                 "errors" => null,
                 "content" => null,
             ];
@@ -214,7 +214,7 @@ class UserController extends Controller
             $response = [
                 "status" => "error",
                 "message" => 'Gagal Edit User',
-                "errors" => null,
+                "errors" => $th->getError,
                 "content" => null,
             ];
             return response()->json($response,404);
