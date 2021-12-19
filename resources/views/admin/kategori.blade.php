@@ -20,7 +20,7 @@
               <thead>
                 <tr>
                   <th>Nama Kategori</th>
-                  <th>Action</th>
+                  <th>Keterangan</th>
                   
                 </tr>
               </thead>
