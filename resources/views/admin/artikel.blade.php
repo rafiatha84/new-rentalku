@@ -81,7 +81,7 @@
               <div class="modal-body">
                   <div class="row">
                   <div class="col-12">
-                    <img src="{{ asset('image/profil.png') }}" class="mx-auto d-block rounded-circle" alt="" style="width:200px;">
+                    <img src="{{ asset(Auth::user()->image_link) }}" class="mx-auto d-block rounded-circle" alt="" style="width:200px;">
                   </div>
                   </div>
                   <div class="col-12">

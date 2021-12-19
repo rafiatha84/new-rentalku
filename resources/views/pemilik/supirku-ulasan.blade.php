@@ -24,7 +24,7 @@
                         <h5 class="mb-4">Ulasan Pelanggan</h5>
                         <div class="row">
                             <div class="image-box col-2">
-                                <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
                             </div>
                             <div class="col-10">
                                 <p class="mb-0">dewi <span class="waktu small">1d</span></p>
@@ -41,7 +41,7 @@
                         <hr class="hr-detail mt-0">
                         <div class="row">
                             <div class="image-box col-2">
-                                <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
                             </div>
                             <div class="col-10">
                                 <p class="mb-0">dewi <span class="waktu small">1d</span></p>
@@ -58,7 +58,7 @@
                         <hr class="hr-detail mt-0">
                         <div class="row">
                             <div class="image-box col-2">
-                                <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
                             </div>
                             <div class="col-10">
                                 <p class="mb-0">dewi <span class="waktu small">1d</span></p>
@@ -75,7 +75,7 @@
                         <hr class="hr-detail mt-0">
                         <div class="row">
                             <div class="image-box col-2">
-                                <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
                             </div>
                             <div class="col-10">
                                 <p class="mb-0">dewi <span class="waktu small">1d</span></p>
@@ -92,7 +92,7 @@
                         <hr class="hr-detail mt-0">
                         <div class="row">
                             <div class="image-box col-2">
-                                <img src="{{ asset('image/profil.png') }}" alt="" srcset="" class="rounded-circle img-ulasan">
+                                <img src="{{ asset(Auth::user()->image_link) }}" alt="" srcset="" class="rounded-circle img-ulasan">
                             </div>
                             <div class="col-10">
                                 <p class="mb-0">dewi <span class="waktu small">1d</span></p>

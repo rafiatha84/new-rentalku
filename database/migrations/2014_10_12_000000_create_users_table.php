@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image_link')->default('image/profil.png');
+            $table->string('image_link')->default('image/profil-new.png');
             $table->timestamp('tanggal_lahir')->nullable();
             $table->string('nik')->nullable();
             $table->string('foto_ktp')->nullable();

@@ -29,7 +29,7 @@ class CreateKendaraansTable extends Migration
             $table->text('mesin');
             $table->text('warna');
             $table->boolean('supir');
-            $table->string('image_link')->default('image/profil.png');
+            $table->string('image_link')->default('image/profil-new.png');
             $table->decimal('lat',10,7)->default(-7.2974336);
             $table->decimal('long',10,7)->default(112.7448576);
             $table->timestamps();
