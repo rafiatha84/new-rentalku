@@ -30,6 +30,7 @@ class UserKendaraanController extends Controller
                 array_push($queryArray,$query);
             }else{
                 $query = "kategori_id IN (0)";
+                array_push($queryArray,$query);
             }
         }
         if(isset($request->kota)){
@@ -41,6 +42,7 @@ class UserKendaraanController extends Controller
                 array_push($queryArray,$query);
             }else{
                 $query = "user_id IN (0)";
+                array_push($queryArray,$query);
             }
         }
         $queryAkhir = "1 = 1";
