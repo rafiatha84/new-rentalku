@@ -247,7 +247,7 @@ class KategoriController extends Controller
                     "content" => $user
                 ];  
         
-                return response()->json($response, 200,[
+                return response()->json($response, 201,[
                     'Content-Type' => 'application/json',
                     'Charset' => 'utf-8'
                 ]);
@@ -270,8 +270,6 @@ class KategoriController extends Controller
             ];
             return response()->json($response,404);
         }
-        
-
     }
 
 }
