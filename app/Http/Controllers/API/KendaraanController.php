@@ -127,7 +127,10 @@ class KendaraanController extends Controller
 
     public function most()
     {
-        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->skip(0)->take(2)->get();
+        $transaksi = Transaksi::where('status','Proses')->get();
+        $unitIdArray = Array(0);
+        foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
+        $kendaraans = Kendaraan::with('kategori','avgRating')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereNotIn('id',$unitIdArray)->skip(0)->take(2)->get();
         if(count($kendaraans) > 0){
             $response = [
                 "status" => "success",
