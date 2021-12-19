@@ -63,7 +63,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="row col-12">
+                    <div class="row col-12 mb-2">
                         <input type="submit" class="submit-search mx-auto" value="Cari">
                     </div>
                 </div>
