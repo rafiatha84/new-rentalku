@@ -44,7 +44,7 @@
                     <!-- <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button> -->
                 </div>
 
-                <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
+                <input class="my-4 col-12 login-btn input-form" type="submit" value="Masuk">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
             <p class="text-center small"><b><i>Lupa kata sandi? <a href="{{ route('forget.password.get') }}">Atur Kata sandi</a></i></b></p>
