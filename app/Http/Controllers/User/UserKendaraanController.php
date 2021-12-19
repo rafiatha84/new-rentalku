@@ -44,7 +44,7 @@ class UserKendaraanController extends Controller
             }
         }
 
-        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw("user_id IN(1,2,3,4,5,6,7) AND kategori_id IN(1,2,3,4,5,6,7)")->paginate(6);
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
         dd($kendaraans);
         if(isset($request->q) && $request->q != ""){
         }else{
