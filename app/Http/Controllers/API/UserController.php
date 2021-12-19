@@ -170,6 +170,57 @@ class UserController extends Controller
 
     }
 
+    public function updateKota(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+        [
+            'user_id' => 'required',
+            'kota' => 'required'
+        ]);
+
+        if($validator->fails())
+        {
+            $response = [
+                "status" => "error",
+                "message" => 'Gagal Edit User',
+                "errors" => null,
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+        try {
+            //code...
+            $update = User::where('id',$request->user_id)->update(['kota' => $request->kota]);
+            if($update){
+                $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
+                $response = [
+                    "status" => "success",
+                    "message" => 'Berhasil Edit User',
+                    "errors" => null,
+                    "content" => $usernew,
+                ];
+                return response()->json($response,201);
+            }else{
+                $response = [
+                    "status" => "error",
+                    "message" => 'Gagal Edit User',
+                    "errors" => null,
+                    "content" => null,
+                ];
+                return response()->json($response,404);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            $response = [
+                "status" => "error",
+                "message" => 'Gagal Edit User',
+                "errors" => null,
+                "content" => null,
+            ];
+            return response()->json($response,404);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *

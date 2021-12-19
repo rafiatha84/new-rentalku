@@ -85,6 +85,7 @@ Route::delete('/artikel/destroy/{id}', [ArtikelController::class, 'destroy'])->n
 Route::get('/user', [UserController::class, 'index'])->name('api.user');
 Route::get('/user/profil/{id}', [UserController::class, 'show'])->name('api.user.show');
 Route::post('/user/edit',[UserController::class, 'edit_action'])->name('api.user.edit.action');
+Route::post('/update/kota',[UserController::class,'updateKota'])->name('api.update.kota');
 
 //pengemudi
 Route::get('/pengemudi/show/{transaksi_id}',[PengemudiController::class,'showByTransaksi'])->name('api.pengemudi.showTransaksiId');
@@ -108,7 +109,7 @@ Route::get('/kategori/{id}', [KategoriController::class, 'showId'])->name('api.k
 Route::post('/kategori/create', [KategoriController::class, 'store'])->name('api.kategori.create');
 Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('api.kategori.update');
 Route::delete('/kategori/delete/{kategori_id}', [KategoriController::class, 'destroy'])->name('api.kategori.destroy');
-Route::post('/update/kota',[KategoriController::class,'updateKota'])->name('api.update.kota');
+// Route::post('/update/kota',[KategoriController::class,'updateKota'])->name('api.update.kota');
 //Rekeming
 Route::get('/rekening',[DompetkuCOntroller::class, 'rekening'])->name('api.rekening');
 
