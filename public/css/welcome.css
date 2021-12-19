@@ -156,11 +156,27 @@
     border-radius: 20px;
     background-color: #007a66;
     color: white;
+    text-decoration: none !important;
+}
+.btn-daftar:hover{
+    border-radius: 20px;
+    background-color: #007a66;
+    color: white;
+    opacity: 0.7;
+    text-decoration: none !important;
 }
 .btn-rental{
     border-radius: 20px;
     background-color: #FFC700;
     color: white;
+    text-decoration: none !important;
+}
+.btn-rental:hover{
+    border-radius: 20px;
+    background-color: #FFC700;
+    color: white;
+    opacity: 0.7;
+    text-decoration: none !important;
 }
 /* a{
     color: white;

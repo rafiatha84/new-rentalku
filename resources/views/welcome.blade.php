@@ -99,7 +99,7 @@
                     <h4 class="text-right"><b>Mau liburan keluarga
                     tapi nggak ada mobil?</b></h4>
                     <h4 class="text-right">Buruan rental sekarang juga!</h4>
-                    <a href="{{ route('user.dashboard') }}" class="btn-rental float-right d-inline-block px-5 py-2">Rental Sekarang</a>
+                    <a href="{{ route('user.dashboard') }}" class="btn-rental float-right d-inline-block px-5 py-2">Masuk Sekarang</a>
                 </div>
             </div>
             <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">

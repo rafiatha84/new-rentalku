@@ -28,7 +28,7 @@
                 <div class="col-12 col-lg-6">
                     <img src="{{ asset('image/logo_gabung.png') }}" alt="" class="img-logo mt-2 mx-auto d-block img-fluid">
                     <p class="text-center mt-5 mb-0"><b>Daftar Pengguna Baru</b></p>
-                    <p class="small text-center">Silakan isi form disamping ini untuk pendaftaran akun RentalKu Anda!</p>
+                    <p class="small text-center">Silakan isi formulir disamping ini untuk pendaftaran akun RentalKu Anda!</p>
                 </div>
                 <div class="col-12 col-lg-6 pt-4">
                 @if (session('status'))
