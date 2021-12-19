@@ -19,51 +19,32 @@ class UserKendaraanController extends Controller
     public function search(Request $request){
         $kategoris = Kategori::get();
         $currentURL = $request->fullUrl();
-        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw('user_id IN (1,5)')->paginate(6);
-        dd($kendaraans);
-        $q = $request->q;
-        $kategorisQuery = Array();
-        if($q != null && $q != ""){
-            if(isset($request->kategori)){
-                if(isset($request->kota)){
-                    //query,kategori,kota
-                    $kategorisQuery = $request->kategori;
-                    $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
-                    $kategoriArray = Array();
-                    foreach($kategori as $k){array_push($kategoriArray,$k->id);}
-                    $user = User::where('kota',$request->kota)->get();
-                    $userIdArray = Array();
-                    foreach($user as $u){array_push($userIdArray,$u->id);}
-                    $kendaraans = Kendaraan::with('kategori')->whereIN('kategori_id',$kategoriArray)->whereIN('user_id',$userIdArray)->withAvg('ratingKendaraan', 'jumlah_bintang')->where('name', 'like', '%'.$q.'%')->paginate(6);
-                }else{
-                    //query,kategori,!kota
-                    $kategorisQuery = $request->kategori;
-                    $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
-                    $kategoriArray = Array();
-                    foreach($kategori as $k){array_push($kategoriArray,$k->id);}
-                    $kendaraans = Kendaraan::with('kategori')->whereIN('kategori_id',$kategoriArray)->withAvg('ratingKendaraan', 'jumlah_bintang')->where('name', 'like', '%'.$q.'%')->paginate(6);
-                }
-            }else{
-                if(isset($request->kota)){
-                    //query,!kategori,kota
-                }else{
-                    //query,!kategori,!kota
-                }
-            }
-        }else{
-            if(isset($request->kategori)){
-                if(isser($request->kota)){
-                    //!query,kategori,kota
-
-                }else{
-                    //!query,kategori,!kota
-
-                }
-            }else{
-                //!query,!kategori,kota
-            }
-            $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
+        $queryArray = Array();
+        if(isset($request->kategori)){
+            $kategorisQuery = $request->kategori;
+            $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
+            $kategoriArray = Array();
+            foreach($kategori as $k){array_push($kategoriArray,$k->id);}
+            $query = "kategori_id IN"."(".implode(",",$kategoriArray).")";
+            array_push($queryArray,$query);
         }
+        if(isset($request->kota)){
+            $user = User::where('kota',$request->kota)->get();
+            $userIdArray = Array();
+            foreach($user as $u){array_push($userIdArray,$u->id);}
+            $query = "user_id IN"."(".implode(",",$userIdArray).")";
+            array_push($queryArray,$query);
+        }
+        $queryAkhir = "";
+        if(count($queryArray) > 0){
+            if(count($queryArray) > 1){
+                $queryAkhir = $queryArray[0]." AND ".$queryArray[0];
+            }else{
+                $queryAkhir = $queryArray[0];
+            }
+        }
+        dd($queryAkhir);
+        $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->paginate(6);
 
         $kendaraans->setPath($currentURL);
         // dd($kendaraans);
