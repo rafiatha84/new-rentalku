@@ -25,15 +25,19 @@ class UserKendaraanController extends Controller
             $kategori = Kategori::select('id')->whereIn('name',$kategorisQuery)->get();
             $kategoriArray = Array();
             foreach($kategori as $k){array_push($kategoriArray,$k->id);}
-            $query = "kategori_id IN"."(".implode(",",$kategoriArray).")";
-            array_push($queryArray,$query);
+            if(count($kategoriArray) > 0){
+                $query = "kategori_id IN"."(".implode(",",$kategoriArray).")";
+                array_push($queryArray,$query);
+            }
         }
         if(isset($request->kota)){
             $user = User::where('kota',$request->kota)->get();
             $userIdArray = Array();
             foreach($user as $u){array_push($userIdArray,$u->id);}
-            $query = "user_id IN"."(".implode(",",$userIdArray).")";
-            array_push($queryArray,$query);
+            if(count($userIdArray) > 0){
+                $query = "user_id IN"."(".implode(",",$userIdArray).")";
+                array_push($queryArray,$query);
+            }
         }
         $queryAkhir = "1 = 1";
         if(count($queryArray) > 0){
@@ -43,7 +47,6 @@ class UserKendaraanController extends Controller
                 $queryAkhir = $queryArray[0];
             }
         }
-
         $kendaraans = Kendaraan::with('kategori')->withAvg('ratingKendaraan', 'jumlah_bintang')->whereRaw($queryAkhir)->paginate(6);
         dd($kendaraans);
         if(isset($request->q) && $request->q != ""){
