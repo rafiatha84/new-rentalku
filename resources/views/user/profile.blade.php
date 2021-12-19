@@ -31,7 +31,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <div class="row col-12">
+                <div class="row col-12 mt-5">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
                         <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="{{ Auth::user()->name }}" disabled>
