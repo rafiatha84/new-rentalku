@@ -38,7 +38,7 @@
                 <div class="search-box">
                 <form action="{{ route('user.search') }}" method="GET">
                     <input class="py-2 px-4 cari-rental d-block" type="text" name="q" id="" placeholder="Cari di rentalku">
-                    <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button>
+                    <button class="py-2 px-4 button"><i class="fa-solid fa-location-arrow"></i></button>
                 
                 </div>
                 
