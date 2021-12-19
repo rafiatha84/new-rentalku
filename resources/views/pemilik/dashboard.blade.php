@@ -37,9 +37,8 @@
             <div class="search-box-outer mx-auto d-block">
                 <div class="search-box">
                 <form action="{{ route('user.search') }}" method="GET">
-                    <div class="py-2 px-4 cari-rental pemilik-lokasi d-block" type="text" name="q" id="" placeholder="Cari di rentalku"><i class="fa-solid fa-map-marker-alt"></i> {{Auth::user()->kota}}</div>
+                    <div class="py-2 px-4 cari-rental pemilik-lokasi d-block" type="text" name="q" id="" placeholder="Cari di rentalku"><i class="fa-solid fa-map-marker-alt"></i> Pilih lokasi garasi anda</div>
                     <button class="py-2 px-4 button"><i class="fa-solid fa-location-arrow"></i></button>
-                
                 </div>
                 
                 <div class="search-toggle-box pt-5 search-hidden">
@@ -62,17 +61,8 @@
                             <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
                         </div>
                     </div>
-                    <p class="text-center mb-0">Kategori</p>
-                    <div class="kategori row px-4">
-                        @foreach($kategoris as $kategori)
-                            <input class="filter-checkbox pilihanKategori-{{ $kategori->name }}" type="checkbox" name="kategori[]" value="{{ $kategori->name }}"/>
-                            <div class="kategori-outer col-3 p-1">
-                                <div class="kategori-box text-center small kategori-check" for="pilihanKategori-{{ $kategori->name }}">{{ $kategori->name }}</div>
-                            </div>
-                        @endforeach
-                    </div>
                     <div class="row col-12 mb-2">
-                        <input type="submit" class="submit-search mx-auto" value="Cari">
+                        <input type="submit" class="submit-search mx-auto" value="Pilih lokasi">
                     </div>
                 </div>
                 
@@ -166,7 +156,7 @@
                     }
                     e.preventDefault();
                 });
-                $('.cari-rental').focus(function(){
+                $('.cari-rental').click(function(){
                     $('.search-toggle-box').removeClass('search-hidden');
                 });
                 $('.kategori-check').click(function(e){
