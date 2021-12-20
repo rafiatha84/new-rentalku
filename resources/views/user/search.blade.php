@@ -89,8 +89,6 @@
                             </div>
                             <div class="text-box text-box-right p-2 col-6">
                                 <p class="text-right price mb-0">Rp.{{ number_format($kendaraan->harga,0,',','.') }}/ Hari</p>
-                                <p class="text-right mb-0 color-base"></p>
-                                <p class="text-right color-base"></p>
                             </div>
                         </div>
                     </div>
