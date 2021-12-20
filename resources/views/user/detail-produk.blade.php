@@ -42,8 +42,8 @@
                     <hr class="hr-detail mx-2">
                     <div class="row col-12 mb-2">
                         <div class="col-6 ">
-                            <p class="seat text-right base-color">{{ $kendaraan->seat }} Penumpang <i class="fa-solid fa-user"></i></p>
                             <p class="sopir text-right base-color">{{ $kendaraan->user->kota }} <i class="fa-solid fa-map-marker-alt"></i></p>
+                            <p class="seat text-right base-color">{{ $kendaraan->seat }} Penumpang <i class="fa-solid fa-user"></i></p>
                         </div>
                     <div class="col-6 vertikal-line">
                             <p class="transmisi base-color"><i class="fa-solid fa-car base-color"></i> Transmisi {{$kendaraan->transmisi}} </p>
