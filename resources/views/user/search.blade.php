@@ -85,7 +85,7 @@
                             <div class="text-box text-box-left p-2 col-6">
                                 <label for="" class="mb-0">{{ $kendaraan->kategori->name  }}</label>
                                 <p class="mb-0"><b>{{ $kendaraan->name }}</b></p>
-                                <p class="mb-0"><i class="fa-solid fa-star star"></i> {{ number_format($kendaraan->rating_kendaraan_avg_jumlah_bintang,1) }} <i class=" fa-solid fa-user"></i>{{ $kendaraan->seat }}</p>
+                                <p class="mb-0"><i class=" fa-solid fa-user color-base"></i>{{ $kendaraan->seat }} <i class="fa-solid fa-star star"></i> {{ number_format($kendaraan->rating_kendaraan_avg_jumlah_bintang,1) }}</p>
                             </div>
                             <div class="text-box text-box-right p-2 col-6">
                                 <p class="text-right price mb-0">Rp.{{ number_format($kendaraan->harga,0,',','.') }}/ Hari</p>
