@@ -31,7 +31,7 @@
                                     <input type="text" name="name" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Nama" value="{{ $pengemudi->user->name }}" disabled>
                                     <p class="m-0">Email</p>
                                     <input type="text" name="email" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="{{ $pengemudi->user->email }}" disabled>
-                                    <p class="m-0">Password</p>
+                                    <p class="m-0">Kata sandi</p>
                                     <input type="password" name="password" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" value="******" disabled>
                                     
                                 </div>
