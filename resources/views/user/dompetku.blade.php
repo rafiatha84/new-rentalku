@@ -18,7 +18,7 @@
                                     <a href="{{  route('user.dompetku') }}" class="nav-link sidebar-navlink active">Riwayat Saldo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{  route('user.dompetku.topup') }}" class="nav-link sidebar-navlink">Top Up</a>
+                                    <a href="{{  route('user.dompetku.topup') }}" class="nav-link sidebar-navlink">Isi Saldo</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{  route('user.dompetku.tutorial') }}" class="nav-link sidebar-navlink">Cara Transfer</a>

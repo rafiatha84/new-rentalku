@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row col-12">
                 <div class="detail-box col-12 mt-5 p-0 pb-4">
-                    <h4 class="text-center head-produk py-2 mb-0">Saldo</h4>
+                    <h4 class="text-center head-produk py-2 mb-0">Isi Saldo</h4>
                     <div class="row mx-auto mt-0 h-100 pb-4 ">
                         <div class="col-4 sidebar-left px-0">
                             <ul class="nav flex-column px-0">
@@ -18,7 +18,7 @@
                                     <a href="{{  route('user.dompetku') }}" class="nav-link sidebar-navlink">Riwayat Saldo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{  route('user.dompetku.topup') }}" class="nav-link sidebar-navlink active">Top Up</a>
+                                    <a href="{{  route('user.dompetku.topup') }}" class="nav-link sidebar-navlink active">Isi Saldo</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{  route('user.dompetku.topup') }}" class="nav-link sidebar-navlink py-0 nav-submenu">Masukkan Jumlah</a>
