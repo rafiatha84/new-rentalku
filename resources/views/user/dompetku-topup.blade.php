@@ -82,7 +82,7 @@
                                         <img src="{{ asset($bank->image_link) }}" alt="" class="float-right">
                                 </label>
                                 @endforeach
-                                <h6><b>E-Wallet</b></h6>
+                                <h6><b>Dompet Digital</b></h6>
                                 @foreach($wallets as $wallet)
                                 <input type="radio" name="rekening_id" id="bank-radio-{{$wallet->id}}" value="{{$wallet->id}}" class="select-bank">
                                 <label class="d-block bank-box p-2" for="bank-radio-{{$wallet->id}}">
