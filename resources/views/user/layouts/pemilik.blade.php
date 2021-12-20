@@ -130,6 +130,7 @@
     
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/password-eye.js') }}"></script>
     <script type="text/javascript">
         function previewFile(input,element){
             var val = $(input).val();
