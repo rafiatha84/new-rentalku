@@ -34,8 +34,11 @@
 
                                     <p class="m-0">Email</p>
                                     <input type="text" name="email" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Email" required>
-                                    <p class="m-0">Password</p>
-                                    <input type="password" name="password" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Password" required>
+                                    <p class="m-0">Kata sandi</p>
+                                    <div class="password-box">
+                                        <input type="password" name="password" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Kata sandi" required>
+                                        <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                                    </div>
                                     
                                 </div>
                                 <div class="col-6 py-2 vertikal-line-base">
