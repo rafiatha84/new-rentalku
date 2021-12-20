@@ -15,6 +15,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -39,7 +40,6 @@
                     <input class="col-12 input-form" type="password" name="password" placeholder="*******">
                     <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
                 </div>
-
                 <input class="my-4 col-12 login-btn input-form" type="submit" value="Masuk">
             </form>
         </div>
