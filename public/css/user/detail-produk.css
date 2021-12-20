@@ -1,30 +1,29 @@
-.detail-box{
+.detail-box {
     background-color: white;
     min-height: 500px;
     border-radius: 20px;
-    
 }
 
-.head-produk{
+.head-produk {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #007a66;
     color: white;
 }
-.image-box{
+.image-box {
     height: 300px;
 }
-.image-produk{
+.image-produk {
     width: 100%;
     height: 100%;
 }
-.ulasan-link:hover{
+.ulasan-link:hover {
     color: #007a66;
     font-weight: bold;
 }
-.hr-detail{
+.hr-detail {
     border-top: 1px solid #000000;
 }
-.vertikal-line{
+.vertikal-line {
     border-left: 1px solid #000000;
 }

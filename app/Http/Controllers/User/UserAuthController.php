@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
-use Hash;
-use Session;
-use App\Models\User;
-use App\Models\UserRole;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Validator;
-use Illuminate\Support\Facades\DB;
 use App\Models\Dompet;
+use App\Models\User;
+use Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Session;
+use Validator;
 
 class UserAuthController extends Controller
 {
-
     public function index()
     {
         return view('user.auth.login');
-    }  
-      
+    }
 
     public function customLogin(Request $request)
     {
@@ -30,37 +27,33 @@ class UserAuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            if(Auth::user()->role == "pemilik"){
+            if (Auth::user()->role == "pemilik") {
                 return redirect()->route('pemilik.dashboard');
-            }else{
+            } else {
                 return redirect()->intended('dashboard')->withSuccess('masuk');
             }
         }
-  
-        return redirect("login")->with('status','Detail login tidak valid');
+        return redirect("login")->with('status', 'Detail login tidak valid');
     }
-
-
 
     public function registration()
     {
         return view('user.auth.register');
     }
-      
 
     public function customRegistration(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
         ]);
 
-        if($validator->fails()){
-            return redirect("registration")->with('status',$validator->errors()->first());    
+        if ($validator->fails()) {
+            return redirect("registration")->with('status', $validator->errors()->first());
         }
         DB::beginTransaction();
-        try{
+        try {
             //create user
             $user = new User();
             $user->name = $request->name;
@@ -77,52 +70,50 @@ class UserAuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials)) {
-                if(Auth::user()->role == "pemilik"){
+                if (Auth::user()->role == "pemilik") {
                     return redirect()->route('pemilik.dashboard');
-                }else{
+                } else {
                     return redirect()->intended('dashboard')->withSuccess('masuk');
                 }
             }
-            return redirect("registration")->with('status','Gagal Mendaftar');
-        }catch(\Exception $e){
-            return redirect("login")->with('status','Gagal Mendaftar');
+            return redirect("registration")->with('status', 'Gagal Mendaftar');
+        } catch (\Exception $e) {
+            return redirect("login")->with('status', 'Gagal Mendaftar');
         }
-        
-    }
 
+    }
 
     public function create(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
-    }    
-    
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 
     public function dashboard()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('user.dashboard');
         }
-  
-        return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
+
+        return redirect("login")->with('status', 'Anda tidak diizinkan untuk mengakses');
     }
     public function dashboard_pemilik()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('user.dashboard-pemilik');
         }
-  
-        return redirect("login")->with('status','Anda tidak diizinkan untuk mengakses');
-    }
-    
 
-    public function logOut() {
+        return redirect("login")->with('status', 'Anda tidak diizinkan untuk mengakses');
+    }
+
+    public function logOut()
+    {
         Session::flush();
         Auth::logout();
-  
+
         return Redirect('login');
     }
 }

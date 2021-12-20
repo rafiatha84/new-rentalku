@@ -1,111 +1,110 @@
-.detail-box{
+.detail-box {
     background-color: white;
     min-height: 500px;
     border-radius: 20px;
-    
 }
 
-.head-produk{
+.head-produk {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #007a66;
     color: white;
 }
-.image-produk{
+.image-produk {
     width: 100%;
 }
-.ulasan-link:hover{
+.ulasan-link:hover {
     color: #007a66;
     font-weight: bold;
 }
-.hr-detail{
+.hr-detail {
     border-top: 1px solid #000000;
 }
-.vertikal-line{
+.vertikal-line {
     border-left: 1px solid #000000;
 }
-.sidebar-left{
+.sidebar-left {
     background-color: #007a66;
     border-bottom-left-radius: 20px;
 }
-.sidebar-right{
+.sidebar-right {
     border-bottom-right-radius: 20px;
 }
-.yellow-bg{
-    background-color: #FFC700;
+.yellow-bg {
+    background-color: #ffc700;
 }
-.black-bg{
+.black-bg {
     background-color: black;
 }
-.sidebar-navlink{
+.sidebar-navlink {
     color: white !important;
 }
-.sidebar-navlink:hover{
+.sidebar-navlink:hover {
     color: #007a66 !important;
     background-color: white;
 }
-.sidebar-navlink.active{
+.sidebar-navlink.active {
     color: #007a66 !important;
     background-color: white;
 }
-.select-jumlah{
+.select-jumlah {
     display: none;
 }
-.select-jumlah-box{
+.select-jumlah-box {
     border: 0.5px solid rgba(0, 0, 0, 0.5);
 }
 .select-jumlah:checked + label {
-    color: #FFC700;
-    border: 2px solid #FFC700;
+    color: #ffc700;
+    border: 2px solid #ffc700;
 }
-.bank-box{
+.bank-box {
     border: 1px solid black;
 }
-.select-bank{
+.select-bank {
     display: none;
 }
 .select-bank:checked + label {
     background: rgba(0, 122, 102, 0.25);
 }
-.yellow-text{
-    color: #FFC700 !important;
+.yellow-text {
+    color: #ffc700 !important;
 }
-.nav-submenu{
+.nav-submenu {
     border-top: 1px solid white;
 }
-.nav-submenu.active{
+.nav-submenu.active {
     border-top: 1px solid #007a66;
 }
-.salin-button{
+.salin-button {
     border: 1px solid #007a66;
     color: #007a66;
     border-radius: 5px;
     background-color: white;
 }
-.salin-button:hover{
+.salin-button:hover {
     border: 1px solid #007a66;
     color: #007a66;
     border-radius: 5px;
     opacity: 0.7;
     background-color: white;
 }
-.info-icon{
-    background-color: #FFC700;
+.info-icon {
+    background-color: #ffc700;
     color: white !important;
     font-size: 10px;
     border-radius: 3px;
 }
-.info-box{
+.info-box {
     border: 0.5px solid rgba(0, 0, 0, 0.75);
 }
-.base-href{
+.base-href {
     color: #007a66;
 }
-.base-href:hover{
+.base-href:hover {
     color: #007a66;
     opacity: 0.7;
     text-decoration: none;
 }
-.saldo-input{
+.saldo-input {
     border: none;
 }

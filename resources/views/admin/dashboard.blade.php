@@ -17,7 +17,6 @@
             </div>
           </div>
 
-          <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
           <div class="table-responsive">
             <table class="table table-sm" id="table-pengguna">
               <thead>
@@ -202,7 +201,7 @@
                     @endforeach
                   </select>
                   <!-- <p class="m-0">Harga sopir / Hari</p> -->
-                  <input type="number" name="harga" placeholder="Harga sopir" class="input-form w-100 p-2">
+                  <input type="hidden" name="harga" value="0" placeholder="Harga sopir" class="input-form w-100 p-2">
                   <p class="m-0">Nama</p>
                   <input type="text" name="name"  placeholder="nama" class="input-form w-100 p-2">
                   <p class="m-0">Email</p>

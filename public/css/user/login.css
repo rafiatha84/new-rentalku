@@ -1,55 +1,55 @@
-body{
+body {
     background-color: #008973 !important;
 }
-.img-background{
+.img-background {
     position: absolute;
-    top: -170px ;
+    top: -170px;
 }
-.footer{
+.footer {
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     color: white;
 }
-.login-form{
+.login-form {
     min-height: 300px;
     border-radius: 10px;
     background-color: white;
     left: 50% !important;
     top: 50%;
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 20px;
 }
-.login-form > img{
+.login-form > img {
     width: 250px;
 }
 
-.input-form{
-    border: 1px solid #007A66;
+.input-form {
+    border: 1px solid #007a66;
     border-radius: 20px;
     height: 40px;
 }
 
-.login-btn{
-    background-color: #007A66;
+.login-btn {
+    background-color: #007a66;
     color: white;
 }
-a{
+a {
     color: #007a66;
 }
-a:link{
+a:link {
     color: #007a66;
 }
-a:hover{
+a:hover {
     color: #007a66;
 }
-.password-box{
+.password-box {
     position: relative;
     height: 40px;
 }
-.icon-eye{
+.icon-eye {
     top: 25%;
     margin-left: -30px;
     position: absolute;

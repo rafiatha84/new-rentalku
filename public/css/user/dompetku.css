@@ -1,52 +1,51 @@
-.detail-box{
+.detail-box {
     background-color: white;
     min-height: 500px;
     border-radius: 20px;
-    
 }
 
-.head-produk{
+.head-produk {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #007a66;
     color: white;
 }
-.image-produk{
+.image-produk {
     width: 100%;
 }
-.ulasan-link:hover{
+.ulasan-link:hover {
     color: #007a66;
     font-weight: bold;
 }
-.hr-detail{
+.hr-detail {
     border-top: 1px solid #000000;
 }
-.vertikal-line{
+.vertikal-line {
     border-left: 1px solid #000000;
 }
-.sidebar-left{
+.sidebar-left {
     background-color: #007a66;
     border-bottom-left-radius: 20px;
 }
-.sidebar-right{
+.sidebar-right {
     border-bottom-right-radius: 20px;
     overflow-y: scroll;
     height: 500px;
 }
-.yellow-bg{
+.yellow-bg {
     background-color: yellow;
 }
-.black-bg{
+.black-bg {
     background-color: black;
 }
-.sidebar-navlink{
+.sidebar-navlink {
     color: white !important;
 }
-.sidebar-navlink:hover{
+.sidebar-navlink:hover {
     color: #007a66 !important;
     background-color: white;
 }
-.sidebar-navlink.active{
+.sidebar-navlink.active {
     color: #007a66 !important;
     background-color: white;
 }

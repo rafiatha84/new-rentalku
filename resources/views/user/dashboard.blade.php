@@ -103,7 +103,6 @@
                             <div class="text-box text-box-left p-2 col-6">
                                 <label for="" class="mb-0">{{ $kendaraan->kategori->name  }}</label>
                                 <p class="mb-0"><b>{{ $kendaraan->name }}</b></p>
-                                <p><?php echo ($kendaraan->supir == 1) ? 'Dengan Sopir' : 'Tanpa Sopir'; ?></p>
                             </div>
                             <div class="text-box text-box-right p-2 col-6">
                                 <p class="text-right price mb-0">Rp.{{ number_format($kendaraan->harga,0,',','.') }}/ Hari</p>

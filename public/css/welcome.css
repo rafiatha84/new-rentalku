@@ -1,8 +1,8 @@
-.password-box{
+.password-box {
     position: relative;
     height: 40px;
 }
-.icon-eye{
+.icon-eye {
     top: 25%;
     right: 7px;
     margin-left: -30px;
@@ -12,14 +12,14 @@
 }
 .wrap {
     white-space: pre-wrap;
-  }
+}
 .loader,
 .loader:after {
     border-radius: 50%;
     width: 10em;
     height: 10em;
 }
-.loader {            
+.loader {
     margin: 60px auto;
     font-size: 10px;
     position: relative;
@@ -55,57 +55,58 @@
     }
 }
 #loadingDiv {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background-color:#007a66;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #007a66;
     opacity: 0.5;
 }
-.href-white{
+.href-white {
     color: white !important;
     text-decoration: none;
 }
-.href-white:hover{
+.href-white:hover {
     text-decoration: none;
     opacity: 0.9;
 }
-.color-base, .base-color{
+.color-base,
+.base-color {
     color: #007a66;
 }
-.black-color{
+.black-color {
     color: black;
 }
-.button-base{
+.button-base {
     background-color: #007a66;
     color: white;
     border-radius: 20px;
     text-decoration: none;
 }
-.button-base:hover{
+.button-base:hover {
     background-color: #007a66;
     color: white;
     border-radius: 20px;
     opacity: 0.7;
     text-decoration: none;
 }
-.button-base-yellow:hover{
-    background-color: #FFC700;
+.button-base-yellow:hover {
+    background-color: #ffc700;
     color: white;
     opacity: 0.7;
     text-decoration: none;
 }
-.button-yellow{
-    background-color: #FFC700;
+.button-yellow {
+    background-color: #ffc700;
     color: white;
     border-radius: 20px;
     text-decoration: none !important;
     outline: none !important;
     border: 0;
 }
-.button-yellow:hover{
-    background-color: #FFC700;
+.button-yellow:hover {
+    background-color: #ffc700;
     color: white;
     border-radius: 20px;
     text-decoration: none !important;
@@ -113,81 +114,81 @@
     opacity: 0.7;
     border: 0;
 }
-.star-active{
-    color: #FFC700;
+.star-active {
+    color: #ffc700;
 }
-.nav-link{
+.nav-link {
     color: #007a66 !important;
     font-weight: bold;
 }
-#head{
+#head {
     height: 400px;
 }
-.nav-left{
+.nav-left {
     color: gray !important;
 }
-.nav-left.active{
+.nav-left.active {
     color: #007a66 !important;
 }
-.dropdown-menu.dropdown-menu-right.show{
+.dropdown-menu.dropdown-menu-right.show {
     background-color: #007a66;
 }
-.dropdown-menu>a.dropdown-item{
+.dropdown-menu > a.dropdown-item {
     color: white;
 }
-.dropdown-menu>a.dropdown-item:hover{
-    background-color: #FFC700;
+.dropdown-menu > a.dropdown-item:hover {
+    background-color: #ffc700;
 }
-.head-box{
+.head-box {
     height: 100%;
     position: relative;
     padding-top: 100px;
 }
-.img-rectangle{
+.img-rectangle {
     width: 100%;
     position: absolute;
     top: -150px;
     z-index: -99;
 }
-.round-box{
+.round-box {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     background-color: white;
 }
-.mobil{
+.mobil {
     position: absolute;
     width: 200px;
     border-radius: 50%;
     bottom: -25%;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
 }
-#section-2{
+#section-2 {
     color: black;
 }
-.btn-daftar{
+.btn-daftar {
     border-radius: 20px;
     background-color: #007a66;
     color: white;
     text-decoration: none !important;
 }
-.btn-daftar:hover{
+.btn-daftar:hover {
     border-radius: 20px;
     background-color: #007a66;
     color: white;
     opacity: 0.7;
     text-decoration: none !important;
 }
-.btn-rental{
+.btn-rental {
     border-radius: 20px;
-    background-color: #FFC700;
+    background-color: #ffc700;
     color: white;
     text-decoration: none !important;
 }
-.btn-rental:hover{
+.btn-rental:hover {
     border-radius: 20px;
-    background-color: #FFC700;
+    background-color: #ffc700;
     color: white;
     opacity: 0.7;
     text-decoration: none !important;
@@ -201,65 +202,66 @@ a:link{
 a:hover{
     color: white;
 } */
-.img-slider{
+.img-slider {
     border-radius: 20px;
 }
-.box-border{
+.box-border {
     cursor: pointer;
     background-color: white;
     border-radius: 20px;
     filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.25));
 }
-.textbox{
+.textbox {
     padding: 5px;
 }
-.img-box{
+.img-box {
     border-radius: 20px;
     height: 150px;
 }
-.img-box-new{
+.img-box-new {
     border-radius: 20px;
     height: 250px;
 }
-.img-box > img{
+.img-box > img {
     border-radius: 20px;
 }
-.selengkapnya{
+.selengkapnya {
     color: #007a66;
 }
-.selengkapnya:link{
+.selengkapnya:link {
     color: #007a66;
 }
-.selengkapnya:hover{
+.selengkapnya:hover {
     color: #007a66;
 }
-#footer{
+#footer {
     border-top: 1px solid #007a66 !important;
 }
-div#footer\ mt-2{
+div#footer\ mt-2 {
     border-top: 1px solid #007a66 !important;
 }
-.label-produk{
-    color: #A0A0A0;
+.label-produk {
+    color: #a0a0a0;
 }
-.price{
-    color: #FFC700;
+.price {
+    color: #ffc700;
 }
-.star{
-    color: #FFC700;
+.star {
+    color: #ffc700;
 }
-.input-style, .input-base{
+.input-style,
+.input-base {
     height: 30px;
     border-radius: 20px;
     border: 1px solid #007a66;
 }
-.button-style{
+.button-style {
     background-color: #007a66;
     border: none;
     color: white;
     border-radius: 20px;
 }
-#chat{
+#chat {
     position: fixed;
     bottom: 0;
     right: 20px;
@@ -267,7 +269,7 @@ div#footer\ mt-2{
     width: 250px;
     filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.25));
 }
-.chat-bar{
+.chat-bar {
     height: 40px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -277,14 +279,14 @@ div#footer\ mt-2{
     border-bottom: 1px solid #007a66;
     background-color: white;
 }
-.chat-room{
+.chat-room {
     background-color: white;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    height:300px;
+    height: 300px;
 }
-.chat-button{
+.chat-button {
     position: fixed;
     bottom: 0;
     right: 20px;
@@ -293,32 +295,32 @@ div#footer\ mt-2{
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     width: 250px;
-    background-color: #FFC700;
+    background-color: #ffc700;
     display: inline-block;
     filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.25));
     color: white;
 }
-.hidden{
+.hidden {
     display: none;
 }
-.notification{
+.notification {
     background-color: #007a66;
 }
-.pesan{
+.pesan {
     border-bottom: 0.5px solid gray;
     cursor: pointer;
 }
-.img-user-chat{
+.img-user-chat {
     width: 50px;
 }
-.single-chat{
+.single-chat {
     position: fixed;
     bottom: 0;
     right: 20px;
     width: 250px;
     filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.25));
 }
-.single-chat-bar{
+.single-chat-bar {
     height: 40px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -328,26 +330,26 @@ div#footer\ mt-2{
     border-bottom: 1px solid #007a66;
     background-color: white;
 }
-.single-chat-room{
+.single-chat-room {
     background-color: white;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    height:300px;
+    height: 300px;
     position: relative;
 }
 
-.input-message{
+.input-message {
     position: relative;
     border: none;
     border-top: 1px solid #007a66;
     width: 100%;
 }
-.input-pesan{
+.input-pesan {
     width: 100%;
     height: 50px;
 }
-.send-button{
+.send-button {
     position: absolute;
     right: 0;
     top: 0;
@@ -357,89 +359,90 @@ div#footer\ mt-2{
     background-color: white;
     color: #007a66;
 }
-.input-pesan{
+.input-pesan {
     border: none;
 }
-.message{
+.message {
     background-color: hsl(170, 100%, 24%);
     color: white;
     border-radius: 5px;
     border-bottom-left-radius: 0px;
     display: inline-block;
-    max-width: 80%; 
+    max-width: 80%;
     overflow-wrap: break-word;
 }
-.message-row{
+.message-row {
     display: flex;
-    
 }
-.message-own{
-    background-color: #FFC700;
+.message-own {
+    background-color: #ffc700;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 0px;
 }
-.own{
+.own {
     display: flex;
     flex-direction: row-reverse;
 }
-.back-btn{
+.back-btn {
     cursor: pointer;
 }
-.image-chat-box{
+.image-chat-box {
     width: 100px;
 }
-.base-input{
+.base-input {
     border: 1px solid #007a66;
     border-radius: 20px;
 }
-.yellow-text, .text-yellow{
-    color: #FFC700;
+.yellow-text,
+.text-yellow {
+    color: #ffc700;
 }
-.gray-text, .text-gray{
-    color: rgba(0, 0, 0, 0.50)
+.gray-text,
+.text-gray {
+    color: rgba(0, 0, 0, 0.5);
 }
-.hr-base{
+.hr-base {
     border-top: 1px solid #007a66;
 }
-.hr-yellow{
-    border-top: 1px solid #FFC700;
+.hr-yellow {
+    border-top: 1px solid #ffc700;
 }
-.hr-black{
+.hr-black {
     border-top: 1px solid black;
 }
-.button-base-secondary{
+.button-base-secondary {
     color: #007a66;
     border: 1px solid #007a66;
     text-decoration: none;
     border-radius: 20px;
 }
-.button-base-secondary:hover{
+.button-base-secondary:hover {
     color: #007a66;
     border: 1px solid #007a66;
     text-decoration: none;
     border-radius: 20px;
     opacity: 0.7;
 }
-.button-secondary{
+.button-secondary {
     background-color: #e0e0e0;
     color: white;
     text-decoration: none;
     border-radius: 20px;
 }
-.button-secondary:hover{
-    background-color: #FFC700;
+.button-secondary:hover {
+    background-color: #ffc700;
     color: white;
     text-decoration: none;
     border-radius: 20px;
     opacity: 0.7;
 }
-.vertikal-line{
+.vertikal-line {
     border-left: 1px solid #000000;
 }
-.vertikal-line-base{
+.vertikal-line-base {
     border-left: 1px solid #007a66;
 }
-.radius-20{
+.radius-20 {
     border-radius: 20px;
 }
 .element {
@@ -448,51 +451,52 @@ div#footer\ mt-2{
     border: 2px solid #007a66;
     border-radius: 10px;
     cursor: pointer;
-  }
-  .camera-icon {
+}
+.camera-icon {
     margin: 10px;
     cursor: pointer;
     font-size: 30px;
-  }
-  .camera-icon {
+}
+.camera-icon {
     opacity: 0.6;
-  }
-  .input-foto {
+}
+.input-foto {
     cursor: pointer;
     display: none;
-  }
-.select-base-box{
+}
+.select-base-box {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
-.select-base-box.active{
-    background-color: #00AD91;
+.select-base-box.active {
+    background-color: #00ad91;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
-.select-base{
+.select-base {
     color: white;
     background-color: #007a66;
     border-radius: 20px;
     outline: none;
 }
-.select-base > option{
+.select-base > option {
     padding-bottom: 2px !important;
     padding-top: 2px !important;
     border: none;
     outline: none;
-    background-color: #00AD91;
+    background-color: #00ad91;
 }
-.img-upload, .image-upload{
+.img-upload,
+.image-upload {
     height: 150px;
 }
 .tooltip {
     position: relative !important;
     display: inline-block !important;
     opacity: 1 !important;
-  }
-  
-  .tooltip .tooltiptext {
+}
+
+.tooltip .tooltiptext {
     display: hidden !important;
     width: 140px !important;
     background-color: #555 !important;
@@ -507,9 +511,9 @@ div#footer\ mt-2{
     margin-left: -75px !important;
     opacity: 0 !important;
     transition: opacity 0.3s !important;
-  }
-  
-  .tooltip .tooltiptext::after {
+}
+
+.tooltip .tooltiptext::after {
     content: "" !important;
     position: absolute !important;
     top: 100% !important;
@@ -518,43 +522,45 @@ div#footer\ mt-2{
     border-width: 5px !important;
     border-style: solid !important;
     border-color: #555 transparent transparent transparent !important;
-  }
-  
-  .tooltip:hover .tooltiptext {
+}
+
+.tooltip:hover .tooltiptext {
     visibility: visible !important;
     opacity: 1 !important;
-  }
-  span.name{
-      word-break: break-word;
-  }
-.slick-initialized { overflow: hidden; }
+}
+span.name {
+    word-break: break-word;
+}
+.slick-initialized {
+    overflow: hidden;
+}
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .img-rectangle{
+    .img-rectangle {
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0px;
         z-index: 1;
     }
-    .mobil{
+    .mobil {
         position: absolute;
         width: 100px;
         border-radius: 50%;
         bottom: -25%;
         left: 50%;
-        transform: translate(-50%,0);
+        transform: translate(-50%, 0);
         z-index: 2;
     }
-    .head-box{
+    .head-box {
         height: 200px;
         position: relative;
         padding-top: 0px;
     }
-    #head{
+    #head {
         height: 200px;
     }
-    h4{
+    h4 {
         font-size: 10px !important;
     }
 }

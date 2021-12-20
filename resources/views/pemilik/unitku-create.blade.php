@@ -72,8 +72,7 @@
                                     <input type="text" name="warna" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan Warna Unit" required>
                                     <p class="m-0">Tahun Mobil</p>
                                     <input type="text" name="tahun" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan tahun mobil">
-                                    <p class="m-0">Kota</p>
-                                    <input type="text" name="kota" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan kota mobil">
+                                    <input type="hidden" name="kota" value="Surabaya" class="d-block  input-base py-2 px-2 w-100" placeholder="Masukkan kota mobil">
                                 </div>
                             </div>
                             

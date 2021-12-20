@@ -27,7 +27,6 @@
         <div class="login-form col-10 col-lg-4">
             <img src="{{ asset('image/logo_gabung.png') }}" alt="" class="mt-2 mx-auto d-block">
             <p class="mt-5 mb-2 text-center"><b>Atur ulang Kata sandi</b></p>
-
             @if (session('status'))
                 <label class="small mt-4 mx-3 text-danger">{{ session('status') }} </label>
             @endif
@@ -35,7 +34,6 @@
                 @csrf
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
                 <input class="col-12 input-form" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
-
                 <input class="my-4 col-12 login-btn input-form" type="submit" value="Kirim email verifikasi">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
