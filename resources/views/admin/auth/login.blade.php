@@ -35,7 +35,10 @@
                 <label class="small">Masukkan email anda</label>
                 <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Masukkan kata sandi anda</label>
-                <input class="col-12" type="password" name="password" placeholder="*******">
+                <div class="password-box">
+                    <input class="col-12" type="password" name="password" placeholder="*******">
+                    <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                </div>
 
                 <input class="my-4 col-12 login-btn" type="submit" value="Masuk">
             </form>
@@ -43,5 +46,7 @@
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
     </body>
 </html>
