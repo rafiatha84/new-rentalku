@@ -15,6 +15,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,12 +35,18 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
-                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
+                <input class="col-12 input-form" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
                 <label class="small">Kata sandi anda</label>
-                    <input class="col-12" type="password" name="password" id="" placeholder="******">
+                <div class="password-box">
+                        <input class="col-12 input-form" type="password" name="password" id="" placeholder="******">
+                        <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                    </div>
                     <label class="small">Ketik ulang kata sandi anda</label>
-                    <input class="col-12" type="password" name="password_confirmation" id="" placeholder="******">
-                <input class="my-4 col-12 login-btn" type="submit" value="Atur Password">
+                    <div class="password-box">
+                        <input class="col-12 input-form" type="password" name="password_confirmation" id="" placeholder="******">
+                        <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                    </div>
+                <input class="my-4 col-12 login-btn input-form" type="submit" value="Atur Password">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
             <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>
@@ -47,5 +54,7 @@
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
     </body>
 </html>

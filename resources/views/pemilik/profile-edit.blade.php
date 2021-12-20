@@ -34,17 +34,15 @@
                         </div>
                     </div>
                     
-                <p class="text-center mt-5 mb-0"><b>Muhammad</b></p>
-                <p class="text-center">12 September 2000</p>
-                <div class="row col-12">
+                    <div class="row col-12 mt-5">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
                         <input type="text" name="name" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}" required>
                     </div>
-                    <!-- <div class="col-6 offset-3">
+                    <div class="col-6 offset-3">
                         <label for="" class="mb-0">Tanggal Lahir</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}">
-                    </div> -->
+                        <input type="date" name="tanggal_lahir" id="" class="d-block w-100 input-style px-2 " style="vertical-align:center;" value="{{ Auth::user()->tanggal_lahir }}">
+                    </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">No Telepon</label>
                         <input type="text" name="telp" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->telp }}" placeholder="Masukkan no telp" required>
@@ -58,16 +56,25 @@
                         <input type="text" name="email" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->email }}" placeholder="Masukkan Email" required>
                     </div>
                     <div class="col-6 offset-3">
-                        <label for="" class="mb-0">Password Lama</label>
-                        <input type="password" name="password" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Lama" value="">
+                        <label for="" class="mb-0">Kata sandi Lama</label>
+                        <div class="password-box">
+                            <input type="password" name="password" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Lama" value="">
+                            <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                        </div>
                     </div>
                     <div class="col-6 offset-3">
-                        <label for="" class="mb-0">Password Baru</label>
-                        <input type="password" name="new_password" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Baru">
+                        <label for="" class="mb-0">Kata sandi Baru</label>
+                        <div class="password-box">
+                            <input type="password" name="new_password" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Baru">
+                            <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                        </div>
                     </div>
                     <div class="col-6 offset-3">
-                        <label for="" class="mb-0">Ketik Ulang Password Baru</label>
-                        <input type="password" name="new_password_again" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Baru">
+                        <label for="" class="mb-0">Ketik Ulang Kata sandi Baru</label>
+                        <div class="password-box">
+                            <input type="password" name="new_password_again" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan Password Baru">
+                            <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                        </div>
                     </div>
                     <div class="col-6 offset-3 mt-4">
                         <button type="submit" class="btn d-block w-100 button-base-secondary px-2 py-2">Simpan</button>

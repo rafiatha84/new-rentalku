@@ -15,6 +15,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,16 +38,16 @@
                     @csrf
                     <input type="hidden" name="id" value="{{ $user->id }}">
                     <label class="small">Nama lengkap anda</label>
-                    <input class="col-12" type="text" name="name" placeholder="Nama Lengkap" required>
+                    <input class="col-12  input-form" type="text" name="name" placeholder="Nama Lengkap" required>
                     <label class="small">Nomor Induk Kependudukan</label>
-                    <input class="col-12" type="text" name="nik" placeholder="NIK" required>
+                    <input class="col-12 input-form" type="text" name="nik" placeholder="NIK" required>
                     <label class="small">Upload Foto KTP</label>
                     <div class="element w-100 radius-20 ">
                       <i class="fa-solid fa-camera base-color camera-icon" onclick="click_input('#foto-ktp-penyewa');"></i><span class="name" id="foto-ktp-name-penyewa">Tidak ada file yang dipilih</span>
-                      <input type="file" name="foto_ktp" id="foto-ktp-penyewa" placeholder="" class="input-form input-foto" onchange="previewFile(this,'#foto-ktp-image-penyewa');" required>
+                      <input type="file" name="foto_ktp" id="foto-ktp-penyewa" placeholder="" class="input-form input-foto input-form" onchange="previewFile(this,'#foto-ktp-image-penyewa');" required>
                     </div>
 
-                    <input class="my-4 col-12 login-btn" type="submit" value="Daftar & jadi Pemilik Mobil">
+                    <input class="my-4 col-12 login-btn input-form" type="submit" value="Daftar & jadi Pemilik Mobil">
                 </form>
                 </div>
                 </div>
@@ -57,6 +58,7 @@
         </div>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
         <script>
         function previewFile(input,element){
             var val = $(input).val();

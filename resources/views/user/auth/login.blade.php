@@ -41,6 +41,7 @@
                 <label class="small">Masukkan Kata sandi anda</label>
                 <div class="password-box">
                     <input class="col-12 input-form" type="password" name="password" placeholder="*******">
+                    <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
                     <!-- <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button> -->
                 </div>
 
@@ -52,5 +53,7 @@
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
     </body>
 </html>

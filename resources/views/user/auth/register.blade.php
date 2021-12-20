@@ -15,6 +15,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,15 +38,21 @@
                 <form action="{{ route('user.register.action') }}" method="POST" class="mx-3">
                     @csrf
                     <label class="small">Nama lengkap anda</label>
-                    <input class="col-12" type="text" name="name" id="" placeholder="muhammad">
+                    <input class="col-12 input-form" type="text" name="name" id="" placeholder="muhammad">
                     <label class="small">Email anda</label>
-                    <input class="col-12" type="email" name="email" id="" placeholder="contoh@gmail.com">
+                    <input class="col-12 input-form" type="email" name="email" id="" placeholder="contoh@gmail.com">
                     <label class="small">Kata sandi anda</label>
-                    <input class="col-12" type="password" name="password" id="" placeholder="******">
+                    <div class="password-box">
+                        <input class="col-12 input-form" type="password" name="password" id="" placeholder="******">
+                        <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                    </div>
                     <label class="small">Ketik ulang kata sandi anda</label>
-                    <input class="col-12" type="password" name="" id="" placeholder="******">
+                    <div class="password-box">
+                        <input class="col-12 input-form" type="password" name="" id="" placeholder="******">
+                        <i class="far fa-eye icon-eye" id="togglePassword" style="" onclick="showPassword(this)"></i>
+                    </div>
 
-                    <input class="my-4 col-12 login-btn" type="submit" value="Daftar">
+                    <input class="my-4 col-12 login-btn input-form" type="submit" value="Daftar">
                 </form>
                 <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>
                 </div>
@@ -55,5 +62,7 @@
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
     </body>
 </html>

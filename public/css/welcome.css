@@ -1,4 +1,18 @@
-
+.password-box{
+    position: relative;
+    height: 40px;
+}
+.icon-eye{
+    top: 25%;
+    right: 7px;
+    margin-left: -30px;
+    position: absolute;
+    cursor: pointer;
+    font-size: 18px;
+}
+.wrap {
+    white-space: pre-wrap;
+  }
 .loader,
 .loader:after {
     border-radius: 50%;

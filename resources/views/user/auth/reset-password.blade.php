@@ -15,6 +15,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -33,9 +34,9 @@
             <form method="POST" action="{{ route('forget.password.post') }}" class=" mx-3">
                 @csrf
                 <label class="small">Masukkan email anda untuk atur ulang kata sandi</label>
-                <input class="col-12" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
+                <input class="col-12 input-form" type="email" name="email" placeholder="contoh@gmail.com" value="{{ old('email') }}" required>
 
-                <input class="my-4 col-12 login-btn" type="submit" value="Kirim email verifikasi">
+                <input class="my-4 col-12 login-btn input-form" type="submit" value="Kirim email verifikasi">
             </form>
             <p class="text-center small"><b><i>Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a></i></b></p>
             <p class="text-center small"><b><i>Sudah punya akun? <a href="{{ route('user.login') }}">Login</a></i></b></p>
@@ -43,5 +44,7 @@
         <div class="footer">
             <p>Hak Cipta &copy; 2021. Tim Rentalku.</p>
         </div>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/password-eye.js') }}"></script>
     </body>
 </html>

@@ -23,7 +23,7 @@ class UserProfileController extends Controller
         ]);
         // dd($request->has('image'));
         $cek = User::findOrFail($request->user_id);
-        $data_update = $request->only(['name','telp','alamat','email']);
+        $data_update = $request->only(['name','tanggal_lahir','telp','alamat','email']);
         if($request->has('image'))
         {
             $uploadFolder = "image/profil/";
@@ -31,6 +31,11 @@ class UserProfileController extends Controller
             $imageName = time().'-'.$image->getClientOriginalName();
             $image->move(public_path($uploadFolder), $imageName);
             $data_update['image_link'] = $uploadFolder.$imageName;
+        }
+        if(isset($request->tanggal_lahir)){
+            $day = strtotime($request->tanggal_lahir);
+            $day = date('Y-m-d H:i:s', $day);
+            $data_update['tanggal_lahir'] = $day;
         }
 
         if($request->new_password != null)

@@ -34,26 +34,26 @@
                 <div class="row col-12 mt-5">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}" disabled>
+                        <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="{{ Auth::user()->name }}" disabled>
                     </div>
-                    <!-- <div class="col-6 offset-3">
+                    <div class="col-6 offset-3">
                         <label for="" class="mb-0">Tanggal Lahir</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->name }}">
-                    </div> -->
+                        <input type="date" name="tanggal_lahir" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="<?php echo date('Y-m-d',strtotime(Auth::user()->tanggal_lahir)); ?>" disabled>
+                    </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">No Telepon</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->telp }}">
+                        <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan No Telp" value="{{ Auth::user()->telp }}" disabled>
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Alamat</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->alamat }}">
+                        <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan alamat" value="{{ Auth::user()->alamat }}" disabled>
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Email</label>
-                        <input type="text" name="" id="" class="d-block w-100 input-style px-2 py-3" value="{{ Auth::user()->email }}">
+                        <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan email" value="{{ Auth::user()->email }}" disabled>
                     </div>
                     <div class="col-6 offset-3 mt-4">
-                        <a href="{{ route('pemilik.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Ubah</a>
+                        <a href="{{ route('user.profile.edit') }}" class="btn d-block w-100 button-base-secondary px-2 py-2">Ubah</a>
                     </div>
                 </div>
             </div>

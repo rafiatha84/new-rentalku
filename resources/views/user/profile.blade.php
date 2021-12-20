@@ -18,12 +18,11 @@
                 <img src="{{ asset('image/city.png') }}" alt="" class="img-fluid img-city w-100">
             </div>
             <div class="profile-box mx-auto col-6 p-4">
-                    
                     <div class="image-outer">
                         <div class="image-box d-inline-block">
                             <img src="{{ asset(Auth::user()->image_link) }}" class="rounded-circle foto-profile" id="foto-profile-image">
                             <input type="file" name="" id="profile-input" class="d-none" onchange="previewFile(this,'#foto-profile-image');">
-                            <!-- <button class="btn btn-camera" onclick="click_input('#profile-input')"><i class="fa-solid fa-camera color-base"></i></button> -->
+                            <button class="btn btn-camera" onclick="click_input('#profile-input')"><i class="fa-solid fa-camera color-base"></i></button>
                         </div>
                     </div>
                 @if (session('status'))
@@ -31,14 +30,14 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <div class="row col-12 mt-5 ">
+                <div class="row col-12 mt-5">
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Nama</label>
                         <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="{{ Auth::user()->name }}" disabled>
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">Tanggal Lahir</label>
-                        <input type="text" name="" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="{{ Auth::user()->name }}" disabled>
+                        <input type="date" name="tanggal_lahir" class="d-block w-100 input-style px-2 py-3" placeholder="Masukkan nama" value="<?php echo date('Y-m-d',strtotime(Auth::user()->tanggal_lahir)); ?>" disabled>
                     </div>
                     <div class="col-6 offset-3">
                         <label for="" class="mb-0">No Telepon</label>
