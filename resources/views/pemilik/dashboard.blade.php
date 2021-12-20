@@ -136,9 +136,7 @@
         </div>
     </div>
     @else
-    <div class="row col-12 text mt-5 pt-5 mb-5">
-                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
-    </div>
+
     @endif
 
             <div class="row col-12 mt-4 mb-2 your-class">
