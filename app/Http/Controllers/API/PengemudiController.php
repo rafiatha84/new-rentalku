@@ -93,7 +93,7 @@ class PengemudiController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->role = "Pengemudi";
+            $user->role = "pengemudi";
             $user->foto_ktp = $foto_ktp;
             $user->foto_sim = $foto_sim;
             $user->password = Hash::make($request->password);

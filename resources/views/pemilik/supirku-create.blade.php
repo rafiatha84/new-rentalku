@@ -31,7 +31,6 @@
                                     <input type="hidden" name="owner_id" value="{{ Auth::user()->id }}">
                                     <p class="m-0">Nama Lengkap</p>
                                     <input type="text" name="name" class="d-block  input-base py-3 px-3 w-100" placeholder="Masukkan Nama" required>
-
                                     <p class="m-0">Email</p>
                                     <input type="text" name="email" class="d-block  input-base py-3 px-3 w-100" placeholder="Masukkan Email" required>
                                     <p class="m-0">Kata sandi</p>
