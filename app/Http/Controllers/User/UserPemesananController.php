@@ -20,7 +20,7 @@ class UserPemesananController extends Controller
     public function create_form($kendaraan_id){
         $kendaraan = Kendaraan::with('user.pengemudi.user.ratingUser','kategori')->findOrFail($kendaraan_id);
         // dd($kendaraan->user->pengemudi[0]->user->ratingUser->count());
-        $dompet = Dompet::findOrFail(Auth::user()->id);
+        $dompet = Dompet::where('user_id',Auth::user()->id)->firstOrFail();
         // dd($dompet);
         return view('user.pemesanan-create',[
             'kendaraan' => $kendaraan,
