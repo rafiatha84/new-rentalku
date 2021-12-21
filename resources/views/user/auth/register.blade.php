@@ -38,7 +38,7 @@
                 <form action="{{ route('user.register.action') }}" method="POST" class="mx-3">
                     @csrf
                     <label class="small">Nama lengkap anda</label>
-                    <input class="col-12 input-form" type="text" name="name" id="" placeholder="muhammad">
+                    <input class="col-12 input-form" type="text" name="name" id="" placeholder="Masukkan Nama">
                     <label class="small">Email anda</label>
                     <input class="col-12 input-form" type="email" name="email" id="" placeholder="contoh@gmail.com">
                     <label class="small">Kata sandi anda</label>
