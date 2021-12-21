@@ -224,6 +224,8 @@ a:hover{
 }
 .img-box > img {
     border-radius: 20px;
+    object-position: center;
+    object-fit: cover;
 }
 .selengkapnya {
     color: #007a66;

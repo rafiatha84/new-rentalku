@@ -21,6 +21,11 @@
 .image-produk {
     width: 100%;
 }
+.image-detail{
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
 .ulasan-link:hover {
     color: #007a66;
     font-weight: bold;

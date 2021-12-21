@@ -22,49 +22,49 @@
             </div>
         </div>
     </div>
-    @if($transaksis->count() > 0)
-    <div id="table-pesananku ">
-        <div class="container">
-            <div class="row col-12 table-box my-4 p-0">
-                <table class="table table-pesanan">
-                <thead>
-                    <tr>
-                    <th scope="col" class="text-center">Gambar</th>
-                    <th scope="col" class="text-center">Merk Mobil</th>
-                    <th scope="col" class="text-center">Jenis Mobil</th>
-                    <th scope="col" class="text-center">Tanggal</th>
-                    <th scope="col" class="text-center">Sopir</th>
-                    <th scope="col" class="text-center">Harga</th>
-                    <th scope="col" class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($transaksis as $transaksi)
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="image-mobil-tabel">
-                        </td>
-                        <td class="text-center">{{ $transaksi->kendaraan->name }}</td>
-                        <td class="text-center">{{ $transaksi->kendaraan->kategori->name }}</td>
-                        <td class="text-center">{{$transaksi->tanggal_transaksi()}} -{{$transaksi->tanggal_berakhir()}} </td>
-                        <td class="text-center">{{$transaksi->sopir()}}</td>
-                        <td class="text-center">Rp.{{number_format($transaksi->kendaraan->harga,0,',','.')}}/Hari</td>
-                        <td>
-                            <div class="row col-12">
-                                <div class="col-4 text-center px-1">
-                                    <a href="{{ route('pemilik.pemesanan.detail',$transaksi->id) }}" class="href-white button-yellow p-2 d-block w-100" >Lihat Data Pemesanan</a>
-                                </div>
-                                <div class="col-4 text-center px-1">
-                                    <button class="href-base button-yellow-secondary p-2 d-block w-100" onclick="show_room()">Hubungi penyewa</button>
-                                </div>
-                                <div class="col-4 text-center px-1">
-                                    <button class="href-base button-yellow-primary p-2 d-block w-100" onclick="modal_selesai({{ $transaksi->id }})">Konfirmasi Selesai</button>
-                                </div>
-                            </div> 
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
+    <div class="table-outer">
+
+        @if($transaksis->count() > 0)
+        <div id="table-pesananku ">
+            <div class="container">
+                <div class="row col-12 table-box my-4 p-0">
+                    <table class="table table-pesanan">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Gambar</th>
+                        <th scope="col" class="text-center">Mobil</th>
+                        <th scope="col" class="text-center">Tanggal</th>
+                        <th scope="col" class="text-center">Sopir</th>
+                        <th scope="col" class="text-center">Harga</th>
+                        <th scope="col" class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($transaksis as $transaksi)
+                        <tr>
+                            <td class="text-center">
+                                <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="image-mobil-tabel">
+                            </td>
+                            <td class="text-center">{{ $transaksi->kendaraan->name }}</td>
+                            <td class="text-center">{{$transaksi->tanggal_transaksi()}} -{{$transaksi->tanggal_berakhir()}} </td>
+                            <td class="text-center">{{$transaksi->sopir()}}</td>
+                            <td class="text-center">Rp.{{number_format($transaksi->kendaraan->harga,0,',','.')}}/Hari</td>
+                            <td class="aksi-column">
+                                <div class="row col-12">
+                                    <div class="col-4 text-center px-1">
+                                        <a href="{{ route('pemilik.pemesanan.detail',$transaksi->id) }}" class="href-white button-yellow p-2 d-block w-100 border-radius-5px" >Lihat Data<br>Pemesanan</a>
+                                    </div>
+                                    <div class="col-4 text-center px-1">
+                                        <button class="href-base button-yellow-secondary p-2 d-block w-100 border-radius-5px" onclick="show_room()">Hubungi<br>penyewa</button>
+                                    </div>
+                                    <div class="col-4 text-center px-1">
+                                        <button class="href-base button-yellow-primary p-2 d-block w-100 border-radius-5px" onclick="modal_selesai({{ $transaksi->id }})">Konfirmasi<br>Selesai</button>
+                                    </div>
+                                </div> 
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -74,17 +74,17 @@
         <div class="container">
             <div class="row col-12 kosong-box pt-5">
                 <div class="col-12">
-                <img src="{{ asset('image/order-kosong.png') }}" class="d-block mx-auto image-order-kosong" alt="" srcset="">
-                <p class="text-center"><b>Belum ada pesanan</b></p>
-                <p class="text-center"><i>Ayo buruan pesan sekarang</i></p>
+                    <img src="{{ asset('image/order-kosong.png') }}" class="d-block mx-auto image-order-kosong" alt="" srcset="">
+                    <p class="text-center"><b>Belum ada pesanan</b></p>
+                    <p class="text-center"><i>Ayo buruan pesan sekarang</i></p>
+                    </div>
+                    
                 </div>
-                
             </div>
         </div>
+        @endif
+        
     </div>
-
-    @endif
-
     <!-- Modal -->
     <div class="modal fade" id="selesaiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

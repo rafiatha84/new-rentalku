@@ -15,7 +15,7 @@
                     <div class="content-wrapper px-2">
                         <div class="row">
                             <div class="col-6">
-                                <img src="{{ asset($kendaraan->image_link) }}" alt="" srcset="" class="w-100">
+                                <img src="{{ asset($kendaraan->image_link) }}" alt="" srcset="" class="w-100 image-detail">
                             </div>
                             <div class="col-6">
                                 <form action="{{ route('api.transaksi.create') }}" method="post" id="pemesanan-create" enctype="multipart/form-data">

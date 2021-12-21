@@ -15,7 +15,7 @@
                     <div class="content-wrapper px-2">
                         <div class="row">
                             <div class="col-6">
-                                <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="w-100">
+                                <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="w-100 image-detail">
                             </div>
                             <div class="col-6">
                                 <h5 class="nama text-center">{{$transaksi->kendaraan->name}}</h5>

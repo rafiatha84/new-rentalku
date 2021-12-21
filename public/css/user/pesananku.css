@@ -35,13 +35,18 @@
     border-bottom: 4px solid #007a66;
     color: #007a66;
 }
-.table-box {
-    background: white;
+.table-outer{
+    /* background-color: wheat; */
     min-height: 400px;
+}
+.table-box {
+    background: red;
+    /* min-height: 400px; */
     border-top-left-radius: 20px !important;
     border-top-right-radius: 20px !important;
 }
 .table-pesanan {
+    margin: 0;
     border-collapse: separate !important;
     border-spacing: 0 !important;
     background: white;
@@ -56,6 +61,7 @@ table,
 th,
 td {
     border: 1px solid #007a66 !important;
+    vertical-align: middle !important;
 }
 thead {
     background-color: #007a66;
@@ -73,7 +79,16 @@ table tr:first-child th:last-child {
     border-top-right-radius: 20px !important;
 }
 .image-mobil-tabel {
-    width: 150px;
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    object-position: center;
+}
+.border-radius-5px{
+    border-radius: 5px !important;
+}
+.aksi-column{
+    font-size: 11px;
 }
 .kosong-box {
     min-height: 400px;
