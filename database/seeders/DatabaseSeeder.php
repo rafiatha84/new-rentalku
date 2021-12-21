@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            LokasiSeeder::class,
             AdminSeeder::class,
         ]);
         User::factory(10)->has(Dompet::factory(),'dompet')->create();

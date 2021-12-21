@@ -61,7 +61,7 @@ class TransaksiController extends Controller
      */
     public function create($kendaraan_id)
     {
-        $kendaraan = Kendaraan::with('avgRating','user.pengemudi.user.avgRating','kategori')->findOrFail($kendaraan_id);
+        $kendaraan = Kendaraan::with('avgRating','user.pengemudi.user.avgRating','user.lokasi','kategori')->findOrFail($kendaraan_id);
         if($kendaraan){
             $response = [
                 "status" => "success",

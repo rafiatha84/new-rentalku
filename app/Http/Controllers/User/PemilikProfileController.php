@@ -159,9 +159,9 @@ class PemilikProfileController extends Controller
         }
         try {
             //code...
-            $update = User::where('id',$request->user_id)->update(['kota' => $request->kota]);
+            $update = User::where('id',$request->user_id)->update(['lokasi_id' => $request->kota]);
             if($update){
-                $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
+                $user = User::with('avgRating','lokasi')->where('id',$request->user_id)->firstOrFail();
                 return redirect()->route('pemilik.dashboard')->with([
                     'status' => 'Sukses ganti lokasi garasi'
                 ]);

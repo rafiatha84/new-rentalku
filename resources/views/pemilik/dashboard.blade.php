@@ -46,38 +46,16 @@
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <p class="text-center mb-0">Pilihan Kota</p>
                         <div class="kategori row px-4">
-                            <input class="filter-checkbox pilihanKota-Surabaya" type="radio" name="kota" value="Surabaya"
-                            @if(Auth::user()->kota == "Surabaya")
-                                checked
-                            @endif
-                            >
-                            <div class="kategori-outer col-3 p-1">
-                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
-                            </div>
-                            <input class="filter-checkbox pilihanKota-Jakarta" type="radio" name="kota" value="Jakarta"
-                            @if(Auth::user()->kota == "Jakarta")
-                                checked
-                            @endif
-                            >
-                            <div class="kategori-outer col-3 p-1">
-                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
-                            </div>
-                            <input class="filter-checkbox pilihanKota-Bandung" type="radio" name="kota" value="Bandung"
-                            @if(Auth::user()->kota == "Bandung")
-                                checked
-                            @endif
-                            >
-                            <div class="kategori-outer col-3 p-1">
-                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
-                            </div>
-                            <input class="filter-checkbox pilihanKota-Semarang" type="radio" name="kota" value="Semarang"
-                            @if(Auth::user()->kota == "Semarang")
-                                checked
-                            @endif
-                            >
-                            <div class="kategori-outer col-3 p-1">
-                                <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
-                            </div>
+                            @foreach ($lokasis as $lokasi)
+                                <input class="filter-checkbox pilihanKota-{{$lokasi->name}}" type="radio" name="kota" value="{{$lokasi->id}}"
+                                @if(Auth::user()->lokasi_id == $lokasi->id)
+                                    checked
+                                @endif
+                                >
+                                <div class="kategori-outer col-3 p-1">
+                                    <div class="kategori-box text-center small kota-check" for="pilihanKota-{{$lokasi->name}}">{{$lokasi->name}}</div>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="row col-12 mb-2">
                             <input type="submit" class="submit-search mx-auto" value="Pilih lokasi">

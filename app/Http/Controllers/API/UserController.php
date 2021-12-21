@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('avgRating')->get();
+        $user = User::with('avgRating','lokasi')->get();
         return response()->json($user, 200);
     }
 
@@ -192,7 +192,7 @@ class UserController extends Controller
             //code...
             $update = User::where('id',$request->user_id)->update(['kota' => $request->kota]);
             if($update){
-                $user = User::with('avgRating')->where('id',$request->user_id)->firstOrFail();
+                $user = User::with('avgRating','lokasi')->where('id',$request->user_id)->firstOrFail();
                 $response = [
                     "status" => "success",
                     "message" => 'Berhasil Edit User',

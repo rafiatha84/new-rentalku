@@ -9,6 +9,7 @@ use App\Models\Kendaraan;
 use App\Models\Slider;
 use App\Models\Kategori;
 use App\Models\Transaksi;
+use App\Models\Lokasi;
 
 class UserDashboardController extends Controller
 {
@@ -30,6 +31,7 @@ class UserDashboardController extends Controller
     public function index()
     {
         $kategoris = Kategori::get();
+        $lokasis = Lokasi::get();
         $transaksi = Transaksi::where('status','Proses')->get();
         $unitIdArray = Array(0);
         foreach($transaksi as $t){array_push($unitIdArray,$t->kendaraan_id);};
@@ -38,7 +40,8 @@ class UserDashboardController extends Controller
         return view('user.dashboard',[
             'kendaraans' => $kendaraan_populer,
             'sliders' => $sliders,
-            'kategoris' => $kategoris
+            'kategoris' => $kategoris,
+            'lokasis' => $lokasis
         ]);
     }
     public function welcome()

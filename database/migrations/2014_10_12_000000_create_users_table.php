@@ -27,6 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('foto_sim')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kota')->default('Surabaya');
+            $table->unsignedBigInteger('lokasi_id')->default(1);
+            $table->foreign('lokasi_id')->references('id')->on('lokasis')->onDelete('cascade');
             $table->string('telp')->nullable();
             $table->decimal('lat',10,7)->nullable();
             $table->decimal('long',10,7)->nullable();

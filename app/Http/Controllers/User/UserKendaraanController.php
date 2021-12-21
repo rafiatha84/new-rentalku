@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use App\Models\Kendaraan;
 use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
 class UserKendaraanController extends Controller
@@ -39,7 +40,11 @@ class UserKendaraanController extends Controller
         }
         if (isset($request->kota)) {
             $kota = $request->kota;
-            $user = User::where('kota', $request->kota)->get();
+            $kotasId = Lokasi::select('id')->where('name', $kota)->get();
+            $kotasIdArray = Array();
+            foreach ($kotasId as $u) {array_push($kotasIdArray, $u->id);}
+            
+            $user = User::whereIn('lokasi_id', $kotasIdArray)->get();
             $userIdArray = array();
             foreach ($user as $u) {array_push($userIdArray, $u->id);}
             if (count($userIdArray) > 0) {

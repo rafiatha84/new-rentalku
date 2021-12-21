@@ -32,6 +32,7 @@ class User extends Authenticatable
         'foto_sim',
         'alamat',
         'kota',
+        'lokasi_id',
         'telp',
         'lat',
         'long'
@@ -55,6 +56,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lokasi(){
+        return $this->hasOne('App\Models\Lokasi','id','lokasi_id');
+    }
 
     public function kendaraan(){
         return $this->hasMany('App\Models\Kendaraan');

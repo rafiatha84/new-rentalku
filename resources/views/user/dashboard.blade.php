@@ -36,22 +36,12 @@
                 <div class="search-toggle-box pt-5 search-hidden">
                     <p class="text-center mb-0">Pilihan Kota</p>
                     <div class="kategori row px-4">
-                        <input class="filter-checkbox pilihanKota-Surabaya" type="radio" name="kota" value="Surabaya"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Surabaya">Surabaya</div>
-                        </div>
-                        <input class="filter-checkbox pilihanKota-Jakarta" type="radio" name="kota" value="Jakarta"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Jakarta">Jakarta</div>
-                        </div>
-                        <input class="filter-checkbox pilihanKota-Bandung" type="radio" name="kota" value="Bandung"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Bandung">Bandung</div>
-                        </div>
-                        <input class="filter-checkbox pilihanKota-Semarang" type="radio" name="kota" value="Semarang"/>
-                        <div class="kategori-outer col-3 p-1">
-                            <div class="kategori-box text-center small kota-check" for="pilihanKota-Semarang">Semarang</div>
-                        </div>
+                        @foreach ($lokasis as $lokasi)
+                            <input class="filter-checkbox pilihanKota-{{$lokasi->name}}" type="radio" name="kota" value="{{$lokasi->name}}"/>
+                            <div class="kategori-outer col-3 p-1">
+                                <div class="kategori-box text-center small kota-check" for="pilihanKota-{{$lokasi->name}}">{{$lokasi->name}}</div>
+                            </div>
+                        @endforeach
                     </div>
                     <p class="text-center mb-0">Kategori</p>
                     <div class="kategori row px-4">
