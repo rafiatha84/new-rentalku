@@ -145,7 +145,7 @@ Route::get('transaksi/show/bypengemudi/{pengemudi_id}', [TransaksiController::cl
 Route::get('transaksi/show/bypengemudi/selesai/{pengemudi_id}', [TransaksiController::class, 'show_selesai_bypengemudi'])->name('api.transaksi.show.selesai.bypengemudi');
 
 Route::post('transaksi/selesai/{transaksi_id}',[TransaksiController::class, 'update_selesai'])->name('api.transaksi.update.selesai');
-Route::post('transaksi/selesai/action/{pemesanan_id}',[Transaksi::class, 'selesai_action'])->name('api.pesanan.selesai.action');
+Route::post('transaksi/selesai/action/{pemesanan_id}',[TransaksiController::class, 'selesai_action'])->name('api.pesanan.selesai.action');
 Route::post('transaksi/create/rating',[TransaksiController::class,'create_rating'])->name("api.transaksi.rating");
 //Rating Kendaraan
 Route::get('rating/kendaraan/{rating_id}', [RatingKendaraanController::class, 'showId'])->name('api.ratingKendaraan.showId');
