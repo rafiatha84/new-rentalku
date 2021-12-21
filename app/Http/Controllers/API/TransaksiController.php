@@ -245,6 +245,29 @@ class TransaksiController extends Controller
                         ];
                         $message = Message::create($message);   
                     }
+                    //melakukan pembuatan chat room supir dengan pemilik apabila memesan supir bagi yang telah memesan
+                    $chat_room = ChatRoom::where('user_id',$kendaraan->user_id)->where('user_to_id',$pengemudi->user_id)->first();
+                    if($chat_room){
+                        $message = [
+                            'user_id' => $kendaraan->user_id,
+                            "chat_room_id" => $pengemudi->user_id,
+                            "message" => "Ada pesanan sopir",
+                        ];
+                        $message = Message::create($message);
+                        
+                    }else{
+                        $chat_room_data = [
+                            'user_id' => $kendaraan->user_id,
+                             "user_to_id" => $pengemudi->user_id
+                        ];
+                        $new_chat_room = ChatRoom::create($chat_room_data);
+                        $message = [
+                            'user_id' => $kendaraan->user_id,
+                            "chat_room_id" => $pengemudi->user_id,
+                            "message" => "Ada pesanan sopir",
+                        ];
+                        $message = Message::create($message);   
+                    }
                 }
                 $response = [
                     "status" => "success",
