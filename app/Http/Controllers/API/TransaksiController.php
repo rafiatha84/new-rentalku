@@ -263,7 +263,7 @@ class TransaksiController extends Controller
                         $new_chat_room = ChatRoom::create($chat_room_data);
                         $message = [
                             'user_id' => $kendaraan->user_id,
-                            "chat_room_id" => $pengemudi->user_id,
+                            "chat_room_id" => $new_chat_room->id,
                             "message" => "Ada pesanan sopir",
                         ];
                         $message = Message::create($message);   
