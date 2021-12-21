@@ -34,8 +34,8 @@ use App\Http\Controllers\API\TransaksiDompetController;
 
 //API route for register new user
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-Route::post('/register/pemilik', [AuthController::class, 'register_pemilik'])->name('api.register.pemilik');
 //API route for login user
+Route::post('/register/pemilik', [AuthController::class, 'register_pemilik'])->name('api.register.pemilik');
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
@@ -46,7 +46,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth:sanctum']], function() 
     // manggil controller dengan mengubah namespace di RouteServiceProvider.php biar bisa kayak versi2 sebelumnya
     Route::post('/logoutall',[AuthController::class, 'logoutall'])->name('api.logoutall');
 });
-
 
 Route::group(['prefix' => 'message'], function () {
     Route::get('/all',[UserMessageController::class, 'get_chat_room'])->name('api.message.getall');

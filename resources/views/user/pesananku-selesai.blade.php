@@ -31,7 +31,6 @@
                     <tr>
                     <th scope="col" class="text-center">Gambar</th>
                     <th scope="col" class="text-center">Merk Mobil</th>
-                    <th scope="col" class="text-center">Jenis Mobil</th>
                     <th scope="col" class="text-center">Tanggal</th>
                     <th scope="col" class="text-center">Sopir</th>
                     <th scope="col" class="text-center">Harga</th>
@@ -45,7 +44,6 @@
                             <img src="{{ asset($transaksi->kendaraan->image_link) }}" alt="" srcset="" class="image-mobil-tabel">
                         </td>
                         <td class="text-center">{{ $transaksi->kendaraan->name }}</td>
-                        <td class="text-center">{{ $transaksi->kendaraan->kategori->name }}</td>
                         <td class="text-center">{{$transaksi->tanggal_transaksi()}} -{{$transaksi->tanggal_berakhir()}} </td>
                         <td class="text-center">{{$transaksi->sopir()}}</td>
                         <td class="text-center">Rp.{{number_format($transaksi->kendaraan->harga,0,',','.')}}/Hari</td>
