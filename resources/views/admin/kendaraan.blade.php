@@ -166,8 +166,8 @@
                     <option value="{{$kategori->id}}">{{$kategori->name}}</option>
                     @endforeach
                   </select>
-                  <p class="m-0">Kota</p>
-                  <input type="text" name="kota" placeholder="Masukkan Kota" class="input-form w-100 p-2">
+                  {{-- <p class="m-0">Kota</p> --}}
+                  <input type="hidden" name="kota" value="surabaya" placeholder="Masukkan Kota" class="input-form w-100 p-2">
                   <p class="m-0">Seat</p>
                   <input type="number" name="seat" placeholder="Masukkan Seat" class="input-form w-100 p-2">
                   <p class="m-0">Nopol</p>
@@ -232,8 +232,8 @@
                     <option value="{{$kategori->id}}">{{$kategori->name}}</option>
                     @endforeach
                   </select>
-                  <p class="m-0">Kota</p>
-                  <input type="text" name="kota" placeholder="Masukkan Kota" class="input-form w-100 p-2">
+                  {{-- <p class="m-0">Kota</p> --}}
+                  <input type="hidden" value="Surabaya" name="kota" placeholder="Masukkan Kota" class="input-form w-100 p-2">
                   <p class="m-0">Seat</p>
                   <input type="number" name="seat" placeholder="Masukkan Seat" class="input-form w-100 p-2">
                   <p class="m-0">Nopol</p>
