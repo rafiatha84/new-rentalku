@@ -250,7 +250,7 @@ class TransaksiController extends Controller
                     if($chat_room){
                         $message = [
                             'user_id' => $kendaraan->user_id,
-                            "chat_room_id" => $pengemudi->user_id,
+                            "chat_room_id" => $chat_room->id,
                             "message" => "Ada pesanan sopir",
                         ];
                         $message = Message::create($message);
