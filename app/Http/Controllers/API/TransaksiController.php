@@ -677,6 +677,73 @@ class TransaksiController extends Controller
 
     }
 
+    public function selesai_action($pemesanan_id)
+    {
+        DB::beginTransaction();
+        try{
+            $transaksi = Transaksi::findOrFail($pemesanan_id);
+            $update = Transaksi::where('id', $pemesanan_id)->update([
+                'status' => 'Selesai'
+            ]);
+            if($update){
+                $update_pemasukan = TransaksiDompet::where('id',$transaksi->transaksi_dompet_id)
+                ->update([
+                    'status' => 'Dikonfirmasi'
+                ]);
+                $transaksiDompet = TransaksiDompet::findOrFail($transaksi->transaksi_dompet_id);
+                //get saldo saat ini
+                $saldo = TransaksiDompet::where('dompet_id', $transaksiDompet->dompet_id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
+                $updatesaldo = Dompet::where('id',$transaksiDompet->dompet_id)->update([
+                    'saldo' => $saldo
+                ]);
+                if($update_pemasukan){
+                    DB::commit();
+                    $response = [
+                        "status" => "success",
+                        "message" => 'Berhasil update selesai',
+                        "errors" => null,
+                        "content" => null,
+                    ];
+        
+                    return response()->json($response,201);
+                }else{
+                    DB::rollback();
+                    // dd("a");
+                    $response = [
+                        "status" => "error",
+                        "message" => 'Gagal update selesai',
+                        "errors" => null,
+                        "content" => null,
+                    ];
+        
+                    return response()->json($response,404);
+                }
+            }else{
+                DB::rollback();
+                // dd("b");
+                $response = [
+                    "status" => "error",
+                    "message" => 'Gagal update selesai',
+                    "errors" => null,
+                    "content" => null,
+                ];
+    
+                return response()->json($response,404);
+            }
+        }catch(\Exception $e){
+            DB::rollback();
+            // dd($e);
+            $response = [
+                "status" => "error",
+                "message" => 'Gagal update selesai',
+                "errors" => null,
+                "content" => null,
+            ];
+
+            return response()->json($response,404);
+        }
+    }
+
     public function create_rating(Request $request)
     {
         $validator = Validator::make($request->all(), 

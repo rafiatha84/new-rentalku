@@ -98,7 +98,5 @@ class PemilikPemesananController extends Controller
                 'status' => 'gagal update selesai'
             ]);
         }
-        
-        
     }
 }
