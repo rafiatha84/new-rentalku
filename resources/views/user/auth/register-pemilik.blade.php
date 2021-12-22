@@ -37,8 +37,6 @@
                 <form action="{{ route('pemilik.register.action') }}" method="POST" class="mx-3" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{ $user->id }}">
-                    <label class="small">Nama lengkap anda</label>
-                    <input class="col-12  input-form" type="text" name="name" placeholder="Nama Lengkap" required>
                     <label class="small">Nomor Induk Kependudukan</label>
                     <input class="col-12 input-form" type="text" name="nik" placeholder="NIK" required>
                     <label class="small">Upload Foto KTP</label>

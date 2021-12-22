@@ -161,7 +161,6 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), 
         [
             'id' => 'required|integer',
-            'name' => 'required',
             'nik' => 'required',
             'foto_ktp' => 'required|image:jpeg,png,jpg,gif,svg'
         ]);
@@ -179,7 +178,7 @@ class AuthController extends Controller
         DB::beginTransaction();
         try{
             $cek = User::findOrFail($request->id);
-            $data_update = $request->only(['name','nik']);
+            $data_update = $request->only(['nik']);
             if($request->has('foto_ktp'))
             {
                 $uploadFolder = "image/foto_ktp/";
