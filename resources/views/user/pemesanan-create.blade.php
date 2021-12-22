@@ -114,7 +114,8 @@
                                             <p>Rp.{{number_format($dompet->saldo,0,',','.')}}</p>
                                         </div>
                                     </div>
-                                    <p class="text-center">Pembayaran dengan dompetksu</p>
+                                    <p class="text-center">Pembayaran dengan dompetku</p>
+                                    <p class="text-center disclaimer" style="color:#dc3545!important;"><i>Apabila terdapat kecelakan maka itu sepenuhnya tanggung jawab pemesan. Batasan usia pemesanan untuk umur 18 keatas.</i></p>
                                     <p class="saldo-tidak-cukup text-center text-danger" style="display:none;color:#dc3545!important;">Saldo anda tidak cukup!!!</p>
                                     <div class="row">
                                         <div class="col-12 text-center">

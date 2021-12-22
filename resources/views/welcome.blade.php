@@ -89,21 +89,24 @@
     </div>
     <div id="section-2">
         <div class="container">
-            <div class="row col-lg-12 mb-5">
-                <div class="col-lg-4 col-4">
+            <div class="row">
+                <div class="col-lg-4 col-sm-4 col-12 button-box">
                     <h4><b>Anda punya mobil nganggur?</b></h4>
                     <h4 class="">Segera buat akun di RentalKu!</h4>
                     <a href="{{ route('user.register') }}" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
                 </div>
-                <div class="col-lg-4 offset-lg-4 col-4 offset-4 text-center">
-                    <h4 class="text-right"><b>Mau liburan keluarga
+                <div class="col-lg-4 offset-lg-4 col-sm-4 offset-sm-4 col-12 button-box button-box-right">
+                    <h4 class=""><b>Mau liburan keluarga
                     tapi nggak ada mobil?</b></h4>
-                    <h4 class="text-right">Buruan masuk sekarang juga!</h4>
-                    <a href="{{ route('user.dashboard') }}" class="btn-rental float-right d-inline-block px-5 py-2">Masuk Sekarang</a>
+                    <h4 class="">Buruan masuk sekarang juga!</h4>
+                    <a href="{{ route('user.dashboard') }}" class="btn-rental d-inline-block px-5 py-2">Masuk Sekarang</a>
                 </div>
             </div>
-            <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">
-                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12 mb-5 mt-5 welcome-text">
+
+                    <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
+                </div>
             </div>
         </div>
     </div>
@@ -134,7 +137,32 @@
                     infinite: true,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    centerMode: true
+                    centerMode: true,
+                    responsive: [
+                        {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                        },
+                        {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                        },
+                        {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                        }
+                    ]
                 });
         });
     </script>

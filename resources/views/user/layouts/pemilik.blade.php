@@ -8,6 +8,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Styles -->
     <!--load all Font Awesome styles -->
@@ -71,7 +72,7 @@
                                 <a class="dropdown-item" href="{{ route('pemilik.profile') }}">Profil</a>
                                     <a class="dropdown-item" href="{{ route('pemilik.supirku') }}">SopirKu</a>
                                     <a class="dropdown-item" href="{{ route('pemilik.ulasan') }}">Penilaian dan Ulasan</a>
-                                    <a class="dropdown-item" href="{{ route('user.dashboard') }}">Kembali ke Penyewa</a>
+                                    <a class="dropdown-item important-nav" href="{{ route('user.dashboard') }}">Kembali ke Penyewa</a>
                                     <a class="dropdown-item" href="{{ route('user.logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

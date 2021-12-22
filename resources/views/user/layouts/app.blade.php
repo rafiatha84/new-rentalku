@@ -8,6 +8,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Styles -->
     <!--load all Font Awesome styles -->
@@ -68,9 +69,9 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('user.profile') }}">Profil</a>
                                 @if (Auth::user()->role == "user" || Auth::user()->role == "admin")
-                                    <a class="dropdown-item" href="{{ route('pemilik.register') }}">Jadi pemilik mobil</a>
+                                    <a class="dropdown-item important-nav" href="{{ route('pemilik.register') }}">Jadi pemilik mobil</a>
                                 @else
-                                    <a class="dropdown-item" href="{{ route('pemilik.dashboard') }}">Halaman Pemilik</a>
+                                    <a class="dropdown-item important-nav" href="{{ route('pemilik.dashboard') }}">Halaman Pemilik</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('user.logout') }}"
                                     onclick="event.preventDefault();

@@ -13,6 +13,9 @@
 .wrap {
     white-space: pre-wrap;
 }
+.important-nav{
+    background-color: #00ad91;
+}
 .loader,
 .loader:after {
     border-radius: 50%;
@@ -536,33 +539,314 @@ span.name {
 .slick-initialized {
     overflow: hidden;
 }
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .img-rectangle {
-        width: 100%;
+@media only screen and (min-width: 1026px)  {
+    #head{
         height: 100%;
+        /* margin-bottom: 100px; */
+    }
+    .mobil {
+        position: absolute;
+        width: 200px;
+        border-radius: 50%;
+        bottom: -50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+    }
+    .img-rectangle{
+        height: 250px;
+        width: 100%;
         position: absolute;
         top: 0px;
         z-index: 1;
+    }
+    
+    .head-box {
+        height: 250px;
+        position: relative;
+        padding-top: 0px;
+    }
+    #head {
+        height: 250px;
+        margin-bottom: 50px;
+    }
+    .welcome-text{
+        /* margin: 0 !important; */
+    }
+    .button-box{
+        padding: 5px;
+        text-align: left !important;
+    }
+    .button-box-right{
+        padding: 5px;
+        text-align: right !important;
+    }
+    .slick-initialized{
+        height: 200px !important;
+    }
+    .slick-list{
+        height: 200px !important;
+    }
+    .slick-track{
+        height: 200px !important;
+    }
+    .img-box-new{
+        height:200px;
+    }
+
+}
+@media only screen and (max-width: 1024px) and (min-width: 769px)  {
+    #head{
+        height: 100px;
+        /* margin-bottom: 100px; */
+    }
+    .mobil {
+        position: absolute;
+        width: 200px;
+        border-radius: 50%;
+        /* bottom: 0; */
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+    }
+    .img-rectangle{
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    
+    .head-box {
+        height: 250px;
+        position: relative;
+        padding-top: 0px;
+    }
+    #head {
+        height: 200px;
+        margin-bottom: 50px;
+    }
+    .welcome-text{
+        /* margin: 0 !important; */
+    }
+    .button-box{
+        padding: 5px;
+        text-align: left !important;
+    }
+    .button-box-right{
+        padding: 5px;
+        text-align: right !important;
+    }
+    .slick-initialized{
+        height: 200px !important;
+    }
+    .slick-list{
+        height: 200px !important;
+    }
+    .slick-track{
+        height: 200px !important;
+    }
+    .img-box-new{
+        height:200px;
+    }
+
+}
+@media only screen and (max-width: 768px) and (min-width: 577px)  {
+    /* For mobile phones: */
+    #head{
+        height: 100px;
+        /* margin-bottom: 100px; */
     }
     .mobil {
         position: absolute;
         width: 100px;
         border-radius: 50%;
-        bottom: -25%;
+        bottom: 0;
         left: 50%;
         transform: translate(-50%, 0);
         z-index: 2;
     }
+    .img-rectangle{
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    
+    .head-box {
+        height: 250px;
+        position: relative;
+        padding-top: 0px;
+    }
+    #head {
+        height: 200px;
+        margin-bottom: 50px;
+    }
+    h4 {
+        font-size: 10px !important;
+    }
+    .btn-daftar{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .btn-rental{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .welcome-text{
+        margin: 0 !important;
+    }
+    .button-box{
+        padding: 5px;
+        text-align: center !important;
+    }
+    .button-box-right{
+        padding: 5px;
+        text-align: right !important;
+    }
+    .slick-initialized{
+        height: 120px !important;
+    }
+    .slick-list{
+        height: 120px !important;
+    }
+    .slick-track{
+        height: 120px !important;
+    }
+    .img-box-new{
+        height: 120px;
+    }
+}
+@media only screen and (max-width: 576px) and (min-width: 401px){
+    #head{
+        height: 100px;
+        /* margin-bottom: 100px; */
+    }
+    .mobil {
+        position: absolute;
+        width: 100px;
+        border-radius: 50%;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+    }
+    .img-rectangle{
+        height: 150px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    
     .head-box {
         height: 200px;
         position: relative;
         padding-top: 0px;
     }
     #head {
-        height: 200px;
+        height: 150px;
+        margin-bottom: 50px;
     }
     h4 {
         font-size: 10px !important;
     }
+    .btn-daftar{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .btn-rental{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .welcome-text{
+        margin: 0 !important;
+    }
+    .button-box{
+        padding: 5px;
+        text-align: center !important;
+    }
+    .slick-initialized{
+        height: 120px !important;
+    }
+    .slick-list{
+        height: 120px !important;
+    }
+    .slick-track{
+        height: 120px !important;
+    }
+    .img-box-new{
+        height: 120px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    #head{
+        height: 100px;
+        /* margin-bottom: 100px; */
+    }
+    .mobil {
+        position: absolute;
+        width: 100px;
+        border-radius: 50%;
+        bottom: 25%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+    }
+    .img-rectangle{
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    
+    .head-box {
+        height: 200px;
+        position: relative;
+        padding-top: 0px;
+    }
+    #head {
+        height: 100px;
+        margin-bottom: 50px;
+    }
+    h4 {
+        font-size: 10px !important;
+    }
+    .btn-daftar{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .btn-rental{
+        font-size: 10px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .welcome-text{
+        margin: 0 !important;
+    }
+    .button-box{
+        padding: 5px;
+        text-align: center !important;
+    }
+    .slick-initialized{
+        height: 100px !important;
+    }
+    .slick-list{
+        height: 100px !important;
+    }
+    .slick-track{
+        height: 100px !important;
+    }
+    .img-box-new{
+        height: 100px;
+    }
+
 }

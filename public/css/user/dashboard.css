@@ -146,3 +146,193 @@ select {
 .radius-5:hover {
     border-radius: 5px;
 }
+@media only screen and (min-width:1027px){
+    .img-rectangle{
+        height: 200px !important;
+    }
+    .head-box{
+        height: 200px !important;
+    }
+    #head{
+        height: 200px !important;
+    }
+    .mobil{
+        /* bottom: -25%; */
+        width: 150px;
+    }
+    .search-box-outer{
+        padding-top: 25px;
+        width: 480px;
+    }
+    .search-toggle-box{
+        margin-top: 25px;
+    }
+    .search-box{
+        width: 480px;
+    }
+    .cari-rental{
+        width: 480px;
+    }
+    .kategori-box{
+        font-size: 10px;
+    }
+    .box-text-kota{
+        padding-top: 20px;
+        margin-top: 30px !important;
+        /* margin: 0 !important; */
+        margin-bottom: 10px !important;
+    }
+    .box-text-kota h4{
+        font-size:16px !important;
+    }
+}
+@media only screen and (max-width:1026px) and (min-width:769px){
+    .img-rectangle{
+        height: 155px;
+    }
+    .head-box{
+        height: 155px;
+    }
+    #head{
+        height: 100px !important;
+    }
+    .mobil{
+        bottom: -25%;
+        width: 100px;
+    }
+    .search-box-outer{
+        padding-top: 25px;
+        width: 400px;
+    }
+    .search-toggle-box{
+        margin-top: 25px;
+    }
+    .search-box{
+        width: 400px;
+    }
+    .cari-rental{
+        width: 400px;
+    }
+    .kategori-box{
+        font-size: 10px;
+    }
+    .box-text-kota{
+        padding-top: 20px;
+        margin-top: 30px !important;
+        /* margin: 0 !important; */
+        margin-bottom: 10px !important;
+    }
+    .box-text-kota h4{
+        font-size:14px !important;
+    }
+}
+@media only screen and (max-width:768px) and (min-width:567px){
+    .img-rectangle{
+        height: 155px;
+    }
+    .head-box{
+        height: 155px;
+    }
+    .mobil{
+        bottom: -25%;
+        width: 80px;
+    }
+    .search-box-outer{
+        padding-top: 25px;
+        width: 300px;
+    }
+    .search-toggle-box{
+        margin-top: 25px;
+    }
+    .search-box{
+        width: 300px;
+    }
+    .cari-rental{
+        width: 300px;
+    }
+    .kategori-box{
+        font-size: 10px;
+    }
+    .box-text-kota{
+        padding-top: 20px;
+        margin: 0 !important;
+    }
+    .box-text-kota h4{
+        font-size:14px !important;
+    }
+}
+
+@media only screen and (max-width:566px) and (min-width:401px){
+    .img-rectangle{
+        height: 125px;
+    }
+    #head{
+        margin: 0;
+    }
+    .head-box{
+        height: 125px;
+    }
+    .mobil{
+        bottom: -25%;
+        width: 80px;
+    }
+    .search-box-outer{
+        padding-top: 25px;
+        width: 250px;
+    }
+    .search-toggle-box{
+        margin-top: 25px;
+    }
+
+    .search-box{
+        width: 250px;
+    }
+    .cari-rental{
+        width: 250px;
+    }
+    .kategori-box{
+        font-size: 10px;
+    }
+    .box-text-kota{
+        padding-top: 20px;
+        /* font-size: 12px; */
+        margin: 0 !important;
+    }
+    .box-text-kota h4{
+        font-size:12px !important;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .img-rectangle{
+        height: 125px;
+    }
+    .head-box{
+        height: 125px;
+    }
+    .mobil{
+        bottom: -25%;
+        width: 80px;
+    }
+    .search-box-outer{
+        padding-top: 25px;
+        width: 250px;
+    }
+    .search-toggle-box{
+        margin-top: 25px;
+    }
+
+    .search-box{
+        width: 250px;
+    }
+    .cari-rental{
+        width: 250px;
+    }
+    .kategori-box{
+        font-size: 10px;
+    }
+    .box-text-kota{
+        padding-top: 20px;
+        margin: 0 !important;
+    }
+}

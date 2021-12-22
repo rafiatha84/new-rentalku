@@ -24,11 +24,10 @@
 @section('content')
     <div id="head">
         <div class="head-box">
-
             <img src="{{ asset('image/rectangle205-new.png') }}" class="img-fluid img-rectangle" alt="">
             <div class="search-box-outer mx-auto d-block">
                 <div class="search-box">
-                <form action="{{ route('user.search') }}" method="GET">
+                    <form action="{{ route('user.search') }}" method="GET">
                     <input class="py-2 px-4 cari-rental d-block" type="text" name="q" id="" placeholder="Cari di rentalku">
                     <button class="py-2 px-4 button"><i class="fa-solid fa-search"></i></button>
                 </div>
@@ -78,23 +77,18 @@
     </div>
     <div id="section-2" >
         <div class="container">
-            <div class="row col-12 mb-5" style="opacity:0;">
-                <div class="col-4">
-                    <h4><b>Anda punya mobil nganggur?</b></h4>
-                    <h4 class="">Segera daftarin aja di RentalKu!</h4>
-                    <a href="" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12 mb-5 mt-5 box-text-kota">
+                    <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
                 </div>
-            </div>
-            <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">
-                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
             </div>
         </div>
     </div>
     <div id="mobil">
         <div class="container">
-            <div class="row col-12">
+            <div class="row">
             @foreach($kendaraans as $kendaraan)
-            <div class="col-4 mb-3" onclick='location.href="{{ route('user.detail-produk',$kendaraan->id) }}"'>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-3" onclick='location.href="{{ route('user.detail-produk',$kendaraan->id) }}"'>
                     <div class="box-border">
                         <div class="img-box img-box-mobil">
                             <img src="{{ asset($kendaraan->image_link) }}" alt="" class="h-100 w-100">
@@ -138,7 +132,32 @@
                     infinite: true,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    centerMode: true
+                    centerMode: true,
+                    responsive: [
+                        {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                        },
+                        {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                        },
+                        {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                        }
+                    ]
                 });
                 $('.button').click(function(e){
                     if($('.search-toggle-box').hasClass("search-hidden")){

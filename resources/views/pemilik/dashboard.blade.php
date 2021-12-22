@@ -94,15 +94,11 @@
     </div>
     <div id="section-2" >
         <div class="container">
-            <div class="row col-12 mb-5" style="opacity:0;">
-                <div class="col-4">
-                    <h4><b>Anda punya mobil nganggur?</b></h4>
-                    <h4 class="">Segera daftarin aja di RentalKu!</h4>
-                    <a href="" class="btn-daftar  d-inline-block px-5 py-2">Daftar Sekarang</a>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12 mb-5 mt-5 box-text-kota">
+
+                    <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
                 </div>
-            </div>
-            <div class="row col-lg-8 offset-lg-2 col-12 mb-5 mt-5">
-                <h4 class="text-center">Kami menawarkan Jasa Sewa Mobil Surabaya dan beberapa kota besar lainnya di Indonesia, dengan servis yang aman dan terpercaya bagi setiap orang, baik untuk keperluan bisnis, keluarga maupun liburan</h4>
             </div>
         </div>
     </div>
@@ -157,11 +153,36 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
         $(document).ready(function(){
-                $('.your-class').slick({
+            $('.your-class').slick({
                     infinite: true,
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    centerMode: true
+                    centerMode: true,
+                    responsive: [
+                        {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                        },
+                        {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                        },
+                        {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                        }
+                    ]
                 });
                 $('.button').click(function(e){
                     if($('.search-toggle-box').hasClass("search-hidden")){
