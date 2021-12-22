@@ -148,13 +148,13 @@ select {
 }
 @media only screen and (min-width:1027px){
     .img-rectangle{
-        height: 200px !important;
+        height: 300px !important;
     }
     .head-box{
-        height: 200px !important;
+        height: 300px !important;
     }
     #head{
-        height: 200px !important;
+        height: 300px !important;
     }
     .mobil{
         /* bottom: -25%; */
