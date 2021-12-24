@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pengemudi;
+use App\Models\Dompet;
 use Hash;
 
 class AdminUserController extends Controller
@@ -32,6 +33,10 @@ class AdminUserController extends Controller
 
         $user = User::create($data);
         if($user){
+            $dompet = new Dompet();
+            $dompet->user_id = $user->id;
+            $dompet->saldo = 0;
+            $dompet->save();
             if($request->role == "pengemudi"){
                 $pengemudi = Pengemudi::create([
                     'user_id' => $user->id,

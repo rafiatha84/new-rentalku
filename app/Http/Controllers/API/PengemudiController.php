@@ -129,7 +129,6 @@ class PengemudiController extends Controller
             ];
             return response()->json($response,404); 
         }
-
     }
 
     /**
