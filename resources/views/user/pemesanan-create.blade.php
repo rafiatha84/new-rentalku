@@ -53,7 +53,7 @@
                                 <div class="rent-car-box mt-2 px-2">
                                 <input type="hidden" name="durasi" value="0" required>
                                 <p class="m-0"><b><span class="yellow-color">Rp.{{number_format($kendaraan->harga,0,',','.')}}</span>/ <span class="hari">1</span> Hari</b></p>
-                                    <p class="mb-0">total- Rp.<span class="harga_total">0</span></p>
+                                    <p class="mb-0">total- Rp.<span class="harga_total">0</span> <span class="harga_sopir_display hidden">(+ <span class="harga_sopir">100.000/Hari</span>)</span></p>
                                 </div>
                                 <hr class="hr-detail">
                                 <div class="row">
@@ -173,12 +173,18 @@
         }
         function sum_hari(){
             if($('.start-date').val() != '' && $('.start-date').val() != null && $('.end-date').val() != '' && $('.end-date').val() != null){
+                
                 var start = new Date($('.start-date').val()),
                     end   = new Date($('.end-date').val()),
                     diff  = new Date(end - start),
                     days  = diff/1000/60/60/24;
                 days+=1;
                 var harga_total = {{$kendaraan->harga }}*days;
+                let sopir = 0;
+                sopir=$('input[name=sopir]:checked').val();
+                if(sopir === "1"){
+                    harga_total += 100000 * days;
+                }
                 var harga_total_display = new Intl.NumberFormat(['ban', 'id']).format(harga_total);
                 $('.harga_total').text(harga_total_display);
                 $('input[name="durasi"]').val(days);
@@ -188,7 +194,6 @@
                 }else{
                     $(':input[type="submit"]').prop('disabled', false);
                     $('.saldo-tidak-cukup').hide();
-
                 }
                 // alert(days);
             }
@@ -198,12 +203,15 @@
             sopir=$('input[name=sopir]:checked').val();
             if(sopir === "0"){
                 $('.sopir-div').addClass('hidden');
+                $('.harga_sopir_display').addClass('hidden');
             }else{
                 $('.sopir-div').removeClass('hidden');
+                $('.harga_sopir_display').removeClass('hidden');
             }
         }
         $('input[name=sopir]').on('change',function(){
             cek_sopir();
+            sum_hari();
         });
         $(document).ready(function() {
             $('#pemesanan-create').submit(function(e){

@@ -128,6 +128,10 @@ class TransaksiController extends Controller
             $kendaraan = Kendaraan::findOrFail($request->kendaraan_id);
             $saldo = TransaksiDompet::where('user_id', $request->user_id)->where('status','Dikonfirmasi')->groupBy('user_id')->sum('jumlah');
             $jumlah = $kendaraan['harga'] * $durasi;
+            if(isset($request->pengemudi_id)){
+                $pengemudi = Pengemudi::findOrFail($request->pengemudi_id);
+                $jumlah += $pengemudi->harga * $durasi;
+            }
             if ($saldo >= $jumlah) {
                 //jika saldo cukup
                 $transaksi_dompet = TransaksiDompet::create([
@@ -299,12 +303,6 @@ class TransaksiController extends Controller
             ];
             return response()->json($response,404);  
         }
-
-        
-
-        
-
-        
     }
 
     /**

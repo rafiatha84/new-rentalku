@@ -107,7 +107,7 @@ class PengemudiController extends Controller
             $pengemudi = Pengemudi::create([
                 'user_id' => $user->id,
                 'owner_id' => $request->owner_id,
-                'harga' => 0
+                'harga' => 100000
              ]);
             //commit
             DB::commit();
@@ -155,7 +155,7 @@ class PengemudiController extends Controller
         $pengemudi = Pengemudi::create([
             'user_id' => $request->user_id,
             'owner_id' => $request->owner_id,
-            'harga' => $request->harga
+            'harga' => 100000
             
          ]);
 

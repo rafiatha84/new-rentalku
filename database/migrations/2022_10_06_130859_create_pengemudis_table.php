@@ -19,7 +19,7 @@ class CreatePengemudisTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('harga')->default(0); //harga per hari
+            $table->integer('harga')->default(100000); //harga per hari
             $table->timestamps();
         });
     }
